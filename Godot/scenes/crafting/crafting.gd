@@ -17,7 +17,6 @@ func _ready():
 	item = item_scene.instantiate()
 	item.type = Item.Type.TRASH
 	add_child(item)
-	print(Item.recipes)
 
 
 func _process(delta):
