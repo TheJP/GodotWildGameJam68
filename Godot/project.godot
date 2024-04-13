@@ -14,7 +14,16 @@ config/name="Godot Wild GameJam 68"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[aseprite_importers]
+
+aseprite_executable_path="E:/Program Files (x86)/Aseprite-v1.3.6-x64/Aseprite.exe"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/nklbdev.aseprite_importers/plugin.cfg")
+
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
