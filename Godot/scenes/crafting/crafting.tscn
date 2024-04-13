@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://dd4s3sh2lq2x1"]
+[gd_scene load_steps=3 format=3 uid="uid://dd4s3sh2lq2x1"]
 
 [ext_resource type="Script" path="res://scenes/crafting/crafting.gd" id="1_e733u"]
+[ext_resource type="PackedScene" uid="uid://c2cin5a8gdqub" path="res://scenes/crafting/trash_can.tscn" id="2_hpql7"]
 
 [node name="Crafting" type="Node2D"]
 script = ExtResource("1_e733u")
+
+[node name="TrashCan" parent="." instance=ExtResource("2_hpql7")]
+position = Vector2(1839, 78)

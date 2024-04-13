@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://c2cin5a8gdqub"]
+
+[ext_resource type="Script" path="res://scenes/crafting/trash_can.gd" id="1_xf6lk"]
+[ext_resource type="Texture2D" uid="uid://caxosndx6vvgh" path="res://assets/trash_can.png" id="2_l85mn"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_77v1d"]
+radius = 36.0
+height = 96.0
+
+[node name="TrashCan" type="Area2D"]
+script = ExtResource("1_xf6lk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_77v1d")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_l85mn")
