@@ -23,6 +23,11 @@ aseprite_executable_path="E:/Program Files (x86)/Aseprite-v1.3.6-x64/Aseprite.ex
 
 Ticker="*res://globals/ticker.gd"
 
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/nklbdev.aseprite_importers/plugin.cfg")

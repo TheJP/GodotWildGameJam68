@@ -104,6 +104,23 @@ static var decay := {
 }
 
 
+static var sprites := {
+	Type.TRASH: preload('res://assets/items/trash.png'),
+	Type.WOOD: preload('res://assets/items/wood.png'),
+	Type.STONE: preload('res://assets/items/stone.png'),
+	Type.IRON_ORE: preload('res://assets/items/iron_ore.png'),
+	Type.FIRE: preload('res://assets/items/fire.png'),
+	Type.HAMMER: preload('res://assets/items/hammer.png'),
+	Type.TORCH: preload('res://assets/items/torch.png'),
+	Type.COAL: preload('res://assets/items/coal.png'),
+	Type.HOT_FIRE: preload('res://assets/items/hot_fire.png'),
+	Type.HOT_STEEL: preload('res://assets/items/hot_steel.png'),
+	Type.SPEAR: preload('res://assets/items/Spear.png'),
+	Type.STEEL: preload('res://assets/items/steel.png'),
+	Type.SWORD: preload('res://assets/items/sword.png'),
+}
+
+
 static var crafting: Dictionary = _init_crafting(recipes)
 
 
