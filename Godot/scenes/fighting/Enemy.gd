@@ -10,7 +10,7 @@ var damage = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	Ticker.timer.timeout.connect(on_global_ticker_timeout) 
+	Ticker.timer.timeout.connect(on_global_ticker_timeout)
 	position = position.snapped(Vector2.ONE * tile_size)
 	position += Vector2.ONE * tile_size/2
 
@@ -31,7 +31,6 @@ func move():
 
 func take_damage(amount):
 	health -= amount
-	print(health)
 	if health <= 0:
 		self.queue_free()
 

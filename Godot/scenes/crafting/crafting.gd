@@ -17,7 +17,3 @@ func _ready():
 	item = item_scene.instantiate()
 	item.type = Item.Type.TRASH
 	add_child(item)
-
-
-func _process(delta):
-	pass

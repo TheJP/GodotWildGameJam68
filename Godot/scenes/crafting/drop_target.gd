@@ -14,5 +14,5 @@ func unhover():
 	pass
 
 
-func try_drop(item: Node2D):
+func try_drop(_item: Node2D):
 	return false
