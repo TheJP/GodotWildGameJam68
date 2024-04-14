@@ -7,6 +7,7 @@ var item = null
 signal hovered()
 signal unhovered()
 signal received_item()
+signal lost_item()
 
 
 func hover():
@@ -33,3 +34,4 @@ func try_start_remove() -> bool:
 
 func remove_item():
 	item = null
+	lost_item.emit()
