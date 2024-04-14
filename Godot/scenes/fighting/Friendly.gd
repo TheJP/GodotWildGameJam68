@@ -34,7 +34,7 @@ func move():
 func set_item(p_item: Node2D):
 	has_item = true
 	itemSprite.texture = p_item.get_node("Sprite2D").texture
-	
+
 func take_damage(amount):
 	health -= amount
 	if health <= 0:

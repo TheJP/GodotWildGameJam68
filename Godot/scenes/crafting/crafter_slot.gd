@@ -2,6 +2,7 @@ extends DropTarget
 
 
 var item = null
+var is_crafting = false
 
 
 signal hovered()
@@ -18,7 +19,7 @@ func unhover():
 	unhovered.emit()
 
 
-func try_drop(p_item: Node2D):
+func try_drop(p_item: Node2D) -> bool:
 	if item == null:
 		item = p_item
 		item.global_position = global_position
@@ -29,9 +30,17 @@ func try_drop(p_item: Node2D):
 
 
 func try_start_remove() -> bool:
-	return true # TODO: return false after crafting started
+	return not is_crafting
 
 
 func remove_item():
 	item = null
 	lost_item.emit()
+
+
+func crafted_item(p_item: Node2D):
+	if item != null:
+		item.queue_free()
+	item = p_item
+	if item != null:
+		item.container = self
