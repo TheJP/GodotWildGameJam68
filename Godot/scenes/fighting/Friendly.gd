@@ -1,14 +1,16 @@
+class_name Friendly
 extends Area2D
 
 @onready var ray = $RayCast2D
+@onready var itemSprite = $Item
+var has_item = false
 
 var animation_speed = 3
-var tile_size = 64
+var tile_size = GameParameters.tilesize
 
-var health = 3
+var health = 10
 var damage = 1
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	Ticker.timer.timeout.connect(on_global_ticker_timeout)
 	position = position.snapped(Vector2.ONE * tile_size)
@@ -29,11 +31,14 @@ func move():
 		var collider = ray.get_collider()
 		collider.take_damage(damage)
 
+func set_item(p_item: Node2D):
+	has_item = true
+	itemSprite.texture = p_item.get_node("Sprite2D").texture
+	
 func take_damage(amount):
 	health -= amount
 	if health <= 0:
 		self.queue_free()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	pass

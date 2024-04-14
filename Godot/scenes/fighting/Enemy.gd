@@ -3,9 +3,9 @@ extends Area2D
 @onready var ray = $RayCast2D
 
 var animation_speed = 3
-var tile_size = 64
+var tile_size = GameParameters.tilesize
 
-var health = 3
+var health = 10
 var damage = 1
 
 # Called when the node enters the scene tree for the first time.

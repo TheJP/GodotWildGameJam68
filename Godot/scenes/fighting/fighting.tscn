@@ -1,12 +1,33 @@
-[gd_scene load_steps=4 format=3 uid="uid://cnejsm8l3onew"]
+[gd_scene load_steps=7 format=3 uid="uid://cnejsm8l3onew"]
 
 [ext_resource type="Script" path="res://scenes/fighting/fighting.gd" id="1_dyhqo"]
 [ext_resource type="PackedScene" uid="uid://cw8yhy452y2v2" path="res://scenes/fighting/friendly.tscn" id="2_fdio2"]
 [ext_resource type="PackedScene" uid="uid://4khqoun1vsqh" path="res://scenes/fighting/enemy.tscn" id="3_e1x33"]
+[ext_resource type="Script" path="res://scenes/fighting/dispenser.gd" id="4_3j01l"]
+[ext_resource type="Texture2D" uid="uid://tujchh643ll6" path="res://assets/items/coal.png" id="5_p2stu"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_77v1d"]
+radius = 36.0
+height = 96.0
 
 [node name="Fighting" type="Node2D"]
 script = ExtResource("1_dyhqo")
 
 [node name="Friendly" parent="." instance=ExtResource("2_fdio2")]
+position = Vector2(67, 421)
 
 [node name="Enemy" parent="." instance=ExtResource("3_e1x33")]
+
+[node name="Dispenser" type="Area2D" parent="."]
+position = Vector2(486, 302)
+script = ExtResource("4_3j01l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Dispenser"]
+shape = SubResource("CapsuleShape2D_77v1d")
+
+[node name="Sprite2D" type="Sprite2D" parent="Dispenser"]
+texture = ExtResource("5_p2stu")
+
+[node name="RayCast2D" type="RayCast2D" parent="Dispenser"]
+target_position = Vector2(0, 116)
+collide_with_areas = true

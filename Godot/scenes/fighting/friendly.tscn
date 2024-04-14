@@ -18,4 +18,7 @@ position = Vector2(-0.5, 3)
 shape = SubResource("RectangleShape2D_hapvm")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(96, 1)
 collide_with_areas = true
+
+[node name="Item" type="Sprite2D" parent="."]
