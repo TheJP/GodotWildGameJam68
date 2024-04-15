@@ -23,8 +23,11 @@ var _previous_target = null
 
 
 func _ready():
-	Ticker.timer.timeout.connect(_on_global_ticker_timeout)
 	$Sprite2D.texture = Item.sprites[type]
+	Ticker.timer.timeout.connect(_on_global_ticker_timeout)
+	if type in Item.decay:
+		var decay = Item.decay[type]
+		get_tree().create_timer(decay.age, false).timeout.connect(_item_decayed.bind(decay))
 
 
 func _input(event):
@@ -148,3 +151,11 @@ func _flow():
 		_tween.tween_property(self, "position", start_position, 0)
 		_tween.tween_property(self, "position", position, 1.0 / animation_speed).set_trans(Tween.TRANS_SINE)
 		break
+
+
+func _item_decayed(decay):
+	if decay.output.is_nothing:
+		queue_free()
+	else:
+		type = decay.output.type
+		$Sprite2D.texture = Item.sprites[type]
