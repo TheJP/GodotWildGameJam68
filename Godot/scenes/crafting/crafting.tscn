@@ -32,3 +32,10 @@ position = Vector2(972, 178)
 
 [node name="Spawner" parent="." instance=ExtResource("5_nwm83")]
 position = Vector2(717, 44)
+
+[node name="Spawner2" parent="." instance=ExtResource("5_nwm83")]
+position = Vector2(519, 43)
+spawn_type = 2
+
+[node name="Crafter2" parent="." instance=ExtResource("3_x6fdh")]
+position = Vector2(500, 309)
