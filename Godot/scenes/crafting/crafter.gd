@@ -46,6 +46,8 @@ func _slots_changed():
 		await Ticker.timer.timeout
 		if _state_number != local_state:
 			return # Slots changed since wait, return to prevent issues like double crafting.
+		if not is_instance_valid($LeftSlot.item) or not is_instance_valid($RightSlot.item):
+			return
 		$LeftSlot.is_crafting = true
 		$RightSlot.is_crafting = true
 		await Ticker.timer.timeout

@@ -155,6 +155,8 @@ func _flow():
 
 func _item_decayed(decay):
 	if decay.output.is_nothing:
+		while container != null and not container.try_remove():
+			await Ticker.timer.timeout # Retry next tick.
 		queue_free()
 	else:
 		type = decay.output.type
