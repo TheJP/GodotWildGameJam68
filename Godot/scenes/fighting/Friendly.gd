@@ -13,8 +13,8 @@ var damage = 1
 
 func _ready():
 	Ticker.timer.timeout.connect(on_global_ticker_timeout)
-	position = position.snapped(Vector2.ONE * tile_size)
-	position += Vector2.ONE * tile_size/2
+	global_position = global_position.snapped(Vector2.ONE * tile_size)
+	global_position += Vector2.ONE * tile_size/2
 
 func on_global_ticker_timeout():
 	move()

@@ -8,7 +8,7 @@
 script = ExtResource("1_e733u")
 
 [node name="TrashCan" parent="." instance=ExtResource("2_hpql7")]
-position = Vector2(1839, 78)
+position = Vector2(1839, 51)
 
 [node name="Crafter" parent="." instance=ExtResource("3_x6fdh")]
-position = Vector2(954, 191)
+position = Vector2(878, 287)

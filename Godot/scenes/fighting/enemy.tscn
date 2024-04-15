@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://4khqoun1vsqh"]
+[gd_scene load_steps=4 format=3 uid="uid://chipoq6s3ro70"]
 
 [ext_resource type="Script" path="res://scenes/fighting/Enemy.gd" id="1_pcg65"]
 [ext_resource type="Texture2D" uid="uid://bkc67010odi58" path="res://icon.svg" id="2_06jv1"]
@@ -7,7 +7,7 @@
 size = Vector2(127, 126)
 
 [node name="Enemy" type="Area2D"]
-position = Vector2(1071, 423)
+position = Vector2(1102, 934)
 script = ExtResource("1_pcg65")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
