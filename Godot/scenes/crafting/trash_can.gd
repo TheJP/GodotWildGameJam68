@@ -15,5 +15,7 @@ func unhover():
 
 
 func try_drop(item: Node2D) -> bool:
-	item.queue_free()
+	item.global_position = global_position
+	var tween := create_tween().tween_property(item, "scale", Vector2.ZERO, Ticker.tick_time)
+	tween.finished.connect(item.queue_free)
 	return true
