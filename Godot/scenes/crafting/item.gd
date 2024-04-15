@@ -5,7 +5,11 @@ static var _dragging = null
 
 
 @export var type: Item.Type
+@export var animation_speed := 3.0
 var container = null
+var _tween: Tween = null
+
+
 var _hovering: bool = false
 var _drag_mouse_delta: Vector2
 
@@ -14,7 +18,11 @@ var _hovered_targets := {}
 var _previous_target = null
 
 
+@onready var _ray: RayCast2D = $RayCast2D
+
+
 func _ready():
+	Ticker.timer.timeout.connect(_on_global_ticker_timeout)
 	$Sprite2D.texture = Item.sprites[type]
 
 
@@ -26,20 +34,21 @@ func _input(event):
 			# Stop dragging.
 			_dragging = null
 			Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
-			update_drop_target()
-			var target = closest_drop_target()
+			_update_drop_target()
+			var target = _closest_drop_target()
 			if target != null and target.try_drop(self):
 				container = target
-			else:
-				container = null
 		elif event.pressed and _hovering and _dragging == null:
 			# Start dragging.
 			if container != null and not container.try_remove():
 				return
+			container = null
 			_dragging = self
+			if _tween != null:
+				_tween.stop()
 			_drag_mouse_delta = position - event.position
 			Input.set_default_cursor_shape(Input.CURSOR_DRAG)
-			update_drop_target()
+			_update_drop_target()
 	if event is InputEventMouseMotion:
 		if _dragging != self:
 			return
@@ -64,17 +73,17 @@ func _on_mouse_exited():
 func _on_area_entered(area):
 	if area is DropTarget:
 		_hovered_targets[area] = null
-		update_drop_target()
+		_update_drop_target()
 
 
 func _on_area_exited(area):
 	if area is DropTarget and area in _hovered_targets:
 		_hovered_targets.erase(area)
-		update_drop_target()
+		_update_drop_target()
 
 
-func update_drop_target():
-	var next_target = closest_drop_target() if _dragging == self else null
+func _update_drop_target():
+	var next_target = _closest_drop_target() if _dragging == self else null
 
 	if next_target != _previous_target:
 		if _previous_target != null:
@@ -84,7 +93,7 @@ func update_drop_target():
 		_previous_target = next_target
 
 
-func closest_drop_target():
+func _closest_drop_target():
 	var closest = null
 	var closest_distance = INF
 	for target in _hovered_targets.keys():
@@ -94,3 +103,43 @@ func closest_drop_target():
 			closest_distance = distance
 
 	return closest
+
+func _on_global_ticker_timeout():
+	_move()
+
+func _move():
+	# Ignore items that are being dragged or are not "in the system".
+	if container == null:
+		return
+	if container is CrafterSlot and container.is_waiting_for_craft:
+		return
+	if not (container is CrafterSlot) and not (container is Pipe):
+		return
+	if _tween != null and _tween.is_running():
+		return
+
+	var start_position = position
+	var directions = [Vector2.DOWN] if container is CrafterSlot else [Vector2.DOWN, Vector2.LEFT, Vector2.UP, Vector2.RIGHT]
+	directions.shuffle()
+
+	for direction in directions:
+		_ray.target_position = direction * GameParameters.craft_tilesize
+		_ray.force_raycast_update()
+		var collider = _ray.get_collider()
+		if collider == null or not (collider is DropTarget):
+			continue
+
+		if not collider.try_drop(self):
+			continue
+
+		if not container.try_remove():
+			push_error('could not remove item')
+		container = collider
+
+		if _tween != null:
+			_tween.kill()
+		_tween = create_tween()
+		_tween.tween_property(self, "position", start_position, 0)
+		_tween.tween_property(self, "position", position, 1.0 / animation_speed).set_trans(Tween.TRANS_SINE)
+		await _tween.finished
+		break

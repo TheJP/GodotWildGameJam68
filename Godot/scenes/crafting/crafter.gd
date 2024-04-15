@@ -62,7 +62,8 @@ func _craft():
 	if $LeftSlot.item.type in Item.crafting and $RightSlot.item.type in Item.crafting[$LeftSlot.item.type]:
 		var recipe = Item.crafting[$LeftSlot.item.type][$RightSlot.item.type]
 		if recipe.is_id:
-			return
+			new_left = $LeftSlot.item
+			new_right = $RightSlot.item
 		if not recipe.is_nothing:
 			new_left = _spawn_item(recipe.type, $LeftSlot.global_position)
 	else:

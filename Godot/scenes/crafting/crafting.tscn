@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dd4s3sh2lq2x1"]
+[gd_scene load_steps=5 format=3 uid="uid://dd4s3sh2lq2x1"]
 
 [ext_resource type="Script" path="res://scenes/crafting/crafting.gd" id="1_e733u"]
 [ext_resource type="PackedScene" uid="uid://c2cin5a8gdqub" path="res://scenes/crafting/trash_can.tscn" id="2_hpql7"]
 [ext_resource type="PackedScene" uid="uid://dwjhdo8uhvr78" path="res://scenes/crafting/crafter.tscn" id="3_x6fdh"]
+[ext_resource type="PackedScene" uid="uid://de61aubqlopqx" path="res://scenes/crafting/pipe.tscn" id="4_1jm7c"]
 
 [node name="Crafting" type="Node2D"]
 script = ExtResource("1_e733u")
@@ -12,3 +13,9 @@ position = Vector2(1839, 51)
 
 [node name="Crafter" parent="." instance=ExtResource("3_x6fdh")]
 position = Vector2(878, 287)
+
+[node name="Pipe" parent="." instance=ExtResource("4_1jm7c")]
+position = Vector2(830, 402)
+
+[node name="Pipe2" parent="." instance=ExtResource("4_1jm7c")]
+position = Vector2(959, 402)

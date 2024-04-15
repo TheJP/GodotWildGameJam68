@@ -5,26 +5,27 @@ extends DropTarget
 var item = null
 
 
-signal hovered()
-signal unhovered()
-signal received_item()
-signal lost_item()
-
-
 func _ready():
 	Ticker.timer.timeout.connect(on_global_ticker_timeout)
 	global_position = global_position.snapped(Vector2.ONE * GameParameters.craft_tilesize)
 	global_position += Vector2.ONE * (GameParameters.craft_tilesize * 0.5)
 
 
+func hover():
+	scale = Vector2(1.1, 1.1)
+
+
+func unhover():
+	scale = Vector2(1, 1)
+
+
 func try_drop(p_item: Node2D) -> bool:
-	if item == null:
+	if item != null:
+		return false
+	else:
 		item = p_item
 		item.global_position = global_position
-		received_item.emit()
 		return true
-	else:
-		return false
 
 
 func try_dispense_item():

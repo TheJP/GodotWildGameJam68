@@ -32,6 +32,12 @@ window/size/viewport_height=1080
 
 enabled=PackedStringArray("res://addons/nklbdev.aseprite_importers/plugin.cfg")
 
+[layer_names]
+
+2d_physics/layer_1="fight"
+2d_physics/layer_2="container"
+2d_physics/layer_3="item"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
