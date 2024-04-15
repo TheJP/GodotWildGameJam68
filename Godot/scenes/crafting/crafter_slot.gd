@@ -29,13 +29,13 @@ func try_drop(p_item: Node2D) -> bool:
 		return false
 
 
-func try_start_remove() -> bool:
-	return not is_crafting
+func try_remove() -> bool:
+	if is_crafting:
+		return false
 
-
-func remove_item():
 	item = null
 	lost_item.emit()
+	return true
 
 
 func crafted_item(p_item: Node2D):

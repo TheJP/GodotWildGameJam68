@@ -23,18 +23,18 @@ func _input(event):
 		if event.button_index != MOUSE_BUTTON_LEFT:
 			return
 		if not event.pressed and _dragging == self:
+			# Stop dragging.
 			_dragging = null
 			Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
 			update_drop_target()
-			if container != null:
-				container.remove_item()
 			var target = closest_drop_target()
 			if target != null and target.try_drop(self):
 				container = target
 			else:
 				container = null
 		elif event.pressed and _hovering and _dragging == null:
-			if container != null and not container.try_start_remove():
+			# Start dragging.
+			if container != null and not container.try_remove():
 				return
 			_dragging = self
 			_drag_mouse_delta = position - event.position

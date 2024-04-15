@@ -18,9 +18,5 @@ func try_drop(_item: Node2D) -> bool:
 	return false
 
 
-func try_start_remove() -> bool:
+func try_remove() -> bool:
 	return false
-
-
-func remove_item():
-	pass
