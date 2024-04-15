@@ -7,9 +7,10 @@ static var _dragging = null
 @export var type: Item.Type
 @export var animation_speed := 3.0
 var container = null
+var _previous_container = null
+
+
 var _tween: Tween = null
-
-
 var _hovering: bool = false
 var _drag_mouse_delta: Vector2
 
@@ -43,6 +44,7 @@ func _input(event):
 			if container != null and not container.try_remove():
 				return
 			container = null
+			_previous_container = null
 			_dragging = self
 			if _tween != null:
 				_tween.stop()
@@ -105,9 +107,9 @@ func _closest_drop_target():
 	return closest
 
 func _on_global_ticker_timeout():
-	_move()
+	_flow()
 
-func _move():
+func _flow():
 	# Ignore items that are being dragged or are not "in the system".
 	if container == null:
 		return
@@ -128,12 +130,14 @@ func _move():
 		var collider = _ray.get_collider()
 		if collider == null or not (collider is DropTarget):
 			continue
-
+		if collider == _previous_container:
+			continue # Do not flow back where you came from.
 		if not collider.try_drop(self):
 			continue
 
 		if not container.try_remove():
 			push_error('could not remove item')
+		_previous_container = container
 		container = collider
 
 		if _tween != null:
@@ -141,5 +145,4 @@ func _move():
 		_tween = create_tween()
 		_tween.tween_property(self, "position", start_position, 0)
 		_tween.tween_property(self, "position", position, 1.0 / animation_speed).set_trans(Tween.TRANS_SINE)
-		await _tween.finished
 		break
