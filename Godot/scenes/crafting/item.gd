@@ -115,13 +115,15 @@ func _flow():
 		return
 	if container is CrafterSlot and container.is_waiting_for_craft:
 		return
-	if not (container is CrafterSlot) and not (container is Pipe):
-		return
 	if _tween != null and _tween.is_running():
 		return
 
 	var start_position = position
-	var directions = [Vector2.DOWN] if container is CrafterSlot else [Vector2.DOWN, Vector2.LEFT, Vector2.UP, Vector2.RIGHT]
+	var directions := []
+	if container is CrafterSlot or container is Spawner:
+		directions = [Vector2.DOWN]
+	elif container is Pipe:
+		directions = [Vector2.DOWN, Vector2.LEFT, Vector2.UP, Vector2.RIGHT]
 	directions.shuffle()
 
 	for direction in directions:
