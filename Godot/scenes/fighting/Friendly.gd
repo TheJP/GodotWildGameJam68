@@ -29,7 +29,8 @@ func move():
 		await tween.finished
 	else:
 		var collider = ray.get_collider()
-		collider.take_damage(damage)
+		if collider is Enemy:
+			collider.take_damage(damage)
 
 func set_item(p_item: Node2D):
 	has_item = true

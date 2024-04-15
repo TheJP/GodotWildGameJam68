@@ -1,3 +1,4 @@
+class_name Enemy
 extends Area2D
 
 @onready var ray = $RayCast2D
@@ -27,7 +28,8 @@ func move():
 		await tween.finished
 	else:
 		var collider = ray.get_collider()
-		collider.take_damage(damage)
+		if collider is Friendly:
+			collider.take_damage(damage)
 
 func take_damage(amount):
 	health -= amount
