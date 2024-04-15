@@ -60,11 +60,11 @@ class Nothing:
 class StatModifier:
 	var health: int
 	var damage: int
-	
+
 	func _init(p_health: int, p_damage: int):
 		health = p_health
 		damage = p_damage
-	
+
 static var recipes: Array[Recipe] = [
 	Recipe.new(Type.WOOD, Type.WOOD, Type.FIRE),
 	Recipe.new(Type.WOOD, Type.STONE, Type.SPEAR),
