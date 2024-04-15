@@ -12,7 +12,7 @@ var health = 3
 var damage = 1
 var move_frequency = 3
 var counter = 1
-
+		
 func _ready():
 	Ticker.timer.timeout.connect(on_global_ticker_timeout)
 	global_position = global_position.snapped(Vector2.ONE * tile_size)
@@ -43,6 +43,8 @@ func move():
 func set_item(p_item: Node2D):
 	has_item = true
 	itemSprite.texture = p_item.get_node("Sprite2D").texture
+	health += Item.stat_modifiers[p_item.type].health
+	damage += Item.stat_modifiers[p_item.type].damage
 
 func take_damage(amount):
 	health -= amount
