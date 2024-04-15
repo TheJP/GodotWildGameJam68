@@ -4,13 +4,13 @@
 [ext_resource type="Texture2D" uid="uid://bkc67010odi58" path="res://icon.svg" id="2_w0k4b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hapvm"]
-size = Vector2(123, 122)
+size = Vector2(64, 64)
 
 [node name="Friendly" type="Area2D"]
-position = Vector2(98, 932)
 script = ExtResource("1_c7eoa")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_w0k4b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -22,3 +22,5 @@ target_position = Vector2(96, 1)
 collide_with_areas = true
 
 [node name="Item" type="Sprite2D" parent="."]
+position = Vector2(16, 8)
+scale = Vector2(0.25, 0.25)

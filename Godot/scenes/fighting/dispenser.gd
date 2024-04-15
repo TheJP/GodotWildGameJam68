@@ -7,8 +7,8 @@ var item = null
 
 func _ready():
 	Ticker.timer.timeout.connect(on_global_ticker_timeout)
-	global_position = global_position.snapped(Vector2.ONE * GameParameters.craft_tilesize)
-	global_position += Vector2.ONE * (GameParameters.craft_tilesize * 0.5)
+	global_position = global_position.snapped(Vector2.ONE * GameParameters.tilesize)
+	global_position += Vector2.ONE * (GameParameters.tilesize * 0.5)
 
 
 func hover():

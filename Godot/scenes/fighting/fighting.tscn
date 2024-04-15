@@ -1,34 +1,18 @@
-[gd_scene load_steps=7 format=3 uid="uid://cnejsm8l3onew"]
+[gd_scene load_steps=5 format=3 uid="uid://cnejsm8l3onew"]
 
 [ext_resource type="Script" path="res://scenes/fighting/fighting.gd" id="1_dyhqo"]
-[ext_resource type="PackedScene" uid="uid://c0n43aeimp0ns" path="res://scenes/fighting/friendly.tscn" id="2_fdio2"]
-[ext_resource type="PackedScene" uid="uid://chipoq6s3ro70" path="res://scenes/fighting/enemy.tscn" id="3_e1x33"]
-[ext_resource type="Script" path="res://scenes/fighting/dispenser.gd" id="4_3j01l"]
-[ext_resource type="Texture2D" uid="uid://tujchh643ll6" path="res://assets/items/coal.png" id="5_p2stu"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_77v1d"]
-radius = 36.0
-height = 96.0
+[ext_resource type="PackedScene" uid="uid://d4h0nf1kb0lg4" path="res://scenes/fighting/dispenser.tscn" id="2_agu05"]
+[ext_resource type="PackedScene" uid="uid://buapxpe8hor6a" path="res://scenes/fighting/friendly_spawner.tscn" id="3_0loev"]
+[ext_resource type="PackedScene" uid="uid://cno1i50br4xql" path="res://scenes/fighting/enemy_spawner.tscn" id="4_qf26r"]
 
 [node name="Fighting" type="Node2D"]
 script = ExtResource("1_dyhqo")
 
-[node name="Friendly" parent="." instance=ExtResource("2_fdio2")]
+[node name="Dispenser" parent="." instance=ExtResource("2_agu05")]
+position = Vector2(224, 864)
 
-[node name="Enemy" parent="." instance=ExtResource("3_e1x33")]
+[node name="FriendlySpawner" parent="." instance=ExtResource("3_0loev")]
+position = Vector2(-32, 928)
 
-[node name="Dispenser" type="Area2D" parent="."]
-position = Vector2(504, 822)
-collision_layer = 2
-collision_mask = 6
-script = ExtResource("4_3j01l")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Dispenser"]
-shape = SubResource("CapsuleShape2D_77v1d")
-
-[node name="Sprite2D" type="Sprite2D" parent="Dispenser"]
-texture = ExtResource("5_p2stu")
-
-[node name="RayCast2D" type="RayCast2D" parent="Dispenser"]
-target_position = Vector2(0, 116)
-collide_with_areas = true
+[node name="EnemySpawner" parent="." instance=ExtResource("4_qf26r")]
+position = Vector2(1824, 928)
