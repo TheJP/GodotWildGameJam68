@@ -14,7 +14,7 @@ func _ready():
 func _input(event):
 	if event is InputEventMouseMotion:
 		var size = Vector2i(1, 1) if type != Tile.Type.CRAFTER else Vector2i(2, 1)
-		global_position = Tile.snap_crafting(event.global_position, size)
+		global_position = Tile.snap_crafting(event.position, size)
 	elif event is InputEventMouseButton:
 		if not event.pressed or event.button_index != MOUSE_BUTTON_LEFT:
 			return
@@ -29,5 +29,5 @@ func _input(event):
 			return
 
 		var tile = Tile.scenes[type].instantiate()
-		tile.global_position = event.global_position
+		tile.global_position = event.position
 		get_parent().add_child(tile)
