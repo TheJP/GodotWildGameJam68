@@ -15,7 +15,10 @@ func _input(event):
 	if event is InputEventMouseMotion:
 		var size = Vector2i(1, 1) if type != Tile.Type.CRAFTER else Vector2i(2, 1)
 		global_position = Tile.snap_crafting(event.position, size)
-	elif event is InputEventMouseButton:
+
+
+func _unhandled_input(event):
+	if event is InputEventMouseButton:
 		if not event.pressed or event.button_index != MOUSE_BUTTON_LEFT:
 			return
 		if type not in Tile.scenes:

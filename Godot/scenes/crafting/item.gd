@@ -30,7 +30,7 @@ func _ready():
 		get_tree().create_timer(decay.age, false).timeout.connect(_item_decayed.bind(decay))
 
 
-func _input(event):
+func _unhandled_input(event):
 	if event is InputEventMouseButton:
 		if event.button_index != MOUSE_BUTTON_LEFT:
 			return
@@ -54,6 +54,9 @@ func _input(event):
 			_drag_mouse_delta = position - event.position
 			Input.set_default_cursor_shape(Input.CURSOR_DRAG)
 			_update_drop_target()
+
+
+func _input(event):
 	if event is InputEventMouseMotion:
 		if _dragging != self:
 			return
