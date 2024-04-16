@@ -1,8 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://4kr4dh8rbi5w"]
+[gd_scene load_steps=3 format=3 uid="uid://4kr4dh8rbi5w"]
 
 [ext_resource type="Script" path="res://scenes/crafting/build_tool.gd" id="1_g8466"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u5h3a"]
+size = Vector2(60, 60)
 
 [node name="BuildTool" type="Node2D"]
 script = ExtResource("1_g8466")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="."]
+shape = SubResource("RectangleShape2D_u5h3a")
+target_position = Vector2(0, 0)
+max_results = 1
+collision_mask = 2

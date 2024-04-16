@@ -6,8 +6,7 @@ var item = null
 
 
 func _ready():
-	global_position = global_position.snapped(Vector2.ONE * GameParameters.craft_tilesize)
-	global_position += Vector2.ONE * (GameParameters.craft_tilesize * 0.5)
+	global_position = Tile.snap_crafting(global_position)
 
 
 func hover():

@@ -7,8 +7,7 @@ var _state_number := 0
 
 
 func _ready():
-	global_position = global_position.snapped(Vector2.ONE * GameParameters.craft_tilesize)
-	global_position += Vector2.DOWN * (GameParameters.craft_tilesize * 0.5)
+	global_position = Tile.snap_crafting(global_position, Vector2i(2, 1))
 
 	_gear_tween = get_tree().create_tween()
 	_gear_tween.tween_property($Gear, "rotation", PI * 0.67, 1)
