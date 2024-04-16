@@ -25,7 +25,6 @@ func _input(event):
 		_ray.target_position = Vector2(0, 0)
 		_ray.force_shapecast_update()
 		if _ray.is_colliding():
-			print('collision') # TODO: Does not work yet
 			return
 
 		var tile = Tile.scenes[type].instantiate()

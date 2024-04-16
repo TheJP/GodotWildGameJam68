@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://4kr4dh8rbi5w"]
+[gd_scene load_steps=3 format=3 uid="uid://cr42a1aaew20i"]
 
 [ext_resource type="Script" path="res://scenes/crafting/build_tool.gd" id="1_g8466"]
 
@@ -11,7 +11,10 @@ script = ExtResource("1_g8466")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
 [node name="ShapeCast2D" type="ShapeCast2D" parent="."]
+enabled = false
 shape = SubResource("RectangleShape2D_u5h3a")
 target_position = Vector2(0, 0)
 max_results = 1
 collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
