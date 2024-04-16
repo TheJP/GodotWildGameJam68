@@ -111,6 +111,7 @@ static var decay := {
 	Type.HOT_STEEL: Decay.new(20.0, Type.STEEL),
 }
 
+
 static var stat_modifiers := {
 	Type.TRASH: StatModifier.new(0, 0),
 	Type.WOOD: StatModifier.new(1, 0),
@@ -126,6 +127,7 @@ static var stat_modifiers := {
 	Type.STEEL: StatModifier.new(0, 0),
 	Type.SWORD: StatModifier.new(0, 3),
 }
+
 
 static var sprites := {
 	Type.TRASH: preload('res://assets/items/trash.png'),
