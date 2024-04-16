@@ -10,32 +10,32 @@
 script = ExtResource("1_e733u")
 
 [node name="TrashCan" parent="." instance=ExtResource("2_hpql7")]
-position = Vector2(922, 170)
+position = Vector2(1039, 214)
 
 [node name="Crafter" parent="." instance=ExtResource("3_x6fdh")]
-position = Vector2(827, 240)
+position = Vector2(886, 317)
 
 [node name="Pipe" parent="." instance=ExtResource("4_1jm7c")]
-position = Vector2(797, 306)
+position = Vector2(837, 420)
 
 [node name="Pipe2" parent="." instance=ExtResource("4_1jm7c")]
-position = Vector2(862, 306)
+position = Vector2(938, 419)
 
 [node name="Pipe3" parent="." instance=ExtResource("4_1jm7c")]
-position = Vector2(732, 174)
+position = Vector2(730, 217)
 
 [node name="Pipe4" parent="." instance=ExtResource("4_1jm7c")]
-position = Vector2(796, 174)
+position = Vector2(935, 216)
 
 [node name="Pipe5" parent="." instance=ExtResource("4_1jm7c")]
-position = Vector2(860, 174)
+position = Vector2(835, 216)
 
 [node name="Spawner" parent="." instance=ExtResource("5_nwm83")]
-position = Vector2(730, 96)
+position = Vector2(728, 113)
 
 [node name="Spawner2" parent="." instance=ExtResource("5_nwm83")]
-position = Vector2(555, 95)
+position = Vector2(565, 113)
 spawn_type = 2
 
 [node name="Crafter2" parent="." instance=ExtResource("3_x6fdh")]
-position = Vector2(500, 309)
+position = Vector2(429, 372)

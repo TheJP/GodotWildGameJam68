@@ -3,9 +3,8 @@
 [ext_resource type="Script" path="res://scenes/fighting/dispenser.gd" id="1_ns13x"]
 [ext_resource type="Texture2D" uid="uid://tujchh643ll6" path="res://assets/items/coal.png" id="2_qpaew"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_77v1d"]
-radius = 36.0
-height = 96.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_u2j78"]
+radius = 50.0
 
 [node name="Dispenser" type="Area2D"]
 position = Vector2(504, 822)
@@ -14,10 +13,9 @@ collision_mask = 6
 script = ExtResource("1_ns13x")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_77v1d")
+shape = SubResource("CircleShape2D_u2j78")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_qpaew")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
