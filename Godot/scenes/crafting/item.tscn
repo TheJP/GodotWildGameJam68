@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c8rlkymrr4wl7" path="res://assets/items/fire.png" id="2_bw2v3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lnsgk"]
-radius = 50.0
+radius = 32.0
 
 [node name="Item" type="Area2D"]
 collision_layer = 4
@@ -16,11 +16,12 @@ shape = SubResource("CircleShape2D_lnsgk")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 1
+scale = Vector2(0.64, 0.64)
 texture = ExtResource("2_bw2v3")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 enabled = false
-target_position = Vector2(0, 128)
+target_position = Vector2(0, 64)
 collision_mask = 2
 collide_with_areas = true
 collide_with_bodies = false
