@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/ui/menu_in_game.gd" id="1_lb6yv"]
 [ext_resource type="Texture2D" uid="uid://cls30yg45jurd" path="res://assets/crafter.png" id="2_g6rjr"]
-[ext_resource type="Texture2D" uid="uid://cq5bb75vmd3i6" path="res://assets/pipe.png" id="3_83p2j"]
+[ext_resource type="Texture2D" uid="uid://cfukwd0wfh4ue" path="res://assets/pipes/pipe_urdl.png" id="3_2st0p"]
 [ext_resource type="Texture2D" uid="uid://caxosndx6vvgh" path="res://assets/trash_can.png" id="4_n8jwb"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hlkdv"]
@@ -23,7 +23,7 @@ corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vt3un"]
 
-[node name="MenuInGame" type="MarginContainer"]
+[node name="MenuInGame" type="MarginContainer" groups=["menu_in_game"]]
 anchors_preset = 9
 anchor_bottom = 1.0
 offset_right = 300.0
@@ -124,7 +124,7 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_3g0ge")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_3g0ge")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_3g0ge")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_3g0ge")
-icon = ExtResource("3_83p2j")
+icon = ExtResource("3_2st0p")
 
 [node name="Trash" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
