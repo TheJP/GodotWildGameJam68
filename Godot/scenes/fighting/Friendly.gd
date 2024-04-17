@@ -42,14 +42,15 @@ func try_throw_item():
 					right_hand_sprite.texture = null
 					right_hand_occupied = false
 					right_hand_item_type = null
-			if left_hand_occupied && is_instance_valid(collider):
+			if left_hand_occupied:
 				if Item.stat_modifiers[left_hand_item_type].throwable > 0:
 					var tween = create_tween()
 					tween.tween_property(left_hand_sprite, "global_position",
 						collider.global_position, 1.0/(animation_speed*2)).set_trans(Tween.TRANS_SINE)
 					collider.take_damage(Item.stat_modifiers[left_hand_item_type].throwable)
 					await tween.finished
-					collider.take_damage(Item.stat_modifiers[left_hand_item_type].throwable)
+					if is_instance_valid(collider):
+						collider.take_damage(Item.stat_modifiers[left_hand_item_type].throwable)
 					left_hand_sprite.texture = null
 					left_hand_occupied = false
 					left_hand_item_type = null
