@@ -16,22 +16,25 @@ func _input(event):
 		var pipe = _get_collision()
 		if pipe is Pipe:
 			_sprite.modulate = modulate_valid
-			var direction := Pipe.rotate_direction(pipe.direction)
-			_sprite.rotation = Pipe.arrow_rotation[direction]
+			_sprite.rotation = Pipe.arrow_rotation[pipe.direction]
 		else:
 			_sprite.modulate = modulate_invalid
 
 
 func _unhandled_input(event):
 	if event is InputEventMouseButton:
-		if not event.pressed or event.button_index != MOUSE_BUTTON_LEFT:
+		if not event.pressed:
 			return
 
 		get_viewport().set_input_as_handled()
 
 		var pipe = _get_collision()
 		if pipe is Pipe:
-			pipe.direction = Pipe.rotate_direction(pipe.direction)
+			if event.button_index == MOUSE_BUTTON_LEFT:
+				pipe.direction = Pipe.rotate_direction_skip_none(pipe.direction)
+			elif event.button_index == MOUSE_BUTTON_RIGHT:
+				pipe.direction = Pipe.Direction.NONE
+			_sprite.rotation = Pipe.arrow_rotation[pipe.direction]
 
 
 func _get_collision() -> Node2D:
