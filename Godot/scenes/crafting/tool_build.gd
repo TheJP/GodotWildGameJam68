@@ -55,15 +55,7 @@ func _unhandled_input(event):
 func _try_remove():
 	if not _is_colliding():
 		return
-	var machine = _ray.get_collider(0)
-
-	if not (machine is Machine):
-		push_error('node "{0}" is on the wrong intersection layer'.format([machine.name]))
-		return
-	if machine.type not in RemoveTool.destroyable:
-		return
-
-	machine.destroy()
+	RemoveTool.try_remove(_ray.get_collider(0))
 
 
 func _try_build(p_position):
