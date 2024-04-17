@@ -10,13 +10,13 @@
 script = ExtResource("1_dyhqo")
 
 [node name="Dispenser" parent="." instance=ExtResource("2_agu05")]
-position = Vector2(256, 832)
+position = Vector2(192, 832)
 
 [node name="Dispenser2" parent="." instance=ExtResource("2_agu05")]
 position = Vector2(320, 832)
 
 [node name="Dispenser3" parent="." instance=ExtResource("2_agu05")]
-position = Vector2(384, 832)
+position = Vector2(448, 832)
 
 [node name="FriendlySpawner" parent="." instance=ExtResource("3_0loev")]
 position = Vector2(0, 896)
@@ -207,7 +207,7 @@ position = Vector2(608, 896)
 position = Vector2(544, 896)
 
 [node name="Wall55" parent="." instance=ExtResource("5_y144e")]
-position = Vector2(480, 896)
+position = Vector2(416, 896)
 
 [node name="Wall56" parent="." instance=ExtResource("5_y144e")]
 position = Vector2(32, 896)
@@ -219,7 +219,7 @@ position = Vector2(96, 896)
 position = Vector2(160, 896)
 
 [node name="Wall59" parent="." instance=ExtResource("5_y144e")]
-position = Vector2(224, 896)
+position = Vector2(288, 896)
 
 [node name="Wall60" parent="." instance=ExtResource("5_y144e")]
 position = Vector2(1056, 896)

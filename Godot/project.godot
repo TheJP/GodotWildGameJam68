@@ -32,9 +32,11 @@ window/stretch/mode="viewport"
 
 [layer_names]
 
-2d_physics/layer_1="fight"
+2d_physics/layer_1="friendly"
 2d_physics/layer_2="container"
 2d_physics/layer_3="item"
+2d_physics/layer_4="enemy"
+2d_physics/layer_5="wall"
 
 [rendering]
 

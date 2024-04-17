@@ -62,21 +62,22 @@ func act():
 	move_ray.force_raycast_update()
 	if !move_ray.is_colliding():
 		if(counter == move_frequency):
-			counter = 0
+			range_ray.target_position = directions[direction_index] * tile_size * 5
+			range_ray.force_raycast_update()
 			if !move_ray.is_colliding():
-				var tween = create_tween()
-				tween.tween_property(self, "position",
-					position + directions[direction_index] * tile_size, 1.0/animation_speed).set_trans(Tween.TRANS_SINE)
-				await tween.finished
+				if !(range_ray.is_colliding() && range_ray.get_collider() is EnemySpawner):
+					var tween = create_tween()
+					tween.tween_property(self, "position",
+						position + directions[direction_index] * tile_size, 1.0/animation_speed).set_trans(Tween.TRANS_SINE)
+					await tween.finished
 	else:
-		if(counter == move_frequency):
-			counter = 0
 		var collider = move_ray.get_collider()
 		if collider is Enemy:
 			collider.take_damage(damage)
 		elif collider is Wall:
 			direction_index += 1
-			
+	if(counter == move_frequency):
+			counter = 0
 
 func try_set_item(p_item: Node2D) -> bool:
 	var item_stat_modifiers = Item.stat_modifiers[p_item.type]
