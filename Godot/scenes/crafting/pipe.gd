@@ -33,7 +33,6 @@ func try_drop(p_item: Node2D) -> bool:
 
 
 func try_remove() -> bool:
-	print('remove item')
 	if item == null:
 		push_warning('try_remove() called on empty pipe')
 		return true

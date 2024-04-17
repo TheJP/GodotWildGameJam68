@@ -105,7 +105,7 @@ func _closest_machine():
 	var closest = null
 	var closest_distance = INF
 	for target in _hovered_targets.keys():
-		var distance = position.distance_squared_to(target.position)
+		var distance = global_position.distance_squared_to(target.global_position)
 		if distance < closest_distance:
 			closest = target
 			closest_distance = distance

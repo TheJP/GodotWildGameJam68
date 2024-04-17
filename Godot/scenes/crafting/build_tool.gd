@@ -31,7 +31,7 @@ func _unhandled_input(event):
 		get_viewport().set_input_as_handled()
 
 		if type not in Tile.scenes:
-			push_error('tried to build {} but there is no scene for that'.format(type))
+			push_error('tried to build {0} but there is no scene for that'.format([type]))
 			return
 		if _is_colliding():
 			return

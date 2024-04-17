@@ -28,7 +28,7 @@ func _unhandled_input(event):
 			return
 
 		if not (machine is Machine):
-			push_error('node "{}" is on the wrong intersection layer'.format(machine.name))
+			push_error('node "{0}" is on the wrong intersection layer'.format([machine.name]))
 			return
 		if machine.type not in _destroyable:
 			return
