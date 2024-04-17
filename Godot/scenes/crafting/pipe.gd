@@ -31,10 +31,25 @@ static var direction_to_vector := {
 
 var item = null
 @export var direction := Direction.NONE
+var next_output := Direction.RIGHT
 
 
 @onready var _arrow: Sprite2D = $Sprite2DArrow
-var _last_direction: Direction = -1
+var _last_direction = -1
+
+
+static func rotate_direction(p_direction: Pipe.Direction) -> Pipe.Direction:
+	var numerical: int = p_direction + 1
+	if numerical > Pipe.Direction.values().max():
+		return Pipe.Direction.NONE
+	return numerical as Pipe.Direction
+
+
+static func rotate_direction_skip_none(p_direction: Pipe.Direction) -> Pipe.Direction:
+	var numerical: int = p_direction + 1
+	if numerical > Pipe.Direction.values().max():
+		return Pipe.Direction.DOWN
+	return numerical as Pipe.Direction
 
 
 func _ready():

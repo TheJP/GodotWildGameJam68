@@ -127,16 +127,19 @@ func _flow():
 	var start_position = position
 	var directions := []
 	if container is CrafterSlot or container is Spawner:
-		directions = [Vector2.DOWN]
+		directions = [Pipe.Direction.DOWN]
 	elif container is Pipe:
-		if container.direction == Pipe.Direction.NONE:
-			directions = [Vector2.DOWN, Vector2.LEFT, Vector2.UP, Vector2.RIGHT]
+		if container.direction != Pipe.Direction.NONE:
+			directions = [container.direction]
 		else:
-			directions = [container.get_pipe_trajectory()]
-	directions.shuffle()
+			var direction = container.next_output
+			for _i in range(4):
+				directions.append(direction)
+				direction = Pipe.rotate_direction_skip_none(direction)
 
 	for direction in directions:
-		_ray.target_position = direction * GameParameters.craft_tilesize
+		var trajectory: Vector2 = Pipe.direction_to_vector[direction]
+		_ray.target_position = trajectory * GameParameters.craft_tilesize
 		_ray.force_raycast_update()
 		var collider = _ray.get_collider()
 		if collider == null or not (collider is Machine):
@@ -145,13 +148,16 @@ func _flow():
 			continue # Do not flow back where you came from.
 
 		if collider is Pipe and collider.direction != Pipe.Direction.NONE:
-			if (direction + collider.get_pipe_trajectory()).length_squared() < 0.001:
+			if (trajectory + collider.get_pipe_trajectory()).length_squared() < 0.001:
 				continue # Do not flow into pipe that points towards us.
 
 		if not collider.try_drop(self):
 			continue
 		if not container.try_remove():
 			push_error('could not remove item')
+
+		if container is Pipe:
+			container.next_output = Pipe.rotate_direction_skip_none(direction)
 		_previous_container = container
 		container = collider
 

@@ -23,9 +23,9 @@ func _unhandled_input(event):
 
 		_ray.target_position = Vector2(0, 0)
 		_ray.force_shapecast_update()
-		var machine = _ray.get_collider(0)
-		if machine == null:
+		if not _ray.is_colliding():
 			return
+		var machine = _ray.get_collider(0)
 
 		if not (machine is Machine):
 			push_error('node "{0}" is on the wrong intersection layer'.format([machine.name]))
