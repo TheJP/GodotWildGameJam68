@@ -149,7 +149,7 @@ func get_flow_directions() -> Array:
 		for _i in range(4):
 			if d & connections > 0:
 				directions.append(d)
-			d = rotate_direction_skip_none(d)
+			d = Pipe.rotate_direction_skip_none(d)
 		return directions
 
 
@@ -160,4 +160,4 @@ func setup_initial_connections():
 		_ray.force_raycast_update()
 		if _ray.is_colliding():
 			connections |= d
-		d = rotate_direction_skip_none(d)
+		d = Pipe.rotate_direction_skip_none(d)

@@ -1,7 +1,8 @@
+class_name RemoveTool
 extends Node2D
 
 
-static var _destroyable := {
+static var destroyable := {
 	Tile.Type.CRAFTER: true,
 	Tile.Type.PIPE: true,
 	Tile.Type.TRASH_CAN: true,
@@ -30,7 +31,6 @@ func _unhandled_input(event):
 			_dragging = true
 
 
-
 func _try_remove():
 	_ray.target_position = Vector2(0, 0)
 	_ray.force_shapecast_update()
@@ -41,7 +41,7 @@ func _try_remove():
 	if not (machine is Machine):
 		push_error('node "{0}" is on the wrong intersection layer'.format([machine.name]))
 		return
-	if machine.type not in _destroyable:
+	if machine.type not in destroyable:
 		return
 
 	machine.destroy()

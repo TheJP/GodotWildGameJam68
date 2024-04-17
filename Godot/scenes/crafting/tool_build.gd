@@ -12,6 +12,7 @@ var build_target: Node2D
 @onready var _sprite: Sprite2D = $Sprite2D
 var _dragging := false
 var _previous_build = null
+var _mode := MOUSE_BUTTON_NONE
 
 
 func _ready():
@@ -22,21 +23,47 @@ func _input(event):
 	if event is InputEventMouseMotion:
 		var size = Vector2i(1, 1) if type != Tile.Type.CRAFTER else Vector2i(2, 1)
 		global_position = Tile.snap_crafting(event.position, size)
-		_sprite.modulate = modulate_invalid if _is_colliding() else modulate_valid
+		if not _is_colliding() or (type == Tile.Type.PIPE and _ray.get_collider(0) is Pipe):
+			_sprite.modulate = modulate_valid
+		else:
+			_sprite.modulate = modulate_invalid
 		if _dragging:
-			_try_build(event.position)
+			if _mode == MOUSE_BUTTON_LEFT:
+				_try_build(event.position)
+			elif _mode == MOUSE_BUTTON_RIGHT:
+				_try_remove()
 	elif event is InputEventMouseButton:
-		if not event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		if not event.pressed or _mode == event.button_index:
 			_dragging = false
 
 
 func _unhandled_input(event):
 	if event is InputEventMouseButton:
-		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		if not event.pressed:
+			return
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			_try_build(event.position)
+		if event.button_index == MOUSE_BUTTON_RIGHT:
+			_try_remove()
+		if event.button_index == MOUSE_BUTTON_LEFT or event.button_index == MOUSE_BUTTON_RIGHT:
 			get_viewport().set_input_as_handled()
 			_previous_build = null
-			_try_build(event.position)
 			_dragging = true
+			_mode = event.button_index
+
+
+func _try_remove():
+	if not _is_colliding():
+		return
+	var machine = _ray.get_collider(0)
+
+	if not (machine is Machine):
+		push_error('node "{0}" is on the wrong intersection layer'.format([machine.name]))
+		return
+	if machine.type not in RemoveTool.destroyable:
+		return
+
+	machine.destroy()
 
 
 func _try_build(p_position):
@@ -71,6 +98,7 @@ func _try_build(p_position):
 		var collider = _ray.get_collider(0)
 		if collider is Pipe:
 			collider.connections |= new_connections
+			collider.direction = Pipe.Direction.NONE
 		_previous_build = _ray.get_collider(0)
 		return
 
