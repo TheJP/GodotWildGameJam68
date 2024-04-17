@@ -3,11 +3,11 @@ extends Machine
 
 
 enum Direction {
-	NONE,
-	DOWN,
-	LEFT,
-	UP,
-	RIGHT,
+	NONE  =     0b1,
+	DOWN  =    0b10,
+	LEFT  =   0b100,
+	UP    =  0b1000,
+	RIGHT = 0b10000,
 }
 
 
@@ -29,24 +29,46 @@ static var direction_to_vector := {
 }
 
 
+static var _sprites := {
+	0: preload('res://assets/pipes/pipe_.png'),
+	Direction.UP: preload('res://assets/pipes/pipe_u.png'),
+	Direction.RIGHT: preload('res://assets/pipes/pipe_r.png'),
+	Direction.DOWN: preload('res://assets/pipes/pipe_d.png'),
+	Direction.LEFT: preload('res://assets/pipes/pipe_l.png'),
+	(Direction.UP | Direction.RIGHT): preload('res://assets/pipes/pipe_ur.png'),
+	(Direction.UP | Direction.DOWN): preload('res://assets/pipes/pipe_ud.png'),
+	(Direction.UP | Direction.LEFT): preload('res://assets/pipes/pipe_ul.png'),
+	(Direction.RIGHT | Direction.DOWN): preload('res://assets/pipes/pipe_rd.png'),
+	(Direction.RIGHT | Direction.LEFT): preload('res://assets/pipes/pipe_rl.png'),
+	(Direction.DOWN | Direction.LEFT): preload('res://assets/pipes/pipe_dl.png'),
+	(Direction.UP | Direction.RIGHT | Direction.DOWN): preload('res://assets/pipes/pipe_urd.png'),
+	(Direction.UP | Direction.RIGHT | Direction.LEFT): preload('res://assets/pipes/pipe_url.png'),
+	(Direction.UP | Direction.DOWN | Direction.LEFT): preload('res://assets/pipes/pipe_udl.png'),
+	(Direction.RIGHT | Direction.DOWN | Direction.LEFT): preload('res://assets/pipes/pipe_rdl.png'),
+	(Direction.UP | Direction.RIGHT | Direction.DOWN | Direction.LEFT): preload('res://assets/pipes/pipe_urdl.png'),
+}
+
+
 var item = null
 @export var direction := Direction.NONE
 var next_output := Direction.RIGHT
+var connections = 0
 
 
+@onready var _sprite: Sprite2D = $Sprite2D
 @onready var _arrow: Sprite2D = $Sprite2DArrow
 var _last_direction = -1
 
 
 static func rotate_direction(p_direction: Pipe.Direction) -> Pipe.Direction:
-	var numerical: int = p_direction + 1
+	var numerical: int = p_direction << 1
 	if numerical > Pipe.Direction.values().max():
 		return Pipe.Direction.NONE
 	return numerical as Pipe.Direction
 
 
 static func rotate_direction_skip_none(p_direction: Pipe.Direction) -> Pipe.Direction:
-	var numerical: int = p_direction + 1
+	var numerical: int = p_direction << 1
 	if numerical > Pipe.Direction.values().max():
 		return Pipe.Direction.DOWN
 	return numerical as Pipe.Direction
@@ -57,6 +79,10 @@ func _ready():
 
 
 func _process(_delta):
+	var sprite = _sprites[connections]
+	if _sprite.texture != sprite:
+		_sprite.texture = sprite
+
 	if _last_direction == direction:
 		return
 	_last_direction = direction
