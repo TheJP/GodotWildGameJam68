@@ -13,6 +13,11 @@ var _current_tool = null
 
 func _ready():
 	await get_tree().process_frame
+
+	for child in $MachinesAndItems.get_children():
+		if child is Pipe:
+			child.setup_initial_connections()
+
 	var _menu: MenuInGame = get_tree().get_first_node_in_group("menu_in_game")
 	if _menu == null:
 		push_error('crafting scene could not connect to menu')

@@ -26,3 +26,10 @@ texture = ExtResource("2_eply0")
 visible = false
 scale = Vector2(0.64, 0.64)
 texture = ExtResource("3_tywcp")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+enabled = false
+target_position = Vector2(0, 64)
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false

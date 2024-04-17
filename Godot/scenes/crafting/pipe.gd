@@ -57,6 +57,7 @@ var connections = 0
 
 @onready var _sprite: Sprite2D = $Sprite2D
 @onready var _arrow: Sprite2D = $Sprite2DArrow
+@onready var _ray: RayCast2D = $RayCast2D
 var _last_direction = -1
 
 
@@ -139,5 +140,15 @@ func get_flow_directions() -> Array[Direction]:
 		for _i in range(4):
 			if d & connections > 0:
 				directions.append(d)
-			d = Pipe.rotate_direction_skip_none(d)
+			d = rotate_direction_skip_none(d)
 		return directions
+
+
+func setup_initial_connections():
+	var d := Direction.DOWN
+	for _i in range(4):
+		_ray.target_position = direction_to_vector[d] * GameParameters.craft_tilesize
+		_ray.force_raycast_update()
+		if _ray.is_colliding():
+			connections |= d
+		d = rotate_direction_skip_none(d)
