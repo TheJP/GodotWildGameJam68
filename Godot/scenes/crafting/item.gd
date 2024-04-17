@@ -129,7 +129,10 @@ func _flow():
 	if container is CrafterSlot or container is Spawner:
 		directions = [Vector2.DOWN]
 	elif container is Pipe:
-		directions = [Vector2.DOWN, Vector2.LEFT, Vector2.UP, Vector2.RIGHT]
+		if container.direction == Pipe.Direction.NONE:
+			directions = [Vector2.DOWN, Vector2.LEFT, Vector2.UP, Vector2.RIGHT]
+		else:
+			directions = [container.get_pipe_trajectory()]
 	directions.shuffle()
 
 	for direction in directions:
@@ -140,9 +143,13 @@ func _flow():
 			continue
 		if collider == _previous_container:
 			continue # Do not flow back where you came from.
+
+		if collider is Pipe and collider.direction != Pipe.Direction.NONE:
+			if (direction + collider.get_pipe_trajectory()).length_squared() < 0.001:
+				continue # Do not flow into pipe that points towards us.
+
 		if not collider.try_drop(self):
 			continue
-
 		if not container.try_remove():
 			push_error('could not remove item')
 		_previous_container = container
