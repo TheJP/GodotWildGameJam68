@@ -6,6 +6,9 @@ extends Area2D
 var animation_speed = 3
 var tile_size = GameParameters.tilesize
 
+var directions = [Vector2.LEFT, Vector2.UP, Vector2.RIGHT, Vector2.UP, Vector2.LEFT]
+var direction_index = 0
+
 var health = 3
 var damage = 1
 var move_frequency = 3
@@ -21,14 +24,14 @@ func on_global_ticker_timeout():
 
 func act():
 	counter += 1
-	ray.target_position = Vector2.LEFT * tile_size
+	ray.target_position = directions[direction_index] * tile_size
 	ray.force_raycast_update()
 	if !ray.is_colliding():
 		if(counter == move_frequency):
 			counter = 0
 			var tween = create_tween()
 			tween.tween_property(self, "position",
-				position + Vector2.LEFT * tile_size, 1.0/animation_speed).set_trans(Tween.TRANS_SINE)
+				position + directions[direction_index] * tile_size, 1.0/animation_speed).set_trans(Tween.TRANS_SINE)
 			await tween.finished
 	else:
 		if(counter == move_frequency):
@@ -36,7 +39,9 @@ func act():
 		var collider = ray.get_collider()
 		if collider is Friendly:
 			collider.take_damage(damage)
-
+		elif collider is Wall:
+					direction_index += 1
+					
 func take_damage(amount):
 	health -= amount
 	$Sprite2D.modulate = Color.RED

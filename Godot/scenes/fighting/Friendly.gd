@@ -9,6 +9,8 @@ var left_hand_occupied = false
 var right_hand_item_type = null
 var left_hand_item_type = null
 
+var directions = [Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT, Vector2.DOWN, Vector2.RIGHT]
+var direction_index = 0
 var animation_speed = 3
 var tile_size = GameParameters.tilesize
 
@@ -26,7 +28,7 @@ func on_global_ticker_timeout():
 
 func act():
 	counter += 1
-	ray.target_position = Vector2.RIGHT * tile_size
+	ray.target_position = directions[direction_index] * tile_size
 	ray.force_raycast_update()
 	if !ray.is_colliding():
 		if(counter == move_frequency):
@@ -34,7 +36,7 @@ func act():
 			if !ray.is_colliding():
 				var tween = create_tween()
 				tween.tween_property(self, "position",
-					position + Vector2.RIGHT * tile_size, 1.0/animation_speed).set_trans(Tween.TRANS_SINE)
+					position + directions[direction_index] * tile_size, 1.0/animation_speed).set_trans(Tween.TRANS_SINE)
 				await tween.finished
 	else:
 		if(counter == move_frequency):
@@ -42,6 +44,9 @@ func act():
 		var collider = ray.get_collider()
 		if collider is Enemy:
 			collider.take_damage(damage)
+		elif collider is Wall:
+			direction_index += 1
+			
 
 func try_set_item(p_item: Node2D) -> bool:
 	var item_stat_modifiers = Item.stat_modifiers[p_item.type]
@@ -62,7 +67,7 @@ func try_set_item(p_item: Node2D) -> bool:
 		take_damage(item_stat_modifiers.health)
 	else:
 		health += item_stat_modifiers.health
-	damage += item_stat_modifiers.damage
+	damage = max(damage + item_stat_modifiers.damage, 0)
 	return true
 
 func take_damage(amount):
