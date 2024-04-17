@@ -141,9 +141,12 @@ func _flow():
 		if collider == _previous_container:
 			continue # Do not flow back where you came from.
 
-		if collider is Pipe and collider.direction != Pipe.Direction.NONE:
-			if (trajectory + collider.get_pipe_trajectory()).length_squared() < 0.001:
-				continue # Do not flow into pipe that points towards us.
+		if collider is Pipe:
+			if collider.direction != Pipe.Direction.NONE:
+				if (trajectory + collider.get_pipe_trajectory()).length_squared() < 0.001:
+					continue # Do not flow into pipe that points towards us.
+			if Pipe.direction_opposite[direction] & collider.connections == 0:
+				continue # Do not flow into pipe that is not connected with us.
 
 		if not collider.try_drop(self):
 			continue

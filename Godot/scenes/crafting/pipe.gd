@@ -29,6 +29,15 @@ static var direction_to_vector := {
 }
 
 
+static var direction_opposite := {
+	Direction.NONE: Direction.NONE,
+	Direction.DOWN: Direction.UP,
+	Direction.LEFT: Direction.RIGHT,
+	Direction.UP: Direction.DOWN,
+	Direction.RIGHT: Direction.LEFT,
+}
+
+
 static var _sprites := {
 	0: preload('res://assets/pipes/pipe_.png'),
 	Direction.UP: preload('res://assets/pipes/pipe_u.png'),
@@ -131,7 +140,7 @@ func try_remove() -> bool:
 		return true
 
 
-func get_flow_directions() -> Array[Direction]:
+func get_flow_directions() -> Array:
 	if direction != Pipe.Direction.NONE:
 		return [direction] if direction & connections > 0 else []
 	else:
