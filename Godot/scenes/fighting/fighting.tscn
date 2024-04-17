@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cnejsm8l3onew"]
+[gd_scene load_steps=6 format=3 uid="uid://ce2lm7rg0o844"]
 
 [ext_resource type="Script" path="res://scenes/fighting/fighting.gd" id="1_dyhqo"]
 [ext_resource type="PackedScene" uid="uid://d4h0nf1kb0lg4" path="res://scenes/fighting/dispenser.tscn" id="2_agu05"]

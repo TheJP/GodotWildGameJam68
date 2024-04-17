@@ -75,12 +75,13 @@ static var recipes: Array[Recipe] = [
 	Recipe.new(Type.WOOD, Type.IRON_ORE, Type.HAMMER),
 	Recipe.new(Type.WOOD, Type.FIRE, Type.TORCH),
 	Recipe.new(Type.WOOD, Type.TORCH, Type.TORCH),
-	Recipe.new(Type.WOOD, Type.HOT_FIRE, Type.FIRE),
+	Recipe.new(Type.WOOD, Type.HOT_FIRE, Type.HOT_FIRE),	
+	Recipe.new(Type.WOOD, Type.HOT_STEEL, Type.FIRE),
 
 	Recipe.new(Type.STONE, Type.STONE, Type.IRON_ORE),
 	Recipe.new(Type.STONE, Type.FIRE, Type.STONE),
 
-	Recipe.new(Type.IRON_ORE, Type.IRON_ORE, Id.new()),
+	Recipe.new(Type.IRON_ORE, Type.IRON_ORE, Type.TORCH),
 	Recipe.new(Type.IRON_ORE, Type.FIRE, Type.IRON_ORE),
 	Recipe.new(Type.IRON_ORE, Type.HOT_FIRE, Type.HOT_STEEL),
 
@@ -89,22 +90,24 @@ static var recipes: Array[Recipe] = [
 	Recipe.new(Type.FIRE, Type.COAL, Type.HOT_FIRE),
 	Recipe.new(Type.FIRE, Type.HOT_FIRE, Nothing.new()),
 	Recipe.new(Type.FIRE, Type.STEEL, Type.STEEL),
+	Recipe.new(Type.FIRE, Type.HOT_STEEL, Type.HOT_STEEL),
 
 	Recipe.new(Type.HAMMER, Type.HOT_STEEL, Type.SWORD),
 
 	Recipe.new(Type.TORCH, Type.HOT_FIRE, Nothing.new()),
+	Recipe.new(Type.TORCH, Type.COAL, Type.HOT_FIRE),
 
-	Recipe.new(Type.COAL, Type.COAL, Id.new()),
+	Recipe.new(Type.COAL, Type.COAL, Type.COAL),
 	Recipe.new(Type.COAL, Type.HOT_FIRE, Type.HOT_FIRE),
 
 	Recipe.new(Type.HOT_FIRE, Type.HOT_FIRE, Nothing.new()),
 	Recipe.new(Type.HOT_FIRE, Type.HOT_STEEL, Type.HOT_STEEL),
 	Recipe.new(Type.HOT_FIRE, Type.HOT_STEEL, Type.HOT_STEEL),
 
-	Recipe.new(Type.HOT_STEEL, Type.HOT_STEEL, Id.new()),
-	Recipe.new(Type.HOT_STEEL, Type.STEEL, Id.new()),
+	Recipe.new(Type.HOT_STEEL, Type.HOT_STEEL, Type.HOT_STEEL),
+	Recipe.new(Type.HOT_STEEL, Type.STEEL, Type.STEEL),
 
-	Recipe.new(Type.STEEL, Type.STEEL, Id.new()),
+	Recipe.new(Type.STEEL, Type.STEEL, Type.STEEL),
 ]
 
 

@@ -1,7 +1,7 @@
 extends Node
 
 
-var tick_time := 0.5
+var tick_time := 1
 var timer = Timer.new()
 
 
