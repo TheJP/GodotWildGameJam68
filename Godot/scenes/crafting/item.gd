@@ -129,13 +129,7 @@ func _flow():
 	if container is CrafterSlot or container is Spawner:
 		directions = [Pipe.Direction.DOWN]
 	elif container is Pipe:
-		if container.direction != Pipe.Direction.NONE:
-			directions = [container.direction]
-		else:
-			var direction = container.next_output
-			for _i in range(4):
-				directions.append(direction)
-				direction = Pipe.rotate_direction_skip_none(direction)
+		directions = container.get_flow_directions()
 
 	for direction in directions:
 		var trajectory: Vector2 = Pipe.direction_to_vector[direction]

@@ -128,3 +128,16 @@ func try_remove() -> bool:
 	else:
 		item = null
 		return true
+
+
+func get_flow_directions() -> Array[Direction]:
+	if direction != Pipe.Direction.NONE:
+		return [direction] if direction & connections > 0 else []
+	else:
+		var directions: Array[Direction] = []
+		var d := next_output
+		for _i in range(4):
+			if d & connections > 0:
+				directions.append(d)
+			d = Pipe.rotate_direction_skip_none(d)
+		return directions
