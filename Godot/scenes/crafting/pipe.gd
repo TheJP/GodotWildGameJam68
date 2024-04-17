@@ -4,14 +4,14 @@ extends Machine
 
 enum Direction {
 	NONE,
-	UP,
-	RIGHT,
 	DOWN,
 	LEFT,
+	UP,
+	RIGHT,
 }
 
 
-static var _arrow_rotation := {
+static var arrow_rotation := {
 	Direction.NONE: 0,
 	Direction.DOWN: 0,
 	Direction.LEFT: PI * 0.5,
@@ -20,7 +20,7 @@ static var _arrow_rotation := {
 }
 
 
-static var _direction_to_vector := {
+static var direction_to_vector := {
 	Direction.NONE: Vector2.ZERO,
 	Direction.DOWN: Vector2.DOWN,
 	Direction.LEFT: Vector2.LEFT,
@@ -34,17 +34,27 @@ var item = null
 
 
 @onready var _arrow: Sprite2D = $Sprite2DArrow
+var _last_direction: Direction = -1
 
 
 func _ready():
 	global_position = Tile.snap_crafting(global_position)
-	if direction != Direction.NONE:
+
+
+func _process(_delta):
+	if _last_direction == direction:
+		return
+	_last_direction = direction
+
+	if direction == Direction.NONE:
+		_arrow.hide()
+	else:
 		_arrow.show()
-		_arrow.rotation = _arrow_rotation[direction]
+		_arrow.rotation = arrow_rotation[direction]
 
 
 func get_pipe_trajectory() -> Vector2:
-	return _direction_to_vector[direction]
+	return direction_to_vector[direction]
 
 
 func hover():

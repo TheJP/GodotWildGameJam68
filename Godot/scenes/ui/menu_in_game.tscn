@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://cqaifcks6tp3x"]
+[gd_scene load_steps=10 format=3 uid="uid://cqaifcks6tp3x"]
 
 [ext_resource type="Script" path="res://scenes/ui/menu_in_game.gd" id="1_lb6yv"]
 [ext_resource type="Texture2D" uid="uid://wqfvyl0eto0v" path="res://assets/crafter_combined.png" id="2_aj5gx"]
 [ext_resource type="Texture2D" uid="uid://cfukwd0wfh4ue" path="res://assets/pipes/pipe_urdl.png" id="3_2st0p"]
 [ext_resource type="Texture2D" uid="uid://caxosndx6vvgh" path="res://assets/trash_can.png" id="4_n8jwb"]
+[ext_resource type="Texture2D" uid="uid://d0844foetdry5" path="res://assets/arrow.png" id="4_xswmk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hlkdv"]
 bg_color = Color(0.27451, 0.294118, 0.54902, 1)
@@ -130,6 +131,29 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_3g0ge")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_3g0ge")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_3g0ge")
 icon = ExtResource("3_2st0p")
+
+[node name="Arrow" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_x8l3m")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/Arrow"]
+layout_mode = 2
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="ArrowButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/Arrow/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+tooltip_text = "Change Direction of Pipe"
+mouse_default_cursor_shape = 2
+theme_override_constants/icon_max_width = 75
+theme_override_styles/normal = SubResource("StyleBoxEmpty_vt3un")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_3g0ge")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_3g0ge")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_3g0ge")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3g0ge")
+icon = ExtResource("4_xswmk")
 
 [node name="Trash" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
