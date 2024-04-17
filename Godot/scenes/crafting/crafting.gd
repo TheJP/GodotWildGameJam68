@@ -1,8 +1,9 @@
 extends Node2D
 
 
-@onready var _build_tool_scene = preload('res://scenes/crafting/build_tool.tscn')
-@onready var _remove_tool_scene = preload('res://scenes/crafting/remove_tool.tscn')
+@onready var _build_tool_scene = preload('res://scenes/crafting/tool_build.tscn')
+@onready var _remove_tool_scene = preload('res://scenes/crafting/tool_remove.tscn')
+@onready var _turn_pipe_tool_scene = preload('res://scenes/crafting/tool_turn_pipe.tscn')
 @onready var _machines_and_items: Node2D = $MachinesAndItems
 @onready var _build_tools: Node2D = $BuildTools
 
@@ -12,7 +13,7 @@ var _current_tool = null
 
 func _ready():
 	await get_tree().process_frame
-	var _menu = get_tree().get_first_node_in_group("menu_in_game")
+	var _menu: MenuInGame = get_tree().get_first_node_in_group("menu_in_game")
 	if _menu == null:
 		push_error('crafting scene could not connect to menu')
 		return
@@ -20,6 +21,7 @@ func _ready():
 	_menu.start_default_tool.connect(_before_tool_switch)
 	_menu.start_build_crafter.connect(_start_building.bind(Tile.Type.CRAFTER))
 	_menu.start_build_pipe.connect(_start_building.bind(Tile.Type.PIPE))
+	_menu.start_pipe_turn.connect(_start_pipe_turn)
 	_menu.start_build_trash.connect(_start_building.bind(Tile.Type.TRASH_CAN))
 	_menu.start_remove.connect(_start_remove)
 
@@ -29,6 +31,12 @@ func _start_building(type: Tile.Type):
 	_current_tool = _build_tool_scene.instantiate()
 	_current_tool.type = type
 	_current_tool.build_target = _machines_and_items
+	_build_tools.add_child(_current_tool)
+
+
+func _start_pipe_turn():
+	_before_tool_switch()
+	_current_tool = _turn_pipe_tool_scene.instantiate()
 	_build_tools.add_child(_current_tool)
 
 

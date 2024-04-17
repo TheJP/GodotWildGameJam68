@@ -1,18 +1,18 @@
 [gd_scene load_steps=4 format=3 uid="uid://cue8yoephfgox"]
 
-[ext_resource type="Script" path="res://scenes/crafting/remove_tool.gd" id="1_8bpx8"]
-[ext_resource type="Texture2D" uid="uid://c8rlkymrr4wl7" path="res://assets/items/fire.png" id="2_plpck"]
+[ext_resource type="Script" path="res://scenes/crafting/tool_remove.gd" id="1_mefyi"]
+[ext_resource type="Texture2D" uid="uid://c8rlkymrr4wl7" path="res://assets/items/fire.png" id="2_iptk2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sskcb"]
 size = Vector2(60, 60)
 
 [node name="RemoveTool" type="Node2D"]
-script = ExtResource("1_8bpx8")
+script = ExtResource("1_mefyi")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 2
 scale = Vector2(0.4, 0.4)
-texture = ExtResource("2_plpck")
+texture = ExtResource("2_iptk2")
 
 [node name="Label" type="Label" parent="."]
 z_index = 2

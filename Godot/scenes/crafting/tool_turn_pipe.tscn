@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://bm6ng8qubxvmr"]
+
+[ext_resource type="Script" path="res://scenes/crafting/tool_turn_pipe.gd" id="1_tdxjj"]
+[ext_resource type="Texture2D" uid="uid://d0844foetdry5" path="res://assets/arrow.png" id="2_a5p3c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u5h3a"]
+size = Vector2(60, 60)
+
+[node name="TurnPipeTool" type="Node2D"]
+script = ExtResource("1_tdxjj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 2
+scale = Vector2(0.64, 0.64)
+texture = ExtResource("2_a5p3c")
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="."]
+enabled = false
+shape = SubResource("RectangleShape2D_u5h3a")
+target_position = Vector2(0, 0)
+max_results = 1
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false

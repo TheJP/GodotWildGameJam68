@@ -8,6 +8,7 @@ static var _selected_option: Button
 signal start_default_tool()
 signal start_build_crafter()
 signal start_build_pipe()
+signal start_pipe_turn()
 signal start_build_trash()
 signal start_remove()
 
@@ -24,6 +25,7 @@ func _ready():
 		%DefaultButton,
 		%CrafterButton,
 		%PipeButton,
+		%ArrowButton,
 		%TrashButton,
 		%DeleteButton,
 	]
@@ -31,6 +33,7 @@ func _ready():
 	%DefaultButton.pressed.connect(_on_button_pressed.bind(%DefaultButton, start_default_tool))
 	%CrafterButton.pressed.connect(_on_button_pressed.bind(%CrafterButton, start_build_crafter))
 	%PipeButton.pressed.connect(_on_button_pressed.bind(%PipeButton, start_build_pipe))
+	%ArrowButton.pressed.connect(_on_button_pressed.bind(%ArrowButton, start_pipe_turn))
 	%TrashButton.pressed.connect(_on_button_pressed.bind(%TrashButton, start_build_trash))
 	%DeleteButton.pressed.connect(_on_button_pressed.bind(%DeleteButton, start_remove))
 
