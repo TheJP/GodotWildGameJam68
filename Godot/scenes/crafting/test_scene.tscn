@@ -57,20 +57,19 @@ offsets = PackedFloat32Array(0, 0.136268, 0.81761, 1)
 colors = PackedColorArray(0.786933, 0.192826, 0, 1, 1, 0.733333, 0, 1, 0.94902, 0.94902, 0.811765, 0.886275, 1, 1, 1, 0)
 
 [node name="TestScene" type="Node2D"]
-visible = false
 
 [node name="starglow" type="CPUParticles2D" parent="."]
 visible = false
 texture_filter = 1
 material = SubResource("CanvasItemMaterial_plonv")
-lifetime = 10.0
+lifetime = 1.9
 texture = ExtResource("1_lrduj")
 emission_shape = 1
 emission_sphere_radius = 10.0
 gravity = Vector2(0, 0)
 color_ramp = SubResource("Gradient_6qjtc")
-anim_speed_min = 10.0
-anim_speed_max = 10.0
+anim_speed_min = 5.0
+anim_speed_max = 5.0
 
 [node name="blood_spill" type="CPUParticles2D" parent="."]
 visible = false
@@ -85,7 +84,6 @@ anim_speed_min = 5.0
 anim_speed_max = 20.0
 
 [node name="dust_spill" type="CPUParticles2D" parent="."]
-visible = false
 material = SubResource("CanvasItemMaterial_4twd2")
 amount = 10
 lifetime = 5.0
