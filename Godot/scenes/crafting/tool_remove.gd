@@ -47,4 +47,20 @@ static func try_remove(machine: Node2D):
 	if machine.type not in _destroyable:
 		return
 
+	# Reset pipe connections after machine was removed.
+	var parts := [machine.get_parent().get_node("LeftSlot"), machine.get_parent().get_node("RightSlot")] if machine is CrafterSlot else [machine]
+	for part in parts:
+		var ray := RayCast2D.new()
+		ray.collision_mask = 2
+		ray.collide_with_areas = true
+		part.add_child(ray)
+		var direction := Pipe.Direction.DOWN
+		for _i in range(4):
+			ray.target_position = Pipe.direction_to_vector[direction] * GameParameters.craft_tilesize
+			ray.force_raycast_update()
+			var collider = ray.get_collider()
+			if collider is Pipe:
+				collider.connections &= ~Pipe.direction_opposite[direction]
+			direction = Pipe.rotate_direction_skip_none(direction)
+
 	machine.destroy()
