@@ -9,6 +9,8 @@ var tile_size = GameParameters.tilesize
 var directions = [Vector2.LEFT, Vector2.UP, Vector2.RIGHT, Vector2.UP, Vector2.LEFT]
 var direction_index = 0
 
+var _hovering = false
+
 var health = 6
 var damage = 1
 var move_frequency = 2
@@ -19,6 +21,20 @@ func _ready():
 	Ticker.timer.timeout.connect(on_global_ticker_timeout)
 	global_position = Tile.snap_fighting(global_position)
 
+func _unhandled_input(event):
+	if event is InputEventMouseButton:
+		if event.button_index != MOUSE_BUTTON_LEFT:
+			return
+		if event.pressed && _hovering:
+			if ClickCooldown.try_click_action():
+				take_damage(1)
+
+func _on_mouse_entered():
+	_hovering = true
+		
+func _on_mouse_exited():
+	_hovering = false
+		
 func on_global_ticker_timeout():
 	act()
 

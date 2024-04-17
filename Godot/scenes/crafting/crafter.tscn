@@ -1,60 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://dwjhdo8uhvr78"]
+[gd_scene load_steps=6 format=3 uid="uid://dwjhdo8uhvr78"]
 
 [ext_resource type="Script" path="res://scenes/crafting/crafter.gd" id="1_6qktu"]
 [ext_resource type="Texture2D" uid="uid://cls30yg45jurd" path="res://assets/crafter.png" id="1_lgx7m"]
 [ext_resource type="Script" path="res://scenes/crafting/crafter_slot.gd" id="2_hn4x0"]
 [ext_resource type="Texture2D" uid="uid://du5ejskiyeuim" path="res://assets/crafter_gear.png" id="2_s4ql1"]
-[ext_resource type="Texture2D" uid="uid://dlkduvack5ciy" path="res://assets/particles/dust_anim_sprite.png" id="3_6ee1i"]
-
-[sub_resource type="Animation" id="Animation_ucudl"]
-resource_name = "crafting"
-length = 2.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../Sprite2D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(1, 0), Vector2(-2, 0), Vector2(-2, 0), Vector2(-2, 0), Vector2(-2, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_v1432"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../Sprite2D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_6rxpd"]
-_data = {
-"RESET": SubResource("Animation_v1432"),
-"crafting": SubResource("Animation_ucudl")
-}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vehxo"]
 size = Vector2(92, 90)
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_e8lmn"]
-particles_animation = true
-particles_anim_h_frames = 6
-particles_anim_v_frames = 1
-particles_anim_loop = false
-
-[sub_resource type="Gradient" id="Gradient_pm04g"]
-offsets = PackedFloat32Array(0, 0.323636, 0.777778)
-colors = PackedColorArray(0.909315, 0.722132, 0.76769, 1, 0.447059, 0.2, 0.321569, 0.858824, 1, 1, 1, 0)
 
 [node name="Crafter" type="Node2D"]
 script = ExtResource("1_6qktu")
@@ -68,12 +20,6 @@ texture = ExtResource("1_lgx7m")
 modulate = Color(0.827451, 0.827451, 0.827451, 1)
 scale = Vector2(0.461, 0.461)
 texture = ExtResource("2_s4ql1")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-root_node = NodePath("../dust_spill")
-libraries = {
-"": SubResource("AnimationLibrary_6rxpd")
-}
 
 [node name="LeftSlot" type="Area2D" parent="."]
 position = Vector2(-32, 0)
@@ -94,31 +40,6 @@ script = ExtResource("2_hn4x0")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightSlot"]
 scale = Vector2(0.64, 0.64)
 shape = SubResource("RectangleShape2D_vehxo")
-
-[node name="dust_spill" type="CPUParticles2D" parent="."]
-visible = false
-z_index = -2
-material = SubResource("CanvasItemMaterial_e8lmn")
-amount = 30
-lifetime = 2.0
-speed_scale = 3.0
-explosiveness = 0.2
-randomness = 1.0
-texture = ExtResource("3_6ee1i")
-emission_shape = 3
-emission_rect_extents = Vector2(70, 40)
-direction = Vector2(0, 0)
-spread = 180.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 5.0
-initial_velocity_max = 5.0
-damping_min = 1.0
-damping_max = 1.0
-scale_amount_min = 3.0
-scale_amount_max = 3.0
-color_ramp = SubResource("Gradient_pm04g")
-anim_speed_min = 10.0
-anim_speed_max = 10.0
 
 [connection signal="destroyed" from="LeftSlot" to="." method="_on_destroyed"]
 [connection signal="hovered" from="LeftSlot" to="." method="_on_hovered"]

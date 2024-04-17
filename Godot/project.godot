@@ -22,6 +22,7 @@ aseprite_executable_path="E:/Program Files (x86)/Aseprite-v1.3.6-x64/Aseprite.ex
 [autoload]
 
 Ticker="*res://globals/ticker.gd"
+ClickCooldown="*res://globals/click_cooldown.gd"
 
 [display]
 

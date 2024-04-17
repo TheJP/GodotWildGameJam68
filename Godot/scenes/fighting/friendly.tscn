@@ -34,3 +34,5 @@ scale = Vector2(0.25, 0.25)
 [node name="RangeRay" type="RayCast2D" parent="."]
 collision_mask = 24
 collide_with_areas = true
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
