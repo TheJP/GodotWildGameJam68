@@ -17,8 +17,9 @@ texture = ExtResource("2_w0k4b")
 position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_hapvm")
 
-[node name="RayCast2D" type="RayCast2D" parent="."]
+[node name="MoveRay" type="RayCast2D" parent="."]
 target_position = Vector2(96, 1)
+collision_mask = 7
 collide_with_areas = true
 
 [node name="RightHand" type="Sprite2D" parent="."]
@@ -28,3 +29,7 @@ scale = Vector2(0.25, 0.25)
 [node name="LeftHand" type="Sprite2D" parent="."]
 position = Vector2(-16, 8)
 scale = Vector2(0.25, 0.25)
+
+[node name="RangeRay" type="RayCast2D" parent="."]
+collision_mask = 6
+collide_with_areas = true

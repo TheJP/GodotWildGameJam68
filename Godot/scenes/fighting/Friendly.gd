@@ -1,7 +1,8 @@
 class_name Friendly
 extends Area2D
 
-@onready var ray = $RayCast2D
+@onready var move_ray = $MoveRay
+@onready var range_ray = $RangeRay
 @onready var right_hand_sprite = $RightHand
 @onready var left_hand_sprite = $LeftHand
 var right_hand_occupied = false
@@ -26,14 +27,42 @@ func _ready():
 func on_global_ticker_timeout():
 	act()
 
+func try_throw_item():
+	range_ray.target_position = directions[direction_index] * tile_size * 3
+	range_ray.force_raycast_update()
+	if range_ray.is_colliding():
+		var collider = range_ray.get_collider()
+		if collider is Enemy:
+			if right_hand_occupied && is_instance_valid(collider):
+				if Item.stat_modifiers[right_hand_item_type].throwable > 0:
+					var tween = create_tween()
+					tween.tween_property(right_hand_sprite, "global_position",
+						collider.global_position, 1.0/(animation_speed*2)).set_trans(Tween.TRANS_SINE)
+					await tween.finished
+					right_hand_sprite.texture = null
+					right_hand_occupied = false
+					right_hand_item_type = null
+			if left_hand_occupied && is_instance_valid(collider):
+				if Item.stat_modifiers[left_hand_item_type].throwable > 0:
+					var tween = create_tween()
+					tween.tween_property(left_hand_sprite, "global_position",
+						collider.global_position, 1.0/(animation_speed*2)).set_trans(Tween.TRANS_SINE)
+					collider.take_damage(Item.stat_modifiers[left_hand_item_type].throwable)
+					await tween.finished
+					collider.take_damage(Item.stat_modifiers[left_hand_item_type].throwable)
+					left_hand_sprite.texture = null
+					left_hand_occupied = false
+					left_hand_item_type = null
+
 func act():
+	try_throw_item()
 	counter += 1
-	ray.target_position = directions[direction_index] * tile_size
-	ray.force_raycast_update()
-	if !ray.is_colliding():
+	move_ray.target_position = directions[direction_index] * tile_size
+	move_ray.force_raycast_update()
+	if !move_ray.is_colliding():
 		if(counter == move_frequency):
 			counter = 0
-			if !ray.is_colliding():
+			if !move_ray.is_colliding():
 				var tween = create_tween()
 				tween.tween_property(self, "position",
 					position + directions[direction_index] * tile_size, 1.0/animation_speed).set_trans(Tween.TRANS_SINE)
@@ -41,7 +70,7 @@ func act():
 	else:
 		if(counter == move_frequency):
 			counter = 0
-		var collider = ray.get_collider()
+		var collider = move_ray.get_collider()
 		if collider is Enemy:
 			collider.take_damage(damage)
 		elif collider is Wall:
