@@ -9,6 +9,7 @@ size = Vector2(60, 60)
 script = ExtResource("1_g8466")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.64, 0.64)
 
 [node name="ShapeCast2D" type="ShapeCast2D" parent="."]
 enabled = false

@@ -2,8 +2,12 @@ class_name Friendly
 extends Area2D
 
 @onready var ray = $RayCast2D
-@onready var itemSprite = $Item
-var has_item = false
+@onready var right_hand_sprite = $RightHand
+@onready var left_hand_sprite = $LeftHand
+var right_hand_occupied = false
+var left_hand_occupied = false
+var right_hand_item_type = null
+var left_hand_item_type = null
 
 var animation_speed = 3
 var tile_size = GameParameters.tilesize
@@ -18,9 +22,9 @@ func _ready():
 	global_position = Tile.snap_fighting(global_position)
 
 func on_global_ticker_timeout():
-	move()
+	act()
 
-func move():
+func act():
 	counter += 1
 	ray.target_position = Vector2.RIGHT * tile_size
 	ray.force_raycast_update()
@@ -39,11 +43,27 @@ func move():
 		if collider is Enemy:
 			collider.take_damage(damage)
 
-func set_item(p_item: Node2D):
-	has_item = true
-	itemSprite.texture = p_item.get_node("Sprite2D").texture
-	health += Item.stat_modifiers[p_item.type].health
-	damage += Item.stat_modifiers[p_item.type].damage
+func try_set_item(p_item: Node2D) -> bool:
+	var item_stat_modifiers = Item.stat_modifiers[p_item.type]
+	if !right_hand_occupied:
+		if !item_stat_modifiers.destroy_on_pickup:
+			right_hand_sprite.texture = p_item.get_node("Sprite2D").texture
+			right_hand_occupied = true
+			right_hand_item_type = p_item.type
+	elif !left_hand_occupied:
+		if !item_stat_modifiers.destroy_on_pickup:
+			left_hand_sprite.texture = p_item.get_node("Sprite2D").texture
+			left_hand_occupied = true
+			left_hand_item_type = p_item.type
+	else:
+		return false
+		
+	if (item_stat_modifiers.health < 0):
+		take_damage(item_stat_modifiers.health)
+	else:
+		health += item_stat_modifiers.health
+	damage += item_stat_modifiers.damage
+	return true
 
 func take_damage(amount):
 	health -= amount

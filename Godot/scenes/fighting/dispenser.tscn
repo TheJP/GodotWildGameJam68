@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://d4h0nf1kb0lg4"]
 
 [ext_resource type="Script" path="res://scenes/fighting/dispenser.gd" id="1_ns13x"]
-[ext_resource type="Texture2D" uid="uid://tujchh643ll6" path="res://assets/items/coal.png" id="2_qpaew"]
+[ext_resource type="Texture2D" uid="uid://b8vdqby5xlt78" path="res://assets/spawner.png" id="2_60gx2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u2j78"]
 radius = 50.0
@@ -13,10 +13,13 @@ collision_mask = 6
 script = ExtResource("1_ns13x")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.64, 0.64)
 shape = SubResource("CircleShape2D_u2j78")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_qpaew")
+self_modulate = Color(0.658824, 0.345098, 0.376471, 1)
+scale = Vector2(0.64, 0.64)
+texture = ExtResource("2_60gx2")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 target_position = Vector2(0, 116)

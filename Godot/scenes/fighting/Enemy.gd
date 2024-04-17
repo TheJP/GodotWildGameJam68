@@ -17,9 +17,9 @@ func _ready():
 	global_position = Tile.snap_fighting(global_position)
 
 func on_global_ticker_timeout():
-	move()
+	act()
 
-func move():
+func act():
 	counter += 1
 	ray.target_position = Vector2.LEFT * tile_size
 	ray.force_raycast_update()

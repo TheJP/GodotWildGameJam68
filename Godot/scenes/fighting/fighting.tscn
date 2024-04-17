@@ -9,10 +9,16 @@
 script = ExtResource("1_dyhqo")
 
 [node name="Dispenser" parent="." instance=ExtResource("2_agu05")]
-position = Vector2(461, 863)
+position = Vector2(256, 832)
+
+[node name="Dispenser2" parent="." instance=ExtResource("2_agu05")]
+position = Vector2(320, 832)
+
+[node name="Dispenser3" parent="." instance=ExtResource("2_agu05")]
+position = Vector2(384, 832)
 
 [node name="FriendlySpawner" parent="." instance=ExtResource("3_0loev")]
-position = Vector2(-32, 928)
+position = Vector2(0, 896)
 
 [node name="EnemySpawner" parent="." instance=ExtResource("4_qf26r")]
-position = Vector2(1824, 928)
+position = Vector2(1840, 1040)

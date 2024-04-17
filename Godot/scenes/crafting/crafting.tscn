@@ -10,32 +10,173 @@
 script = ExtResource("1_e733u")
 
 [node name="TrashCan" parent="." instance=ExtResource("2_hpql7")]
-position = Vector2(1039, 214)
+position = Vector2(1152, 512)
 
 [node name="Crafter" parent="." instance=ExtResource("3_x6fdh")]
-position = Vector2(886, 317)
+position = Vector2(640, 256)
 
 [node name="Pipe" parent="." instance=ExtResource("4_1jm7c")]
-position = Vector2(837, 420)
+position = Vector2(512, 128)
 
 [node name="Pipe2" parent="." instance=ExtResource("4_1jm7c")]
-position = Vector2(938, 419)
+position = Vector2(704, 64)
 
 [node name="Pipe3" parent="." instance=ExtResource("4_1jm7c")]
-position = Vector2(730, 217)
+position = Vector2(512, 64)
 
 [node name="Pipe4" parent="." instance=ExtResource("4_1jm7c")]
-position = Vector2(935, 216)
+position = Vector2(704, 128)
 
 [node name="Pipe5" parent="." instance=ExtResource("4_1jm7c")]
-position = Vector2(835, 216)
+position = Vector2(512, 192)
+
+[node name="Pipe6" parent="." instance=ExtResource("4_1jm7c")]
+position = Vector2(704, 192)
+
+[node name="Pipe7" parent="." instance=ExtResource("4_1jm7c")]
+position = Vector2(512, 256)
+
+[node name="Pipe28" parent="." instance=ExtResource("4_1jm7c")]
+position = Vector2(448, 256)
+
+[node name="Pipe29" parent="." instance=ExtResource("4_1jm7c")]
+position = Vector2(384, 256)
+
+[node name="Pipe30" parent="." instance=ExtResource("4_1jm7c")]
+position = Vector2(384, 384)
+
+[node name="Pipe50" parent="." instance=ExtResource("4_1jm7c")]
+position = Vector2(448, 384)
+
+[node name="Pipe31" parent="." instance=ExtResource("4_1jm7c")]
+position = Vector2(384, 448)
+
+[node name="Pipe32" parent="." instance=ExtResource("4_1jm7c")]
+position = Vector2(384, 512)
+
+[node name="Pipe33" parent="." instance=ExtResource("4_1jm7c")]
+position = Vector2(384, 576)
+
+[node name="Pipe34" parent="." instance=ExtResource("4_1jm7c")]
+position = Vector2(384, 640)
+
+[node name="Pipe35" parent="." instance=ExtResource("4_1jm7c")]
+position = Vector2(384, 704)
+
+[node name="Pipe8" parent="." instance=ExtResource("4_1jm7c")]
+position = Vector2(640, 192)
+
+[node name="Pipe9" parent="." instance=ExtResource("4_1jm7c")]
+position = Vector2(576, 384)
+
+[node name="Pipe10" parent="." instance=ExtResource("4_1jm7c")]
+position = Vector2(576, 448)
+
+[node name="Pipe11" parent="." instance=ExtResource("4_1jm7c")]
+position = Vector2(576, 512)
+
+[node name="Pipe12" parent="." instance=ExtResource("4_1jm7c")]
+position = Vector2(576, 576)
+
+[node name="Pipe13" parent="." instance=ExtResource("4_1jm7c")]
+position = Vector2(576, 640)
+
+[node name="Pipe14" parent="." instance=ExtResource("4_1jm7c")]
+position = Vector2(576, 704)
+
+[node name="Pipe15" parent="." instance=ExtResource("4_1jm7c")]
+position = Vector2(576, 768)
+
+[node name="Pipe16" parent="." instance=ExtResource("4_1jm7c")]
+position = Vector2(512, 768)
+
+[node name="Pipe17" parent="." instance=ExtResource("4_1jm7c")]
+position = Vector2(448, 768)
+
+[node name="Pipe18" parent="." instance=ExtResource("4_1jm7c")]
+position = Vector2(384, 768)
+
+[node name="Pipe19" parent="." instance=ExtResource("4_1jm7c")]
+position = Vector2(320, 768)
+
+[node name="Pipe20" parent="." instance=ExtResource("4_1jm7c")]
+position = Vector2(256, 768)
+
+[node name="Pipe21" parent="." instance=ExtResource("4_1jm7c")]
+position = Vector2(576, 320)
+
+[node name="Pipe49" parent="." instance=ExtResource("4_1jm7c")]
+position = Vector2(640, 320)
+
+[node name="Pipe24" parent="." instance=ExtResource("4_1jm7c")]
+position = Vector2(832, 320)
+
+[node name="Pipe25" parent="." instance=ExtResource("4_1jm7c")]
+position = Vector2(832, 384)
+
+[node name="Pipe26" parent="." instance=ExtResource("4_1jm7c")]
+position = Vector2(832, 448)
+
+[node name="Pipe40" parent="." instance=ExtResource("4_1jm7c")]
+position = Vector2(896, 448)
+
+[node name="Pipe41" parent="." instance=ExtResource("4_1jm7c")]
+position = Vector2(960, 448)
+
+[node name="Pipe42" parent="." instance=ExtResource("4_1jm7c")]
+position = Vector2(1024, 448)
+
+[node name="Pipe43" parent="." instance=ExtResource("4_1jm7c")]
+position = Vector2(1088, 448)
+
+[node name="Pipe44" parent="." instance=ExtResource("4_1jm7c")]
+position = Vector2(1088, 384)
+
+[node name="Pipe48" parent="." instance=ExtResource("4_1jm7c")]
+position = Vector2(768, 320)
+
+[node name="Pipe45" parent="." instance=ExtResource("4_1jm7c")]
+position = Vector2(1024, 384)
+
+[node name="Pipe46" parent="." instance=ExtResource("4_1jm7c")]
+position = Vector2(960, 384)
+
+[node name="Pipe47" parent="." instance=ExtResource("4_1jm7c")]
+position = Vector2(896, 384)
+
+[node name="Pipe27" parent="." instance=ExtResource("4_1jm7c")]
+position = Vector2(832, 512)
+
+[node name="Pipe36" parent="." instance=ExtResource("4_1jm7c")]
+position = Vector2(896, 512)
+
+[node name="Pipe37" parent="." instance=ExtResource("4_1jm7c")]
+position = Vector2(960, 512)
+
+[node name="Pipe38" parent="." instance=ExtResource("4_1jm7c")]
+position = Vector2(1024, 512)
+
+[node name="Pipe39" parent="." instance=ExtResource("4_1jm7c")]
+position = Vector2(1088, 512)
+
+[node name="Pipe22" parent="." instance=ExtResource("4_1jm7c")]
+position = Vector2(768, 192)
+
+[node name="Pipe23" parent="." instance=ExtResource("4_1jm7c")]
+position = Vector2(832, 192)
 
 [node name="Spawner" parent="." instance=ExtResource("5_nwm83")]
-position = Vector2(728, 113)
+position = Vector2(704, 0)
 
 [node name="Spawner2" parent="." instance=ExtResource("5_nwm83")]
-position = Vector2(565, 113)
+position = Vector2(512, 0)
 spawn_type = 2
 
 [node name="Crafter2" parent="." instance=ExtResource("3_x6fdh")]
-position = Vector2(429, 372)
+position = Vector2(832, 256)
+
+[node name="Crafter4" parent="." instance=ExtResource("3_x6fdh")]
+position = Vector2(448, 320)
+
+[node name="Crafter3" parent="." instance=ExtResource("3_x6fdh")]
+position = Vector2(1024, 64)

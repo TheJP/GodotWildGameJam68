@@ -33,10 +33,10 @@ func try_dispense_item():
 	if ray.is_colliding():
 		var collider = ray.get_collider()
 		if collider is Friendly:
-			if !collider.has_item:
-				collider.set_item(item)
-				item.queue_free()
-				item = null
+				var success = collider.try_set_item(item)
+				if success:
+					item.queue_free()
+					item = null
 
 
 func on_global_ticker_timeout():

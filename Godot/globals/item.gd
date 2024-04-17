@@ -60,10 +60,12 @@ class Nothing:
 class StatModifier:
 	var health: int
 	var damage: int
+	var destroy_on_pickup: bool
 
-	func _init(p_health: int, p_damage: int):
+	func _init(p_health: int, p_damage: int, p_destroy_on_pickup: bool = false):
 		health = p_health
 		damage = p_damage
+		destroy_on_pickup = p_destroy_on_pickup
 
 static var recipes: Array[Recipe] = [
 	Recipe.new(Type.WOOD, Type.WOOD, Type.FIRE),
@@ -113,16 +115,16 @@ static var decay := {
 
 
 static var stat_modifiers := {
-	Type.TRASH: StatModifier.new(0, 0),
+	Type.TRASH: StatModifier.new(0, -1),
 	Type.WOOD: StatModifier.new(1, 0),
 	Type.STONE: StatModifier.new(0, 0),
 	Type.IRON_ORE: StatModifier.new(0, 0),
-	Type.FIRE: StatModifier.new(0, 0),
+	Type.FIRE: StatModifier.new(-1, 0, true),
 	Type.HAMMER: StatModifier.new(0, 1),
 	Type.TORCH: StatModifier.new(0, 1),
 	Type.COAL: StatModifier.new(0, 0),
-	Type.HOT_FIRE: StatModifier.new(0, 0),
-	Type.HOT_STEEL: StatModifier.new(0, 0),
+	Type.HOT_FIRE: StatModifier.new(-3, 0, true),
+	Type.HOT_STEEL: StatModifier.new(-2, 0),
 	Type.SPEAR: StatModifier.new(0, 2),
 	Type.STEEL: StatModifier.new(0, 0),
 	Type.SWORD: StatModifier.new(0, 3),
