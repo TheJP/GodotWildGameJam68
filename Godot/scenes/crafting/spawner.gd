@@ -5,7 +5,8 @@ extends Machine
 @export var spawn_type: Item.Type
 var item = null
 @onready var item_scene = preload('res://scenes/crafting/item.tscn')
-
+var spawn_rate = 4
+var counter = 3
 
 func _ready():
 	Ticker.timer.timeout.connect(_on_global_ticker_timeout)
@@ -36,9 +37,12 @@ func try_remove() -> bool:
 
 
 func _on_global_ticker_timeout():
-	if item == null:
-		item = item_scene.instantiate()
-		item.type = spawn_type
-		item.container = self
-		get_parent().add_child(item)
-		item.global_position = global_position
+	counter += 1
+	if counter == spawn_rate:
+		if item == null:
+			item = item_scene.instantiate()
+			item.type = spawn_type
+			item.container = self
+			get_parent().add_child(item)
+			item.global_position = global_position
+		counter = 0

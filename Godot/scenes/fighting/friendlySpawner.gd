@@ -2,7 +2,7 @@ class_name FriendlySpawner
 extends Area2D
 
 @onready var friendly = preload("res://scenes/fighting/friendly.tscn")
-var spawn_rate = 9
+var spawn_rate = 8
 var counter = 0
 
 func _ready():

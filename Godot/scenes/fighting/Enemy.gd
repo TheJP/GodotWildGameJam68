@@ -9,9 +9,9 @@ var tile_size = GameParameters.tilesize
 var directions = [Vector2.LEFT, Vector2.UP, Vector2.RIGHT, Vector2.UP, Vector2.LEFT]
 var direction_index = 0
 
-var health = 5
+var health = 6
 var damage = 1
-var move_frequency = 3
+var move_frequency = 2
 var counter = 0
 
 # Called when the node enters the scene tree for the first time.

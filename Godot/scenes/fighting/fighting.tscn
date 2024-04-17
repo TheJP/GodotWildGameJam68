@@ -12,9 +12,6 @@ script = ExtResource("1_dyhqo")
 [node name="Dispenser" parent="." instance=ExtResource("2_agu05")]
 position = Vector2(192, 832)
 
-[node name="Dispenser2" parent="." instance=ExtResource("2_agu05")]
-position = Vector2(320, 832)
-
 [node name="Dispenser3" parent="." instance=ExtResource("2_agu05")]
 position = Vector2(448, 832)
 
@@ -220,6 +217,9 @@ position = Vector2(160, 896)
 
 [node name="Wall59" parent="." instance=ExtResource("5_y144e")]
 position = Vector2(288, 896)
+
+[node name="Wall122" parent="." instance=ExtResource("5_y144e")]
+position = Vector2(352, 896)
 
 [node name="Wall60" parent="." instance=ExtResource("5_y144e")]
 position = Vector2(1056, 896)

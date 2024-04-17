@@ -17,7 +17,7 @@ var tile_size = GameParameters.tilesize
 
 var health = 3
 var damage = 1
-var move_frequency = 3
+var move_frequency = 2
 var counter = 1
 
 func _ready():
