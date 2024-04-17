@@ -1,4 +1,4 @@
-extends DropTarget
+extends Machine
 
 
 @onready var ray = $RayCast2D

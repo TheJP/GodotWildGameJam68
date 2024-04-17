@@ -77,5 +77,14 @@ func _spawn_item(type: Item.Type, p_position: Vector2) -> Node2D:
 	var item = _item_scene.instantiate()
 	item.type = type
 	item.global_position = p_position
-	get_tree().root.add_child(item)
+	get_parent().add_child(item)
 	return item
+
+
+func _on_destroyed():
+	_state_number += 1
+	if $LeftSlot.item != null:
+		$LeftSlot.item.queue_free()
+	if $RightSlot.item != null:
+		$RightSlot.item.queue_free()
+	queue_free()

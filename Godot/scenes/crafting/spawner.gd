@@ -1,5 +1,5 @@
 class_name Spawner
-extends DropTarget
+extends Machine
 
 
 @export var spawn_type: Item.Type
@@ -20,6 +20,12 @@ func unhover():
 	scale = Vector2(1, 1)
 
 
+func destroy():
+	if item != null:
+		item.queue_free()
+	queue_free()
+
+
 func try_remove() -> bool:
 	if item == null:
 		push_warning('try_remove() called on empty spawner')
@@ -34,5 +40,5 @@ func _on_global_ticker_timeout():
 		item = item_scene.instantiate()
 		item.type = spawn_type
 		item.container = self
-		add_child(item)
-		item.position = Vector2(0, 0)
+		get_parent().add_child(item)
+		item.global_position = global_position

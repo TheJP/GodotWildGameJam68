@@ -1,4 +1,4 @@
-extends DropTarget
+extends Machine
 
 
 func _ready():

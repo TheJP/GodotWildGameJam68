@@ -1,5 +1,5 @@
 class_name CrafterSlot
-extends DropTarget
+extends Machine
 
 
 var item = null
@@ -11,6 +11,7 @@ signal hovered()
 signal unhovered()
 signal received_item()
 signal lost_item()
+signal destroyed()
 
 
 func hover():
@@ -19,6 +20,10 @@ func hover():
 
 func unhover():
 	unhovered.emit()
+
+
+func destroy():
+	destroyed.emit()
 
 
 func try_drop(p_item: Node2D) -> bool:

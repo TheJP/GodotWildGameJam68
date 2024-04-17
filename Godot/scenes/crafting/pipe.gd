@@ -1,5 +1,5 @@
 class_name Pipe
-extends DropTarget
+extends Machine
 
 
 var item = null
@@ -17,6 +17,12 @@ func unhover():
 	scale = Vector2(1, 1)
 
 
+func destroy():
+	if item != null:
+		item.queue_free()
+	queue_free()
+
+
 func try_drop(p_item: Node2D) -> bool:
 	if item != null:
 		return false
@@ -27,6 +33,7 @@ func try_drop(p_item: Node2D) -> bool:
 
 
 func try_remove() -> bool:
+	print('remove item')
 	if item == null:
 		push_warning('try_remove() called on empty pipe')
 		return true

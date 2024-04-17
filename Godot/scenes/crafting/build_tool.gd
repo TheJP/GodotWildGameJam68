@@ -1,9 +1,11 @@
+class_name BuildTool
 extends Node2D
 
 
 @export var type: Tile.Type
 @export var modulate_valid: Color = "9cff99"
 @export var modulate_invalid: Color = "ff8585"
+var build_target: Node2D
 
 
 @onready var _ray: ShapeCast2D = $ShapeCast2D
@@ -36,7 +38,7 @@ func _unhandled_input(event):
 
 		var tile = Tile.scenes[type].instantiate()
 		tile.global_position = event.position
-		get_parent().add_child(tile)
+		build_target.add_child(tile)
 
 
 func _is_colliding() -> bool:

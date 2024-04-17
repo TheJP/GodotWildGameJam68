@@ -41,10 +41,12 @@ script = ExtResource("2_hn4x0")
 scale = Vector2(0.64, 0.64)
 shape = SubResource("RectangleShape2D_vehxo")
 
+[connection signal="destroyed" from="LeftSlot" to="." method="_on_destroyed"]
 [connection signal="hovered" from="LeftSlot" to="." method="_on_hovered"]
 [connection signal="lost_item" from="LeftSlot" to="." method="_on_lost_item"]
 [connection signal="received_item" from="LeftSlot" to="." method="_on_received_item"]
 [connection signal="unhovered" from="LeftSlot" to="." method="_on_unhovered"]
+[connection signal="destroyed" from="RightSlot" to="." method="_on_destroyed"]
 [connection signal="hovered" from="RightSlot" to="." method="_on_hovered"]
 [connection signal="lost_item" from="RightSlot" to="." method="_on_lost_item"]
 [connection signal="received_item" from="RightSlot" to="." method="_on_received_item"]

@@ -2,6 +2,9 @@ extends Node2D
 
 
 @onready var _build_tool_scene = preload('res://scenes/crafting/build_tool.tscn')
+@onready var _remove_tool_scene = preload('res://scenes/crafting/remove_tool.tscn')
+@onready var _machines_and_items: Node2D = $MachinesAndItems
+@onready var _build_tools: Node2D = $BuildTools
 
 
 var _current_tool = null
@@ -18,14 +21,21 @@ func _ready():
 	_menu.start_build_crafter.connect(_start_building.bind(Tile.Type.CRAFTER))
 	_menu.start_build_pipe.connect(_start_building.bind(Tile.Type.PIPE))
 	_menu.start_build_trash.connect(_start_building.bind(Tile.Type.TRASH_CAN))
-	_menu.start_remove.connect(_before_tool_switch)
+	_menu.start_remove.connect(_start_remove)
 
 
 func _start_building(type: Tile.Type):
 	_before_tool_switch()
 	_current_tool = _build_tool_scene.instantiate()
 	_current_tool.type = type
-	add_child(_current_tool)
+	_current_tool.build_target = _machines_and_items
+	_build_tools.add_child(_current_tool)
+
+
+func _start_remove():
+	_before_tool_switch()
+	_current_tool = _remove_tool_scene.instantiate()
+	_build_tools.add_child(_current_tool)
 
 
 func _before_tool_switch():

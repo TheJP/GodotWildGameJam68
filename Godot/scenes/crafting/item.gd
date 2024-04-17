@@ -38,8 +38,8 @@ func _unhandled_input(event):
 			# Stop dragging.
 			_dragging = null
 			Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
-			_update_drop_target()
-			var target = _closest_drop_target()
+			_update_machine()
+			var target = _closest_machine()
 			if target != null and target.try_drop(self):
 				container = target
 		elif event.pressed and _hovering and _dragging == null:
@@ -53,7 +53,7 @@ func _unhandled_input(event):
 				_tween.stop()
 			_drag_mouse_delta = position - event.position
 			Input.set_default_cursor_shape(Input.CURSOR_DRAG)
-			_update_drop_target()
+			_update_machine()
 
 
 func _input(event):
@@ -79,19 +79,19 @@ func _on_mouse_exited():
 
 
 func _on_area_entered(area):
-	if area is DropTarget:
+	if area is Machine:
 		_hovered_targets[area] = null
-		_update_drop_target()
+		_update_machine()
 
 
 func _on_area_exited(area):
-	if area is DropTarget and area in _hovered_targets:
+	if area is Machine and area in _hovered_targets:
 		_hovered_targets.erase(area)
-		_update_drop_target()
+		_update_machine()
 
 
-func _update_drop_target():
-	var next_target = _closest_drop_target() if _dragging == self else null
+func _update_machine():
+	var next_target = _closest_machine() if _dragging == self else null
 
 	if next_target != _previous_target:
 		if _previous_target != null:
@@ -101,7 +101,7 @@ func _update_drop_target():
 		_previous_target = next_target
 
 
-func _closest_drop_target():
+func _closest_machine():
 	var closest = null
 	var closest_distance = INF
 	for target in _hovered_targets.keys():
@@ -136,7 +136,7 @@ func _flow():
 		_ray.target_position = direction * GameParameters.craft_tilesize
 		_ray.force_raycast_update()
 		var collider = _ray.get_collider()
-		if collider == null or not (collider is DropTarget):
+		if collider == null or not (collider is Machine):
 			continue
 		if collider == _previous_container:
 			continue # Do not flow back where you came from.
