@@ -1,3 +1,4 @@
+class_name FriendlySpawner
 extends Area2D
 
 @onready var friendly = preload("res://scenes/fighting/friendly.tscn")

@@ -37,7 +37,9 @@ func act():
 		if(counter == move_frequency):
 			counter = 0
 		var collider = ray.get_collider()
-		if collider is Friendly:
+		if collider is FriendlySpawner:
+			get_tree().change_scene_to_file("res://scenes/ui/GameOver.tscn")
+		elif collider is Friendly:
 			collider.take_damage(damage)
 		elif collider is Wall:
 					direction_index += 1

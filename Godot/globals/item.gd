@@ -110,7 +110,7 @@ static var recipes: Array[Recipe] = [
 
 static var decay := {
 	Type.FIRE: Decay.new(10.0, Type.COAL),
-	Type.TORCH: Decay.new(20.0, Type.TRASH),
+	Type.TORCH: Decay.new(20.0, Type.COAL),
 	Type.HOT_FIRE: Decay.new(10.0, Nothing.new()),
 	Type.HOT_STEEL: Decay.new(20.0, Type.STEEL),
 }
