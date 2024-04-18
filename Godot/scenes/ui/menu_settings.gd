@@ -1,10 +1,12 @@
 extends Control
 
 
-const SOUND_BUS: String = 'Master'
+const MASTER_BUS: String = 'Master'
+const SOUND_BUS: String = 'Sound'
 const MUSIC_BUS: String = 'Music'
 
 
+@onready var _master: HSlider = %MasterSlider
 @onready var _sound: HSlider = %SoundSlider
 @onready var _music: HSlider = %MusicSlider
 
@@ -21,8 +23,13 @@ func _unhandled_input(event):
 
 
 func _set_sliders():
-	_sound.value = db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index(SOUND_BUS)))
 	_music.value = db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index(MUSIC_BUS)))
+	_sound.value = db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index(SOUND_BUS)))
+	_master.value = db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index(MASTER_BUS)))
+
+
+func _on_master_slider_value_changed(value):
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index(MASTER_BUS), linear_to_db(_master.value))
 
 
 func _on_sound_slider_value_changed(value):
