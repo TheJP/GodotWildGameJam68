@@ -29,6 +29,7 @@ scale = Vector2(0.25, 0.25)
 [node name="LeftHand" type="Sprite2D" parent="."]
 position = Vector2(-16, 8)
 scale = Vector2(0.25, 0.25)
+flip_h = true
 
 [node name="RangeRay" type="RayCast2D" parent="."]
 collision_mask = 24
