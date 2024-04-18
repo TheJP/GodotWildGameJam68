@@ -1,7 +1,8 @@
+class_name ItemEntity
 extends Area2D
 
 
-static var _dragging = null
+static var dragging = null
 
 
 @export var type: Item.Type
@@ -34,21 +35,21 @@ func _unhandled_input(event):
 	if event is InputEventMouseButton:
 		if event.button_index != MOUSE_BUTTON_LEFT:
 			return
-		if not event.pressed and _dragging == self:
+		if not event.pressed and dragging == self:
 			# Stop dragging.
-			_dragging = null
+			dragging = null
 			Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
 			_update_machine()
 			var target = _closest_machine()
 			if target != null and target.try_drop(self):
 				container = target
-		elif event.pressed and _hovering and _dragging == null:
+		elif event.pressed and _hovering and dragging == null:
 			# Start dragging.
 			if container != null and not container.try_remove():
 				return
 			container = null
 			_previous_container = null
-			_dragging = self
+			dragging = self
 			if _tween != null:
 				_tween.stop()
 			_drag_mouse_delta = position - event.position
@@ -58,7 +59,7 @@ func _unhandled_input(event):
 
 func _input(event):
 	if event is InputEventMouseMotion:
-		if _dragging != self:
+		if dragging != self:
 			return
 		position = event.position + _drag_mouse_delta
 
@@ -66,7 +67,7 @@ func _input(event):
 
 func _on_mouse_entered():
 	_hovering = true
-	if _dragging == null:
+	if dragging == null:
 		scale = Vector2(1.1, 1.1)
 		Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
 
@@ -74,7 +75,7 @@ func _on_mouse_entered():
 func _on_mouse_exited():
 	_hovering = false
 	scale = Vector2(1, 1)
-	if _dragging == null:
+	if dragging == null:
 		Input.set_default_cursor_shape(Input.CURSOR_ARROW)
 
 
@@ -91,7 +92,7 @@ func _on_area_exited(area):
 
 
 func _update_machine():
-	var next_target = _closest_machine() if _dragging == self else null
+	var next_target = _closest_machine() if dragging == self else null
 
 	if next_target != _previous_target:
 		if _previous_target != null:
