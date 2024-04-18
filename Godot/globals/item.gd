@@ -75,7 +75,7 @@ static var recipes: Array[Recipe] = [
 	Recipe.new(Type.WOOD, Type.IRON_ORE, Type.HAMMER),
 	Recipe.new(Type.WOOD, Type.FIRE, Type.TORCH),
 	Recipe.new(Type.WOOD, Type.TORCH, Type.TORCH),
-	Recipe.new(Type.WOOD, Type.HOT_FIRE, Type.HOT_FIRE),	
+	Recipe.new(Type.WOOD, Type.HOT_FIRE, Type.HOT_FIRE),
 	Recipe.new(Type.WOOD, Type.HOT_STEEL, Type.FIRE),
 
 	Recipe.new(Type.STONE, Type.STONE, Type.IRON_ORE),
