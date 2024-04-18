@@ -17,24 +17,29 @@ var _mode := MOUSE_BUTTON_NONE
 
 func _ready():
 	$Sprite2D.texture = Tile.sprites[type]
+	_mouse_move(get_viewport().get_mouse_position())
 
 
 func _input(event):
 	if event is InputEventMouseMotion:
-		var size = Vector2i(1, 1) if type != Tile.Type.CRAFTER else Vector2i(2, 1)
-		global_position = Tile.snap_crafting(event.position, size)
-		if not _is_colliding() or (type == Tile.Type.PIPE and _ray.get_collider(0) is Pipe):
-			_sprite.modulate = modulate_valid
-		else:
-			_sprite.modulate = modulate_invalid
-		if _dragging:
-			if _mode == MOUSE_BUTTON_LEFT:
-				_try_build(event.position)
-			elif _mode == MOUSE_BUTTON_RIGHT:
-				_try_remove()
+		_mouse_move(event.position)
 	elif event is InputEventMouseButton:
 		if not event.pressed or _mode == event.button_index:
 			_dragging = false
+
+
+func _mouse_move(p_position: Vector2):
+	var size = Vector2i(1, 1) if type != Tile.Type.CRAFTER else Vector2i(2, 1)
+	global_position = Tile.snap_crafting(p_position, size)
+	if not _is_colliding() or (type == Tile.Type.PIPE and _ray.get_collider(0) is Pipe):
+		_sprite.modulate = modulate_valid
+	else:
+		_sprite.modulate = modulate_invalid
+	if _dragging:
+		if _mode == MOUSE_BUTTON_LEFT:
+			_try_build(p_position)
+		elif _mode == MOUSE_BUTTON_RIGHT:
+			_try_remove()
 
 
 func _unhandled_input(event):

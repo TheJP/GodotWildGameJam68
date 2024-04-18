@@ -1,12 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://clygcx65jnjb3"]
+[gd_scene load_steps=6 format=3 uid="uid://is5gexbos7as"]
 
 [ext_resource type="FontFile" uid="uid://dliopqakpw553" path="res://fonts/Jacquard24-Regular.ttf" id="1_usdt6"]
 [ext_resource type="Script" path="res://scenes/ui/menu_main.gd" id="2_nal2l"]
 [ext_resource type="Theme" uid="uid://d37xjde3q7k3t" path="res://assets/ui/theme.tres" id="2_y4nkf"]
+[ext_resource type="PackedScene" uid="uid://c5if07qhh6g72" path="res://scenes/ui/menu_settings.tscn" id="4_vvcgu"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j1aed"]
 
 [node name="MenuMain" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -30,6 +32,7 @@ theme_override_constants/separation = 30
 
 [node name="Title" type="Label" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("1_usdt6")
 theme_override_font_sizes/font_size = 120
 text = "Forge & Fight"
@@ -94,5 +97,9 @@ theme_override_colors/font_disabled_color = Color(0.262745, 0.117647, 0.4, 1)
 theme_override_colors/font_outline_color = Color(0.262745, 0.117647, 0.4, 1)
 text = "Quit"
 
+[node name="MenuSettings" parent="." instance=ExtResource("4_vvcgu")]
+layout_mode = 1
+
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

@@ -13,14 +13,22 @@ var _dragging := false
 @onready var _ray: ShapeCast2D = $ShapeCast2D
 
 
+func _ready():
+	_mouse_move(get_viewport().get_mouse_position())
+
+
 func _input(event):
 	if event is InputEventMouseMotion:
-		global_position = Tile.snap_crafting(event.position)
-		if _dragging:
-			_try_remove()
+		_mouse_move(event.position)
 	elif event is InputEventMouseButton:
 		if not event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 			_dragging = false
+
+
+func _mouse_move(p_position: Vector2):
+	global_position = Tile.snap_crafting(p_position)
+	if _dragging:
+		_try_remove()
 
 
 func _unhandled_input(event):

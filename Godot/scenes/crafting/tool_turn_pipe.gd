@@ -10,15 +10,23 @@ extends Node2D
 @onready var _sprite: Sprite2D = $Sprite2D
 
 
+func _ready():
+	_mouse_move(get_viewport().get_mouse_position())
+
+
 func _input(event):
 	if event is InputEventMouseMotion:
-		global_position = Tile.snap_crafting(event.position)
-		var pipe = _get_collision()
-		if pipe is Pipe:
-			_sprite.modulate = modulate_valid
-			_sprite.rotation = Pipe.arrow_rotation[pipe.direction]
-		else:
-			_sprite.modulate = modulate_invalid
+		_mouse_move(event.position)
+
+
+func _mouse_move(p_position: Vector2):
+	global_position = Tile.snap_crafting(p_position)
+	var pipe = _get_collision()
+	if pipe is Pipe:
+		_sprite.modulate = modulate_valid
+		_sprite.rotation = Pipe.arrow_rotation[pipe.direction]
+	else:
+		_sprite.modulate = modulate_invalid
 
 
 func _unhandled_input(event):

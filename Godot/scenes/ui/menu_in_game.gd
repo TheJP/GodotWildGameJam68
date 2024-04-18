@@ -43,14 +43,20 @@ func _ready():
 		option.mouse_exited.connect(_unhover.bind(option))
 
 	_selected_option = %DefaultButton
+	_selected_option.set_process_shortcut_input(false)
 	_update_color(%DefaultButton)
 
 
 func _on_button_pressed(p_option: Button, start_signal: Signal):
+	if _selected_option == p_option:
+		return
+	_selected_option.set_process_shortcut_input(true)
+	p_option.set_process_shortcut_input(false)
 	_selected_option = p_option
 	for option in _options:
 		_update_color(option, option == p_option)
 	start_signal.emit()
+	get_viewport().set_input_as_handled()
 
 func _hover(option: Button):
 	option.scale = Vector2(1.2, 1.2)
