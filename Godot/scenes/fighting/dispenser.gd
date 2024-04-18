@@ -3,7 +3,6 @@ extends Machine
 
 @onready var ray = $RayCast2D
 var item = null
-var wait_time = 0
 
 
 func _ready():
@@ -29,19 +28,15 @@ func try_drop(p_item: Node2D) -> bool:
 
 
 func try_dispense_item():
-	if wait_time > 0:
-		wait_time -= 1
-	else:
-		ray.target_position = Vector2.DOWN * GameParameters.tilesize
-		ray.force_raycast_update()
-		if ray.is_colliding():
-			var collider = ray.get_collider()
-			if collider is Friendly:
-					var success = collider.try_set_item(item)
-					if success:
-						wait_time = 2
-						item.queue_free()
-						item = null
+	ray.target_position = Vector2.DOWN * GameParameters.tilesize
+	ray.force_raycast_update()
+	if ray.is_colliding():
+		var collider = ray.get_collider()
+		if collider is Friendly:
+				var success = collider.try_set_item(item)
+				if success:
+					item.queue_free()
+					item = null
 
 
 func on_global_ticker_timeout():

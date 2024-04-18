@@ -1,18 +1,18 @@
 class_name Enemy
 extends Area2D
 
-@onready var ray = $RayCast2D
+@onready var move_ray = $MoveRay
+@onready var melee_ray = $MeleeRay
 
 var animation_speed = 3
 var tile_size = GameParameters.tilesize
 
-var directions = [Vector2.LEFT, Vector2.UP, Vector2.RIGHT, Vector2.UP, Vector2.LEFT]
-var direction_index = 0
+var directions = [Vector2.LEFT, Vector2.UP, Vector2.DOWN]
 
 var _hovering = false
 
-var health = 6
-var damage = 1
+var health = 12
+var damage = 2
 var move_frequency = 2
 var counter = 0
 
@@ -40,26 +40,39 @@ func on_global_ticker_timeout():
 
 func act():
 	counter += 1
-	ray.target_position = directions[direction_index] * tile_size
-	ray.force_raycast_update()
-	if !ray.is_colliding():
+	move_ray.target_position = Vector2.LEFT * tile_size
+	move_ray.force_raycast_update()
+	var did_attack = false
+	for direction in directions:
+		melee_ray.target_position = direction * tile_size
+		melee_ray.force_raycast_update()
+		if melee_ray.is_colliding():
+			var collider = melee_ray.get_collider()
+			if collider is Friendly:
+				var tween = create_tween()
+				var starting_position = self.position
+				tween.tween_property(self, "position",
+				position + direction * tile_size / 4.0, 1.0/(4*animation_speed)).set_trans(Tween.TRANS_SINE)
+				await tween.finished
+				tween = create_tween()
+				tween.tween_property(self, "position",
+					starting_position, 1.0/(4*animation_speed)).set_trans(Tween.TRANS_SINE)
+				await tween.finished
+				if is_instance_valid(collider):
+					collider.take_damage(damage)
+				did_attack = true
+				continue
+	if !move_ray.is_colliding() && !did_attack:
 		if(counter == move_frequency):
-			counter = 0
 			var tween = create_tween()
 			tween.tween_property(self, "position",
-				position + directions[direction_index] * tile_size, 1.0/animation_speed).set_trans(Tween.TRANS_SINE)
+				position + Vector2.LEFT * tile_size, 1.0/animation_speed).set_trans(Tween.TRANS_SINE)
 			await tween.finished
-	else:
-		if(counter == move_frequency):
+
+			
+	if(counter == move_frequency):
 			counter = 0
-		var collider = ray.get_collider()
-		if collider is FriendlySpawner:
-			get_tree().change_scene_to_file("res://scenes/ui/GameOver.tscn")
-		elif collider is Friendly:
-			collider.take_damage(damage)
-		elif collider is Wall:
-					direction_index += 1
-					
+			
 func take_damage(amount):
 	health -= amount
 	$Sprite2D.modulate = Color.RED

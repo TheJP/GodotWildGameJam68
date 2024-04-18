@@ -3,6 +3,7 @@ extends Area2D
 
 @onready var move_ray = $MoveRay
 @onready var range_ray = $RangeRay
+@onready var melee_ray = $MeleeRay
 @onready var right_hand_sprite = $RightHand
 @onready var left_hand_sprite = $LeftHand
 var right_hand_occupied = false
@@ -10,15 +11,14 @@ var left_hand_occupied = false
 var right_hand_item_type = null
 var left_hand_item_type = null
 
-var directions = [Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT, Vector2.DOWN, Vector2.RIGHT]
-var direction_index = 0
+var directions = [Vector2.RIGHT, Vector2.DOWN, Vector2.UP]
 var animation_speed = 3
 var tile_size = GameParameters.tilesize
 
-var health = 3
+var health = 8
 var damage = 1
 var move_frequency = 2
-var counter = 1
+var counter = -3
 
 func _ready():
 	Ticker.timer.timeout.connect(on_global_ticker_timeout)
@@ -27,8 +27,9 @@ func _ready():
 func on_global_ticker_timeout():
 	act()
 
-func try_throw_item():
-	range_ray.target_position = directions[direction_index] * tile_size * 3
+func try_throw_item() -> bool:
+	var did_throw = false
+	range_ray.target_position = Vector2.RIGHT * tile_size * 3
 	range_ray.force_raycast_update()
 	if range_ray.is_colliding():
 		var collider = range_ray.get_collider()
@@ -42,6 +43,7 @@ func try_throw_item():
 					right_hand_sprite.texture = null
 					right_hand_occupied = false
 					right_hand_item_type = null
+					did_throw = true
 			if left_hand_occupied && is_instance_valid(collider):
 				if Item.stat_modifiers[left_hand_item_type].throwable > 0:
 					var tween = create_tween()
@@ -54,28 +56,46 @@ func try_throw_item():
 					left_hand_sprite.texture = null
 					left_hand_occupied = false
 					left_hand_item_type = null
+					did_throw = true
+	return did_throw
 
 func act():
-	try_throw_item()
+	var did_throw = await try_throw_item()
 	counter += 1
-	move_ray.target_position = directions[direction_index] * tile_size
+	move_ray.target_position = Vector2.RIGHT * tile_size
 	move_ray.force_raycast_update()
-	if !move_ray.is_colliding():
+	var did_attack = false
+	if !did_throw:
+		for direction in directions:
+			melee_ray.target_position = direction * tile_size
+			melee_ray.force_raycast_update()
+			if melee_ray.is_colliding():
+				var collider = melee_ray.get_collider()
+				if collider is Enemy:
+					var tween = create_tween()
+					var starting_position = self.position
+					tween.tween_property(self, "position",
+					position + direction * tile_size / 4.0, 1.0/(4*animation_speed)).set_trans(Tween.TRANS_SINE)
+					await tween.finished
+					tween = create_tween()
+					tween.tween_property(self, "position",
+						starting_position, 1.0/(4*animation_speed)).set_trans(Tween.TRANS_SINE)
+					await tween.finished
+					if is_instance_valid(collider):
+						collider.take_damage(damage)
+					did_attack = true
+					continue
+	if !move_ray.is_colliding() && !did_throw && !did_attack:
 		if(counter == move_frequency):
-			range_ray.target_position = directions[direction_index] * tile_size * 5
+			range_ray.target_position = Vector2.RIGHT * tile_size * 5
 			range_ray.force_raycast_update()
 			if !move_ray.is_colliding():
 				if !(range_ray.is_colliding() && range_ray.get_collider() is EnemySpawner):
 					var tween = create_tween()
 					tween.tween_property(self, "position",
-						position + directions[direction_index] * tile_size, 1.0/animation_speed).set_trans(Tween.TRANS_SINE)
+						position + Vector2.RIGHT * tile_size, 1.0/animation_speed).set_trans(Tween.TRANS_SINE)
 					await tween.finished
-	else:
-		var collider = move_ray.get_collider()
-		if collider is Enemy:
-			collider.take_damage(damage)
-		elif collider is Wall:
-			direction_index += 1
+
 	if(counter == move_frequency):
 			counter = 0
 

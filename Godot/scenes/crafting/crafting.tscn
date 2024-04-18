@@ -34,6 +34,39 @@ position = Vector2(288, 224)
 [node name="Pipe7" parent="MachinesAndItems" instance=ExtResource("4_1jm7c")]
 position = Vector2(352, 288)
 
+[node name="Pipe23" parent="MachinesAndItems" instance=ExtResource("4_1jm7c")]
+position = Vector2(96, 96)
+
+[node name="Pipe24" parent="MachinesAndItems" instance=ExtResource("4_1jm7c")]
+position = Vector2(96, 160)
+
+[node name="Pipe25" parent="MachinesAndItems" instance=ExtResource("4_1jm7c")]
+position = Vector2(96, 224)
+
+[node name="Pipe26" parent="MachinesAndItems" instance=ExtResource("4_1jm7c")]
+position = Vector2(96, 288)
+
+[node name="Pipe27" parent="MachinesAndItems" instance=ExtResource("4_1jm7c")]
+position = Vector2(96, 352)
+
+[node name="Pipe28" parent="MachinesAndItems" instance=ExtResource("4_1jm7c")]
+position = Vector2(96, 416)
+
+[node name="Pipe29" parent="MachinesAndItems" instance=ExtResource("4_1jm7c")]
+position = Vector2(96, 480)
+
+[node name="Pipe30" parent="MachinesAndItems" instance=ExtResource("4_1jm7c")]
+position = Vector2(96, 544)
+
+[node name="Pipe31" parent="MachinesAndItems" instance=ExtResource("4_1jm7c")]
+position = Vector2(96, 608)
+
+[node name="Pipe32" parent="MachinesAndItems" instance=ExtResource("4_1jm7c")]
+position = Vector2(96, 672)
+
+[node name="Pipe33" parent="MachinesAndItems" instance=ExtResource("4_1jm7c")]
+position = Vector2(96, 736)
+
 [node name="Pipe8" parent="MachinesAndItems" instance=ExtResource("4_1jm7c")]
 position = Vector2(352, 352)
 
@@ -65,10 +98,21 @@ position = Vector2(288, 800)
 position = Vector2(224, 800)
 
 [node name="Pipe16" parent="MachinesAndItems" instance=ExtResource("4_1jm7c")]
-position = Vector2(416, 800)
+position = Vector2(160, 800)
 
 [node name="Pipe17" parent="MachinesAndItems" instance=ExtResource("4_1jm7c")]
-position = Vector2(480, 800)
+position = Vector2(96, 800)
+direction = 2
+
+[node name="Pipe20" parent="MachinesAndItems" instance=ExtResource("4_1jm7c")]
+position = Vector2(96, 864)
+
+[node name="Pipe21" parent="MachinesAndItems" instance=ExtResource("4_1jm7c")]
+position = Vector2(32, 864)
+direction = 2
+
+[node name="Pipe22" parent="MachinesAndItems" instance=ExtResource("4_1jm7c")]
+position = Vector2(32, 928)
 
 [node name="Spawner" parent="MachinesAndItems" instance=ExtResource("5_nwm83")]
 position = Vector2(480, 32)
