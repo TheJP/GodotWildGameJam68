@@ -2,6 +2,7 @@ class_name FriendlySpawner
 extends Area2D
 
 @onready var friendly = preload("res://scenes/fighting/friendly.tscn")
+@onready var alternate_texture = preload("res://assets/fighters/hero_2.png")
 var spawn_rate = 12
 var counter = 0
 
@@ -14,6 +15,8 @@ func on_global_ticker_timeout():
 	if counter == spawn_rate:
 		var friendly_instance = friendly.instantiate()
 		get_parent().add_child(friendly_instance)
+		if randi() % 2:
+			friendly_instance.get_node("Sprite2D").texture = alternate_texture
 		friendly_instance.global_position = self.global_position
 		counter = 0
 

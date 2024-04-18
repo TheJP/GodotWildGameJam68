@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c0n43aeimp0ns"]
 
 [ext_resource type="Script" path="res://scenes/fighting/Friendly.gd" id="1_c7eoa"]
-[ext_resource type="Texture2D" uid="uid://bkc67010odi58" path="res://icon.svg" id="2_w0k4b"]
+[ext_resource type="Texture2D" uid="uid://ig1nba8oydqx" path="res://assets/fighters/hero_1.png" id="2_hrmhx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hapvm"]
 size = Vector2(64, 64)
@@ -11,8 +11,7 @@ collision_mask = 0
 script = ExtResource("1_c7eoa")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_w0k4b")
+texture = ExtResource("2_hrmhx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 0)

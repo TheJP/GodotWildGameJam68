@@ -84,7 +84,7 @@ func act():
 					if is_instance_valid(collider):
 						collider.take_damage(damage)
 					did_attack = true
-					continue
+					break
 	if !move_ray.is_colliding() && !did_throw && !did_attack:
 		if(counter == move_frequency):
 			range_ray.target_position = Vector2.RIGHT * tile_size * 5

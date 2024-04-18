@@ -61,7 +61,7 @@ func act():
 				if is_instance_valid(collider):
 					collider.take_damage(damage)
 				did_attack = true
-				continue
+				break
 	if !move_ray.is_colliding() && !did_attack:
 		if(counter == move_frequency):
 			var tween = create_tween()
