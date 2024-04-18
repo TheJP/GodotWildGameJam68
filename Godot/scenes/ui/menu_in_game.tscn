@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://cqaifcks6tp3x"]
 
 [ext_resource type="Script" path="res://scenes/ui/menu_in_game.gd" id="1_lb6yv"]
-[ext_resource type="Texture2D" uid="uid://wqfvyl0eto0v" path="res://assets/crafter_combined.png" id="2_aj5gx"]
+[ext_resource type="Texture2D" uid="uid://cls30yg45jurd" path="res://assets/crafter.png" id="2_d06ke"]
 [ext_resource type="Texture2D" uid="uid://cfukwd0wfh4ue" path="res://assets/pipes/pipe_urdl.png" id="3_2st0p"]
 [ext_resource type="Texture2D" uid="uid://caxosndx6vvgh" path="res://assets/trash_can.png" id="4_n8jwb"]
 [ext_resource type="Texture2D" uid="uid://d0844foetdry5" path="res://assets/arrow.png" id="4_xswmk"]
@@ -107,7 +107,7 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_3g0ge")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_3g0ge")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_3g0ge")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_3g0ge")
-icon = ExtResource("2_aj5gx")
+icon = ExtResource("2_d06ke")
 
 [node name="Pipe" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2

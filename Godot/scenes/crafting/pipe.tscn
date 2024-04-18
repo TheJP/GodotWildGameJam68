@@ -24,7 +24,6 @@ texture = ExtResource("2_eply0")
 
 [node name="Sprite2DArrow" type="Sprite2D" parent="."]
 visible = false
-scale = Vector2(0.64, 0.64)
 texture = ExtResource("3_tywcp")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]

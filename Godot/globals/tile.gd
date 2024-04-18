@@ -10,7 +10,7 @@ enum Type {
 
 
 static var sprites := {
-	Type.CRAFTER: preload('res://assets/crafter_combined.png'),
+	Type.CRAFTER: preload('res://assets/crafter.png'),
 	Type.PIPE: preload('res://assets/pipes/pipe_urdl.png'),
 	Type.SPAWNER: preload('res://assets/spawner.png'),
 	Type.DISPENSER: preload('res://assets/spawner.png'), # TODO
