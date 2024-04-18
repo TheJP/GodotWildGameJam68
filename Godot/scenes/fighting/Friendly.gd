@@ -11,7 +11,7 @@ var left_hand_occupied = false
 var right_hand_item_type = null
 var left_hand_item_type = null
 
-var directions = [Vector2.RIGHT, Vector2.DOWN, Vector2.UP]
+var directions = [Vector2.RIGHT, Vector2.DOWN, Vector2.UP, Vector2(1, 1), Vector2(1, -1)]
 var animation_speed = 3
 var tile_size = GameParameters.tilesize
 

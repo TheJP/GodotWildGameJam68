@@ -7,7 +7,7 @@ extends Area2D
 var animation_speed = 3
 var tile_size = GameParameters.tilesize
 
-var directions = [Vector2.LEFT, Vector2.UP, Vector2.DOWN]
+var directions = [Vector2.LEFT, Vector2.UP, Vector2.DOWN, Vector2(-1, 1), Vector2(-1, -1)]
 
 var _hovering = false
 
