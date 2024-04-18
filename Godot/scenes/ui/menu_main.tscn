@@ -1,0 +1,92 @@
+[gd_scene load_steps=4 format=3 uid="uid://clygcx65jnjb3"]
+
+[ext_resource type="FontFile" uid="uid://dliopqakpw553" path="res://fonts/Jacquard24-Regular.ttf" id="1_usdt6"]
+[ext_resource type="Theme" uid="uid://d37xjde3q7k3t" path="res://assets/ui/theme.tres" id="2_y4nkf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j1aed"]
+
+[node name="MenuMain" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_y4nkf")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Title" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_usdt6")
+theme_override_font_sizes/font_size = 120
+text = "Forge & Fight"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_j1aed")
+
+[node name="Play" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0.262745, 0.117647, 0.4, 1)
+theme_override_colors/font_pressed_color = Color(0.262745, 0.117647, 0.4, 1)
+theme_override_colors/font_hover_color = Color(0.262745, 0.117647, 0.4, 1)
+theme_override_colors/font_focus_color = Color(0.262745, 0.117647, 0.4, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.262745, 0.117647, 0.4, 1)
+theme_override_colors/font_disabled_color = Color(0.262745, 0.117647, 0.4, 1)
+theme_override_colors/font_outline_color = Color(0.262745, 0.117647, 0.4, 1)
+text = "Play"
+
+[node name="Settings" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0.262745, 0.117647, 0.4, 1)
+theme_override_colors/font_pressed_color = Color(0.262745, 0.117647, 0.4, 1)
+theme_override_colors/font_hover_color = Color(0.262745, 0.117647, 0.4, 1)
+theme_override_colors/font_focus_color = Color(0.262745, 0.117647, 0.4, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.262745, 0.117647, 0.4, 1)
+theme_override_colors/font_disabled_color = Color(0.262745, 0.117647, 0.4, 1)
+theme_override_colors/font_outline_color = Color(0.262745, 0.117647, 0.4, 1)
+text = "Settings"
+
+[node name="Credits" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0.262745, 0.117647, 0.4, 1)
+theme_override_colors/font_pressed_color = Color(0.262745, 0.117647, 0.4, 1)
+theme_override_colors/font_hover_color = Color(0.262745, 0.117647, 0.4, 1)
+theme_override_colors/font_focus_color = Color(0.262745, 0.117647, 0.4, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.262745, 0.117647, 0.4, 1)
+theme_override_colors/font_disabled_color = Color(0.262745, 0.117647, 0.4, 1)
+theme_override_colors/font_outline_color = Color(0.262745, 0.117647, 0.4, 1)
+text = "Credits"
+
+[node name="Quit" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0.262745, 0.117647, 0.4, 1)
+theme_override_colors/font_pressed_color = Color(0.262745, 0.117647, 0.4, 1)
+theme_override_colors/font_hover_color = Color(0.262745, 0.117647, 0.4, 1)
+theme_override_colors/font_focus_color = Color(0.262745, 0.117647, 0.4, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.262745, 0.117647, 0.4, 1)
+theme_override_colors/font_disabled_color = Color(0.262745, 0.117647, 0.4, 1)
+theme_override_colors/font_outline_color = Color(0.262745, 0.117647, 0.4, 1)
+text = "Quit"
