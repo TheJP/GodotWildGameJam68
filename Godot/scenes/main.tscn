@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b6viu12773d5g"]
+[gd_scene load_steps=5 format=3 uid="uid://b6viu12773d5g"]
 
 [ext_resource type="PackedScene" uid="uid://dd4s3sh2lq2x1" path="res://scenes/crafting/crafting.tscn" id="1_y5ktt"]
 [ext_resource type="PackedScene" uid="uid://ce2lm7rg0o844" path="res://scenes/fighting/fighting.tscn" id="2_2b1rs"]
 [ext_resource type="PackedScene" uid="uid://cqaifcks6tp3x" path="res://scenes/ui/menu_in_game.tscn" id="3_vvqis"]
+[ext_resource type="PackedScene" uid="uid://k8c7dmf87o38" path="res://scenes/ui/menu_settings.tscn" id="4_ib2fi"]
 
 [node name="Main" type="Node2D"]
 
@@ -13,3 +14,5 @@
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="MenuInGame" parent="CanvasLayer" instance=ExtResource("3_vvqis")]
+
+[node name="MenuSettings" parent="CanvasLayer" instance=ExtResource("4_ib2fi")]

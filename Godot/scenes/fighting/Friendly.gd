@@ -113,7 +113,7 @@ func try_set_item(p_item: Node2D) -> bool:
 			left_hand_item_type = p_item.type
 	else:
 		return false
-		
+
 	if (item_stat_modifiers.health < 0):
 		take_damage(item_stat_modifiers.health)
 	else:

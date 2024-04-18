@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cqaifcks6tp3x"]
+[gd_scene load_steps=22 format=3 uid="uid://cqaifcks6tp3x"]
 
 [ext_resource type="Script" path="res://scenes/ui/menu_in_game.gd" id="1_lb6yv"]
 [ext_resource type="Texture2D" uid="uid://cls30yg45jurd" path="res://assets/crafter.png" id="2_d06ke"]
@@ -22,7 +22,43 @@ corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3g0ge"]
 
+[sub_resource type="InputEventAction" id="InputEventAction_lsux2"]
+action = &"tool_select"
+
+[sub_resource type="Shortcut" id="Shortcut_l01ml"]
+events = [SubResource("InputEventAction_lsux2")]
+
+[sub_resource type="InputEventAction" id="InputEventAction_avmv6"]
+action = &"tool_build_crafter"
+
+[sub_resource type="Shortcut" id="Shortcut_6rsve"]
+events = [SubResource("InputEventAction_avmv6")]
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vt3un"]
+
+[sub_resource type="InputEventAction" id="InputEventAction_n6ugb"]
+action = &"tool_build_pipe"
+
+[sub_resource type="Shortcut" id="Shortcut_ve74v"]
+events = [SubResource("InputEventAction_n6ugb")]
+
+[sub_resource type="InputEventAction" id="InputEventAction_yjono"]
+action = &"tool_turn_pipe"
+
+[sub_resource type="Shortcut" id="Shortcut_ob883"]
+events = [SubResource("InputEventAction_yjono")]
+
+[sub_resource type="InputEventAction" id="InputEventAction_mmaqr"]
+action = &"tool_build_trash"
+
+[sub_resource type="Shortcut" id="Shortcut_xmha4"]
+events = [SubResource("InputEventAction_mmaqr")]
+
+[sub_resource type="InputEventAction" id="InputEventAction_cosp0"]
+action = &"tool_remove"
+
+[sub_resource type="Shortcut" id="Shortcut_js5ef"]
+events = [SubResource("InputEventAction_cosp0")]
 
 [node name="MenuInGame" type="MarginContainer" groups=["menu_in_game"]]
 anchors_preset = 11
@@ -84,6 +120,7 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_3g0ge")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_3g0ge")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_3g0ge")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_3g0ge")
+shortcut = SubResource("Shortcut_l01ml")
 text = "Select"
 
 [node name="Crafter" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
@@ -107,6 +144,7 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_3g0ge")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_3g0ge")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_3g0ge")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_3g0ge")
+shortcut = SubResource("Shortcut_6rsve")
 icon = ExtResource("2_d06ke")
 
 [node name="Pipe" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
@@ -130,6 +168,7 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_3g0ge")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_3g0ge")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_3g0ge")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_3g0ge")
+shortcut = SubResource("Shortcut_ve74v")
 icon = ExtResource("3_2st0p")
 
 [node name="Arrow" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
@@ -153,6 +192,7 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_3g0ge")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_3g0ge")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_3g0ge")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_3g0ge")
+shortcut = SubResource("Shortcut_ob883")
 icon = ExtResource("4_xswmk")
 
 [node name="Trash" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
@@ -176,6 +216,7 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_3g0ge")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_3g0ge")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_3g0ge")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_3g0ge")
+shortcut = SubResource("Shortcut_xmha4")
 icon = ExtResource("4_n8jwb")
 
 [node name="Delete" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
@@ -206,4 +247,5 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_3g0ge")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_3g0ge")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_3g0ge")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_3g0ge")
+shortcut = SubResource("Shortcut_js5ef")
 text = "Destroy"
