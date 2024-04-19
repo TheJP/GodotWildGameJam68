@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cqaifcks6tp3x"]
+[gd_scene load_steps=26 format=3 uid="uid://cqaifcks6tp3x"]
 
 [ext_resource type="Theme" uid="uid://d37xjde3q7k3t" path="res://assets/ui/theme.tres" id="1_l20by"]
 [ext_resource type="Script" path="res://scenes/ui/menu_in_game.gd" id="1_lb6yv"]
@@ -17,6 +17,8 @@ corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3g0ge"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lgo64"]
+
 [sub_resource type="InputEventAction" id="InputEventAction_lsux2"]
 action = &"tool_select"
 
@@ -32,10 +34,16 @@ events = [SubResource("InputEventAction_avmv6")]
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vt3un"]
 
 [sub_resource type="InputEventAction" id="InputEventAction_n6ugb"]
+action = &"tool_build_pipe"
+
+[sub_resource type="Shortcut" id="Shortcut_mtoj3"]
+events = [SubResource("InputEventAction_n6ugb")]
+
+[sub_resource type="InputEventAction" id="InputEventAction_31mi2"]
 action = &"tool_build_intersection"
 
-[sub_resource type="Shortcut" id="Shortcut_ve74v"]
-events = [SubResource("InputEventAction_n6ugb")]
+[sub_resource type="Shortcut" id="Shortcut_4i6r4"]
+events = [SubResource("InputEventAction_31mi2")]
 
 [sub_resource type="InputEventAction" id="InputEventAction_yjono"]
 action = &"tool_turn_pipe"
@@ -112,7 +120,7 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_3g0ge")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_3g0ge")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_3g0ge")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_3g0ge")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_3g0ge")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_lgo64")
 shortcut = SubResource("Shortcut_l01ml")
 text = "Select"
 
@@ -161,7 +169,7 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_3g0ge")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_3g0ge")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_3g0ge")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_3g0ge")
-shortcut = SubResource("Shortcut_ve74v")
+shortcut = SubResource("Shortcut_mtoj3")
 icon = ExtResource("3_2st0p")
 
 [node name="Intersection" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
@@ -185,7 +193,7 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_3g0ge")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_3g0ge")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_3g0ge")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_3g0ge")
-shortcut = SubResource("Shortcut_ve74v")
+shortcut = SubResource("Shortcut_4i6r4")
 icon = ExtResource("5_cqm51")
 
 [node name="Arrow" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
