@@ -16,3 +16,7 @@ func _on_quit_pressed():
 
 func _on_settings_pressed():
 	$MenuSettings.show()
+
+
+func _on_credits_pressed():
+	$MenuCredits.show()

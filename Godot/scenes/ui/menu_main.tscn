@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://is5gexbos7as"]
+[gd_scene load_steps=7 format=3 uid="uid://is5gexbos7as"]
 
 [ext_resource type="FontFile" uid="uid://dliopqakpw553" path="res://fonts/Jacquard24-Regular.ttf" id="1_usdt6"]
 [ext_resource type="Script" path="res://scenes/ui/menu_main.gd" id="2_nal2l"]
 [ext_resource type="Theme" uid="uid://d37xjde3q7k3t" path="res://assets/ui/theme.tres" id="2_y4nkf"]
 [ext_resource type="PackedScene" uid="uid://c5if07qhh6g72" path="res://scenes/ui/menu_settings.tscn" id="4_vvcgu"]
+[ext_resource type="PackedScene" uid="uid://b362pn641tx0u" path="res://scenes/ui/menu_credits.tscn" id="5_fjwna"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j1aed"]
 
@@ -100,6 +101,10 @@ text = "Quit"
 [node name="MenuSettings" parent="." instance=ExtResource("4_vvcgu")]
 layout_mode = 1
 
+[node name="MenuCredits" parent="." instance=ExtResource("5_fjwna")]
+layout_mode = 1
+
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
