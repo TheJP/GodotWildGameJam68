@@ -1,6 +1,87 @@
-[gd_scene load_steps=2 format=3 uid="uid://ckyt0ywdnaq5f"]
+[gd_scene load_steps=22 format=3 uid="uid://ckyt0ywdnaq5f"]
 
 [ext_resource type="Script" path="res://scenes/audio_controller.gd" id="1_sjpvs"]
+[ext_resource type="AudioStream" uid="uid://hc30x30jj33" path="res://audio/Music/endgameloop.wav" id="2_4d2i6"]
+[ext_resource type="AudioStream" uid="uid://d0mpvoockqfdm" path="res://audio/Music/level1loop.wav" id="3_8y5qn"]
+[ext_resource type="AudioStream" uid="uid://i6qmkjr6tpoj" path="res://audio/Music/level2loop.wav" id="4_7u1yl"]
+[ext_resource type="AudioStream" uid="uid://b3urq6u26upgx" path="res://audio/Music/level3loop.wav" id="5_s0wyf"]
+[ext_resource type="AudioStream" uid="uid://c2tyuu5kolhpp" path="res://audio/Music/level4loop.wav" id="6_ci30f"]
+[ext_resource type="AudioStream" uid="uid://by31hcpmq7w3r" path="res://audio/Music/transitionlevel4toendgame.wav" id="7_mwh36"]
+[ext_resource type="AudioStream" uid="uid://cbjqteupgi3pf" path="res://audio/FX/ItemTrashSound.wav" id="8_2pnbw"]
+[ext_resource type="AudioStream" uid="uid://nc13y16agi8a" path="res://audio/FX/ItemDiscoverySound.wav" id="9_fakn1"]
+[ext_resource type="AudioStream" uid="uid://mlw3gge37bji" path="res://audio/FX/ItemCombinationSound.wav" id="10_rrhqg"]
+[ext_resource type="AudioStream" uid="uid://bxmejdr3oe7rx" path="res://audio/FX/HeroDeathSound1.wav" id="11_g66ye"]
+[ext_resource type="AudioStream" uid="uid://dw4xh4jiykjbc" path="res://audio/FX/HeroDeathSound2.wav" id="12_2j0wb"]
+[ext_resource type="AudioStream" uid="uid://ccasf14beq2pm" path="res://audio/FX/HeroDeathSound3.wav" id="13_nbygy"]
+[ext_resource type="AudioStream" uid="uid://roq2sx4hw8ex" path="res://audio/FX/HeroDeathSound4.wav" id="14_mup6o"]
+[ext_resource type="AudioStream" uid="uid://byk48xxkha4ll" path="res://audio/FX/GameOverSound.wav" id="15_scpgu"]
+[ext_resource type="AudioStream" uid="uid://dhoq7018p8bjn" path="res://audio/FX/EnemyDeathSound1.wav" id="16_iioma"]
+[ext_resource type="AudioStream" uid="uid://cp1c5dg1r7pl1" path="res://audio/FX/EnemyDeathSound2.wav" id="17_w33bt"]
+[ext_resource type="AudioStream" uid="uid://dbe5macqfb5dd" path="res://audio/FX/EnemyDeathSound3.wav" id="18_0hnx5"]
+[ext_resource type="AudioStream" uid="uid://dct3cnk8avw5e" path="res://audio/FX/DamageTickSound1.wav" id="19_uhvmd"]
+[ext_resource type="AudioStream" uid="uid://dvhbj2hnooql7" path="res://audio/FX/DamageTickSound2.wav" id="20_bqgr6"]
+[ext_resource type="AudioStream" uid="uid://cxxlkquxxq57r" path="res://audio/FX/DamageTickSound3.wav" id="21_0wuus"]
 
 [node name="AudioController" type="Node"]
 script = ExtResource("1_sjpvs")
+
+[node name="EndgameLoop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_4d2i6")
+bus = &"Music"
+
+[node name="Level1Loop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_8y5qn")
+
+[node name="Level2Loop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_7u1yl")
+
+[node name="Level3Loop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_s0wyf")
+
+[node name="Level4Loop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_ci30f")
+
+[node name="Transition" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_mwh36")
+
+[node name="ItemTrashSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_2pnbw")
+
+[node name="ItemDiscoverySound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_fakn1")
+
+[node name="ItemCombinationSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_rrhqg")
+
+[node name="HeroDeathSound1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_g66ye")
+
+[node name="HeroDeathSound2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_2j0wb")
+
+[node name="HeroDeathSound3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_nbygy")
+
+[node name="HeroDeathSound4" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_mup6o")
+
+[node name="GameOverSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_scpgu")
+
+[node name="EnemyDeathSound1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_iioma")
+
+[node name="EnemyDeathSound2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_w33bt")
+
+[node name="EnemyDeathSound3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_0hnx5")
+
+[node name="DamageTickSound1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("19_uhvmd")
+
+[node name="DamageTickSound2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("20_bqgr6")
+
+[node name="DamageTickSound3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("21_0wuus")

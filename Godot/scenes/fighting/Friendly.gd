@@ -155,6 +155,12 @@ func take_damage(amount):
 	health_bar.value = health
 	if health <= 0:
 		self.queue_free()
+		if counter == 1:
+			AudioController.get_player("HeroDeathSound2").play()
+		else: if counter == 2:
+			AudioController.get_player("HeroDeathSound3").play()
+		else:
+			AudioController.get_player("HeroDeathSound4").play()
 
 func _process(_delta):
 	pass

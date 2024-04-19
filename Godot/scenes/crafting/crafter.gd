@@ -38,6 +38,7 @@ func _slots_changed():
 	var local_state = _state_number
 	if $LeftSlot.item != null and $RightSlot.item != null:
 		_gear_tween.play()
+		AudioController.get_player("ItemCombinationSound").play()
 
 		# Craft item(s).
 		await Ticker.timer.timeout

@@ -91,6 +91,19 @@ func take_damage(amount):
 	health_bar.value = health
 	if health <= 0:
 		self.queue_free()
+		if counter == 1:
+			AudioController.get_player("EnemyDeathSound1").play()
+		else: if counter == 2:
+			AudioController.get_player("EnemyDeathSound2").play()
+		else:
+			AudioController.get_player("EnemyDeathSound3").play()
+	else:
+		if counter == 1:
+			AudioController.get_player("DamageTickSound1").play()
+		else: if counter == 2:
+			AudioController.get_player("DamageTickSound2").play()
+		else:
+			AudioController.get_player("DamageTickSound3").play()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):

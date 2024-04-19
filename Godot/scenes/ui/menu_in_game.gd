@@ -57,7 +57,7 @@ func _on_button_pressed(p_option: Button, start_signal: Signal):
 	p_option.set_process_shortcut_input(false)
 	_selected_option = p_option
 	for option in _options:
-		_update_color(option, option == p_option)
+		_update_color(option)
 	start_signal.emit()
 	get_viewport().set_input_as_handled()
 
