@@ -15,6 +15,8 @@ enum Type {
 	SPEAR,
 	STEEL,
 	SWORD,
+	WOODEN_SHIELD,
+	IRON_SHIELD,
 }
 
 
@@ -77,6 +79,7 @@ static var recipes: Array[Recipe] = [
 	Recipe.new(Type.WOOD, Type.TORCH, Type.TORCH),
 	Recipe.new(Type.WOOD, Type.HOT_FIRE, Type.HOT_FIRE),
 	Recipe.new(Type.WOOD, Type.HOT_STEEL, Type.FIRE),
+	Recipe.new(Type.WOOD, Type.HAMMER, Type.WOODEN_SHIELD),
 
 	Recipe.new(Type.STONE, Type.STONE, Type.IRON_ORE),
 	Recipe.new(Type.STONE, Type.FIRE, Type.STONE),
@@ -84,6 +87,7 @@ static var recipes: Array[Recipe] = [
 	Recipe.new(Type.IRON_ORE, Type.IRON_ORE, Type.TORCH),
 	Recipe.new(Type.IRON_ORE, Type.FIRE, Type.IRON_ORE),
 	Recipe.new(Type.IRON_ORE, Type.HOT_FIRE, Type.HOT_STEEL),
+	Recipe.new(Type.IRON_ORE, Type.HAMMER, Type.IRON_SHIELD),
 
 	Recipe.new(Type.FIRE, Type.FIRE, Nothing.new()),
 	Recipe.new(Type.FIRE, Type.TORCH, Nothing.new()),
@@ -132,7 +136,9 @@ static var stat_modifiers := {
 	Type.HOT_STEEL: StatModifier.new(-2, 0),
 	Type.SPEAR: StatModifier.new(0, 2),
 	Type.STEEL: StatModifier.new(0, 0, false, 2),
-	Type.SWORD: StatModifier.new(0, 3),
+	Type.SWORD: StatModifier.new(0, 4),
+	Type.WOODEN_SHIELD: StatModifier.new(2, 0),
+	Type.IRON_SHIELD: StatModifier.new(3, 0),
 }
 
 
@@ -150,6 +156,8 @@ static var sprites := {
 	Type.SPEAR: preload('res://assets/items/Spear.png'),
 	Type.STEEL: preload('res://assets/items/steel.png'),
 	Type.SWORD: preload('res://assets/items/sword.png'),
+	Type.WOODEN_SHIELD: preload("res://assets/items/shield_wood.png"),
+	Type.IRON_SHIELD: preload("res://assets/items/shield_iron.png"),
 }
 
 

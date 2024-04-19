@@ -11,7 +11,10 @@ var counter = 3
 func _ready():
 	Ticker.timer.timeout.connect(_on_global_ticker_timeout)
 	global_position = Tile.snap_crafting(global_position)
-
+	if randi() % 2:
+		spawn_type = Item.Type.WOOD
+	else:
+		spawn_type = Item.Type.STONE
 
 func hover():
 	scale = Vector2(1.1, 1.1)
