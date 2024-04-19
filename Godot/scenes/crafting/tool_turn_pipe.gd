@@ -22,7 +22,7 @@ func _input(event):
 func _mouse_move(p_position: Vector2):
 	global_position = Tile.snap_crafting(p_position)
 	var pipe = _get_collision()
-	if pipe is Pipe:
+	if pipe is Pipe and GameParameters.is_buildable(pipe.global_position):
 		_sprite.modulate = modulate_valid
 		_sprite.rotation = Pipe.arrow_rotation[pipe.direction]
 	else:
@@ -36,6 +36,8 @@ func _unhandled_input(event):
 
 		get_viewport().set_input_as_handled()
 
+		if not GameParameters.is_buildable(global_position):
+			return
 		var pipe = _get_collision()
 		if pipe is Pipe:
 			if event.button_index == MOUSE_BUTTON_LEFT:
