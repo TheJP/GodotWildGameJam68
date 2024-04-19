@@ -3,6 +3,7 @@ extends Area2D
 
 @onready var move_ray = $MoveRay
 @onready var melee_ray = $MeleeRay
+@onready var health_bar = $HealthBar
 
 var animation_speed = 3
 var tile_size = GameParameters.tilesize
@@ -20,7 +21,9 @@ var counter = 0
 func _ready():
 	Ticker.timer.timeout.connect(on_global_ticker_timeout)
 	global_position = Tile.snap_fighting(global_position)
-
+	health_bar.max_value = health
+	health_bar.visible = false
+	
 func _unhandled_input(event):
 	if event is InputEventMouseButton:
 		if event.button_index != MOUSE_BUTTON_LEFT:
@@ -73,12 +76,20 @@ func act():
 			
 	if(counter == move_frequency):
 			counter = 0
+
+func increase_health(amount):
+		health += amount
+		health_bar.max_value = health
+		health_bar.value = health
 			
 func take_damage(amount):
+	if health_bar.visible == false:
+		health_bar.visible = true
 	health -= amount
 	$Sprite2D.modulate = Color.RED
 	await get_tree().create_timer(0.1).timeout
 	$Sprite2D.modulate = Color.WHITE
+	health_bar.value = health
 	if health <= 0:
 		self.queue_free()
 		if counter == 1:
