@@ -7,6 +7,7 @@ extends DropTarget
 @onready var right_hand_sprite = $RightHand
 @onready var left_hand_sprite = $LeftHand
 @onready var health_bar = $HealthBar
+@onready var _animation_player = $AnimationPlayer
 var right_hand_occupied = false
 var left_hand_occupied = false
 var right_hand_item_type = null
@@ -153,6 +154,7 @@ func take_damage(amount):
 	if health_bar.visible == false:
 		health_bar.visible = true
 	health -= amount
+	_animation_player.play("taking_damage")
 	$Sprite2D.modulate = Color.RED
 	await get_tree().create_timer(0.1).timeout
 	$Sprite2D.modulate = Color.WHITE

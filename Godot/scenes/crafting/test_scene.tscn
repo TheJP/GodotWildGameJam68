@@ -47,6 +47,7 @@ offsets = PackedFloat32Array(0.582809, 0.993711)
 colors = PackedColorArray(0.501961, 0.45098, 0, 1, 0.501961, 0.45098, 0, 0)
 
 [node name="TestScene" type="Node2D"]
+visible = false
 
 [node name="starglow" type="CPUParticles2D" parent="."]
 visible = false
@@ -74,6 +75,7 @@ anim_speed_min = 5.0
 anim_speed_max = 20.0
 
 [node name="dust_spill" type="CPUParticles2D" parent="."]
+visible = false
 material = SubResource("CanvasItemMaterial_4twd2")
 amount = 10
 lifetime = 5.0
@@ -104,3 +106,4 @@ anim_speed_min = 4.0
 anim_speed_max = 4.0
 
 [node name="flame_particles" parent="." instance=ExtResource("5_fyfv5")]
+visible = false

@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://c0n43aeimp0ns"]
+[gd_scene load_steps=20 format=3 uid="uid://c0n43aeimp0ns"]
 
 [ext_resource type="Script" path="res://scenes/fighting/Friendly.gd" id="1_c7eoa"]
 [ext_resource type="Texture2D" uid="uid://ig1nba8oydqx" path="res://assets/fighters/hero_1.png" id="2_hrmhx"]
+[ext_resource type="Texture2D" uid="uid://cwr0i2mr1rpna" path="res://assets/particles/Blood_pink_anim_sprite.png" id="3_enii4"]
+[ext_resource type="Texture2D" uid="uid://dlkduvack5ciy" path="res://assets/particles/dust_anim_sprite.png" id="4_1mr5q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hapvm"]
 size = Vector2(64, 64)
@@ -11,6 +13,114 @@ bg_color = Color(0.666667, 0.0352941, 0, 0.588235)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bshbd"]
 bg_color = Color(0, 0.784314, 0, 0.588235)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qnki0"]
+atlas = ExtResource("3_enii4")
+region = Rect2(585, 0, 117, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oeq7t"]
+atlas = ExtResource("3_enii4")
+region = Rect2(468, 0, 117, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_coacs"]
+atlas = ExtResource("3_enii4")
+region = Rect2(351, 0, 117, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_amyjb"]
+atlas = ExtResource("3_enii4")
+region = Rect2(234, 0, 117, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_clepe"]
+atlas = ExtResource("3_enii4")
+region = Rect2(117, 0, 117, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h4tgi"]
+atlas = ExtResource("3_enii4")
+region = Rect2(0, 0, 117, 60)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rq5h4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qnki0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oeq7t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_coacs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_amyjb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_clepe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h4tgi")
+}],
+"loop": false,
+"name": &"default",
+"speed": 7.0
+}]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_wqsy3"]
+particles_animation = true
+particles_anim_h_frames = 6
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_jqd3j"]
+offsets = PackedFloat32Array(0.0127796, 0.415335, 0.638978, 1)
+colors = PackedColorArray(0.6, 0.298039, 0.411765, 1, 0.460177, 0.228128, 0.341853, 1, 0.247059, 0.121569, 0.235294, 1, 0.6, 0.298039, 0.411765, 0)
+
+[sub_resource type="Animation" id="Animation_jthwl"]
+resource_name = "taking_damage"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("blood:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.937255), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("blood:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0001, 0.02, 0.05, 0.09, 0.14, 0.21),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("blood_spill:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_ci53c"]
+resource_name = "RESET"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ijpr6"]
+_data = {
+"RESET": SubResource("Animation_ci53c"),
+"taking_damage": SubResource("Animation_jthwl")
+}
 
 [node name="Friendly" type="Area2D"]
 collision_layer = 5
@@ -55,6 +165,42 @@ theme_override_styles/background = SubResource("StyleBoxFlat_gm5li")
 theme_override_styles/fill = SubResource("StyleBoxFlat_bshbd")
 value = 100.0
 show_percentage = false
+
+[node name="blood" type="AnimatedSprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+position = Vector2(-20, 0)
+sprite_frames = SubResource("SpriteFrames_rq5h4")
+speed_scale = 2.0
+
+[node name="blood_spill" type="CPUParticles2D" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+material = SubResource("CanvasItemMaterial_wqsy3")
+position = Vector2(-11, 3)
+emitting = false
+amount = 10
+lifetime = 1.5
+one_shot = true
+speed_scale = 3.0
+explosiveness = 0.34
+randomness = 1.0
+texture = ExtResource("4_1mr5q")
+direction = Vector2(-1, 0)
+spread = 85.93
+gravity = Vector2(-1, 0)
+initial_velocity_min = 17.0
+initial_velocity_max = 17.0
+damping_min = 1.0
+damping_max = 1.0
+scale_amount_min = 3.0
+scale_amount_max = 3.0
+color_ramp = SubResource("Gradient_jqd3j")
+anim_speed_min = 10.0
+anim_speed_max = 10.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ijpr6")
+}
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
