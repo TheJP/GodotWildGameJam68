@@ -8,9 +8,9 @@ particles_anim_h_frames = 5
 particles_anim_v_frames = 1
 particles_anim_loop = false
 
-[sub_resource type="Gradient" id="Gradient_xdup7"]
-offsets = PackedFloat32Array(0, 0.204473, 0.492013, 1)
-colors = PackedColorArray(1, 0.87451, 0, 1, 0.937255, 0.666667, 0.0196078, 0.835294, 0.937255, 0.352941, 0.0196078, 0.721569, 1, 1, 1, 0)
+[sub_resource type="Gradient" id="Gradient_la4be"]
+offsets = PackedFloat32Array(0, 0.194888, 0.415335, 1)
+colors = PackedColorArray(1, 0.87451, 0, 1, 0.937255, 0.666667, 0.0196078, 0.839216, 0.937255, 0.352941, 0.0196078, 0.584314, 1, 1, 1, 0)
 
 [node name="flame_particles" type="CPUParticles2D"]
 z_index = 1
@@ -32,7 +32,7 @@ angular_velocity_max = 2.0
 angle_max = 720.0
 scale_amount_min = 0.0
 scale_amount_max = 4.0
-color_ramp = SubResource("Gradient_xdup7")
+color_ramp = SubResource("Gradient_la4be")
 anim_speed_max = 5.0
 anim_offset_min = 0.0802
 anim_offset_max = 0.0802
