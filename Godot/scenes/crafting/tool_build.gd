@@ -5,6 +5,7 @@ extends Node2D
 @export var type: Tile.Type
 @export var modulate_valid: Color = "9cff99"
 @export var modulate_invalid: Color = "ff8585"
+@export var is_intersection := false
 var build_target: Node2D
 
 
@@ -16,7 +17,10 @@ var _mode := MOUSE_BUTTON_NONE
 
 
 func _ready():
-	$Sprite2D.texture = Tile.sprites[type]
+	if type == Tile.Type.PIPE and is_intersection:
+		$Sprite2D.texture = Tile.sprite_intersection
+	else:
+		$Sprite2D.texture = Tile.sprites[type]
 	_mouse_move(get_viewport().get_mouse_position())
 
 
@@ -31,7 +35,7 @@ func _input(event):
 func _mouse_move(p_position: Vector2):
 	var size = Vector2i(1, 1) if type != Tile.Type.CRAFTER else Vector2i(2, 1)
 	global_position = Tile.snap_crafting(p_position, size)
-	if not _is_inside_bounds(type, global_position):
+	if not _is_inside_bounds(global_position):
 		_sprite.modulate = modulate_invalid
 	elif not _is_colliding() or (type == Tile.Type.PIPE and _ray.get_collider(0) is Pipe):
 		_sprite.modulate = modulate_valid
@@ -99,19 +103,24 @@ func _try_build(p_position):
 	var is_colliding = _is_colliding()
 	if is_colliding:
 		_previous_build = _ray.get_collider(0)
-	if not _is_inside_bounds(type, p_position):
+	if not _is_inside_bounds(p_position):
 		return
 	if _is_colliding():
 		var collider = _ray.get_collider(0)
 		if collider is Pipe:
-			collider.connections |= new_connections
+			if not is_intersection:
+				collider.connections |= new_connections
+			else:
+				collider.connections = Pipe.CONNECTIONS_ALL
 			collider.direction = Pipe.Direction.NONE
+			collider.is_intersection = is_intersection
 		return
 
 	var tile = Tile.scenes[type].instantiate()
 	tile.global_position = p_position
 	if type == Tile.Type.PIPE:
-		tile.connections = new_connections
+		tile.connections = new_connections if not is_intersection else Pipe.CONNECTIONS_ALL
+		tile.is_intersection = is_intersection
 	build_target.add_child(tile)
 
 	_previous_build = tile
@@ -123,7 +132,7 @@ func _is_colliding() -> bool:
 	return _ray.is_colliding()
 
 
-func _is_inside_bounds(type: Tile.Type, p_position: Vector2):
+func _is_inside_bounds(p_position: Vector2):
 	if type != Tile.Type.CRAFTER:
 		return GameParameters.is_buildable(p_position)
 	else:

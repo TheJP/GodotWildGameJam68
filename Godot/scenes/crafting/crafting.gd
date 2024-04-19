@@ -26,16 +26,19 @@ func _ready():
 	_menu.start_default_tool.connect(_before_tool_switch)
 	_menu.start_build_crafter.connect(_start_building.bind(Tile.Type.CRAFTER))
 	_menu.start_build_pipe.connect(_start_building.bind(Tile.Type.PIPE))
+	_menu.start_build_intersection.connect(_start_building.bind(Tile.Type.PIPE, true))
 	_menu.start_pipe_turn.connect(_start_pipe_turn)
 	_menu.start_build_trash.connect(_start_building.bind(Tile.Type.TRASH_CAN))
 	_menu.start_remove.connect(_start_remove)
 
 
-func _start_building(type: Tile.Type):
+func _start_building(type: Tile.Type, is_intersection := false):
+	assert(type == Tile.Type.PIPE or not is_intersection, 'is_intersection=true is only implemented for pipes')
 	_before_tool_switch()
 	_current_tool = _build_tool_scene.instantiate()
 	_current_tool.type = type
 	_current_tool.build_target = _machines_and_items
+	_current_tool.is_intersection = is_intersection
 	_build_tools.add_child(_current_tool)
 
 
