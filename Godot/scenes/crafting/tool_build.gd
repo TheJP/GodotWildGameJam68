@@ -31,7 +31,9 @@ func _input(event):
 func _mouse_move(p_position: Vector2):
 	var size = Vector2i(1, 1) if type != Tile.Type.CRAFTER else Vector2i(2, 1)
 	global_position = Tile.snap_crafting(p_position, size)
-	if not _is_colliding() or (type == Tile.Type.PIPE and _ray.get_collider(0) is Pipe):
+	if not _is_inside_bounds(type, global_position):
+		_sprite.modulate = modulate_invalid
+	elif not _is_colliding() or (type == Tile.Type.PIPE and _ray.get_collider(0) is Pipe):
 		_sprite.modulate = modulate_valid
 	else:
 		_sprite.modulate = modulate_invalid
@@ -94,12 +96,16 @@ func _try_build(p_position):
 		if _previous_build is Pipe:
 			_previous_build.connections |= previous_connections
 
+	var is_colliding = _is_colliding()
+	if is_colliding:
+		_previous_build = _ray.get_collider(0)
+	if not _is_inside_bounds(type, p_position):
+		return
 	if _is_colliding():
 		var collider = _ray.get_collider(0)
 		if collider is Pipe:
 			collider.connections |= new_connections
 			collider.direction = Pipe.Direction.NONE
-		_previous_build = _ray.get_collider(0)
 		return
 
 	var tile = Tile.scenes[type].instantiate()
@@ -115,3 +121,11 @@ func _is_colliding() -> bool:
 	_ray.target_position = Vector2(0, 0)
 	_ray.force_shapecast_update()
 	return _ray.is_colliding()
+
+
+func _is_inside_bounds(type: Tile.Type, p_position: Vector2):
+	if type != Tile.Type.CRAFTER:
+		return GameParameters.is_buildable(p_position)
+	else:
+		var shift = Vector2.RIGHT * (GameParameters.craft_tilesize * 0.5)
+		return GameParameters.is_buildable(p_position + shift) and GameParameters.is_buildable(position - shift)

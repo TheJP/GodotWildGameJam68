@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c8rlkymrr4wl7" path="res://assets/items/fire.png" id="2_bw2v3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lnsgk"]
-radius = 32.0
+radius = 30.0
 
 [node name="Item" type="Area2D"]
 collision_layer = 4
