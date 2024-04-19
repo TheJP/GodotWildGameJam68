@@ -35,6 +35,7 @@ func _ready():
 func _start_building(type: Tile.Type, is_intersection := false):
 	assert(type == Tile.Type.PIPE or not is_intersection, 'is_intersection=true is only implemented for pipes')
 	_before_tool_switch()
+	Tool.current_type = Tool.Type.BUILD
 	_current_tool = _build_tool_scene.instantiate()
 	_current_tool.type = type
 	_current_tool.build_target = _machines_and_items
@@ -44,12 +45,14 @@ func _start_building(type: Tile.Type, is_intersection := false):
 
 func _start_pipe_turn():
 	_before_tool_switch()
+	Tool.current_type = Tool.Type.ARROW
 	_current_tool = _turn_pipe_tool_scene.instantiate()
 	_build_tools.add_child(_current_tool)
 
 
 func _start_remove():
 	_before_tool_switch()
+	Tool.current_type = Tool.Type.REMOVE
 	_current_tool = _remove_tool_scene.instantiate()
 	_build_tools.add_child(_current_tool)
 
@@ -58,3 +61,4 @@ func _before_tool_switch():
 	if _current_tool != null:
 		_current_tool.queue_free()
 		_current_tool = null
+		Tool.current_type = Tool.Type.DEFAULT

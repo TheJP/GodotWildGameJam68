@@ -76,7 +76,7 @@ func _input(event):
 
 func _on_mouse_entered():
 	_hovering = true
-	if dragging == null:
+	if dragging == null and Tool.current_type == Tool.Type.DEFAULT:
 		scale = Vector2(1.1, 1.1)
 		Input.set_default_cursor_shape(Input.CURSOR_CAN_DROP)
 
@@ -84,7 +84,7 @@ func _on_mouse_entered():
 func _on_mouse_exited():
 	_hovering = false
 	scale = Vector2(1, 1)
-	if dragging == null:
+	if dragging == null or Tool.current_type == Tool.Type.DEFAULT:
 		Input.set_default_cursor_shape(Input.CURSOR_ARROW)
 
 

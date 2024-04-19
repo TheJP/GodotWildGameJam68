@@ -25,6 +25,7 @@ Ticker="*res://globals/ticker.gd"
 ClickCooldown="*res://globals/click_cooldown.gd"
 GlobalStats="*res://globals/global_stats.gd"
 Setup="*res://globals/setup.gd"
+Tool="*res://globals/tool.gd"
 
 [display]
 
