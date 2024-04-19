@@ -2,6 +2,7 @@ extends Node
 
 var factory_health = 100
 var progress = 0
+var update_progress = false
 signal update_health_bar
 
 func update_health(amount):
@@ -11,6 +12,30 @@ func update_health(amount):
 		await get_tree().create_timer(1).timeout
 		AudioController.get_player("GameOverSound").play()
 		get_tree().change_scene_to_file("res://scenes/ui/GameOver.tscn")
-		
+
+func _process(_delta):
+	if progress == 1:
+		AudioController.get_player("Level1Loop").stream.set_loop_mode(0)
+		if AudioController.get_player("Level1Loop").playing == false:
+			if AudioController.get_player("Level2Loop").playing == false:
+				AudioController.get_player("Level2Loop").play()
+	elif progress == 2:
+		AudioController.get_player("Level1Loop").stream.set_loop_mode(0)
+		AudioController.get_player("Level2Loop").stream.set_loop_mode(0)
+		if AudioController.get_player("Level1Loop").playing == false:
+			if AudioController.get_player("Level2Loop").playing == false:
+				if AudioController.get_player("Level3Loop").playing == false:
+					AudioController.get_player("Level3Loop").play()
+	elif progress == 3:
+		AudioController.get_player("Level1Loop").stream.set_loop_mode(0)
+		AudioController.get_player("Level2Loop").stream.set_loop_mode(0)
+		AudioController.get_player("Level3Loop").stream.set_loop_mode(0)		
+		if AudioController.get_player("Level1Loop").playing == false:
+			if AudioController.get_player("Level2Loop").playing == false:
+				if AudioController.get_player("Level3Loop").playing == false:
+					if AudioController.get_player("Level4Loop").playing == false:
+						AudioController.get_player("Level4Loop").play()
+				
 func set_progress_level(level):
-	pass
+	progress = level
+		
