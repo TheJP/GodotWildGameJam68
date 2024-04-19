@@ -9,6 +9,7 @@ static var dragging = null
 @export var animation_speed := 3.0
 var container = null
 var _previous_container = null
+var _intersection_direction := Pipe.Direction.NONE
 
 
 var _tween: Tween = null
@@ -137,6 +138,11 @@ func _flow():
 		_previous_container = container
 		container = target.machine
 
+		if target.machine is Pipe and target.machine.is_intersection:
+			_intersection_direction = target.direction
+		else:
+			_intersection_direction = Pipe.Direction.NONE
+
 		if _tween != null:
 			_tween.kill()
 		_tween = create_tween()
@@ -163,7 +169,10 @@ func _find_flow_targets() -> Array[FlowTarget]:
 	if container is CrafterSlot or container is Spawner:
 		directions = [Pipe.Direction.DOWN]
 	elif container is Pipe:
-		directions = container.get_flow_directions()
+		if not container.is_intersection or _intersection_direction == Pipe.Direction.NONE:
+			directions = container.get_flow_directions()
+		else:
+			directions = [_intersection_direction]
 
 	for direction in directions:
 		var trajectory: Vector2 = Pipe.direction_to_vector[direction]
