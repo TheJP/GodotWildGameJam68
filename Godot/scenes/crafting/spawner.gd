@@ -44,5 +44,6 @@ func _on_global_ticker_timeout():
 			item.type = spawn_type
 			item.container = self
 			get_parent().add_child(item)
-			item.global_position = global_position
+			item.global_position = global_position + Vector2.UP * GameParameters.craft_tilesize
+			create_tween().tween_property(item, "global_position", global_position, 1.0 / item.animation_speed)
 		counter = 0
