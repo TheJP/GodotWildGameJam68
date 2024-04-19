@@ -11,8 +11,7 @@ static func get_player(path: NodePath) -> AudioStreamPlayer:
 
 func _ready():
 	controller = self
-	await get_tree().process_frame
-	controller.get_player("Level1Loop").play()
+	_get_player("Level1Loop").play()
 
 
 func _get_player(path: NodePath) -> AudioStreamPlayer:
