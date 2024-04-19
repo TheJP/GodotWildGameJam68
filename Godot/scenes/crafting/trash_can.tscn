@@ -14,7 +14,6 @@ script = ExtResource("1_xf6lk")
 type = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(0.64, 0.64)
 shape = SubResource("CapsuleShape2D_77v1d")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
