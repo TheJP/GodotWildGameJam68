@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=14 format=3 uid="uid://d37xjde3q7k3t"]
+[gd_resource type="Theme" load_steps=20 format=3 uid="uid://d37xjde3q7k3t"]
 
 [ext_resource type="FontFile" uid="uid://beh05ftgpjxmt" path="res://fonts/PixelifySans-VariableFont_wght.ttf" id="1_i5bfn"]
 [ext_resource type="Texture2D" uid="uid://dnowvvy2r42yc" path="res://assets/ui/button_hover.png" id="2_4kqux"]
@@ -6,6 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://036vgucm6l0x" path="res://assets/ui/button.png" id="3_gxck6"]
 [ext_resource type="Texture2D" uid="uid://bns0xe8eq7tcp" path="res://assets/ui/button_click.png" id="4_sb1nx"]
 [ext_resource type="Texture2D" uid="uid://b5fn484pnhtrn" path="res://assets/ui/panel.png" id="6_h37hl"]
+[ext_resource type="Texture2D" uid="uid://djvpeh2678nim" path="res://assets/ui/grabber.png" id="6_wx8ti"]
+[ext_resource type="Texture2D" uid="uid://dd1skn7jg3r7j" path="res://assets/ui/grabber_hover.png" id="7_1w7pv"]
+[ext_resource type="Texture2D" uid="uid://1067un1pm7ig" path="res://assets/ui/slider.png" id="7_fc2fp"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ajo22"]
 load_path = "res://.godot/imported/button.png-473760ec7449fb30c95f607492aecb17.ctex"
@@ -59,6 +62,31 @@ texture_margin_top = 40.0
 texture_margin_right = 40.0
 texture_margin_bottom = 40.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jckq7"]
+bg_color = Color(0.564706, 0.619608, 0.866667, 1)
+border_width_left = 3
+border_color = Color(0.8, 0.8, 0.8, 0)
+expand_margin_top = 6.0
+expand_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0d4xs"]
+bg_color = Color(0.764706, 0.447059, 0.537255, 1)
+border_width_left = 3
+border_color = Color(0.8, 0.8, 0.8, 0)
+expand_margin_top = 6.0
+expand_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_b2pc6"]
+texture = ExtResource("7_fc2fp")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+expand_margin_left = 3.0
+expand_margin_top = 12.0
+expand_margin_right = 3.0
+expand_margin_bottom = 12.0
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gtne7"]
 texture = ExtResource("6_h37hl")
 texture_margin_left = 40.0
@@ -81,5 +109,10 @@ Button/styles/focus = SubResource("StyleBoxTexture_loig2")
 Button/styles/hover = SubResource("StyleBoxTexture_3dnuv")
 Button/styles/normal = SubResource("StyleBoxTexture_pd4vy")
 Button/styles/pressed = SubResource("StyleBoxTexture_4loes")
+HSlider/icons/grabber = ExtResource("6_wx8ti")
+HSlider/icons/grabber_highlight = ExtResource("7_1w7pv")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_jckq7")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_0d4xs")
+HSlider/styles/slider = SubResource("StyleBoxTexture_b2pc6")
 Label/colors/font_color = Color(0.262745, 0.117647, 0.4, 1)
 PanelContainer/styles/panel = SubResource("StyleBoxTexture_gtne7")
