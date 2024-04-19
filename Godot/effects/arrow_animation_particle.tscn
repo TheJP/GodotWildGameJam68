@@ -54,4 +54,4 @@ animations = [{
 
 [node name="animated_arrow" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_61be6")
-frame_progress = 0.447881
+frame_progress = 0.257727
