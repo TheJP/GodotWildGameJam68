@@ -9,5 +9,5 @@ func _ready():
 	controller = self
 
 
-func get_player(path: NodePath) -> AudioStreamPlayer:
-	return get_node(path) as AudioStreamPlayer
+static func get_player(path: NodePath) -> AudioStreamPlayer:
+	return controller.get_node(path) as AudioStreamPlayer
