@@ -47,7 +47,7 @@ func _unhandled_input(event):
 		if not event.pressed and dragging == self:
 			# Stop dragging.
 			dragging = null
-			Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
+			Input.set_default_cursor_shape(Input.CURSOR_CAN_DROP)
 			_update_target()
 			var target = _closest_target()
 			if target != null and target.try_drop(self):
@@ -78,7 +78,7 @@ func _on_mouse_entered():
 	_hovering = true
 	if dragging == null:
 		scale = Vector2(1.1, 1.1)
-		Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
+		Input.set_default_cursor_shape(Input.CURSOR_CAN_DROP)
 
 
 func _on_mouse_exited():
@@ -217,4 +217,3 @@ func _item_decayed(decay):
 		type = decay.output.type
 		$Sprite2D.texture = Item.sprites[type]
 		set_effect(Item.effects[type])
-		
