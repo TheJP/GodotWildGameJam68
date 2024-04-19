@@ -7,7 +7,6 @@
 bg_color = Color(0, 0, 0, 0.686275)
 
 [node name="MenuCredits" type="Control"]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -90,7 +89,7 @@ text = "Polish"
 [node name="Label7" type="Label" parent="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "Alex ?"
+text = "Alex Zurkinden"
 
 [node name="Label8" type="Label" parent="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
