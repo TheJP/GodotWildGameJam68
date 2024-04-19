@@ -166,7 +166,7 @@ func take_damage(amount):
 		elif sound_index == 1:
 			AudioController.get_player("HeroDeathSound3").play()
 		else:
-			AudioController.get_player("HeroDeathSound4").play()		
+			AudioController.get_player("HeroDeathSound4").play()
 		self.queue_free()
 
 func _process(_delta):

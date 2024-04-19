@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/crafting/tool_turn_pipe.gd" id="1_tdxjj"]
 [ext_resource type="Texture2D" uid="uid://d0844foetdry5" path="res://assets/arrow.png" id="2_a5p3c"]
-[ext_resource type="PackedScene" uid="uid://cfj8uv0w2wdv0" path="res://effects/arrow_animation_particle.tscn" id="3_lcmha"]
+[ext_resource type="PackedScene" uid="uid://cang3bbj8ysel" path="res://effects/arrow_animation_particle.tscn" id="3_lcmha"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u5h3a"]
 size = Vector2(60, 60)

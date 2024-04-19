@@ -83,7 +83,7 @@ func check_progress(type):
 	elif(type == Item.Type.SWORD):
 		if(GlobalStats.progress < 3):
 			GlobalStats.set_progress_level(3)
-			
+
 func _spawn_item(type: Item.Type, p_position: Vector2) -> Node2D:
 	var item = _item_scene.instantiate()
 	item.type = type

@@ -74,6 +74,9 @@ particles_anim_loop = false
 offsets = PackedFloat32Array(0.0127796, 0.415335, 0.638978, 1)
 colors = PackedColorArray(0.6, 0.298039, 0.411765, 1, 0.460177, 0.228128, 0.341853, 1, 0.247059, 0.121569, 0.235294, 1, 0.6, 0.298039, 0.411765, 0)
 
+[sub_resource type="Animation" id="Animation_ci53c"]
+resource_name = "RESET"
+
 [sub_resource type="Animation" id="Animation_jthwl"]
 resource_name = "taking_damage"
 tracks/0/type = "value"
@@ -112,9 +115,6 @@ tracks/2/keys = {
 "update": 1,
 "values": [true]
 }
-
-[sub_resource type="Animation" id="Animation_ci53c"]
-resource_name = "RESET"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ijpr6"]
 _data = {
