@@ -169,7 +169,7 @@ static var effects := {
 	Type.HAMMER: null,
 	Type.TORCH: null,
 	Type.COAL: null,
-	Type.HOT_FIRE: null,
+	Type.HOT_FIRE: preload("res://effects/hot_fire_particles.tscn"),
 	Type.HOT_STEEL: null,
 	Type.SPEAR: null,
 	Type.STEEL: null,
