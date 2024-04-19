@@ -42,7 +42,6 @@ func on_global_ticker_timeout():
 	act()
 
 func act():
-	
 	counter += 1
 	move_ray.target_position = Vector2.LEFT * tile_size
 	move_ray.force_raycast_update()

@@ -40,8 +40,8 @@ func _unhandled_input(event):
 			# Stop dragging.
 			dragging = null
 			Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
-			_update_machine()
-			var target = _closest_machine()
+			_update_target()
+			var target = _closest_target()
 			if target != null and target.try_drop(self):
 				container = target
 		elif event.pressed and _hovering and dragging == null:
@@ -55,7 +55,7 @@ func _unhandled_input(event):
 				_tween.stop()
 			_drag_mouse_delta = position - event.position
 			Input.set_default_cursor_shape(Input.CURSOR_DRAG)
-			_update_machine()
+			_update_target()
 
 
 func _input(event):
@@ -81,19 +81,19 @@ func _on_mouse_exited():
 
 
 func _on_area_entered(area):
-	if area is Machine:
+	if (area is Machine or area is Friendly):
 		_hovered_targets[area] = null
-		_update_machine()
+		_update_target()
 
 
 func _on_area_exited(area):
-	if area is Machine and area in _hovered_targets:
+	if (area is Machine or area is Friendly) and area in _hovered_targets:
 		_hovered_targets.erase(area)
-		_update_machine()
+		_update_target()
 
 
-func _update_machine():
-	var next_target = _closest_machine() if dragging == self else null
+func _update_target():
+	var next_target = _closest_target() if dragging == self else null
 
 	if next_target != _previous_target:
 		if _previous_target != null:
@@ -103,7 +103,7 @@ func _update_machine():
 		_previous_target = next_target
 
 
-func _closest_machine():
+func _closest_target():
 	var closest = null
 	var closest_distance = INF
 	for target in _hovered_targets.keys():

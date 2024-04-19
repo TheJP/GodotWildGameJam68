@@ -1,5 +1,5 @@
 class_name Friendly
-extends Area2D
+extends DropTarget
 
 @onready var move_ray = $MoveRay
 @onready var range_ray = $RangeRay
@@ -21,12 +21,29 @@ var damage = 1
 var move_frequency = 2
 var counter = -3
 
+var _hovering = false
+
 func _ready():
 	Ticker.timer.timeout.connect(on_global_ticker_timeout)
 	global_position = Tile.snap_fighting(global_position)
 	health_bar.max_value = health
 	health_bar.visible = false
-	
+
+func hover():
+	scale = Vector2(1.1, 1.1)
+
+func unhover():
+	scale = Vector2(1, 1)
+
+func try_drop(_item: Node2D) -> bool:
+	if try_set_item(_item):
+		_item.queue_free()
+		return true
+	else:
+		return false
+
+func try_remove() -> bool:
+	return false
 
 func on_global_ticker_timeout():
 	act()
@@ -43,6 +60,7 @@ func try_throw_item() -> bool:
 					var tween = create_tween()
 					tween.tween_property(right_hand_sprite, "global_position",
 						collider.global_position, 1.0/(animation_speed*2)).set_trans(Tween.TRANS_SINE)
+					collider.take_damage(Item.stat_modifiers[left_hand_item_type].throwable)
 					await tween.finished
 					right_hand_sprite.texture = null
 					right_hand_occupied = false
@@ -55,8 +73,6 @@ func try_throw_item() -> bool:
 						collider.global_position, 1.0/(animation_speed*2)).set_trans(Tween.TRANS_SINE)
 					collider.take_damage(Item.stat_modifiers[left_hand_item_type].throwable)
 					await tween.finished
-					if is_instance_valid(collider):
-						collider.take_damage(Item.stat_modifiers[left_hand_item_type].throwable)
 					left_hand_sprite.texture = null
 					left_hand_occupied = false
 					left_hand_item_type = null
@@ -94,11 +110,10 @@ func act():
 			range_ray.target_position = Vector2.RIGHT * tile_size * 5
 			range_ray.force_raycast_update()
 			if !move_ray.is_colliding():
-				if !(range_ray.is_colliding() && range_ray.get_collider() is EnemySpawner):
-					var tween = create_tween()
-					tween.tween_property(self, "position",
-						position + Vector2.RIGHT * tile_size, 1.0/animation_speed).set_trans(Tween.TRANS_SINE)
-					await tween.finished
+				var tween = create_tween()
+				tween.tween_property(self, "position",
+					position + Vector2.RIGHT * tile_size, 1.0/animation_speed).set_trans(Tween.TRANS_SINE)
+				await tween.finished
 
 	if(counter == move_frequency):
 			counter = 0

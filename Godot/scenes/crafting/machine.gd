@@ -1,5 +1,5 @@
 class_name Machine
-extends Area2D
+extends DropTarget
 
 
 @export var type: Tile.Type
@@ -7,23 +7,6 @@ extends Area2D
 
 func _init():
 	add_to_group("machine")
-
-
-func hover():
-	pass
-
-
-func unhover():
-	pass
-
-
-func try_drop(_item: Node2D) -> bool:
-	return false
-
-
-func try_remove() -> bool:
-	return false
-
 
 func destroy():
 	queue_free()
