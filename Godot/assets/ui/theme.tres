@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=20 format=3 uid="uid://d37xjde3q7k3t"]
+[gd_resource type="Theme" load_steps=21 format=3 uid="uid://d37xjde3q7k3t"]
 
 [ext_resource type="FontFile" uid="uid://beh05ftgpjxmt" path="res://fonts/PixelifySans-VariableFont_wght.ttf" id="1_i5bfn"]
 [ext_resource type="Texture2D" uid="uid://dnowvvy2r42yc" path="res://assets/ui/button_hover.png" id="2_4kqux"]
@@ -94,6 +94,18 @@ texture_margin_top = 40.0
 texture_margin_right = 40.0
 texture_margin_bottom = 40.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5a70v"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.133333, 0.537255, 0.431373, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.0392157, 0.164706, 0.2, 1)
+
 [resource]
 Button/colors/font_color = Color(0.262745, 0.117647, 0.4, 1)
 Button/colors/font_disabled_color = Color(0.262745, 0.117647, 0.4, 1)
@@ -117,3 +129,4 @@ HSlider/styles/slider = SubResource("StyleBoxTexture_b2pc6")
 Label/colors/font_color = Color(0.262745, 0.117647, 0.4, 1)
 Label/fonts/font = ExtResource("1_i5bfn")
 PanelContainer/styles/panel = SubResource("StyleBoxTexture_gtne7")
+TooltipPanel/styles/panel = SubResource("StyleBoxFlat_5a70v")
