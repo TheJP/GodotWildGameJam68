@@ -22,17 +22,23 @@ var _previous_target = null
 
 
 @onready var _ray: RayCast2D = $RayCast2D
+var effect = null
 
 
 func _ready():
 	$Sprite2D.texture = Item.sprites[type]
-	if(Item.effects[type] != null):
-		self.add_child(Item.effects[type].instantiate())
+	set_effect(Item.effects[type])
 	Ticker.timer.timeout.connect(_on_global_ticker_timeout)
 	if type in Item.decay:
 		var decay = Item.decay[type]
 		get_tree().create_timer(decay.age, false).timeout.connect(_item_decayed.bind(decay))
 
+func set_effect(_effect):
+	if effect != null:
+		effect.queue_free()
+	if(_effect != null):
+		effect = _effect.instantiate()
+		self.add_child(effect)
 
 func _unhandled_input(event):
 	if event is InputEventMouseButton:
@@ -210,3 +216,5 @@ func _item_decayed(decay):
 	else:
 		type = decay.output.type
 		$Sprite2D.texture = Item.sprites[type]
+		set_effect(Item.effects[type])
+		

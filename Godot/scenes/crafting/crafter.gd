@@ -69,9 +69,9 @@ func _craft():
 			new_left = _spawn_item(recipe.type, $LeftSlot.global_position)
 	else:
 		new_left = _spawn_item(Item.Type.TRASH, $LeftSlot.global_position)
-		check_progress(new_left.Type)
 	$LeftSlot.crafted_item(new_left)
 	$RightSlot.crafted_item(new_right)
+	check_progress(new_left.type)
 
 func check_progress(type):
 	if(type == Item.Type.HAMMER):
