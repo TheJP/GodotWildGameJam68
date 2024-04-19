@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cue8yoephfgox"]
 
 [ext_resource type="Script" path="res://scenes/crafting/tool_remove.gd" id="1_mefyi"]
-[ext_resource type="Texture2D" uid="uid://c8rlkymrr4wl7" path="res://assets/items/fire.png" id="2_iptk2"]
+[ext_resource type="Texture2D" uid="uid://bkjc1bksdqb1" path="res://assets/destroy_unclicked.png" id="2_5pqs6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sskcb"]
 size = Vector2(60, 60)
@@ -11,26 +11,7 @@ script = ExtResource("1_mefyi")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 2
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("2_iptk2")
-
-[node name="Label" type="Label" parent="."]
-z_index = 2
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -23.0
-offset_right = 20.0
-offset_bottom = 22.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 30
-text = "X"
-horizontal_alignment = 1
-vertical_alignment = 1
+texture = ExtResource("2_5pqs6")
 
 [node name="ShapeCast2D" type="ShapeCast2D" parent="."]
 shape = SubResource("RectangleShape2D_sskcb")

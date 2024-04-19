@@ -3,9 +3,8 @@
 [ext_resource type="Script" path="res://scenes/crafting/trash_can.gd" id="1_xf6lk"]
 [ext_resource type="Texture2D" uid="uid://caxosndx6vvgh" path="res://assets/trash_can.png" id="2_l85mn"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_77v1d"]
-radius = 36.0
-height = 92.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_80xda"]
+radius = 30.0
 
 [node name="TrashCan" type="Area2D"]
 collision_layer = 2
@@ -14,9 +13,7 @@ script = ExtResource("1_xf6lk")
 type = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(0.64, 0.64)
-shape = SubResource("CapsuleShape2D_77v1d")
+shape = SubResource("CircleShape2D_80xda")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.64, 0.64)
 texture = ExtResource("2_l85mn")
