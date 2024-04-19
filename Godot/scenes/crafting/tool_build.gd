@@ -46,15 +46,15 @@ func _unhandled_input(event):
 	if event is InputEventMouseButton:
 		if not event.pressed:
 			return
-		if event.button_index == MOUSE_BUTTON_LEFT:
-			_try_build(event.position)
-		if event.button_index == MOUSE_BUTTON_RIGHT:
-			_try_remove()
 		if event.button_index == MOUSE_BUTTON_LEFT or event.button_index == MOUSE_BUTTON_RIGHT:
 			get_viewport().set_input_as_handled()
 			_previous_build = null
 			_dragging = true
 			_mode = event.button_index
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			_try_build(event.position)
+		if event.button_index == MOUSE_BUTTON_RIGHT:
+			_try_remove()
 
 
 func _try_remove():
@@ -69,7 +69,8 @@ func _try_build(p_position):
 		return
 
 	var new_connections = 0
-	if type == Tile.Type.PIPE and _previous_build is Pipe:
+	if type == Tile.Type.PIPE and _previous_build is Machine:
+		var previous_connections = 0
 		var current = Tile.snap_crafting(p_position)
 		var other = _previous_build.global_position
 		var x_same = abs(current.x - other.x) < 1.0
@@ -78,18 +79,20 @@ func _try_build(p_position):
 			pass
 		elif x_same and abs(current.y - other.y) < GameParameters.tilesize * 1.5:
 			if current.y - other.y < 0.0:
-				_previous_build.connections |= Pipe.Direction.UP
+				previous_connections = Pipe.Direction.UP
 				new_connections = Pipe.Direction.DOWN
 			else:
-				_previous_build.connections |= Pipe.Direction.DOWN
+				previous_connections = Pipe.Direction.DOWN
 				new_connections = Pipe.Direction.UP
 		elif y_same and abs(current.x - other.x) < GameParameters.tilesize * 1.5:
 			if current.x - other.x < 0.0:
-				_previous_build.connections |= Pipe.Direction.LEFT
+				previous_connections = Pipe.Direction.LEFT
 				new_connections = Pipe.Direction.RIGHT
 			else:
-				_previous_build.connections |= Pipe.Direction.RIGHT
+				previous_connections = Pipe.Direction.RIGHT
 				new_connections = Pipe.Direction.LEFT
+		if _previous_build is Pipe:
+			_previous_build.connections |= previous_connections
 
 	if _is_colliding():
 		var collider = _ray.get_collider(0)
