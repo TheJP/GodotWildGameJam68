@@ -11,6 +11,9 @@ enum Direction {
 }
 
 
+static var CONNECTIONS_ALL = Pipe.Direction.DOWN | Pipe.Direction.LEFT | Pipe.Direction.UP | Pipe.Direction.RIGHT
+
+
 static var arrow_rotation := {
 	Direction.NONE: 0,
 	Direction.DOWN: 0,
@@ -56,12 +59,14 @@ static var _sprites := {
 	(Direction.RIGHT | Direction.DOWN | Direction.LEFT): preload('res://assets/pipes/pipe_rdl.png'),
 	(Direction.UP | Direction.RIGHT | Direction.DOWN | Direction.LEFT): preload('res://assets/pipes/pipe_urdl.png'),
 }
+static var _sprite_intersection := preload("res://assets/pipes/pipe_intersection.png")
 
 
 var item = null
 @export var direction := Direction.NONE
 var next_output := Direction.RIGHT
 var connections = 0
+var is_intersection := false
 
 
 @onready var _sprite: Sprite2D = $Sprite2D
@@ -89,7 +94,7 @@ func _ready():
 
 
 func _process(_delta):
-	var sprite = _sprites[connections]
+	var sprite = _sprites[connections] if not is_intersection else _sprite_intersection
 	if _sprite.texture != sprite:
 		_sprite.texture = sprite
 

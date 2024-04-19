@@ -8,6 +8,7 @@ static var _selected_option: Button
 signal start_default_tool()
 signal start_build_crafter()
 signal start_build_pipe()
+signal start_build_intersection()
 signal start_pipe_turn()
 signal start_build_trash()
 signal start_remove()
@@ -25,6 +26,7 @@ func _ready():
 		%DefaultButton,
 		%CrafterButton,
 		%PipeButton,
+		%IntersectionButton,
 		%ArrowButton,
 		%TrashButton,
 		%DeleteButton,
@@ -33,6 +35,7 @@ func _ready():
 	%DefaultButton.pressed.connect(_on_button_pressed.bind(%DefaultButton, start_default_tool))
 	%CrafterButton.pressed.connect(_on_button_pressed.bind(%CrafterButton, start_build_crafter))
 	%PipeButton.pressed.connect(_on_button_pressed.bind(%PipeButton, start_build_pipe))
+	%IntersectionButton.pressed.connect(_on_button_pressed.bind(%IntersectionButton, start_build_intersection))
 	%ArrowButton.pressed.connect(_on_button_pressed.bind(%ArrowButton, start_pipe_turn))
 	%TrashButton.pressed.connect(_on_button_pressed.bind(%TrashButton, start_build_trash))
 	%DeleteButton.pressed.connect(_on_button_pressed.bind(%DeleteButton, start_remove))
@@ -57,6 +60,7 @@ func _on_button_pressed(p_option: Button, start_signal: Signal):
 		_update_color(option, option == p_option)
 	start_signal.emit()
 	get_viewport().set_input_as_handled()
+
 
 func _hover(option: Button):
 	option.scale = Vector2(1.2, 1.2)

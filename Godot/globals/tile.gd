@@ -13,9 +13,10 @@ static var sprites := {
 	Type.CRAFTER: preload('res://assets/crafter.png'),
 	Type.PIPE: preload('res://assets/pipes/pipe_urdl.png'),
 	Type.SPAWNER: preload('res://assets/spawner.png'),
-	Type.DISPENSER: preload('res://assets/spawner.png'), # TODO
+	Type.DISPENSER: preload('res://assets/dispenser.png'),
 	Type.TRASH_CAN: preload('res://assets/trash_can.png'),
 }
+static var sprite_intersection := preload('res://assets/pipes/pipe_intersection.png')
 
 
 static var scenes := {

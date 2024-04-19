@@ -1,10 +1,11 @@
-[gd_scene load_steps=22 format=3 uid="uid://cqaifcks6tp3x"]
+[gd_scene load_steps=23 format=3 uid="uid://cqaifcks6tp3x"]
 
 [ext_resource type="Script" path="res://scenes/ui/menu_in_game.gd" id="1_lb6yv"]
 [ext_resource type="Texture2D" uid="uid://cls30yg45jurd" path="res://assets/crafter.png" id="2_d06ke"]
 [ext_resource type="Texture2D" uid="uid://cfukwd0wfh4ue" path="res://assets/pipes/pipe_urdl.png" id="3_2st0p"]
 [ext_resource type="Texture2D" uid="uid://caxosndx6vvgh" path="res://assets/trash_can.png" id="4_n8jwb"]
 [ext_resource type="Texture2D" uid="uid://d0844foetdry5" path="res://assets/arrow.png" id="4_xswmk"]
+[ext_resource type="Texture2D" uid="uid://sxh1ixdjip5s" path="res://assets/pipes/pipe_intersection.png" id="5_cqm51"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hlkdv"]
 bg_color = Color(0.27451, 0.294118, 0.54902, 1)
@@ -170,6 +171,30 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_3g0ge")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_3g0ge")
 shortcut = SubResource("Shortcut_ve74v")
 icon = ExtResource("3_2st0p")
+
+[node name="Intersection" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_x8l3m")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/Intersection"]
+layout_mode = 2
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="IntersectionButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/Intersection/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+tooltip_text = "Place Intersection"
+mouse_default_cursor_shape = 2
+theme_override_constants/icon_max_width = 50
+theme_override_styles/normal = SubResource("StyleBoxEmpty_vt3un")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_3g0ge")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_3g0ge")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_3g0ge")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3g0ge")
+shortcut = SubResource("Shortcut_ve74v")
+icon = ExtResource("5_cqm51")
 
 [node name="Arrow" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
