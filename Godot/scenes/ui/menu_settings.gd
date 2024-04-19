@@ -23,9 +23,9 @@ func _unhandled_input(event):
 
 
 func _set_sliders():
-	_music.value = db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index(MUSIC_BUS)))
-	_sound.value = db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index(SOUND_BUS)))
-	_master.value = db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index(MASTER_BUS)))
+	_music.set_value_no_signal(db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index(MUSIC_BUS))))
+	_sound.set_value_no_signal(db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index(SOUND_BUS))))
+	_master.set_value_no_signal(db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index(MASTER_BUS))))
 
 
 func _on_master_slider_value_changed(value):
