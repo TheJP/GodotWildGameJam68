@@ -126,6 +126,39 @@ func _flow():
 		return
 
 	var start_position = position
+	for target in _find_flow_targets():
+		if not target.machine.try_drop(self):
+			continue
+		if not container.try_remove():
+			push_error('could not remove item')
+
+		if container is Pipe:
+			container.next_output = Pipe.rotate_direction_skip_none(target.direction)
+		_previous_container = container
+		container = target.machine
+
+		if _tween != null:
+			_tween.kill()
+		_tween = create_tween()
+		_tween.tween_property(self, "position", start_position, 0)
+		_tween.tween_property(self, "position", position, 1.0 / animation_speed).set_trans(Tween.TRANS_SINE)
+		break
+
+
+class FlowTarget:
+	var machine: Machine
+	var direction: Pipe.Direction
+
+	func _init(p_machine: Machine, p_direction: Pipe.Direction):
+		machine = p_machine
+		direction = p_direction
+
+
+# Finds all valid flow target and returns them in order of flow priority.
+func _find_flow_targets() -> Array[FlowTarget]:
+	var result: Array[FlowTarget] = []
+	var trash_cans: Array[FlowTarget] = []
+
 	var directions := []
 	if container is CrafterSlot or container is Spawner:
 		directions = [Pipe.Direction.DOWN]
@@ -149,22 +182,13 @@ func _flow():
 			if Pipe.direction_opposite[direction] & collider.connections == 0:
 				continue # Do not flow into pipe that is not connected with us.
 
-		if not collider.try_drop(self):
-			continue
-		if not container.try_remove():
-			push_error('could not remove item')
+		if collider is TrashCan:
+			trash_cans.append(FlowTarget.new(collider, direction))
+		else:
+			result.append(FlowTarget.new(collider, direction))
 
-		if container is Pipe:
-			container.next_output = Pipe.rotate_direction_skip_none(direction)
-		_previous_container = container
-		container = collider
-
-		if _tween != null:
-			_tween.kill()
-		_tween = create_tween()
-		_tween.tween_property(self, "position", start_position, 0)
-		_tween.tween_property(self, "position", position, 1.0 / animation_speed).set_trans(Tween.TRANS_SINE)
-		break
+	result.append_array(trash_cans)
+	return result
 
 
 func _item_decayed(decay):
