@@ -4,7 +4,7 @@ extends Area2D
 @onready var friendly = preload("res://scenes/fighting/friendly.tscn")
 @onready var alternate_texture = preload("res://assets/fighters/hero_2.png")
 var spawn_rate = 12
-var counter = 0
+var counter = 11
 
 func _ready():
 	Ticker.timer.timeout.connect(on_global_ticker_timeout)
@@ -22,3 +22,9 @@ func on_global_ticker_timeout():
 
 func _process(_delta):
 	pass
+
+func _on_area_entered(area):
+	if area is Enemy:
+		GlobalStats.update_health(-10)
+		area.queue_free()
+		

@@ -15,7 +15,7 @@ var directions = [Vector2.RIGHT, Vector2.DOWN, Vector2.UP, Vector2(1, 1), Vector
 var animation_speed = 3
 var tile_size = GameParameters.tilesize
 
-var health = 8
+var health = 4
 var damage = 1
 var move_frequency = 2
 var counter = -3
