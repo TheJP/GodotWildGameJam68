@@ -160,6 +160,23 @@ static var sprites := {
 	Type.IRON_SHIELD: preload("res://assets/items/shield_iron.png"),
 }
 
+static var effects := {
+	Type.TRASH: null,
+	Type.WOOD: null,
+	Type.STONE: null,
+	Type.IRON_ORE: null,
+	Type.FIRE: preload("res://effects/flame_particles.tscn"),
+	Type.HAMMER: null,
+	Type.TORCH: null,
+	Type.COAL: null,
+	Type.HOT_FIRE: null,
+	Type.HOT_STEEL: null,
+	Type.SPEAR: null,
+	Type.STEEL: null,
+	Type.SWORD: null,
+	Type.WOODEN_SHIELD: null,
+	Type.IRON_SHIELD: null,
+}
 
 static var crafting: Dictionary = _init_crafting(recipes)
 

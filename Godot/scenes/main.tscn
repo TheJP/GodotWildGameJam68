@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cqaifcks6tp3x" path="res://scenes/ui/menu_in_game.tscn" id="3_vvqis"]
 [ext_resource type="PackedScene" uid="uid://c5if07qhh6g72" path="res://scenes/ui/menu_settings.tscn" id="4_ib2fi"]
 [ext_resource type="PackedScene" uid="uid://bn21ko5wckqn7" path="res://scenes/ui/health_bar.tscn" id="5_jtxbn"]
-[ext_resource type="PackedScene" path="res://scenes/audio_controller.tscn" id="6_8vb1t"]
+[ext_resource type="PackedScene" uid="uid://cqmp6pj8y5u4i" path="res://scenes/audio_controller.tscn" id="6_8vb1t"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_34ee3"]
 bg_color = Color(0.368627, 0.368627, 0.368627, 1)

@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://ctoyv84dnwru3"]
+
+[ext_resource type="Texture2D" uid="uid://dv5jyfbtujhyo" path="res://assets/particles/flame_particle_anim_sprite.png" id="1_ffkbl"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jyllb"]
+particles_animation = true
+particles_anim_h_frames = 5
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_xdup7"]
+offsets = PackedFloat32Array(0, 0.136268, 0.81761, 1)
+colors = PackedColorArray(0.786933, 0.192826, 0, 1, 1, 0.733333, 0, 1, 0.94902, 0.94902, 0.811765, 0.886275, 1, 1, 1, 0)
+
+[node name="flame_particles" type="CPUParticles2D"]
+z_index = 1
+material = SubResource("CanvasItemMaterial_jyllb")
+amount = 10
+lifetime = 5.0
+speed_scale = 3.0
+texture = ExtResource("1_ffkbl")
+emission_shape = 3
+emission_rect_extents = Vector2(5, 1)
+direction = Vector2(0, -1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 2.0
+initial_velocity_max = 5.0
+angular_velocity_min = 2.0
+angular_velocity_max = 2.0
+angle_max = 720.0
+color_ramp = SubResource("Gradient_xdup7")
+anim_speed_max = 5.0
+anim_offset_min = 0.0802
+anim_offset_max = 0.0802

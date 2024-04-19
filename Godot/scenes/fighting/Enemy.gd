@@ -12,7 +12,7 @@ var directions = [Vector2.LEFT, Vector2.UP, Vector2.DOWN, Vector2(-1, 1), Vector
 
 var _hovering = false
 
-var health = 20
+var health = 12
 var damage = 1
 var move_frequency = 2
 var counter = 0
@@ -89,21 +89,23 @@ func take_damage(amount):
 	await get_tree().create_timer(0.1).timeout
 	$Sprite2D.modulate = Color.WHITE
 	health_bar.value = health
+	var sound_index = randi() % 3
 	if health <= 0:
-		self.queue_free()
-		if counter == 1:
+		if sound_index == 0:
 			AudioController.get_player("EnemyDeathSound1").play()
-		else: if counter == 2:
+		elif sound_index == 1:
 			AudioController.get_player("EnemyDeathSound2").play()
 		else:
 			AudioController.get_player("EnemyDeathSound3").play()
+		self.queue_free()
 	else:
-		if counter == 1:
+		if sound_index == 0:
 			AudioController.get_player("DamageTickSound1").play()
-		else: if counter == 2:
+		elif sound_index == 1:
 			AudioController.get_player("DamageTickSound2").play()
 		else:
 			AudioController.get_player("DamageTickSound3").play()
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):

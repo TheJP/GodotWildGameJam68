@@ -26,6 +26,8 @@ var _previous_target = null
 
 func _ready():
 	$Sprite2D.texture = Item.sprites[type]
+	if(Item.effects[type] != null):
+		self.add_child(Item.effects[type].instantiate())
 	Ticker.timer.timeout.connect(_on_global_ticker_timeout)
 	if type in Item.decay:
 		var decay = Item.decay[type]

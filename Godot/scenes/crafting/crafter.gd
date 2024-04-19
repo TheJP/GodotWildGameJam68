@@ -38,10 +38,9 @@ func _slots_changed():
 	var local_state = _state_number
 	if $LeftSlot.item != null and $RightSlot.item != null:
 		_gear_tween.play()
-		AudioController.get_player("ItemCombinationSound").play()
-
 		# Craft item(s).
 		await Ticker.timer.timeout
+		AudioController.get_player("ItemCombinationSound").play(0)
 		await Ticker.timer.timeout
 		if _state_number != local_state:
 			return # Slots changed since wait, return to prevent issues like double crafting.
@@ -56,7 +55,7 @@ func _slots_changed():
 		_gear_tween.pause()
 	else:
 		_gear_tween.pause()
-
+		AudioController.get_player("ItemCombinationSound").stop()
 
 func _craft():
 	var new_left = null
@@ -70,10 +69,21 @@ func _craft():
 			new_left = _spawn_item(recipe.type, $LeftSlot.global_position)
 	else:
 		new_left = _spawn_item(Item.Type.TRASH, $LeftSlot.global_position)
+		check_progress(new_left.Type)
 	$LeftSlot.crafted_item(new_left)
 	$RightSlot.crafted_item(new_right)
 
-
+func check_progress(type):
+	if(type == Item.Type.HAMMER):
+		if(GlobalStats.progress < 1):
+			GlobalStats.progress = 1
+	elif(type == Item.Type.STEEL):
+		if(GlobalStats.progress < 2):
+			GlobalStats.progress = 2
+	elif(type == Item.Type.SWORD):
+		if(GlobalStats.progress < 3):
+			GlobalStats.progress = 3
+			
 func _spawn_item(type: Item.Type, p_position: Vector2) -> Node2D:
 	var item = _item_scene.instantiate()
 	item.type = type

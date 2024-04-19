@@ -60,7 +60,8 @@ func try_throw_item() -> bool:
 					var tween = create_tween()
 					tween.tween_property(right_hand_sprite, "global_position",
 						collider.global_position, 1.0/(animation_speed*2)).set_trans(Tween.TRANS_SINE)
-					collider.take_damage(Item.stat_modifiers[left_hand_item_type].throwable)
+					if(is_instance_valid(collider)):
+						collider.take_damage(Item.stat_modifiers[right_hand_item_type].throwable)
 					await tween.finished
 					right_hand_sprite.texture = null
 					right_hand_occupied = false
@@ -71,7 +72,8 @@ func try_throw_item() -> bool:
 					var tween = create_tween()
 					tween.tween_property(left_hand_sprite, "global_position",
 						collider.global_position, 1.0/(animation_speed*2)).set_trans(Tween.TRANS_SINE)
-					collider.take_damage(Item.stat_modifiers[left_hand_item_type].throwable)
+					if(is_instance_valid(collider)):
+						collider.take_damage(Item.stat_modifiers[left_hand_item_type].throwable)
 					await tween.finished
 					left_hand_sprite.texture = null
 					left_hand_occupied = false
@@ -154,13 +156,14 @@ func take_damage(amount):
 	$Sprite2D.modulate = Color.WHITE
 	health_bar.value = health
 	if health <= 0:
-		self.queue_free()
-		if counter == 1:
+		var sound_index = randi() % 3
+		if sound_index == 0:
 			AudioController.get_player("HeroDeathSound2").play()
-		else: if counter == 2:
+		elif sound_index == 1:
 			AudioController.get_player("HeroDeathSound3").play()
 		else:
-			AudioController.get_player("HeroDeathSound4").play()
+			AudioController.get_player("HeroDeathSound4").play()		
+		self.queue_free()
 
 func _process(_delta):
 	pass
