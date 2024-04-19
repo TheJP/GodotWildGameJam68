@@ -16,7 +16,8 @@ var directions = [Vector2.RIGHT, Vector2.DOWN, Vector2.UP, Vector2(1, 1), Vector
 var animation_speed = 3
 var tile_size = GameParameters.tilesize
 
-var health = 4
+var max_health = 4
+var health = max_health
 var damage = 1
 var move_frequency = 2
 var counter = -3
@@ -136,7 +137,7 @@ func try_set_item(p_item: Node2D) -> bool:
 		return false
 
 	if (item_stat_modifiers.health < 0):
-		take_damage(item_stat_modifiers.health)
+		take_damage(-item_stat_modifiers.health)
 	else:
 		increase_health(item_stat_modifiers.health)
 	damage = max(damage + item_stat_modifiers.damage, 0)
@@ -144,8 +145,9 @@ func try_set_item(p_item: Node2D) -> bool:
 
 func increase_health(amount):
 		health += amount
-		health_bar.max_value = health
+		max_health += amount
 		health_bar.value = health
+		health_bar.max_value = max_health
 
 func take_damage(amount):
 	if health_bar.visible == false:

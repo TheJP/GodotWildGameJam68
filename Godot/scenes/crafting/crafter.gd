@@ -76,13 +76,13 @@ func _craft():
 func check_progress(type):
 	if(type == Item.Type.HAMMER):
 		if(GlobalStats.progress < 1):
-			GlobalStats.progress = 1
+			GlobalStats.set_progress_level(1)
 	elif(type == Item.Type.STEEL):
 		if(GlobalStats.progress < 2):
-			GlobalStats.progress = 2
+			GlobalStats.set_progress_level(2)
 	elif(type == Item.Type.SWORD):
 		if(GlobalStats.progress < 3):
-			GlobalStats.progress = 3
+			GlobalStats.set_progress_level(3)
 			
 func _spawn_item(type: Item.Type, p_position: Vector2) -> Node2D:
 	var item = _item_scene.instantiate()
