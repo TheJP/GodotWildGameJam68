@@ -6,6 +6,7 @@ extends Area2D
 @onready var melee_ray = $MeleeRay
 @onready var right_hand_sprite = $RightHand
 @onready var left_hand_sprite = $LeftHand
+@onready var health_bar = $HealthBar
 var right_hand_occupied = false
 var left_hand_occupied = false
 var right_hand_item_type = null
@@ -23,6 +24,9 @@ var counter = -3
 func _ready():
 	Ticker.timer.timeout.connect(on_global_ticker_timeout)
 	global_position = Tile.snap_fighting(global_position)
+	health_bar.max_value = health
+	health_bar.visible = false
+	
 
 func on_global_ticker_timeout():
 	act()
@@ -117,15 +121,23 @@ func try_set_item(p_item: Node2D) -> bool:
 	if (item_stat_modifiers.health < 0):
 		take_damage(item_stat_modifiers.health)
 	else:
-		health += item_stat_modifiers.health
+		increase_health(item_stat_modifiers.health)
 	damage = max(damage + item_stat_modifiers.damage, 0)
 	return true
 
+func increase_health(amount):
+		health += amount
+		health_bar.max_value = health
+		health_bar.value = health
+
 func take_damage(amount):
+	if health_bar.visible == false:
+		health_bar.visible = true
 	health -= amount
 	$Sprite2D.modulate = Color.RED
 	await get_tree().create_timer(0.1).timeout
 	$Sprite2D.modulate = Color.WHITE
+	health_bar.value = health
 	if health <= 0:
 		self.queue_free()
 
