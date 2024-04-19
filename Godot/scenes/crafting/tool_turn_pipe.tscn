@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bm6ng8qubxvmr"]
+[gd_scene load_steps=5 format=3 uid="uid://bm6ng8qubxvmr"]
 
 [ext_resource type="Script" path="res://scenes/crafting/tool_turn_pipe.gd" id="1_tdxjj"]
 [ext_resource type="Texture2D" uid="uid://d0844foetdry5" path="res://assets/arrow.png" id="2_a5p3c"]
+[ext_resource type="PackedScene" uid="uid://cfj8uv0w2wdv0" path="res://effects/arrow_animation_particle.tscn" id="3_lcmha"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u5h3a"]
 size = Vector2(60, 60)
@@ -12,6 +13,12 @@ script = ExtResource("1_tdxjj")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 2
 texture = ExtResource("2_a5p3c")
+
+[node name="animated_arrow" parent="Sprite2D" instance=ExtResource("3_lcmha")]
+position = Vector2(-0.25, -8)
+scale = Vector2(1.16667, 1.08)
+autoplay = "default"
+frame_progress = 0.96259
 
 [node name="ShapeCast2D" type="ShapeCast2D" parent="."]
 enabled = false
