@@ -9,8 +9,8 @@ particles_anim_v_frames = 1
 particles_anim_loop = false
 
 [sub_resource type="Gradient" id="Gradient_xdup7"]
-offsets = PackedFloat32Array(0, 0.204473, 0.42492, 0.623003, 1)
-colors = PackedColorArray(1, 1, 1, 1, 0.54902, 0.854902, 1, 0.921569, 0.309804, 0.721569, 0.92549, 0.607843, 0.243137, 0.513726, 0.819608, 0.431373, 1, 1, 1, 0)
+offsets = PackedFloat32Array(0, 0.256818, 0.577273, 0.8, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.54902, 0.854902, 1, 1, 0.309804, 0.721569, 0.92549, 0.929412, 0.243137, 0.513726, 0.819608, 0.431373, 1, 1, 1, 0)
 
 [node name="flame_particles" type="CPUParticles2D"]
 z_index = 1

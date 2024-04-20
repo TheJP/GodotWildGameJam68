@@ -1,10 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://6826c7txsiv8"]
+[gd_scene load_steps=20 format=3 uid="uid://6826c7txsiv8"]
 
 [ext_resource type="Texture2D" uid="uid://bap6uc0cjndb3" path="res://assets/particles/starglow_onesprite.png" id="1_lrduj"]
 [ext_resource type="Texture2D" uid="uid://cd0pgchvhwwe0" path="res://assets/particles/blood_anim_sprite.png" id="2_17s1l"]
 [ext_resource type="Texture2D" uid="uid://dlkduvack5ciy" path="res://assets/particles/dust_anim_sprite.png" id="3_6bf32"]
 [ext_resource type="Texture2D" uid="uid://b23d1ipoj2325" path="res://assets/particles/movingforward_anim_sprite.png" id="4_dtych"]
 [ext_resource type="PackedScene" uid="uid://ctoyv84dnwru3" path="res://effects/flame_particles.tscn" id="5_fyfv5"]
+[ext_resource type="Texture2D" uid="uid://b51abvllnn3bd" path="res://assets/items/sword.png" id="6_q6g44"]
+[ext_resource type="Texture2D" uid="uid://bxrkge3nlpyqk" path="res://assets/particles/glowing_particle_anim_sprite.png" id="7_ly0mf"]
+[ext_resource type="Texture2D" uid="uid://cngvny1syxdvv" path="res://assets/particles/sword_glow.png" id="8_vwsxf"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_plonv"]
 particles_animation = true
@@ -46,11 +49,26 @@ particles_anim_loop = false
 offsets = PackedFloat32Array(0.582809, 0.993711)
 colors = PackedColorArray(0.501961, 0.45098, 0, 1, 0.501961, 0.45098, 0, 0)
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_lj5xp"]
+particles_animation = true
+particles_anim_h_frames = 6
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_n4yfm"]
+offsets = PackedFloat32Array(0.128645, 0.823328, 0.969125, 1)
+colors = PackedColorArray(0.0627451, 0.423529, 1, 0.360784, 0.0627451, 0.423529, 1, 1, 0.0627451, 0.423529, 1, 1, 0.0627451, 0.423529, 1, 0)
+
+[sub_resource type="Gradient" id="Gradient_1lh85"]
+offsets = PackedFloat32Array(0, 0.530017, 1)
+colors = PackedColorArray(0.0627451, 0.423529, 1, 1, 0.0627451, 0.423529, 1, 0.784314, 0.0627451, 0.423529, 1, 1)
+
 [node name="TestScene" type="Node2D"]
 visible = false
 
 [node name="starglow" type="CPUParticles2D" parent="."]
 visible = false
+z_index = 2
 texture_filter = 1
 material = SubResource("CanvasItemMaterial_plonv")
 lifetime = 1.9
@@ -107,3 +125,58 @@ anim_speed_max = 4.0
 
 [node name="flame_particles" parent="." instance=ExtResource("5_fyfv5")]
 visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+z_index = 1
+texture = ExtResource("6_q6g44")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+visible = false
+
+[node name="sword_effect" type="Node2D" parent="."]
+visible = false
+
+[node name="sword_glow" type="CPUParticles2D" parent="sword_effect"]
+z_index = 2
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_lj5xp")
+amount = 30
+lifetime = 2.0
+speed_scale = 0.5
+texture = ExtResource("7_ly0mf")
+emission_shape = 4
+emission_points = PackedVector2Array(0, 0, -10, 10, 20, -20, 10, -10, 8, -8, 6, -6, 4, -4, 2, -2, -2, 2, -4, 4, -6, 6, -8, 8, 12, -12, 14, -14, 16, -16, 18, -18, 22, -22, 24, -24)
+emission_colors = PackedColorArray()
+direction = Vector2(0, -50)
+spread = 5.57
+gravity = Vector2(0, -5)
+initial_velocity_max = 9.52
+angular_velocity_min = 5.0
+angular_velocity_max = 5.0
+scale_amount_max = 3.0
+color_ramp = SubResource("Gradient_n4yfm")
+anim_speed_max = 6.0
+
+[node name="sword_bling" type="CPUParticles2D" parent="sword_effect"]
+z_index = 2
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_plonv")
+amount = 3
+lifetime = 2.0
+speed_scale = 0.8
+texture = ExtResource("1_lrduj")
+emission_shape = 4
+emission_points = PackedVector2Array(30, -30, -25, -5, 2, 10)
+emission_colors = PackedColorArray()
+gravity = Vector2(0, 0)
+scale_amount_max = 2.0
+color = Color(0.588235, 0.741176, 1, 1)
+anim_speed_max = 6.0
+
+[node name="sword_light" type="CPUParticles2D" parent="sword_effect"]
+amount = 1
+texture = ExtResource("8_vwsxf")
+gravity = Vector2(0, 0)
+color = Color(1, 1, 1, 0.835294)
+color_ramp = SubResource("Gradient_1lh85")
