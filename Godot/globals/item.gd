@@ -105,7 +105,7 @@ static var recipes: Array[Recipe] = [
 	Recipe.new(Type.WOOD, Type.HOT_STEEL, Type.FIRE),
 	Recipe.new(Type.WOOD, Type.HAMMER, Type.WOODEN_SHIELD),
 	Recipe.new(Type.WOOD, Type.STEEL, Type.BATTLE_HAMMER),
-	
+
 	Recipe.new(Type.STONE, Type.STONE, Type.IRON_ORE),
 	Recipe.new(Type.STONE, Type.FIRE, Type.STONE),
 
@@ -138,19 +138,19 @@ static var recipes: Array[Recipe] = [
 	Recipe.new(Type.HOT_STEEL, Type.STEEL, Type.STEEL),
 
 	Recipe.new(Type.STEEL, Type.STEEL, Type.STEEL),
-	
+
 	Recipe.new(Type.SWORD, Type.SWORD, Type.SUPER_SWORD),
 	Recipe.new(Type.SUPER_SWORD, Type.SUPER_SWORD, Type.ULTRA_SWORD),
 	Recipe.new(Type.ULTRA_SWORD, Type.ULTRA_SWORD, Type.SUPER_ULTRA_SWORD),
-	
+
 	Recipe.new(Type.BOOMERANG, Type.BOOMERANG, Type.SUPER_BOOMERANG),
 	Recipe.new(Type.SUPER_BOOMERANG, Type.SUPER_BOOMERANG, Type.ULTRA_BOOMERANG),
 	Recipe.new(Type.ULTRA_BOOMERANG, Type.ULTRA_BOOMERANG, Type.SUPER_ULTRA_BOOMERANG),
-	
+
 	Recipe.new(Type.IRON_SHIELD, Type.IRON_SHIELD, Type.SUPER_SHIELD),
 	Recipe.new(Type.SUPER_SHIELD, Type.SUPER_SHIELD, Type.ULTRA_SHIELD),
 	Recipe.new(Type.ULTRA_SHIELD, Type.ULTRA_SHIELD, Type.SUPER_ULTRA_SHIELD),
-	
+
 	Recipe.new(Type.BATTLE_HAMMER, Type.BATTLE_HAMMER, Type.SUPER_BATTLE_HAMMER),
 	Recipe.new(Type.SUPER_BATTLE_HAMMER, Type.SUPER_BATTLE_HAMMER, Type.ULTRA_BATTLE_HAMMER),
 	Recipe.new(Type.ULTRA_BATTLE_HAMMER, Type.ULTRA_BATTLE_HAMMER, Type.SUPER_ULTRA_BATTLE_HAMMER),
@@ -226,7 +226,7 @@ static var names := {
 	Type.SUPER_ULTRA_SHIELD: "Super Ultra Shield of Ultimate Immortality",
 	Type.SUPER_BATTLE_HAMMER: "Super Battle Hammer",
 	Type.ULTRA_BATTLE_HAMMER: "Ultra Battle Hammer",
-	Type.SUPER_ULTRA_BATTLE_HAMMER: "Super Ultra Battle Hammer of Ultimate Smashing",	
+	Type.SUPER_ULTRA_BATTLE_HAMMER: "Super Ultra Battle Hammer of Ultimate Smashing",
 }
 
 static var sprites := {
@@ -258,7 +258,7 @@ static var sprites := {
 	Type.SUPER_ULTRA_SHIELD: preload("res://assets/items/shield_iron.png"),
 	Type.SUPER_BATTLE_HAMMER: preload("res://assets/items/hammer_battle.png"),
 	Type.ULTRA_BATTLE_HAMMER: preload("res://assets/items/hammer_battle.png"),
-	Type.SUPER_ULTRA_BATTLE_HAMMER: preload("res://assets/items/hammer_battle.png"),	
+	Type.SUPER_ULTRA_BATTLE_HAMMER: preload("res://assets/items/hammer_battle.png"),
 	}
 
 static var effects := {
@@ -290,7 +290,7 @@ static var effects := {
 	Type.SUPER_ULTRA_SHIELD: preload("res://effects/shield_particles_orange.tscn"),
 	Type.SUPER_BATTLE_HAMMER: preload("res://effects/hammer_battle_particles_blue.tscn"),
 	Type.ULTRA_BATTLE_HAMMER: preload("res://effects/hammer_battle_particles_purple.tscn"),
-	Type.SUPER_ULTRA_BATTLE_HAMMER: preload("res://effects/hammer_battle_particles_orange.tscn"),	
+	Type.SUPER_ULTRA_BATTLE_HAMMER: preload("res://effects/hammer_battle_particles_orange.tscn"),
 }
 
 static var crafting: Dictionary = _init_crafting(recipes)

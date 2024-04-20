@@ -117,6 +117,7 @@ layout_mode = 2
 size_flags_horizontal = 8
 mouse_default_cursor_shape = 2
 shortcut = SubResource("Shortcut_h38a2")
+shortcut_in_tooltip = false
 text = "Back"
 
 [node name="PageNumber" type="Label" parent="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HFlowContainer"]
@@ -137,6 +138,7 @@ layout_mode = 2
 size_flags_horizontal = 8
 mouse_default_cursor_shape = 2
 shortcut = SubResource("Shortcut_egc8o")
+shortcut_in_tooltip = false
 text = "Next"
 
 [connection signal="pressed" from="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HFlowContainer/CenterContainer/BackButton" to="." method="_on_back_button_pressed"]
