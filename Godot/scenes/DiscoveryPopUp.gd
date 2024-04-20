@@ -1,7 +1,7 @@
 extends Control
 
-@onready var sprite = $CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Sprite
-@onready var label = $CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Label2
+@onready var sprite = %ItemSprite
+@onready var label = %ItemName
 
 var discovery_queue = []
 
