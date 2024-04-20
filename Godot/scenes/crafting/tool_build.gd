@@ -17,6 +17,7 @@ var _mode := MOUSE_BUTTON_NONE
 
 
 func _ready():
+	ItemDiscovery.discovery.connect(func(_type): _dragging = false)
 	if type == Tile.Type.PIPE and is_intersection:
 		$Sprite2D.texture = Tile.sprite_intersection
 	else:
