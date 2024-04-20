@@ -34,4 +34,4 @@ func _on_area_entered(area):
 	if area is Enemy:
 		GlobalStats.update_health(-10)
 		area.queue_free()
-		
+

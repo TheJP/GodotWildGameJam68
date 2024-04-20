@@ -19,24 +19,25 @@ position = Vector2(32, 992)
 position = Vector2(96, 928)
 
 [node name="FriendlySpawner" parent="." instance=ExtResource("3_0loev")]
-position = Vector2(160, 928)
+position = Vector2(163, 928)
 
 [node name="FriendlySpawner2" parent="." instance=ExtResource("3_0loev")]
-position = Vector2(96, 992)
+position = Vector2(99, 992)
 
 [node name="FriendlySpawner3" parent="." instance=ExtResource("3_0loev")]
-position = Vector2(32, 1056)
+position = Vector2(35, 1056)
 
 [node name="EnemySpawner" parent="." instance=ExtResource("4_qf26r")]
-position = Vector2(1888, 992)
+position = Vector2(1885, 992)
 
 [node name="EnemySpawner3" parent="." instance=ExtResource("4_qf26r")]
-position = Vector2(1888, 1056)
+position = Vector2(1885, 1056)
 
 [node name="EnemySpawner2" parent="." instance=ExtResource("4_qf26r")]
-position = Vector2(1888, 928)
+position = Vector2(1885, 928)
 
 [node name="Wall" parent="." instance=ExtResource("5_y144e")]
+z_index = -1
 position = Vector2(1888, 960)
 
 [node name="Wall116" parent="." instance=ExtResource("5_y144e")]
@@ -48,14 +49,17 @@ position = Vector2(0, 1056)
 rotation = 1.5708
 
 [node name="Wall118" parent="." instance=ExtResource("5_y144e")]
+z_index = -1
 position = Vector2(1920, 928)
 rotation = 1.5708
 
 [node name="Wall119" parent="." instance=ExtResource("5_y144e")]
+z_index = -1
 position = Vector2(1920, 992)
 rotation = 1.5708
 
 [node name="Wall120" parent="." instance=ExtResource("5_y144e")]
+z_index = -1
 position = Vector2(1920, 1056)
 rotation = 1.5708
 
@@ -271,6 +275,7 @@ position = Vector2(1760, 896)
 position = Vector2(1824, 896)
 
 [node name="Wall73" parent="." instance=ExtResource("5_y144e")]
+z_index = -1
 position = Vector2(1888, 896)
 
 [node name="Wall74" parent="." instance=ExtResource("5_y144e")]
@@ -313,6 +318,7 @@ position = Vector2(1760, 1088)
 position = Vector2(1824, 1088)
 
 [node name="Wall115" parent="." instance=ExtResource("5_y144e")]
+z_index = -1
 position = Vector2(1888, 1088)
 
 [node name="Wall75" parent="." instance=ExtResource("5_y144e")]
@@ -394,6 +400,7 @@ position = Vector2(1760, 1024)
 position = Vector2(1824, 1024)
 
 [node name="Wall102" parent="." instance=ExtResource("5_y144e")]
+z_index = -1
 position = Vector2(1888, 1024)
 
 [node name="Wall78" parent="." instance=ExtResource("5_y144e")]
