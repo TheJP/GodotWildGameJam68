@@ -1,11 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://b6viu12773d5g"]
+[gd_scene load_steps=9 format=3 uid="uid://b6viu12773d5g"]
 
 [ext_resource type="PackedScene" uid="uid://dd4s3sh2lq2x1" path="res://scenes/crafting/crafting.tscn" id="1_y5ktt"]
 [ext_resource type="PackedScene" uid="uid://ce2lm7rg0o844" path="res://scenes/fighting/fighting.tscn" id="2_2b1rs"]
 [ext_resource type="PackedScene" uid="uid://cqaifcks6tp3x" path="res://scenes/ui/menu_in_game.tscn" id="3_vvqis"]
 [ext_resource type="PackedScene" uid="uid://c5if07qhh6g72" path="res://scenes/ui/menu_settings.tscn" id="4_ib2fi"]
 [ext_resource type="PackedScene" uid="uid://bn21ko5wckqn7" path="res://scenes/ui/health_bar.tscn" id="5_jtxbn"]
-[ext_resource type="PackedScene" uid="uid://046omvw2csx" path="res://scenes/ui/discovery_pop_up.tscn" id="6_xx1ve"]
+[ext_resource type="PackedScene" path="res://scenes/ui/discovery_pop_up.tscn" id="6_xx1ve"]
+[ext_resource type="PackedScene" uid="uid://dhkxc2d2wglyh" path="res://scenes/ui/tutorial.tscn" id="7_obfex"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_34ee3"]
 bg_color = Color(0.368627, 0.368627, 0.368627, 1)
@@ -26,3 +27,5 @@ bg_color = Color(0.368627, 0.368627, 0.368627, 1)
 theme_override_styles/background = SubResource("StyleBoxFlat_34ee3")
 
 [node name="DiscoveryPopUp" parent="CanvasLayer" instance=ExtResource("6_xx1ve")]
+
+[node name="Tutorial" parent="CanvasLayer" instance=ExtResource("7_obfex")]

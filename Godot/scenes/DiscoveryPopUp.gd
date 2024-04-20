@@ -14,7 +14,7 @@ func _on_button_pressed():
 	get_tree().paused = false
 	if !discovery_queue.is_empty():
 		_on_discovery(discovery_queue.pop_front())
-	
+
 func _on_discovery(type):
 	if(self.visible == false):
 		sprite.texture = Item.sprites[type]
