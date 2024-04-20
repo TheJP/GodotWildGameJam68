@@ -22,10 +22,11 @@ func _on_button_pressed():
 func _on_discovery(type):
 	if(self.visible == false):
 		sprite.texture = Item.sprites[type]
-		effect = Item.effects[type].instantiate()
-		sprite.add_child(effect)
-		effect.global_position = sprite.global_position + sprite.size * 0.5
-		effect.show_behind_parent = true
+		if (Item.effects[type] != null):
+			effect = Item.effects[type].instantiate()
+			sprite.add_child(effect)
+			effect.global_position = sprite.global_position + sprite.size * 0.5
+			effect.show_behind_parent = true
 		label.text = Item.names[type]
 		self.visible = true
 		AudioController.get_player("ItemDiscoverySound").play()

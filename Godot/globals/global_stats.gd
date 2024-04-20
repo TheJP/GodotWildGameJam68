@@ -1,8 +1,9 @@
 extends Node
 
-var factory_health = 100
+var factory_health = 10
 var progress = 0
 var update_progress = false
+var times_spawned = 0
 signal update_health_bar
 
 func update_health(amount):
