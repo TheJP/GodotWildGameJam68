@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dlwyela3joxju"]
+[gd_scene load_steps=7 format=3 uid="uid://da0mqcv14vosf"]
 
 [ext_resource type="Theme" uid="uid://d37xjde3q7k3t" path="res://assets/ui/theme.tres" id="1_ce8q6"]
 [ext_resource type="Script" path="res://scenes/DiscoveryPopUp.gd" id="2_urpub"]
 [ext_resource type="FontFile" uid="uid://beh05ftgpjxmt" path="res://fonts/PixelifySans-VariableFont_wght.ttf" id="3_yccm6"]
 [ext_resource type="Texture2D" uid="uid://c8rlkymrr4wl7" path="res://assets/items/fire.png" id="4_vy06l"]
+[ext_resource type="PackedScene" uid="uid://cpeebytaavj0v" path="res://effects/party.tscn" id="5_3are8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v0ta5"]
 bg_color = Color(0, 0, 0, 0.686275)
@@ -76,5 +77,7 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Continue"
+
+[node name="party" parent="." instance=ExtResource("5_3are8")]
 
 [connection signal="pressed" from="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
