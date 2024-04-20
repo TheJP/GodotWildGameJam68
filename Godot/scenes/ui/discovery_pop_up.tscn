@@ -1,21 +1,120 @@
-[gd_scene load_steps=9 format=3 uid="uid://da0mqcv14vosf"]
+[gd_scene load_steps=15 format=3 uid="uid://da0mqcv14vosf"]
 
 [ext_resource type="Theme" uid="uid://d37xjde3q7k3t" path="res://assets/ui/theme.tres" id="1_ce8q6"]
 [ext_resource type="Script" path="res://scenes/DiscoveryPopUp.gd" id="2_urpub"]
 [ext_resource type="FontFile" uid="uid://beh05ftgpjxmt" path="res://fonts/PixelifySans-VariableFont_wght.ttf" id="3_yccm6"]
 [ext_resource type="Texture2D" uid="uid://c8rlkymrr4wl7" path="res://assets/items/fire.png" id="4_vy06l"]
-[ext_resource type="PackedScene" uid="uid://cpeebytaavj0v" path="res://effects/party.tscn" id="5_3are8"]
+[ext_resource type="Texture2D" uid="uid://bs5v3i6cgu71i" path="res://assets/particles/lil_star_anim_sprite.png" id="5_i78hk"]
+[ext_resource type="Texture2D" uid="uid://7tv3s04tjy5k" path="res://assets/particles/confetti_faster_anim_sprite.png" id="6_igexc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v0ta5"]
 bg_color = Color(0, 0, 0, 0.686275)
 
 [sub_resource type="Animation" id="Animation_8kwx0"]
 resource_name = "party_fireworks"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("party/fireworks/firework_gold:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("party/fireworks/firework_turquoius:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("party/fireworks/firework_lavender:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("party/fireworks/firework_gold_2:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.6),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("party/fireworks/firework_lavender_2:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.8),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("party/fireworks/firework_turquoius_2:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mtqn6"]
 _data = {
 "party_fireworks": SubResource("Animation_8kwx0")
 }
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_d5m0a"]
+particles_animation = true
+particles_anim_h_frames = 3
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_fn7ur"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.0319149), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_37b7e"]
+offsets = PackedFloat32Array(0.485401, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_vi7fa"]
+particles_animation = true
+particles_anim_h_frames = 6
+particles_anim_v_frames = 1
+particles_anim_loop = true
+
+[sub_resource type="Curve" id="Curve_gjjcy"]
+max_value = 1024.0
+_data = [Vector2(0, 1024), 0.0, -144.694, 0, 0, Vector2(0.675497, 1024), 0.0, 0.0, 0, 0, Vector2(0.996689, 1024), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [node name="DiscoveryPopUp" type="Control"]
 process_mode = 3
@@ -42,6 +141,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_v0ta5")
 layout_mode = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="PanelContainer/CenterContainer"]
+z_index = 1
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
 
@@ -86,11 +186,175 @@ layout_mode = 2
 size_flags_horizontal = 4
 text = "Continue"
 
-[node name="party" parent="." instance=ExtResource("5_3are8")]
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_mtqn6")
 }
+autoplay = "party_fireworks"
+
+[node name="party" type="Node2D" parent="."]
+
+[node name="fireworks" type="Node2D" parent="party"]
+
+[node name="firework_gold" type="CPUParticles2D" parent="party/fireworks"]
+self_modulate = Color(1, 0.780392, 0.341176, 1)
+material = SubResource("CanvasItemMaterial_d5m0a")
+position = Vector2(854, 136)
+amount = 50
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("5_i78hk")
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 307.45
+initial_velocity_max = 555.9
+scale_amount_max = 20.0
+scale_amount_curve = SubResource("Curve_fn7ur")
+color_ramp = SubResource("Gradient_37b7e")
+anim_speed_max = 7.16
+
+[node name="firework_turquoius" type="CPUParticles2D" parent="party/fireworks"]
+self_modulate = Color(0.396078, 0.972549, 1, 1)
+material = SubResource("CanvasItemMaterial_d5m0a")
+position = Vector2(1441, 477)
+emitting = false
+amount = 50
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("5_i78hk")
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 307.45
+initial_velocity_max = 555.9
+scale_amount_max = 20.0
+scale_amount_curve = SubResource("Curve_fn7ur")
+color_ramp = SubResource("Gradient_37b7e")
+anim_speed_max = 7.16
+
+[node name="firework_lavender" type="CPUParticles2D" parent="party/fireworks"]
+self_modulate = Color(0.733333, 0.607843, 1, 1)
+material = SubResource("CanvasItemMaterial_d5m0a")
+position = Vector2(1009, 935)
+emitting = false
+amount = 50
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("5_i78hk")
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 307.45
+initial_velocity_max = 555.9
+scale_amount_max = 20.0
+scale_amount_curve = SubResource("Curve_fn7ur")
+color_ramp = SubResource("Gradient_37b7e")
+anim_speed_max = 7.16
+
+[node name="firework_gold_2" type="CPUParticles2D" parent="party/fireworks"]
+self_modulate = Color(1, 0.780392, 0.341176, 1)
+material = SubResource("CanvasItemMaterial_d5m0a")
+position = Vector2(1647, 789)
+emitting = false
+amount = 50
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("5_i78hk")
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 307.45
+initial_velocity_max = 555.9
+scale_amount_max = 20.0
+scale_amount_curve = SubResource("Curve_fn7ur")
+color_ramp = SubResource("Gradient_37b7e")
+anim_speed_max = 7.16
+
+[node name="firework_lavender_2" type="CPUParticles2D" parent="party/fireworks"]
+self_modulate = Color(0.733333, 0.607843, 1, 1)
+material = SubResource("CanvasItemMaterial_d5m0a")
+position = Vector2(212, 306)
+emitting = false
+amount = 50
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("5_i78hk")
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 307.45
+initial_velocity_max = 555.9
+scale_amount_max = 20.0
+scale_amount_curve = SubResource("Curve_fn7ur")
+color_ramp = SubResource("Gradient_37b7e")
+anim_speed_max = 7.16
+
+[node name="firework_turquoius_2" type="CPUParticles2D" parent="party/fireworks"]
+self_modulate = Color(0.396078, 0.972549, 1, 1)
+material = SubResource("CanvasItemMaterial_d5m0a")
+position = Vector2(361, 797)
+emitting = false
+amount = 50
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("5_i78hk")
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 307.45
+initial_velocity_max = 555.9
+scale_amount_max = 20.0
+scale_amount_curve = SubResource("Curve_fn7ur")
+color_ramp = SubResource("Gradient_37b7e")
+anim_speed_max = 7.16
+
+[node name="confetti" type="Node2D" parent="party"]
+
+[node name="confetti_lilac" type="CPUParticles2D" parent="party/confetti"]
+material = SubResource("CanvasItemMaterial_vi7fa")
+position = Vector2(1000, 0)
+amount = 10
+lifetime = 6.7
+texture = ExtResource("6_igexc")
+emission_shape = 3
+emission_rect_extents = Vector2(1000, 1)
+gravity = Vector2(0, 200)
+damping_curve = SubResource("Curve_gjjcy")
+scale_amount_min = 4.0
+scale_amount_max = 7.0
+color = Color(0.803922, 0.580392, 1, 1)
+anim_speed_min = 0.01
+anim_speed_max = 11.93
+
+[node name="confetti_yellow" type="CPUParticles2D" parent="party/confetti"]
+material = SubResource("CanvasItemMaterial_vi7fa")
+position = Vector2(1000, 0)
+amount = 10
+lifetime = 3.5
+texture = ExtResource("6_igexc")
+emission_shape = 3
+emission_rect_extents = Vector2(1000, 1)
+gravity = Vector2(0, 200)
+scale_amount_min = 4.0
+scale_amount_max = 7.0
+color = Color(1, 1, 0, 1)
+anim_speed_min = 0.01
+anim_speed_max = 11.93
+
+[node name="confetti_blue" type="CPUParticles2D" parent="party/confetti"]
+material = SubResource("CanvasItemMaterial_vi7fa")
+position = Vector2(1000, 0)
+amount = 10
+lifetime = 3.5
+texture = ExtResource("6_igexc")
+emission_shape = 3
+emission_rect_extents = Vector2(1000, 1)
+gravity = Vector2(0, 200)
+scale_amount_min = 4.0
+scale_amount_max = 7.0
+color = Color(0.47, 0.788, 1, 1)
+anim_speed_min = 0.01
+anim_speed_max = 11.93
 
 [connection signal="pressed" from="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
