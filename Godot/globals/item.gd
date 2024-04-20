@@ -213,7 +213,7 @@ static var effects := {
 	Type.IRON_SHIELD: null,
 	Type.BATTLE_HAMMER: null,
 	Type.BOOMERANG: null,
-	Type.SUPER_SWORD: null,
+	Type.SUPER_SWORD: preload("res://effects/sword_particles_blue.tscn"),
 }
 
 static var crafting: Dictionary = _init_crafting(recipes)
