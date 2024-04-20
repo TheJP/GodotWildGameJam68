@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://wqfvyl0eto0v"
-path="res://.godot/imported/crafter_combined.png-8e13f3fb7d81ff9f1953faa3b1d30625.ctex"
+uid="uid://dpudwppg1alu"
+path="res://.godot/imported/enemy_3.png-b1fa42f24e5d4e6db7b859a611f3bed8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/crafter_combined.png"
-dest_files=["res://.godot/imported/crafter_combined.png-8e13f3fb7d81ff9f1953faa3b1d30625.ctex"]
+source_file="res://assets/fighters/enemy_3.png"
+dest_files=["res://.godot/imported/enemy_3.png-b1fa42f24e5d4e6db7b859a611f3bed8.ctex"]
 
 [params]
 
