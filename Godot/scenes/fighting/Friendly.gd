@@ -23,7 +23,6 @@ var damage = 1
 var move_frequency = 2
 var counter = -3
 
-var _hovering = false
 
 func _ready():
 	Ticker.timer.timeout.connect(on_global_ticker_timeout)

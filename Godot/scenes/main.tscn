@@ -21,11 +21,11 @@ bg_color = Color(0.368627, 0.368627, 0.368627, 1)
 
 [node name="MenuInGame" parent="CanvasLayer" instance=ExtResource("3_vvqis")]
 
-[node name="MenuSettings" parent="CanvasLayer" instance=ExtResource("4_ib2fi")]
-
 [node name="HealthBar" parent="CanvasLayer" instance=ExtResource("5_jtxbn")]
 theme_override_styles/background = SubResource("StyleBoxFlat_34ee3")
 
 [node name="DiscoveryPopUp" parent="CanvasLayer" instance=ExtResource("6_xx1ve")]
+
+[node name="MenuSettings" parent="CanvasLayer" instance=ExtResource("4_ib2fi")]
 
 [node name="Tutorial" parent="CanvasLayer" instance=ExtResource("7_obfex")]
