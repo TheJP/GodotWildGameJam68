@@ -46,6 +46,7 @@ stream = ExtResource("7_mwh36")
 stream = ExtResource("8_2pnbw")
 
 [node name="ItemDiscoverySound" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("9_fakn1")
 
 [node name="ItemCombinationSound" type="AudioStreamPlayer" parent="."]

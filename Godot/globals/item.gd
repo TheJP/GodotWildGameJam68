@@ -17,6 +17,8 @@ enum Type {
 	SWORD,
 	WOODEN_SHIELD,
 	IRON_SHIELD,
+	BATTLE_HAMMER,
+	BOOMERANG,
 }
 
 
@@ -64,12 +66,14 @@ class StatModifier:
 	var damage: int
 	var destroy_on_pickup: bool
 	var throwable: int #0 if not throwable, otherwise signifies throw damage amount
+	var ranged: bool
 
-	func _init(p_health: int, p_damage: int, p_destroy_on_pickup: bool = false, p_throwable: int = 0):
+	func _init(p_health: int, p_damage: int, p_destroy_on_pickup: bool = false, p_throwable: int = 0, p_ranged: bool = false):
 		health = p_health
 		damage = p_damage
 		destroy_on_pickup = p_destroy_on_pickup
 		throwable = p_throwable
+		ranged = p_ranged
 
 static var recipes: Array[Recipe] = [
 	Recipe.new(Type.WOOD, Type.WOOD, Type.FIRE),
@@ -80,7 +84,8 @@ static var recipes: Array[Recipe] = [
 	Recipe.new(Type.WOOD, Type.HOT_FIRE, Type.HOT_FIRE),
 	Recipe.new(Type.WOOD, Type.HOT_STEEL, Type.FIRE),
 	Recipe.new(Type.WOOD, Type.HAMMER, Type.WOODEN_SHIELD),
-
+	Recipe.new(Type.WOOD, Type.STEEL, Type.BATTLE_HAMMER),
+	
 	Recipe.new(Type.STONE, Type.STONE, Type.IRON_ORE),
 	Recipe.new(Type.STONE, Type.FIRE, Type.STONE),
 
@@ -97,6 +102,7 @@ static var recipes: Array[Recipe] = [
 	Recipe.new(Type.FIRE, Type.HOT_STEEL, Type.HOT_STEEL),
 
 	Recipe.new(Type.HAMMER, Type.HOT_STEEL, Type.SWORD),
+	Recipe.new(Type.HAMMER, Type.STEEL, Type.BOOMERANG),
 
 	Recipe.new(Type.TORCH, Type.HOT_FIRE, Nothing.new()),
 	Recipe.new(Type.TORCH, Type.COAL, Type.HOT_FIRE),
@@ -139,8 +145,29 @@ static var stat_modifiers := {
 	Type.SWORD: StatModifier.new(0, 4),
 	Type.WOODEN_SHIELD: StatModifier.new(2, 0),
 	Type.IRON_SHIELD: StatModifier.new(3, 0),
+	Type.BATTLE_HAMMER: StatModifier.new(1, 2),
+	Type.BOOMERANG: StatModifier.new(0, 0, false, 2, true),
 }
 
+static var names := {
+	Type.TRASH: "Trash",
+	Type.WOOD: "Wood",
+	Type.STONE: "Stone",
+	Type.IRON_ORE: "Iron Ore",
+	Type.FIRE: "Fire",
+	Type.HAMMER: "Hammer",
+	Type.TORCH: "Torch",
+	Type.COAL: "Coal",
+	Type.HOT_FIRE: "Hot Fire",
+	Type.HOT_STEEL: "Hot Steel",
+	Type.SPEAR: "Spear",
+	Type.STEEL: "Steel",
+	Type.SWORD: "Sword",
+	Type.WOODEN_SHIELD: "Wooden Shield",
+	Type.IRON_SHIELD: "Iron Shield",
+	Type.BATTLE_HAMMER: "Battle Hammer",
+	Type.BOOMERANG: "Boomerang",
+}
 
 static var sprites := {
 	Type.TRASH: preload('res://assets/items/trash.png'),
@@ -158,6 +185,8 @@ static var sprites := {
 	Type.SWORD: preload('res://assets/items/sword.png'),
 	Type.WOODEN_SHIELD: preload("res://assets/items/shield_wood.png"),
 	Type.IRON_SHIELD: preload("res://assets/items/shield_iron.png"),
+	Type.BATTLE_HAMMER: preload("res://assets/items/hammer_battle.png"),
+	Type.BOOMERANG: preload("res://assets/items/boomerang.png"),
 }
 
 static var effects := {
@@ -176,6 +205,8 @@ static var effects := {
 	Type.SWORD: null,
 	Type.WOODEN_SHIELD: null,
 	Type.IRON_SHIELD: null,
+	Type.BATTLE_HAMMER: null,
+	Type.BOOMERANG: null,
 }
 
 static var crafting: Dictionary = _init_crafting(recipes)
