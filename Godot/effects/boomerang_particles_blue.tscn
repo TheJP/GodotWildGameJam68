@@ -4,34 +4,42 @@
 [ext_resource type="Texture2D" uid="uid://bap6uc0cjndb3" path="res://assets/particles/starglow_onesprite.png" id="2_ume7b"]
 [ext_resource type="Texture2D" uid="uid://b3jvm27i4tup2" path="res://assets/particles/boomerang_glow.png" id="3_cjvn3"]
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_wwao8"]
+[sub_resource type="Gradient" id="Gradient_67ptp"]
+offsets = PackedFloat32Array(0, 0.530017, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.784314, 1, 1, 1, 1)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_n68my"]
 particles_animation = true
 particles_anim_h_frames = 6
 particles_anim_v_frames = 1
 particles_anim_loop = false
 
-[sub_resource type="Gradient" id="Gradient_71fbu"]
+[sub_resource type="Gradient" id="Gradient_c72o7"]
 offsets = PackedFloat32Array(0.128645, 0.823328, 0.969125, 1)
 colors = PackedColorArray(1, 1, 1, 0.360784, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_v5gvt"]
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_nrjqd"]
 particles_animation = true
 particles_anim_h_frames = 10
 particles_anim_v_frames = 1
 particles_anim_loop = true
 
-[sub_resource type="Gradient" id="Gradient_67ptp"]
-offsets = PackedFloat32Array(0, 0.530017, 1)
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.784314, 1, 1, 1, 1)
-
 [node name="BoomerangParticlesBlue" type="Node2D"]
+
+[node name="boomerang_light" type="CPUParticles2D" parent="."]
+self_modulate = Color(0.0627451, 0.423529, 1, 1)
+amount = 1
+local_coords = true
+texture = ExtResource("3_cjvn3")
+gravity = Vector2(0, 0)
+color = Color(1, 1, 1, 0.835294)
+color_ramp = SubResource("Gradient_67ptp")
 
 [node name="boomerang_glow" type="CPUParticles2D" parent="."]
 self_modulate = Color(0.0627451, 0.423529, 1, 1)
 z_index = 2
 texture_filter = 1
-material = SubResource("CanvasItemMaterial_wwao8")
-emitting = false
+material = SubResource("CanvasItemMaterial_n68my")
 amount = 30
 lifetime = 2.0
 speed_scale = 0.5
@@ -47,14 +55,13 @@ initial_velocity_max = 9.52
 angular_velocity_min = 5.0
 angular_velocity_max = 5.0
 scale_amount_max = 3.0
-color_ramp = SubResource("Gradient_71fbu")
+color_ramp = SubResource("Gradient_c72o7")
 anim_speed_max = 6.0
 
 [node name="boomerang_bling" type="CPUParticles2D" parent="."]
 z_index = 2
 texture_filter = 1
-material = SubResource("CanvasItemMaterial_v5gvt")
-emitting = false
+material = SubResource("CanvasItemMaterial_nrjqd")
 amount = 3
 lifetime = 2.0
 speed_scale = 0.8
@@ -67,12 +74,3 @@ gravity = Vector2(0, 0)
 scale_amount_max = 2.0
 color = Color(0.588235, 0.741176, 1, 1)
 anim_speed_max = 6.0
-
-[node name="boomerang_light" type="CPUParticles2D" parent="."]
-self_modulate = Color(0.0627451, 0.423529, 1, 1)
-amount = 1
-local_coords = true
-texture = ExtResource("3_cjvn3")
-gravity = Vector2(0, 0)
-color = Color(1, 1, 1, 0.835294)
-color_ramp = SubResource("Gradient_67ptp")

@@ -156,15 +156,15 @@ scale = Vector2(0.5, 0.5)
 
 [node name="mode_one" type="CPUParticles2D" parent="RightHand"]
 visible = false
-modulate = Color(1, 1, 1, 0.392157)
 self_modulate = Color(0.0627451, 0.423529, 1, 1)
 material = SubResource("CanvasItemMaterial_8e4a1")
-amount = 10
+position = Vector2(10, 0)
+amount = 20
 lifetime = 4.0
 local_coords = true
 texture = ExtResource("4_occij")
-emission_shape = 1
-emission_sphere_radius = 19.0
+emission_shape = 3
+emission_rect_extents = Vector2(15, 20)
 gravity = Vector2(0, 0)
 scale_amount_min = 2.0
 scale_amount_max = 3.0
@@ -174,15 +174,15 @@ anim_speed_max = 4.0
 
 [node name="mode_two" type="CPUParticles2D" parent="RightHand"]
 visible = false
-modulate = Color(1, 1, 1, 0.392157)
 self_modulate = Color(0.470588, 0.192157, 1, 1)
 material = SubResource("CanvasItemMaterial_8e4a1")
-amount = 10
+position = Vector2(10, 0)
+amount = 20
 lifetime = 4.0
 local_coords = true
 texture = ExtResource("4_occij")
-emission_shape = 1
-emission_sphere_radius = 19.0
+emission_shape = 3
+emission_rect_extents = Vector2(15, 20)
 gravity = Vector2(0, 0)
 scale_amount_min = 2.0
 scale_amount_max = 3.0
@@ -192,15 +192,15 @@ anim_speed_max = 4.0
 
 [node name="mode_three" type="CPUParticles2D" parent="RightHand"]
 visible = false
-modulate = Color(1, 1, 1, 0.392157)
 self_modulate = Color(0.929412, 0.556863, 0, 1)
 material = SubResource("CanvasItemMaterial_8e4a1")
-amount = 10
+position = Vector2(10, 0)
+amount = 20
 lifetime = 4.0
 local_coords = true
 texture = ExtResource("4_occij")
-emission_shape = 1
-emission_sphere_radius = 19.0
+emission_shape = 3
+emission_rect_extents = Vector2(15, 20)
 gravity = Vector2(0, 0)
 scale_amount_min = 2.0
 scale_amount_max = 3.0
@@ -215,15 +215,15 @@ flip_h = true
 
 [node name="mode_one" type="CPUParticles2D" parent="LeftHand"]
 visible = false
-modulate = Color(1, 1, 1, 0.392157)
 self_modulate = Color(0.0627451, 0.423529, 1, 1)
 material = SubResource("CanvasItemMaterial_8e4a1")
-amount = 10
+position = Vector2(-10, 0)
+amount = 20
 lifetime = 4.0
 local_coords = true
 texture = ExtResource("4_occij")
-emission_shape = 1
-emission_sphere_radius = 19.0
+emission_shape = 3
+emission_rect_extents = Vector2(15, 20)
 gravity = Vector2(0, 0)
 scale_amount_min = 2.0
 scale_amount_max = 3.0
@@ -233,15 +233,15 @@ anim_speed_max = 4.0
 
 [node name="mode_two" type="CPUParticles2D" parent="LeftHand"]
 visible = false
-modulate = Color(1, 1, 1, 0.392157)
 self_modulate = Color(0.470588, 0.192157, 1, 1)
 material = SubResource("CanvasItemMaterial_8e4a1")
-amount = 10
+position = Vector2(-10, 0)
+amount = 20
 lifetime = 4.0
 local_coords = true
 texture = ExtResource("4_occij")
-emission_shape = 1
-emission_sphere_radius = 19.0
+emission_shape = 3
+emission_rect_extents = Vector2(15, 20)
 gravity = Vector2(0, 0)
 scale_amount_min = 2.0
 scale_amount_max = 3.0
@@ -251,15 +251,15 @@ anim_speed_max = 4.0
 
 [node name="mode_three" type="CPUParticles2D" parent="LeftHand"]
 visible = false
-modulate = Color(1, 1, 1, 0.392157)
 self_modulate = Color(0.929412, 0.556863, 0, 1)
 material = SubResource("CanvasItemMaterial_8e4a1")
-amount = 10
+position = Vector2(-10, 0)
+amount = 20
 lifetime = 4.0
 local_coords = true
 texture = ExtResource("4_occij")
-emission_shape = 1
-emission_sphere_radius = 19.0
+emission_shape = 3
+emission_rect_extents = Vector2(15, 20)
 gravity = Vector2(0, 0)
 scale_amount_min = 2.0
 scale_amount_max = 3.0
