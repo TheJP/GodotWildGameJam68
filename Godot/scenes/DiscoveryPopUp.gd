@@ -4,6 +4,7 @@ extends Control
 @onready var label = %ItemName
 
 var discovery_queue = []
+var effect
 
 func _ready():
 	ItemDiscovery.discovery.connect(_on_discovery)
@@ -11,6 +12,9 @@ func _ready():
 
 func _on_button_pressed():
 	self.visible = false
+	if effect != null:
+		effect.queue_free()
+		effect = null
 	get_tree().paused = false
 	if !discovery_queue.is_empty():
 		_on_discovery(discovery_queue.pop_front())
@@ -18,6 +22,10 @@ func _on_button_pressed():
 func _on_discovery(type):
 	if(self.visible == false):
 		sprite.texture = Item.sprites[type]
+		effect = Item.effects[type].instantiate()
+		sprite.add_child(effect)
+		effect.global_position = sprite.global_position + sprite.size * 0.5
+		effect.show_behind_parent = true
 		label.text = Item.names[type]
 		self.visible = true
 		AudioController.get_player("ItemDiscoverySound").play()

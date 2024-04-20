@@ -118,7 +118,6 @@ point_count = 3
 
 [node name="DiscoveryPopUp" type="Control"]
 process_mode = 3
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -165,9 +164,13 @@ theme_override_font_sizes/font_size = 60
 text = "New Item Discovered!"
 uppercase = true
 
+[node name="Control" type="Control" parent="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
 [node name="ItemSprite" type="TextureRect" parent="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 4
 texture = ExtResource("4_vy06l")
 stretch_mode = 3
 
@@ -200,6 +203,7 @@ autoplay = "party_fireworks"
 self_modulate = Color(1, 0.780392, 0.341176, 1)
 material = SubResource("CanvasItemMaterial_d5m0a")
 position = Vector2(854, 136)
+emitting = false
 amount = 50
 lifetime = 0.5
 one_shot = true
