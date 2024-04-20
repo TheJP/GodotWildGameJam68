@@ -79,13 +79,21 @@ class StatModifier:
 	var destroy_on_pickup: bool
 	var throwable: int #0 if not throwable, otherwise signifies throw damage amount
 	var ranged: bool
+	var level: int
 
-	func _init(p_health: int, p_damage: int, p_destroy_on_pickup: bool = false, p_throwable: int = 0, p_ranged: bool = false):
+	func _init(p_health: int,
+	 p_damage: int,
+	 p_destroy_on_pickup: bool = false,
+	 p_throwable: int = 0,
+	 p_ranged: bool = false,
+	 p_level: int = 0,
+	):
 		health = p_health
 		damage = p_damage
 		destroy_on_pickup = p_destroy_on_pickup
 		throwable = p_throwable
 		ranged = p_ranged
+		level = p_level
 
 static var recipes: Array[Recipe] = [
 	Recipe.new(Type.WOOD, Type.WOOD, Type.FIRE),
@@ -175,18 +183,18 @@ static var stat_modifiers := {
 	Type.IRON_SHIELD: StatModifier.new(3, 0),
 	Type.BATTLE_HAMMER: StatModifier.new(1, 2),
 	Type.BOOMERANG: StatModifier.new(0, 0, false, 2, true),
-	Type.SUPER_SWORD: StatModifier.new(0, 8),
-	Type.ULTRA_SWORD: StatModifier.new(0, 16),
-	Type.SUPER_ULTRA_SWORD: StatModifier.new(0, 32),
-	Type.SUPER_BOOMERANG: StatModifier.new(0, 0, false, 4, true),
-	Type.ULTRA_BOOMERANG: StatModifier.new(0, 0, false, 8, true),
-	Type.SUPER_ULTRA_BOOMERANG: StatModifier.new(0, 0, false, 16, true),
-	Type.SUPER_SHIELD: StatModifier.new(5, 0),
-	Type.ULTRA_SHIELD: StatModifier.new(8, 0),
-	Type.SUPER_ULTRA_SHIELD: StatModifier.new(16, 0),
-	Type.SUPER_BATTLE_HAMMER: StatModifier.new(2, 4),
-	Type.ULTRA_BATTLE_HAMMER: StatModifier.new(6, 6),
-	Type.SUPER_ULTRA_BATTLE_HAMMER: StatModifier.new(10, 10),
+	Type.SUPER_SWORD: StatModifier.new(0, 8, false, 0, false, 1),
+	Type.ULTRA_SWORD: StatModifier.new(0, 16, false, 0, false, 2),
+	Type.SUPER_ULTRA_SWORD: StatModifier.new(0, 32, false, 0, false, 3),
+	Type.SUPER_BOOMERANG: StatModifier.new(0, 0, false, 4, true, 1),
+	Type.ULTRA_BOOMERANG: StatModifier.new(0, 0, false, 8, true, 2),
+	Type.SUPER_ULTRA_BOOMERANG: StatModifier.new(0, 0, false, 16, true, 3),
+	Type.SUPER_SHIELD: StatModifier.new(5, 0, false, 0, false, 1),
+	Type.ULTRA_SHIELD: StatModifier.new(8, 0, false, 0, false, 2),
+	Type.SUPER_ULTRA_SHIELD: StatModifier.new(16, 0, false, 0, false, 3),
+	Type.SUPER_BATTLE_HAMMER: StatModifier.new(2, 4, false, 0, false, 1),
+	Type.ULTRA_BATTLE_HAMMER: StatModifier.new(6, 6, false, 0, false, 2),
+	Type.SUPER_ULTRA_BATTLE_HAMMER: StatModifier.new(10, 10, false, 0, false, 3),
 }
 
 static var names := {

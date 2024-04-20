@@ -5,7 +5,13 @@ extends DropTarget
 @onready var range_ray = $RangeRay
 @onready var melee_ray = $MeleeRay
 @onready var right_hand_sprite = $RightHand
+@onready var right_hand_level_one = $RightHand/mode_one
+@onready var right_hand_level_two = $RightHand/mode_two
+@onready var right_hand_level_three = $RightHand/mode_three
 @onready var left_hand_sprite = $LeftHand
+@onready var left_hand_level_one = $LeftHand/mode_one
+@onready var left_hand_level_two = $LeftHand/mode_two
+@onready var left_hand_level_three = $LeftHand/mode_three
 @onready var health_bar = $HealthBar
 @onready var _animation_player = $AnimationPlayer
 var right_hand_occupied = false
@@ -142,11 +148,23 @@ func try_set_item(p_item: Node2D) -> bool:
 			right_hand_sprite.texture = p_item.get_node("Sprite2D").texture
 			right_hand_occupied = true
 			right_hand_item_type = p_item.type
+			if(item_stat_modifiers.level == 1):
+				right_hand_level_one.visible = true
+			elif(item_stat_modifiers.level == 2):
+				right_hand_level_two.visible = true
+			elif(item_stat_modifiers.level == 3):
+				right_hand_level_three.visible = true
 	elif !left_hand_occupied:
 		if !item_stat_modifiers.destroy_on_pickup:
 			left_hand_sprite.texture = p_item.get_node("Sprite2D").texture
 			left_hand_occupied = true
 			left_hand_item_type = p_item.type
+			if(item_stat_modifiers.level == 1):
+				left_hand_level_one.visible = true
+			elif(item_stat_modifiers.level == 2):
+				left_hand_level_two.visible = true
+			elif(item_stat_modifiers.level == 3):
+				left_hand_level_three.visible = true
 	else:
 		return false
 
