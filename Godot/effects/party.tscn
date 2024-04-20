@@ -1,0 +1,226 @@
+[gd_scene load_steps=8 format=3 uid="uid://cpeebytaavj0v"]
+
+[ext_resource type="Texture2D" uid="uid://bs5v3i6cgu71i" path="res://assets/particles/lil_star_anim_sprite.png" id="1_gkdxr"]
+[ext_resource type="Texture2D" uid="uid://7tv3s04tjy5k" path="res://assets/particles/confetti_faster_anim_sprite.png" id="2_s8gpq"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_kkel8"]
+particles_animation = true
+particles_anim_h_frames = 3
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_3pwfi"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.0319149), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_x4e0x"]
+offsets = PackedFloat32Array(0.485401, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_snosi"]
+particles_animation = true
+particles_anim_h_frames = 6
+particles_anim_v_frames = 1
+particles_anim_loop = true
+
+[sub_resource type="Curve" id="Curve_bs64k"]
+max_value = 1024.0
+_data = [Vector2(0, 1024), 0.0, -144.694, 0, 0, Vector2(0.675497, 1024), 0.0, 0.0, 0, 0, Vector2(0.996689, 1024), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="party" type="Node2D"]
+
+[node name="fireworks" type="Node2D" parent="."]
+
+[node name="firework_gold" type="CPUParticles2D" parent="fireworks"]
+self_modulate = Color(1, 0.780392, 0.341176, 1)
+material = SubResource("CanvasItemMaterial_kkel8")
+position = Vector2(854, 136)
+emitting = false
+amount = 50
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("1_gkdxr")
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 307.45
+initial_velocity_max = 555.9
+scale_amount_max = 20.0
+scale_amount_curve = SubResource("Curve_3pwfi")
+color_ramp = SubResource("Gradient_x4e0x")
+anim_speed_max = 7.16
+
+[node name="firework_turquoius" type="CPUParticles2D" parent="fireworks"]
+self_modulate = Color(0.396078, 0.972549, 1, 1)
+material = SubResource("CanvasItemMaterial_kkel8")
+position = Vector2(1441, 477)
+emitting = false
+amount = 50
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("1_gkdxr")
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 307.45
+initial_velocity_max = 555.9
+scale_amount_max = 20.0
+scale_amount_curve = SubResource("Curve_3pwfi")
+color_ramp = SubResource("Gradient_x4e0x")
+anim_speed_max = 7.16
+
+[node name="firework_lavender" type="CPUParticles2D" parent="fireworks"]
+self_modulate = Color(0.733333, 0.607843, 1, 1)
+material = SubResource("CanvasItemMaterial_kkel8")
+position = Vector2(1009, 935)
+emitting = false
+amount = 50
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("1_gkdxr")
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 307.45
+initial_velocity_max = 555.9
+scale_amount_max = 20.0
+scale_amount_curve = SubResource("Curve_3pwfi")
+color_ramp = SubResource("Gradient_x4e0x")
+anim_speed_max = 7.16
+
+[node name="firework_gold_2" type="CPUParticles2D" parent="fireworks"]
+self_modulate = Color(1, 0.780392, 0.341176, 1)
+material = SubResource("CanvasItemMaterial_kkel8")
+position = Vector2(1647, 789)
+emitting = false
+amount = 50
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("1_gkdxr")
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 307.45
+initial_velocity_max = 555.9
+scale_amount_max = 20.0
+scale_amount_curve = SubResource("Curve_3pwfi")
+color_ramp = SubResource("Gradient_x4e0x")
+anim_speed_max = 7.16
+
+[node name="firework_lavender_2" type="CPUParticles2D" parent="fireworks"]
+self_modulate = Color(0.733333, 0.607843, 1, 1)
+material = SubResource("CanvasItemMaterial_kkel8")
+position = Vector2(212, 306)
+emitting = false
+amount = 50
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("1_gkdxr")
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 307.45
+initial_velocity_max = 555.9
+scale_amount_max = 20.0
+scale_amount_curve = SubResource("Curve_3pwfi")
+color_ramp = SubResource("Gradient_x4e0x")
+anim_speed_max = 7.16
+
+[node name="firework_turquoius_2" type="CPUParticles2D" parent="fireworks"]
+self_modulate = Color(0.396078, 0.972549, 1, 1)
+material = SubResource("CanvasItemMaterial_kkel8")
+position = Vector2(361, 797)
+emitting = false
+amount = 50
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("1_gkdxr")
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 307.45
+initial_velocity_max = 555.9
+scale_amount_max = 20.0
+scale_amount_curve = SubResource("Curve_3pwfi")
+color_ramp = SubResource("Gradient_x4e0x")
+anim_speed_max = 7.16
+
+[node name="confetti" type="Node2D" parent="."]
+z_index = -1
+
+[node name="confetti_lilac" type="CPUParticles2D" parent="confetti"]
+material = SubResource("CanvasItemMaterial_snosi")
+position = Vector2(1000, 0)
+amount = 10
+lifetime = 6.7
+texture = ExtResource("2_s8gpq")
+emission_shape = 3
+emission_rect_extents = Vector2(1000, 1)
+gravity = Vector2(0, 200)
+damping_curve = SubResource("Curve_bs64k")
+scale_amount_min = 4.0
+scale_amount_max = 7.0
+color = Color(0.803922, 0.580392, 1, 1)
+anim_speed_min = 0.01
+anim_speed_max = 11.93
+
+[node name="confetti_yellow" type="CPUParticles2D" parent="confetti"]
+material = SubResource("CanvasItemMaterial_snosi")
+position = Vector2(1000, 0)
+amount = 10
+lifetime = 3.5
+texture = ExtResource("2_s8gpq")
+emission_shape = 3
+emission_rect_extents = Vector2(1000, 1)
+gravity = Vector2(0, 200)
+scale_amount_min = 4.0
+scale_amount_max = 7.0
+color = Color(1, 1, 0, 1)
+anim_speed_min = 0.01
+anim_speed_max = 11.93
+
+[node name="confetti_blue" type="CPUParticles2D" parent="confetti"]
+material = SubResource("CanvasItemMaterial_snosi")
+position = Vector2(1000, 0)
+amount = 10
+lifetime = 3.5
+texture = ExtResource("2_s8gpq")
+emission_shape = 3
+emission_rect_extents = Vector2(1000, 1)
+gravity = Vector2(0, 200)
+scale_amount_min = 4.0
+scale_amount_max = 7.0
+color = Color(0.47, 0.788, 1, 1)
+anim_speed_min = 0.01
+anim_speed_max = 11.93
+
+[node name="confetti_red" type="CPUParticles2D" parent="confetti"]
+material = SubResource("CanvasItemMaterial_snosi")
+position = Vector2(1000, 0)
+amount = 10
+lifetime = 3.5
+texture = ExtResource("2_s8gpq")
+emission_shape = 3
+emission_rect_extents = Vector2(1000, 1)
+gravity = Vector2(0, 200)
+scale_amount_min = 4.0
+scale_amount_max = 7.0
+color = Color(0.936933, 0.34956, 0.498594, 1)
+anim_speed_min = 0.01
+anim_speed_max = 11.93
+
+[node name="confetti_green" type="CPUParticles2D" parent="confetti"]
+material = SubResource("CanvasItemMaterial_snosi")
+position = Vector2(1000, 0)
+amount = 10
+lifetime = 3.5
+texture = ExtResource("2_s8gpq")
+emission_shape = 3
+emission_rect_extents = Vector2(1000, 1)
+gravity = Vector2(0, 200)
+scale_amount_min = 4.0
+scale_amount_max = 7.0
+color = Color(0.34902, 0.941176, 0.545098, 1)
+anim_speed_min = 0.01
+anim_speed_max = 11.93

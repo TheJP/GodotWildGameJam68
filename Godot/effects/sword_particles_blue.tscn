@@ -1,3 +1,71 @@
-[gd_scene format=3 uid="uid://dsaw7bghtqaip"]
+[gd_scene load_steps=8 format=3 uid="uid://cyv4gyl7ayyvk"]
+
+[ext_resource type="Texture2D" uid="uid://bxrkge3nlpyqk" path="res://assets/particles/glowing_particle_anim_sprite.png" id="1_4w0l1"]
+[ext_resource type="Texture2D" uid="uid://bap6uc0cjndb3" path="res://assets/particles/starglow_onesprite.png" id="2_pfegh"]
+[ext_resource type="Texture2D" uid="uid://cngvny1syxdvv" path="res://assets/particles/sword_glow.png" id="3_1mj67"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_lj5xp"]
+particles_animation = true
+particles_anim_h_frames = 6
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_n4yfm"]
+offsets = PackedFloat32Array(0.128645, 0.823328, 0.969125, 1)
+colors = PackedColorArray(0.0627451, 0.423529, 1, 0.360784, 0.0627451, 0.423529, 1, 1, 0.0627451, 0.423529, 1, 1, 0.0627451, 0.423529, 1, 0)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_plonv"]
+particles_animation = true
+particles_anim_h_frames = 10
+particles_anim_v_frames = 1
+particles_anim_loop = true
+
+[sub_resource type="Gradient" id="Gradient_1lh85"]
+offsets = PackedFloat32Array(0, 0.530017, 1)
+colors = PackedColorArray(0.0627451, 0.423529, 1, 1, 0.0627451, 0.423529, 1, 0.784314, 0.0627451, 0.423529, 1, 1)
 
 [node name="sword_effect" type="Node2D"]
+
+[node name="sword_glow" type="CPUParticles2D" parent="."]
+z_index = 2
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_lj5xp")
+amount = 30
+lifetime = 2.0
+speed_scale = 0.5
+texture = ExtResource("1_4w0l1")
+emission_shape = 4
+emission_points = PackedVector2Array(0, 0, -10, 10, 20, -20, 10, -10, 8, -8, 6, -6, 4, -4, 2, -2, -2, 2, -4, 4, -6, 6, -8, 8, 12, -12, 14, -14, 16, -16, 18, -18, 22, -22, 24, -24)
+emission_colors = PackedColorArray()
+direction = Vector2(0, -50)
+spread = 5.57
+gravity = Vector2(0, -5)
+initial_velocity_max = 9.52
+angular_velocity_min = 5.0
+angular_velocity_max = 5.0
+scale_amount_max = 3.0
+color_ramp = SubResource("Gradient_n4yfm")
+anim_speed_max = 6.0
+
+[node name="sword_bling" type="CPUParticles2D" parent="."]
+z_index = 2
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_plonv")
+amount = 3
+lifetime = 2.0
+speed_scale = 0.8
+texture = ExtResource("2_pfegh")
+emission_shape = 4
+emission_points = PackedVector2Array(30, -30, -25, -5, 2, 10)
+emission_colors = PackedColorArray()
+gravity = Vector2(0, 0)
+scale_amount_max = 2.0
+color = Color(0.588235, 0.741176, 1, 1)
+anim_speed_max = 6.0
+
+[node name="sword_light" type="CPUParticles2D" parent="."]
+amount = 1
+texture = ExtResource("3_1mj67")
+gravity = Vector2(0, 0)
+color = Color(1, 1, 1, 0.835294)
+color_ramp = SubResource("Gradient_1lh85")

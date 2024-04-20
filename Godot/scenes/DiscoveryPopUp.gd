@@ -2,6 +2,7 @@ extends Control
 
 @onready var sprite = $CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Sprite
 @onready var label = $CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Label2
+@onready var _animation_player = $AnimationPlayer
 
 var discovery_queue = []
 
@@ -21,6 +22,7 @@ func _on_discovery(type):
 		label.text = Item.names[type]
 		self.visible = true
 		AudioController.get_player("ItemDiscoverySound").play()
+		_animation_player.play("party_fireworks")
 		get_tree().paused = true
 	else:
 		discovery_queue.append(type)
