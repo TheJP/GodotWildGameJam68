@@ -10,5 +10,6 @@ var discovered := {
 func set_discovered(type):
 	if type not in discovered:
 		discovered[type] = true
+		await get_tree().process_frame
 		discovery.emit(type)
 
