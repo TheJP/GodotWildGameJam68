@@ -11,14 +11,25 @@ const MUSIC_BUS: String = 'Music'
 @onready var _music: HSlider = %MusicSlider
 
 
+var _was_paused_before := false
+
+
 func _ready():
 	_set_sliders()
+
+
+func _on_visibility_changed():
+	if visible:
+		_was_paused_before = get_tree().paused
+		get_tree().paused = true
+	else:
+		get_tree().paused = _was_paused_before
+		_was_paused_before = false
 
 
 func _unhandled_input(event):
 	if event.is_action_pressed('ui_menu'):
 		visible = not visible
-		get_tree().paused = visible
 		_set_sliders()
 
 
@@ -42,7 +53,6 @@ func _on_music_slider_value_changed(value):
 
 func _on_continue_pressed():
 	hide()
-	get_tree().paused = false
 
 
 func _on_back_to_menu_pressed():

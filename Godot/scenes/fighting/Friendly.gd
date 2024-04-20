@@ -23,7 +23,6 @@ var damage = 1
 var move_frequency = 2
 var counter = -3
 
-var _hovering = false
 
 func _ready():
 	Ticker.timer.timeout.connect(on_global_ticker_timeout)
@@ -56,30 +55,44 @@ func try_throw_item() -> bool:
 	range_ray.force_raycast_update()
 	if range_ray.is_colliding():
 		var collider = range_ray.get_collider()
-		if collider is Enemy:
+		if collider is Enemy && self.global_position.distance_to(collider.global_position) > tile_size:
 			if right_hand_occupied && is_instance_valid(collider):
 				if Item.stat_modifiers[right_hand_item_type].throwable > 0:
 					var tween = create_tween()
+					var start_position = right_hand_sprite.global_position
 					tween.tween_property(right_hand_sprite, "global_position",
 						collider.global_position, 1.0/(animation_speed*2)).set_trans(Tween.TRANS_SINE)
 					if(is_instance_valid(collider)):
 						collider.take_damage(Item.stat_modifiers[right_hand_item_type].throwable)
 					await tween.finished
-					right_hand_sprite.texture = null
-					right_hand_occupied = false
-					right_hand_item_type = null
+					if !Item.stat_modifiers[right_hand_item_type].ranged:
+						right_hand_sprite.texture = null
+						right_hand_occupied = false
+						right_hand_item_type = null
+					else:
+						tween = create_tween()
+						tween.tween_property(right_hand_sprite, "global_position",
+						start_position, 1.0/(animation_speed*2)).set_trans(Tween.TRANS_SINE)
+					await tween.finished
 					did_throw = true
 			if left_hand_occupied && is_instance_valid(collider):
 				if Item.stat_modifiers[left_hand_item_type].throwable > 0:
 					var tween = create_tween()
+					var start_position = left_hand_sprite.global_position
 					tween.tween_property(left_hand_sprite, "global_position",
 						collider.global_position, 1.0/(animation_speed*2)).set_trans(Tween.TRANS_SINE)
 					if(is_instance_valid(collider)):
 						collider.take_damage(Item.stat_modifiers[left_hand_item_type].throwable)
 					await tween.finished
-					left_hand_sprite.texture = null
-					left_hand_occupied = false
-					left_hand_item_type = null
+					if !Item.stat_modifiers[left_hand_item_type].ranged:
+						left_hand_sprite.texture = null
+						left_hand_occupied = false
+						left_hand_item_type = null
+					else:
+						tween = create_tween()
+						tween.tween_property(left_hand_sprite, "global_position",
+							start_position, 1.0/(animation_speed*2)).set_trans(Tween.TRANS_SINE)
+					await tween.finished
 					did_throw = true
 	return did_throw
 

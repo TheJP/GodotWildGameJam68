@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cqaifcks6tp3x" path="res://scenes/ui/menu_in_game.tscn" id="3_vvqis"]
 [ext_resource type="PackedScene" uid="uid://c5if07qhh6g72" path="res://scenes/ui/menu_settings.tscn" id="4_ib2fi"]
 [ext_resource type="PackedScene" uid="uid://bn21ko5wckqn7" path="res://scenes/ui/health_bar.tscn" id="5_jtxbn"]
-[ext_resource type="PackedScene" path="res://scenes/ui/discovery_pop_up.tscn" id="6_xx1ve"]
+[ext_resource type="PackedScene" uid="uid://dlwyela3joxju" path="res://scenes/ui/discovery_pop_up.tscn" id="6_xx1ve"]
 [ext_resource type="PackedScene" uid="uid://dhkxc2d2wglyh" path="res://scenes/ui/tutorial.tscn" id="7_obfex"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_34ee3"]
@@ -21,11 +21,12 @@ bg_color = Color(0.368627, 0.368627, 0.368627, 1)
 
 [node name="MenuInGame" parent="CanvasLayer" instance=ExtResource("3_vvqis")]
 
-[node name="MenuSettings" parent="CanvasLayer" instance=ExtResource("4_ib2fi")]
-
 [node name="HealthBar" parent="CanvasLayer" instance=ExtResource("5_jtxbn")]
 theme_override_styles/background = SubResource("StyleBoxFlat_34ee3")
 
 [node name="DiscoveryPopUp" parent="CanvasLayer" instance=ExtResource("6_xx1ve")]
 
+[node name="MenuSettings" parent="CanvasLayer" instance=ExtResource("4_ib2fi")]
+
 [node name="Tutorial" parent="CanvasLayer" instance=ExtResource("7_obfex")]
+visible = false

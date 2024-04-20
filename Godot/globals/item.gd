@@ -19,6 +19,7 @@ enum Type {
 	IRON_SHIELD,
 	BATTLE_HAMMER,
 	BOOMERANG,
+	SUPER_SWORD,
 }
 
 
@@ -118,6 +119,8 @@ static var recipes: Array[Recipe] = [
 	Recipe.new(Type.HOT_STEEL, Type.STEEL, Type.STEEL),
 
 	Recipe.new(Type.STEEL, Type.STEEL, Type.STEEL),
+	
+	Recipe.new(Type.SWORD, Type.SWORD, Type.SUPER_SWORD),
 ]
 
 
@@ -147,6 +150,7 @@ static var stat_modifiers := {
 	Type.IRON_SHIELD: StatModifier.new(3, 0),
 	Type.BATTLE_HAMMER: StatModifier.new(1, 2),
 	Type.BOOMERANG: StatModifier.new(0, 0, false, 2, true),
+	Type.SUPER_SWORD: StatModifier.new(0, 6),	
 }
 
 static var names := {
@@ -167,6 +171,7 @@ static var names := {
 	Type.IRON_SHIELD: "Iron Shield",
 	Type.BATTLE_HAMMER: "Battle Hammer",
 	Type.BOOMERANG: "Boomerang",
+	Type.SUPER_SWORD: "Super Sword",
 }
 
 static var sprites := {
@@ -187,7 +192,8 @@ static var sprites := {
 	Type.IRON_SHIELD: preload("res://assets/items/shield_iron.png"),
 	Type.BATTLE_HAMMER: preload("res://assets/items/hammer_battle.png"),
 	Type.BOOMERANG: preload("res://assets/items/boomerang.png"),
-}
+	Type.SUPER_SWORD: preload('res://assets/items/sword.png'),
+	}
 
 static var effects := {
 	Type.TRASH: null,
@@ -207,6 +213,7 @@ static var effects := {
 	Type.IRON_SHIELD: null,
 	Type.BATTLE_HAMMER: null,
 	Type.BOOMERANG: null,
+	Type.SUPER_SWORD: null,
 }
 
 static var crafting: Dictionary = _init_crafting(recipes)

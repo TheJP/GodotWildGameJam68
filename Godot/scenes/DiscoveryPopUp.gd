@@ -1,8 +1,13 @@
 extends Control
 
+<<<<<<< HEAD
 @onready var sprite = $CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Sprite
 @onready var label = $CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Label2
 @onready var _animation_player = $AnimationPlayer
+=======
+@onready var sprite = %ItemSprite
+@onready var label = %ItemName
+>>>>>>> fa9a8e22359222fcf97739df485afc4818db4b06
 
 var discovery_queue = []
 
