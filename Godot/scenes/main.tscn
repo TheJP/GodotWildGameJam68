@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b6viu12773d5g"]
+[gd_scene load_steps=11 format=3 uid="uid://b6viu12773d5g"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_6ruyp"]
 [ext_resource type="PackedScene" uid="uid://dd4s3sh2lq2x1" path="res://scenes/crafting/crafting.tscn" id="1_y5ktt"]
@@ -12,9 +12,6 @@
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ln20k"]
 texture = ExtResource("3_0ktp3")
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_34ee3"]
-bg_color = Color(0.368627, 0.368627, 0.368627, 1)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_6ruyp")
@@ -54,7 +51,17 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_ln20k")
 [node name="MenuInGame" parent="CanvasLayer" instance=ExtResource("3_vvqis")]
 
 [node name="HealthBar" parent="CanvasLayer" instance=ExtResource("5_jtxbn")]
-theme_override_styles/background = SubResource("StyleBoxFlat_34ee3")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -284.0
+offset_top = 293.0
+offset_right = 284.0
+offset_bottom = 357.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="DiscoveryPopUp" parent="CanvasLayer" instance=ExtResource("6_xx1ve")]
 visible = false

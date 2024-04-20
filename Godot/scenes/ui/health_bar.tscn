@@ -1,17 +1,30 @@
-[gd_scene load_steps=4 format=3 uid="uid://bn21ko5wckqn7"]
+[gd_scene load_steps=7 format=3 uid="uid://bn21ko5wckqn7"]
 
 [ext_resource type="FontFile" uid="uid://beh05ftgpjxmt" path="res://fonts/PixelifySans-VariableFont_wght.ttf" id="1_qvdvu"]
+[ext_resource type="Texture2D" uid="uid://bhwcwexep386x" path="res://assets/ui/healtbar_empty_horizontal.png" id="2_8mi4e"]
 [ext_resource type="Script" path="res://scenes/health_bar.gd" id="2_xattn"]
+[ext_resource type="Texture2D" uid="uid://1hah5ewefxnw" path="res://assets/ui/healtbar_bar_horizontal.png" id="3_q5qbb"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x0wjn"]
-bg_color = Color(0.0705882, 0.701961, 0.294118, 1)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cuctf"]
+texture = ExtResource("2_8mi4e")
+texture_margin_left = 69.0
+texture_margin_right = 18.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_v3svg"]
+texture = ExtResource("3_q5qbb")
+texture_margin_left = 69.0
+texture_margin_right = 18.0
 
 [node name="HealthBar" type="ProgressBar"]
-offset_left = 1677.0
-offset_top = 19.0
-offset_right = 1701.0
-offset_bottom = 553.0
+offset_right = 534.0
+offset_bottom = 64.0
+theme_override_colors/font_color = Color(0.262745, 0.117647, 0.4, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("1_qvdvu")
-theme_override_styles/fill = SubResource("StyleBoxFlat_x0wjn")
-fill_mode = 3
+theme_override_font_sizes/font_size = 30
+theme_override_styles/background = SubResource("StyleBoxTexture_cuctf")
+theme_override_styles/fill = SubResource("StyleBoxTexture_v3svg")
+value = 100.0
+show_percentage = false
 script = ExtResource("2_xattn")
