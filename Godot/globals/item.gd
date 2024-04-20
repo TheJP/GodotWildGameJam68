@@ -20,6 +20,17 @@ enum Type {
 	BATTLE_HAMMER,
 	BOOMERANG,
 	SUPER_SWORD,
+	ULTRA_SWORD,
+	SUPER_ULTRA_SWORD,
+	SUPER_BOOMERANG,
+	ULTRA_BOOMERANG,
+	SUPER_ULTRA_BOOMERANG,
+	SUPER_SHIELD,
+	ULTRA_SHIELD,
+	SUPER_ULTRA_SHIELD,
+	SUPER_BATTLE_HAMMER,
+	ULTRA_BATTLE_HAMMER,
+	SUPER_ULTRA_BATTLE_HAMMER,
 }
 
 
@@ -121,6 +132,20 @@ static var recipes: Array[Recipe] = [
 	Recipe.new(Type.STEEL, Type.STEEL, Type.STEEL),
 	
 	Recipe.new(Type.SWORD, Type.SWORD, Type.SUPER_SWORD),
+	Recipe.new(Type.SUPER_SWORD, Type.SUPER_SWORD, Type.ULTRA_SWORD),
+	Recipe.new(Type.ULTRA_SWORD, Type.ULTRA_SWORD, Type.SUPER_ULTRA_SWORD),
+	
+	Recipe.new(Type.BOOMERANG, Type.BOOMERANG, Type.SUPER_BOOMERANG),
+	Recipe.new(Type.SUPER_BOOMERANG, Type.SUPER_BOOMERANG, Type.ULTRA_BOOMERANG),
+	Recipe.new(Type.ULTRA_BOOMERANG, Type.ULTRA_BOOMERANG, Type.SUPER_ULTRA_BOOMERANG),
+	
+	Recipe.new(Type.BOOMERANG, Type.BOOMERANG, Type.SUPER_BOOMERANG),
+	Recipe.new(Type.SUPER_BOOMERANG, Type.SUPER_BOOMERANG, Type.ULTRA_BOOMERANG),
+	Recipe.new(Type.ULTRA_BOOMERANG, Type.ULTRA_BOOMERANG, Type.SUPER_ULTRA_BOOMERANG),
+	
+	Recipe.new(Type.BATTLE_HAMMER, Type.BATTLE_HAMMER, Type.SUPER_BATTLE_HAMMER),
+	Recipe.new(Type.SUPER_BATTLE_HAMMER, Type.SUPER_BATTLE_HAMMER, Type.ULTRA_BATTLE_HAMMER),
+	Recipe.new(Type.ULTRA_BATTLE_HAMMER, Type.ULTRA_BATTLE_HAMMER, Type.SUPER_ULTRA_BATTLE_HAMMER),
 ]
 
 
@@ -150,7 +175,18 @@ static var stat_modifiers := {
 	Type.IRON_SHIELD: StatModifier.new(3, 0),
 	Type.BATTLE_HAMMER: StatModifier.new(1, 2),
 	Type.BOOMERANG: StatModifier.new(0, 0, false, 2, true),
-	Type.SUPER_SWORD: StatModifier.new(0, 6),	
+	Type.SUPER_SWORD: StatModifier.new(0, 8),
+	Type.ULTRA_SWORD: StatModifier.new(0, 16),
+	Type.SUPER_ULTRA_SWORD: StatModifier.new(0, 32),
+	Type.SUPER_BOOMERANG: StatModifier.new(0, 0, false, 4, true),
+	Type.ULTRA_BOOMERANG: StatModifier.new(0, 0, false, 8, true),
+	Type.SUPER_ULTRA_BOOMERANG: StatModifier.new(0, 0, false, 16, true),
+	Type.SUPER_SHIELD: StatModifier.new(5, 0),
+	Type.ULTRA_SHIELD: StatModifier.new(8, 0),
+	Type.SUPER_ULTRA_SHIELD: StatModifier.new(16, 0),
+	Type.SUPER_BATTLE_HAMMER: StatModifier.new(2, 4),
+	Type.ULTRA_BATTLE_HAMMER: StatModifier.new(6, 6),
+	Type.SUPER_ULTRA_BATTLE_HAMMER: StatModifier.new(10, 10),
 }
 
 static var names := {
@@ -172,6 +208,17 @@ static var names := {
 	Type.BATTLE_HAMMER: "Battle Hammer",
 	Type.BOOMERANG: "Boomerang",
 	Type.SUPER_SWORD: "Super Sword",
+	Type.ULTRA_SWORD: "Ultra Sword",
+	Type.SUPER_ULTRA_SWORD: "Super Ultra Sword of Ultimate Death",
+	Type.SUPER_BOOMERANG: "Super Boomerang",
+	Type.ULTRA_BOOMERANG: "Ultra Boomerang",
+	Type.SUPER_ULTRA_BOOMERANG: "Super Ultra Boomerang of Ultimate Destruction",
+	Type.SUPER_SHIELD: "Super Shield",
+	Type.ULTRA_SHIELD: "Ultra Shield",
+	Type.SUPER_ULTRA_SHIELD: "Super Ultra Shield of Ultimate Immortality",
+	Type.SUPER_BATTLE_HAMMER: "Super Battle Hammer",
+	Type.ULTRA_BATTLE_HAMMER: "Ultra Battle Hammer",
+	Type.SUPER_ULTRA_BATTLE_HAMMER: "Super Ultra Battle Hammer of Ultimate Smashing",	
 }
 
 static var sprites := {
@@ -193,6 +240,17 @@ static var sprites := {
 	Type.BATTLE_HAMMER: preload("res://assets/items/hammer_battle.png"),
 	Type.BOOMERANG: preload("res://assets/items/boomerang.png"),
 	Type.SUPER_SWORD: preload('res://assets/items/sword.png'),
+	Type.ULTRA_SWORD: preload('res://assets/items/sword.png'),
+	Type.SUPER_ULTRA_SWORD: preload('res://assets/items/sword.png'),
+	Type.SUPER_BOOMERANG: preload("res://assets/items/boomerang.png"),
+	Type.ULTRA_BOOMERANG: preload("res://assets/items/boomerang.png"),
+	Type.SUPER_ULTRA_BOOMERANG: preload("res://assets/items/boomerang.png"),
+	Type.SUPER_SHIELD: preload("res://assets/items/shield_iron.png"),
+	Type.ULTRA_SHIELD: preload("res://assets/items/shield_iron.png"),
+	Type.SUPER_ULTRA_SHIELD: preload("res://assets/items/shield_iron.png"),
+	Type.SUPER_BATTLE_HAMMER: preload("res://assets/items/hammer_battle.png"),
+	Type.ULTRA_BATTLE_HAMMER: preload("res://assets/items/hammer_battle.png"),
+	Type.SUPER_ULTRA_BATTLE_HAMMER: preload("res://assets/items/hammer_battle.png"),	
 	}
 
 static var effects := {
@@ -214,6 +272,17 @@ static var effects := {
 	Type.BATTLE_HAMMER: null,
 	Type.BOOMERANG: null,
 	Type.SUPER_SWORD: preload("res://effects/sword_particles_blue.tscn"),
+	Type.ULTRA_SWORD: null,
+	Type.SUPER_ULTRA_SWORD: null,
+	Type.SUPER_BOOMERANG: null,
+	Type.ULTRA_BOOMERANG: null,
+	Type.SUPER_ULTRA_BOOMERANG: null,
+	Type.SUPER_SHIELD: null,
+	Type.ULTRA_SHIELD: null,
+	Type.SUPER_ULTRA_SHIELD: null,
+	Type.SUPER_BATTLE_HAMMER: null,
+	Type.ULTRA_BATTLE_HAMMER: null,
+	Type.SUPER_ULTRA_BATTLE_HAMMER: null,	
 }
 
 static var crafting: Dictionary = _init_crafting(recipes)
