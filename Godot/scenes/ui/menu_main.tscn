@@ -27,11 +27,21 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 30
 
-[node name="Title" type="Label" parent="CenterContainer/VBoxContainer"]
+[node name="Title" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("1_usdt6")
@@ -40,12 +50,12 @@ text = "Forge & Fight"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="CenterContainer/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_j1aed")
 
-[node name="Play" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="Play" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 mouse_default_cursor_shape = 2
@@ -58,7 +68,7 @@ theme_override_colors/font_disabled_color = Color(0.262745, 0.117647, 0.4, 1)
 theme_override_colors/font_outline_color = Color(0.262745, 0.117647, 0.4, 1)
 text = "Play"
 
-[node name="Settings" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="Settings" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 mouse_default_cursor_shape = 2
@@ -71,7 +81,7 @@ theme_override_colors/font_disabled_color = Color(0.262745, 0.117647, 0.4, 1)
 theme_override_colors/font_outline_color = Color(0.262745, 0.117647, 0.4, 1)
 text = "Settings"
 
-[node name="Credits" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="Credits" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 mouse_default_cursor_shape = 2
@@ -84,7 +94,7 @@ theme_override_colors/font_disabled_color = Color(0.262745, 0.117647, 0.4, 1)
 theme_override_colors/font_outline_color = Color(0.262745, 0.117647, 0.4, 1)
 text = "Credits"
 
-[node name="Quit" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="Quit" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
@@ -104,7 +114,7 @@ layout_mode = 1
 [node name="MenuCredits" parent="." instance=ExtResource("5_fjwna")]
 layout_mode = 1
 
-[connection signal="pressed" from="CenterContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
