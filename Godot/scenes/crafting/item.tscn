@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://dkonbje6qc2eb"]
+[gd_scene load_steps=5 format=3 uid="uid://dkonbje6qc2eb"]
 
 [ext_resource type="Script" path="res://scenes/crafting/item.gd" id="1_b8tsh"]
 [ext_resource type="Texture2D" uid="uid://c8rlkymrr4wl7" path="res://assets/items/fire.png" id="2_bw2v3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lnsgk"]
 radius = 30.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gphdo"]
+radius = 15.0
 
 [node name="Item" type="Area2D"]
 collision_layer = 4
@@ -18,9 +21,10 @@ shape = SubResource("CircleShape2D_lnsgk")
 z_index = 1
 texture = ExtResource("2_bw2v3")
 
-[node name="RayCast2D" type="RayCast2D" parent="."]
-enabled = false
-target_position = Vector2(0, 64)
+[node name="ShapeCast2D" type="ShapeCast2D" parent="."]
+shape = SubResource("CircleShape2D_gphdo")
+target_position = Vector2(0, 0)
+max_results = 1
 collision_mask = 2
 collide_with_areas = true
 collide_with_bodies = false

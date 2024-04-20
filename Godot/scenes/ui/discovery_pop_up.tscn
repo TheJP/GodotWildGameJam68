@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://da0mqcv14vosf"]
+[gd_scene load_steps=18 format=3 uid="uid://da0mqcv14vosf"]
 
 [ext_resource type="Theme" uid="uid://d37xjde3q7k3t" path="res://assets/ui/theme.tres" id="1_ce8q6"]
 [ext_resource type="Script" path="res://scenes/DiscoveryPopUp.gd" id="2_urpub"]
@@ -9,6 +9,17 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v0ta5"]
 bg_color = Color(0, 0, 0, 0.686275)
+
+[sub_resource type="InputEventKey" id="InputEventKey_cb6yj"]
+device = -1
+keycode = 4194310
+
+[sub_resource type="InputEventKey" id="InputEventKey_jmx7c"]
+device = -1
+keycode = 4194309
+
+[sub_resource type="Shortcut" id="Shortcut_ee7an"]
+events = [SubResource("InputEventKey_cb6yj"), SubResource("InputEventKey_jmx7c")]
 
 [sub_resource type="Animation" id="Animation_8kwx0"]
 resource_name = "party_fireworks"
@@ -187,6 +198,8 @@ vertical_alignment = 1
 [node name="Button" type="Button" parent="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+shortcut = SubResource("Shortcut_ee7an")
+shortcut_in_tooltip = false
 text = "Continue"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

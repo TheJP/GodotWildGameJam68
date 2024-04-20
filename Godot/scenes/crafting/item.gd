@@ -21,7 +21,7 @@ var _hovered_targets := {}
 var _previous_target = null
 
 
-@onready var _ray: RayCast2D = $RayCast2D
+@onready var _ray: ShapeCast2D = $ShapeCast2D
 var effect = null
 
 
@@ -72,7 +72,6 @@ func _input(event):
 		if dragging != self:
 			return
 		position = event.position + _drag_mouse_delta
-
 
 
 func _on_mouse_entered():
@@ -163,10 +162,12 @@ func _flow():
 class FlowTarget:
 	var machine: Machine
 	var direction: Pipe.Direction
+	var crossed_intersection: bool
 
-	func _init(p_machine: Machine, p_direction: Pipe.Direction):
+	func _init(p_machine: Machine, p_direction: Pipe.Direction, p_crossed_intersection: bool):
 		machine = p_machine
 		direction = p_direction
+		crossed_intersection = p_crossed_intersection
 
 
 # Finds all valid flow target and returns them in order of flow priority.
@@ -185,9 +186,19 @@ func _find_flow_targets() -> Array[FlowTarget]:
 
 	for direction in directions:
 		var trajectory: Vector2 = Pipe.direction_to_vector[direction]
-		_ray.target_position = trajectory * GameParameters.craft_tilesize
-		_ray.force_raycast_update()
-		var collider = _ray.get_collider()
+		_ray.position = trajectory * GameParameters.craft_tilesize
+		_ray.force_shapecast_update()
+		var collider = _ray.get_collider(0) if _ray.is_colliding() else null
+
+		# Flow under intersection in left/right direction.
+		var crossing_count := 0
+		while collider is Pipe and collider.is_intersection and (
+				direction == Pipe.Direction.LEFT or direction == Pipe.Direction.RIGHT):
+			crossing_count += 1
+			_ray.position = trajectory * ((1.0 + crossing_count) * GameParameters.craft_tilesize)
+			_ray.force_shapecast_update()
+			collider = _ray.get_collider(0) if _ray.is_colliding() else null
+
 		if collider == null or not (collider is Machine):
 			continue
 		if collider == _previous_container:
@@ -200,10 +211,11 @@ func _find_flow_targets() -> Array[FlowTarget]:
 			if Pipe.direction_opposite[direction] & collider.connections == 0:
 				continue # Do not flow into pipe that is not connected with us.
 
+		var target := FlowTarget.new(collider, direction, crossing_count > 0)
 		if collider is TrashCan:
-			trash_cans.append(FlowTarget.new(collider, direction))
+			trash_cans.append(target)
 		else:
-			result.append(FlowTarget.new(collider, direction))
+			result.append(target)
 
 	result.append_array(trash_cans)
 	return result
