@@ -200,7 +200,7 @@ autoplay = "party_fireworks"
 [node name="fireworks" type="Node2D" parent="party"]
 
 [node name="firework_gold" type="CPUParticles2D" parent="party/fireworks"]
-self_modulate = Color(1, 0.780392, 0.341176, 1)
+self_modulate = Color(1, 0.67451, 0.341176, 1)
 material = SubResource("CanvasItemMaterial_d5m0a")
 position = Vector2(854, 136)
 emitting = false
@@ -257,7 +257,7 @@ color_ramp = SubResource("Gradient_37b7e")
 anim_speed_max = 7.16
 
 [node name="firework_gold_2" type="CPUParticles2D" parent="party/fireworks"]
-self_modulate = Color(1, 0.780392, 0.341176, 1)
+self_modulate = Color(0.698039, 1, 0.67451, 1)
 material = SubResource("CanvasItemMaterial_d5m0a")
 position = Vector2(1647, 789)
 emitting = false
@@ -276,7 +276,7 @@ color_ramp = SubResource("Gradient_37b7e")
 anim_speed_max = 7.16
 
 [node name="firework_lavender_2" type="CPUParticles2D" parent="party/fireworks"]
-self_modulate = Color(0.733333, 0.607843, 1, 1)
+self_modulate = Color(0.909804, 0.556863, 0.654902, 1)
 material = SubResource("CanvasItemMaterial_d5m0a")
 position = Vector2(212, 306)
 emitting = false
@@ -295,7 +295,7 @@ color_ramp = SubResource("Gradient_37b7e")
 anim_speed_max = 7.16
 
 [node name="firework_turquoius_2" type="CPUParticles2D" parent="party/fireworks"]
-self_modulate = Color(0.396078, 0.972549, 1, 1)
+self_modulate = Color(1, 0.952941, 0.45098, 1)
 material = SubResource("CanvasItemMaterial_d5m0a")
 position = Vector2(361, 797)
 emitting = false
@@ -358,6 +358,38 @@ gravity = Vector2(0, 200)
 scale_amount_min = 4.0
 scale_amount_max = 7.0
 color = Color(0.47, 0.788, 1, 1)
+anim_speed_min = 0.01
+anim_speed_max = 11.93
+
+[node name="confetti_red" type="CPUParticles2D" parent="party/confetti"]
+material = SubResource("CanvasItemMaterial_vi7fa")
+position = Vector2(1000, 0)
+amount = 10
+lifetime = 6.7
+texture = ExtResource("6_igexc")
+emission_shape = 3
+emission_rect_extents = Vector2(1000, 1)
+gravity = Vector2(0, 200)
+damping_curve = SubResource("Curve_gjjcy")
+scale_amount_min = 4.0
+scale_amount_max = 7.0
+color = Color(1, 0.521569, 0.521569, 1)
+anim_speed_min = 0.01
+anim_speed_max = 11.93
+
+[node name="confetti_green" type="CPUParticles2D" parent="party/confetti"]
+material = SubResource("CanvasItemMaterial_vi7fa")
+position = Vector2(1000, 0)
+amount = 10
+lifetime = 6.7
+texture = ExtResource("6_igexc")
+emission_shape = 3
+emission_rect_extents = Vector2(1000, 1)
+gravity = Vector2(0, 200)
+damping_curve = SubResource("Curve_gjjcy")
+scale_amount_min = 4.0
+scale_amount_max = 7.0
+color = Color(0.6, 1, 0.521569, 1)
 anim_speed_min = 0.01
 anim_speed_max = 11.93
 
