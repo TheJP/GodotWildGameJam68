@@ -2,9 +2,15 @@ extends Node
 
 var factory_health = 10
 var progress = 0
-var update_progress = false
 var times_spawned = 0
 signal update_health_bar
+
+
+func new_game():
+	factory_health = 10
+	progress = 0
+	times_spawned = 0
+
 
 func update_health(amount):
 	factory_health += amount
@@ -30,13 +36,13 @@ func _process(_delta):
 	elif progress == 3:
 		AudioController.get_player("Level1Loop").stream.set_loop_mode(0)
 		AudioController.get_player("Level2Loop").stream.set_loop_mode(0)
-		AudioController.get_player("Level3Loop").stream.set_loop_mode(0)		
+		AudioController.get_player("Level3Loop").stream.set_loop_mode(0)
 		if AudioController.get_player("Level1Loop").playing == false:
 			if AudioController.get_player("Level2Loop").playing == false:
 				if AudioController.get_player("Level3Loop").playing == false:
 					if AudioController.get_player("Level4Loop").playing == false:
 						AudioController.get_player("Level4Loop").play()
-				
+
 func set_progress_level(level):
 	progress = level
-		
+
