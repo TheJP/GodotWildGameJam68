@@ -12,6 +12,7 @@ var _enemies: Array = [
 	preload('res://assets/fighters/enemy.png'),
 	preload('res://assets/fighters/enemy_2.png'),
 	preload('res://assets/fighters/enemy_3.png'),
+	# preload('res://assets/fighters/enemy_4.png'), # Is too wide for main menu in current setup!
 ]
 
 

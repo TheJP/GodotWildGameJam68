@@ -112,10 +112,9 @@ func _try_build(p_position):
 			if not is_intersection:
 				collider.connections |= new_connections
 			else:
+				collider.is_intersection = true
 				collider.connections = Pipe.CONNECTIONS_ALL
-			collider.direction = Pipe.Direction.NONE
-			if is_intersection:
-				collider.is_intersection = is_intersection
+				collider.direction = Pipe.Direction.NONE
 		return
 
 	var tile = Tile.scenes[type].instantiate()
