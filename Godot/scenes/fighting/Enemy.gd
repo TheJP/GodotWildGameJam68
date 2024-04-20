@@ -12,7 +12,7 @@ var directions = [Vector2.LEFT, Vector2.UP, Vector2.DOWN, Vector2(-1, 1), Vector
 
 var _hovering = false
 
-var health = 12
+var health = 20
 var damage = 1
 var move_frequency = 2
 var counter = 0
