@@ -80,4 +80,6 @@ text = "Continue"
 
 [node name="party" parent="." instance=ExtResource("5_3are8")]
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
 [connection signal="pressed" from="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
