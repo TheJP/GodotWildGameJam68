@@ -1,0 +1,73 @@
+[gd_scene load_steps=8 format=3 uid="uid://dlvdbq6wy418k"]
+
+[ext_resource type="Texture2D" uid="uid://bxrkge3nlpyqk" path="res://assets/particles/glowing_particle_anim_sprite.png" id="1_qv8u5"]
+[ext_resource type="Texture2D" uid="uid://bap6uc0cjndb3" path="res://assets/particles/starglow_onesprite.png" id="2_syxu5"]
+[ext_resource type="Texture2D" uid="uid://b3jvm27i4tup2" path="res://assets/particles/boomerang_glow.png" id="3_nt8op"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_p0lr7"]
+particles_animation = true
+particles_anim_h_frames = 6
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_bfdj3"]
+offsets = PackedFloat32Array(0.128645, 0.823328, 0.969125, 1)
+colors = PackedColorArray(1, 1, 1, 0.360784, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_7lsve"]
+particles_animation = true
+particles_anim_h_frames = 10
+particles_anim_v_frames = 1
+particles_anim_loop = true
+
+[sub_resource type="Gradient" id="Gradient_virl5"]
+offsets = PackedFloat32Array(0, 0.530017, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.784314, 1, 1, 1, 1)
+
+[node name="BoomerangParticlesPurple" type="Node2D"]
+
+[node name="boomerang_glow" type="CPUParticles2D" parent="."]
+self_modulate = Color(0.470588, 0.192157, 1, 1)
+z_index = 2
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_p0lr7")
+amount = 30
+lifetime = 2.0
+speed_scale = 0.5
+texture = ExtResource("1_qv8u5")
+emission_shape = 4
+emission_points = PackedVector2Array(-16, 0, -8, 7, 3, 15, 18, 23, 10, 18, 1, -10, 18, -23, 11, -17)
+emission_colors = PackedColorArray()
+direction = Vector2(0, -50)
+spread = 5.57
+gravity = Vector2(0, -5)
+initial_velocity_max = 9.52
+angular_velocity_min = 5.0
+angular_velocity_max = 5.0
+scale_amount_max = 3.0
+color_ramp = SubResource("Gradient_bfdj3")
+anim_speed_max = 6.0
+
+[node name="boomerang_bling" type="CPUParticles2D" parent="."]
+z_index = 2
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_7lsve")
+amount = 3
+lifetime = 2.0
+speed_scale = 0.8
+texture = ExtResource("2_syxu5")
+emission_shape = 4
+emission_points = PackedVector2Array(16, 16, -21, -5, 22, -29)
+emission_colors = PackedColorArray()
+gravity = Vector2(0, 0)
+scale_amount_max = 2.0
+color = Color(0.788235, 0.764706, 1, 1)
+anim_speed_max = 6.0
+
+[node name="boomerang_light" type="CPUParticles2D" parent="."]
+self_modulate = Color(0.470588, 0.192157, 1, 1)
+amount = 1
+texture = ExtResource("3_nt8op")
+gravity = Vector2(0, 0)
+color = Color(1, 1, 1, 0.835294)
+color_ramp = SubResource("Gradient_virl5")

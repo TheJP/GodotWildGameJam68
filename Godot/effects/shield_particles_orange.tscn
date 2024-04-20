@@ -1,0 +1,72 @@
+[gd_scene load_steps=8 format=3 uid="uid://cqidchwil13qf"]
+
+[ext_resource type="Texture2D" uid="uid://bxrkge3nlpyqk" path="res://assets/particles/glowing_particle_anim_sprite.png" id="1_keq6q"]
+[ext_resource type="Texture2D" uid="uid://bap6uc0cjndb3" path="res://assets/particles/starglow_onesprite.png" id="2_miv5v"]
+[ext_resource type="Texture2D" uid="uid://btajkv14s0xl6" path="res://assets/particles/battle_hammer_shield.png" id="3_k4jpq"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_qve8p"]
+particles_animation = true
+particles_anim_h_frames = 6
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_efefu"]
+offsets = PackedFloat32Array(0.128645, 0.823328, 0.969125, 1)
+colors = PackedColorArray(1, 1, 1, 0.360784, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ralmp"]
+particles_animation = true
+particles_anim_h_frames = 10
+particles_anim_v_frames = 1
+particles_anim_loop = true
+
+[sub_resource type="Gradient" id="Gradient_1btrv"]
+offsets = PackedFloat32Array(0, 0.530017, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.784314, 1, 1, 1, 1)
+
+[node name="ShieldParticlesOrange" type="Node2D"]
+
+[node name="shield_glow" type="CPUParticles2D" parent="."]
+self_modulate = Color(0.929412, 0.556863, 0, 1)
+z_index = 2
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_qve8p")
+amount = 30
+lifetime = 2.0
+speed_scale = 0.5
+texture = ExtResource("1_keq6q")
+emission_shape = 1
+emission_sphere_radius = 30.0
+direction = Vector2(0, -50)
+spread = 5.57
+gravity = Vector2(0, -5)
+initial_velocity_max = 9.52
+angular_velocity_min = 5.0
+angular_velocity_max = 5.0
+scale_amount_max = 3.0
+color_ramp = SubResource("Gradient_efefu")
+anim_speed_max = 6.0
+
+[node name="shield_bling" type="CPUParticles2D" parent="."]
+z_index = 2
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_ralmp")
+amount = 3
+lifetime = 2.0
+speed_scale = 0.8
+texture = ExtResource("2_miv5v")
+emission_shape = 4
+emission_points = PackedVector2Array(-23, -18, 26, 16, -20, 20)
+emission_colors = PackedColorArray()
+gravity = Vector2(0, 0)
+scale_amount_max = 2.0
+color = Color(1, 0.94902, 0.262745, 1)
+anim_speed_max = 6.0
+
+[node name="shield_light" type="CPUParticles2D" parent="."]
+self_modulate = Color(0.929412, 0.556863, 0, 1)
+amount = 1
+texture = ExtResource("3_k4jpq")
+gravity = Vector2(0, 0)
+color = Color(1, 1, 1, 0.835294)
+color_ramp = SubResource("Gradient_1btrv")
