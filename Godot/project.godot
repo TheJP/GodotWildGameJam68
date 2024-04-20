@@ -26,6 +26,7 @@ ClickCooldown="*res://globals/click_cooldown.gd"
 GlobalStats="*res://globals/global_stats.gd"
 Setup="*res://globals/setup.gd"
 Tool="*res://globals/tool.gd"
+AudioController="*res://globals/audio_controller.gd"
 
 [display]
 

@@ -1,6 +1,5 @@
-[gd_scene load_steps=22 format=3 uid="uid://cqmp6pj8y5u4i"]
+[gd_scene load_steps=21 format=3 uid="uid://cqmp6pj8y5u4i"]
 
-[ext_resource type="Script" path="res://scenes/audio_controller.gd" id="1_sjpvs"]
 [ext_resource type="AudioStream" uid="uid://hc30x30jj33" path="res://audio/Music/endgameloop.wav" id="2_4d2i6"]
 [ext_resource type="AudioStream" uid="uid://d0mpvoockqfdm" path="res://audio/Music/level1loop.wav" id="3_8y5qn"]
 [ext_resource type="AudioStream" uid="uid://i6qmkjr6tpoj" path="res://audio/Music/level2loop.wav" id="4_7u1yl"]
@@ -23,7 +22,6 @@
 [ext_resource type="AudioStream" uid="uid://cxxlkquxxq57r" path="res://audio/FX/DamageTickSound3.wav" id="21_0wuus"]
 
 [node name="AudioController" type="Node"]
-script = ExtResource("1_sjpvs")
 
 [node name="EndgameLoop" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_4d2i6")

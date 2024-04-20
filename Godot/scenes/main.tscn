@@ -1,11 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://b6viu12773d5g"]
+[gd_scene load_steps=7 format=3 uid="uid://b6viu12773d5g"]
 
 [ext_resource type="PackedScene" uid="uid://dd4s3sh2lq2x1" path="res://scenes/crafting/crafting.tscn" id="1_y5ktt"]
 [ext_resource type="PackedScene" uid="uid://ce2lm7rg0o844" path="res://scenes/fighting/fighting.tscn" id="2_2b1rs"]
 [ext_resource type="PackedScene" uid="uid://cqaifcks6tp3x" path="res://scenes/ui/menu_in_game.tscn" id="3_vvqis"]
 [ext_resource type="PackedScene" uid="uid://c5if07qhh6g72" path="res://scenes/ui/menu_settings.tscn" id="4_ib2fi"]
 [ext_resource type="PackedScene" uid="uid://bn21ko5wckqn7" path="res://scenes/ui/health_bar.tscn" id="5_jtxbn"]
-[ext_resource type="PackedScene" uid="uid://cqmp6pj8y5u4i" path="res://scenes/audio_controller.tscn" id="6_8vb1t"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_34ee3"]
 bg_color = Color(0.368627, 0.368627, 0.368627, 1)
@@ -24,5 +23,3 @@ bg_color = Color(0.368627, 0.368627, 0.368627, 1)
 
 [node name="HealthBar" parent="CanvasLayer" instance=ExtResource("5_jtxbn")]
 theme_override_styles/background = SubResource("StyleBoxFlat_34ee3")
-
-[node name="AudioController" parent="." instance=ExtResource("6_8vb1t")]
