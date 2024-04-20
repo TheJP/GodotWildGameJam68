@@ -3,6 +3,7 @@ class_name GameParameters
 static var tilesize := 64.0
 static var craft_tilesize := 64.0
 static var buildable_space := Vector4(0, 0, 1920, 896)
+static var is_tutorial := false
 
 
 static func is_buildable(position: Vector2):

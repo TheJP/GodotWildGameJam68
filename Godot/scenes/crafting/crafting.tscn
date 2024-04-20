@@ -60,9 +60,10 @@ position = Vector2(96, 544)
 
 [node name="Pipe31" parent="MachinesAndItems" instance=ExtResource("4_1jm7c")]
 position = Vector2(96, 608)
+direction = 2
 
 [node name="Pipe32" parent="MachinesAndItems" instance=ExtResource("4_1jm7c")]
-position = Vector2(96, 672)
+position = Vector2(160, 608)
 
 [node name="Pipe33" parent="MachinesAndItems" instance=ExtResource("4_1jm7c")]
 position = Vector2(96, 736)
@@ -82,30 +83,29 @@ position = Vector2(352, 544)
 [node name="Pipe12" parent="MachinesAndItems" instance=ExtResource("4_1jm7c")]
 position = Vector2(352, 608)
 
-[node name="Pipe13" parent="MachinesAndItems" instance=ExtResource("4_1jm7c")]
-position = Vector2(352, 672)
-
 [node name="Pipe14" parent="MachinesAndItems" instance=ExtResource("4_1jm7c")]
-position = Vector2(352, 736)
+position = Vector2(288, 608)
 
 [node name="Pipe15" parent="MachinesAndItems" instance=ExtResource("4_1jm7c")]
-position = Vector2(352, 800)
+position = Vector2(224, 608)
 
 [node name="Pipe18" parent="MachinesAndItems" instance=ExtResource("4_1jm7c")]
-position = Vector2(288, 800)
+position = Vector2(96, 672)
 
 [node name="Pipe19" parent="MachinesAndItems" instance=ExtResource("4_1jm7c")]
-position = Vector2(224, 800)
+position = Vector2(96, 800)
 
 [node name="Pipe16" parent="MachinesAndItems" instance=ExtResource("4_1jm7c")]
 position = Vector2(160, 800)
+direction = 2
 
 [node name="Pipe17" parent="MachinesAndItems" instance=ExtResource("4_1jm7c")]
-position = Vector2(96, 800)
+position = Vector2(32, 800)
 direction = 2
 
 [node name="Pipe20" parent="MachinesAndItems" instance=ExtResource("4_1jm7c")]
 position = Vector2(96, 864)
+direction = 2
 
 [node name="Pipe21" parent="MachinesAndItems" instance=ExtResource("4_1jm7c")]
 position = Vector2(32, 864)
@@ -113,6 +113,7 @@ direction = 2
 
 [node name="Pipe22" parent="MachinesAndItems" instance=ExtResource("4_1jm7c")]
 position = Vector2(32, 928)
+direction = 2
 
 [node name="Spawner" parent="MachinesAndItems" instance=ExtResource("5_nwm83")]
 position = Vector2(480, 32)

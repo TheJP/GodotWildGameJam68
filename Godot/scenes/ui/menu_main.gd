@@ -7,6 +7,12 @@ func _ready():
 
 
 func _on_play_pressed():
+	GameParameters.is_tutorial = false
+	get_tree().change_scene_to_file("res://scenes/main.tscn")
+
+
+func _on_tutorial_pressed():
+	GameParameters.is_tutorial = true
 	get_tree().change_scene_to_file("res://scenes/main.tscn")
 
 
