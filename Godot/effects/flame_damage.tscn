@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b1bx6s72i5kr7"]
+[gd_scene load_steps=10 format=3 uid="uid://b1dgls6g37b4f"]
 
 [ext_resource type="Texture2D" uid="uid://bpdgofjc7osae" path="res://assets/particles/flame_damage_anim_sprite.png" id="1_oavd0"]
 
@@ -54,12 +54,13 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xqlpu")
 }],
-"loop": false,
+"loop": true,
 "name": &"default",
 "speed": 18.0
 }]
 
 [node name="flame_damage" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_ay12e")
+autoplay = "default"
 frame = 6
 frame_progress = 1.0

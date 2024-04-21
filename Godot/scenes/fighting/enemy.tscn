@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://chipoq6s3ro70"]
+[gd_scene load_steps=7 format=3 uid="uid://chipoq6s3ro70"]
 
 [ext_resource type="Script" path="res://scenes/fighting/Enemy.gd" id="1_pcg65"]
-[ext_resource type="Texture2D" uid="uid://blipjwdbywtvg" path="res://assets/fighters/enemy.png" id="2_yyl27"]
+[ext_resource type="Texture2D" uid="uid://bh3lblitpd717" path="res://assets/fighters/enemy_4.png" id="2_16jsj"]
+[ext_resource type="PackedScene" uid="uid://b1dgls6g37b4f" path="res://effects/flame_damage.tscn" id="3_wv3yh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d4crl"]
 size = Vector2(64, 64)
@@ -18,7 +19,7 @@ collision_mask = 0
 script = ExtResource("1_pcg65")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_yyl27")
+texture = ExtResource("2_16jsj")
 
 [node name="MoveRay" type="RayCast2D" parent="."]
 target_position = Vector2(-96, 0)
@@ -40,6 +41,12 @@ offset_bottom = -20.0
 theme_override_styles/background = SubResource("StyleBoxFlat_lfq1m")
 theme_override_styles/fill = SubResource("StyleBoxFlat_gpdkt")
 show_percentage = false
+
+[node name="FlameDamage" parent="." instance=ExtResource("3_wv3yh")]
+visible = false
+position = Vector2(-6, -10)
+scale = Vector2(2.899, 3)
+autoplay = "default"
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

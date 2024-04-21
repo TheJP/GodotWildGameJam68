@@ -126,9 +126,10 @@ func act():
 						starting_position, 1.0/(4*animation_speed)).set_trans(Tween.TRANS_SINE)
 					await tween.finished
 					if is_instance_valid(collider):
-						collider.take_damage(damage)
-						if(self.has_fire_weapon && collider.is_plant):
-							collider.take_damage(20)
+						if(self.has_fire_weapon):
+							collider.take_damage(damage, true)
+						else:
+							collider.take_damage(damage)
 					did_attack = true
 					break
 	if !move_ray.is_colliding() && !did_throw && !did_attack:

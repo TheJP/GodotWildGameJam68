@@ -4,6 +4,7 @@ extends Area2D
 @onready var move_ray = $MoveRay
 @onready var melee_ray = $MeleeRay
 @onready var health_bar = $HealthBar
+@onready var fire_animation = $FlameDamage
 
 var animation_speed = 3
 var tile_size = GameParameters.tilesize
@@ -84,13 +85,21 @@ func increase_health(amount):
 		health_bar.max_value = health
 		health_bar.value = health
 			
-func take_damage(amount):
+func take_damage(amount, is_fire: bool = false):
+	if(is_fire && self.is_plant):
+		amount += 1
 	if health_bar.visible == false:
 		health_bar.visible = true
 	health -= amount
 	$Sprite2D.modulate = Color.RED
+	if(is_fire && self.is_plant):
+		fire_animation.visible = true
+		fire_animation.play
 	await get_tree().create_timer(0.1).timeout
 	$Sprite2D.modulate = Color.WHITE
+	await get_tree().create_timer(0.5).timeout
+	fire_animation.visible = false
+	fire_animation.stop
 	health_bar.value = health
 	var sound_index = randi() % 3
 	if health <= 0:
