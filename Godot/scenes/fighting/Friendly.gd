@@ -1,23 +1,24 @@
 class_name Friendly
 extends DropTarget
 
+
+class Hand:
+	var sprite: Sprite2D
+	var level_one: CPUParticles2D
+	var level_two: CPUParticles2D
+	var level_three: CPUParticles2D
+	var item_type = null
+	var occupied := false
+
+
+var left_hand: Hand = Hand.new()
+var right_hand: Hand = Hand.new()
+
 @onready var move_ray = $MoveRay
 @onready var range_ray = $RangeRay
 @onready var melee_ray = $MeleeRay
-@onready var right_hand_sprite = $RightHand
-@onready var right_hand_level_one = $RightHand/mode_one
-@onready var right_hand_level_two = $RightHand/mode_two
-@onready var right_hand_level_three = $RightHand/mode_three
-@onready var left_hand_sprite = $LeftHand
-@onready var left_hand_level_one = $LeftHand/mode_one
-@onready var left_hand_level_two = $LeftHand/mode_two
-@onready var left_hand_level_three = $LeftHand/mode_three
 @onready var health_bar = $HealthBar
 @onready var _animation_player = $AnimationPlayer
-var right_hand_occupied = false
-var left_hand_occupied = false
-var right_hand_item_type = null
-var left_hand_item_type = null
 var has_fire_weapon = false
 
 var directions = [Vector2.RIGHT, Vector2.DOWN, Vector2.UP, Vector2(1, 1), Vector2(1, -1)]
@@ -32,16 +33,29 @@ var counter = -3
 
 
 func _ready():
+	left_hand.sprite = $LeftHand
+	left_hand.level_one = $LeftHand/mode_one
+	left_hand.level_two = $LeftHand/mode_two
+	left_hand.level_three = $LeftHand/mode_three
+
+	right_hand.sprite = $RightHand
+	right_hand.level_one = $RightHand/mode_one
+	right_hand.level_two = $RightHand/mode_two
+	right_hand.level_three = $RightHand/mode_three
+
 	Ticker.timer.timeout.connect(on_global_ticker_timeout)
 	global_position = Tile.snap_fighting(global_position)
 	health_bar.max_value = health
 	health_bar.visible = false
 
+
 func hover():
 	scale = Vector2(1.1, 1.1)
 
+
 func unhover():
 	scale = Vector2(1, 1)
+
 
 func try_drop(_item: Node2D) -> bool:
 	if try_set_item(_item):
@@ -50,11 +64,14 @@ func try_drop(_item: Node2D) -> bool:
 	else:
 		return false
 
+
 func try_remove() -> bool:
 	return false
 
+
 func on_global_ticker_timeout():
 	act()
+
 
 func try_throw_item() -> bool:
 	var did_throw = false
@@ -63,45 +80,41 @@ func try_throw_item() -> bool:
 	if range_ray.is_colliding():
 		var collider = range_ray.get_collider()
 		if collider is Enemy && self.global_position.distance_to(collider.global_position) > tile_size:
-			if right_hand_occupied && is_instance_valid(collider):
-				if Item.stat_modifiers[right_hand_item_type].throwable > 0:
-					var tween = create_tween()
-					var start_position = right_hand_sprite.global_position
-					tween.tween_property(right_hand_sprite, "global_position",
-						collider.global_position, 1.0/(animation_speed*2)).set_trans(Tween.TRANS_SINE)
-					if(is_instance_valid(collider)):
-						collider.take_damage(Item.stat_modifiers[right_hand_item_type].throwable)
-					await tween.finished
-					if !Item.stat_modifiers[right_hand_item_type].ranged:
-						right_hand_sprite.texture = null
-						right_hand_occupied = false
-						right_hand_item_type = null
-					else:
-						tween = create_tween()
-						tween.tween_property(right_hand_sprite, "global_position",
-						start_position, 1.0/(animation_speed*2)).set_trans(Tween.TRANS_SINE)
-						await tween.finished
-					did_throw = true
-			if left_hand_occupied && is_instance_valid(collider):
-				if Item.stat_modifiers[left_hand_item_type].throwable > 0:
-					var tween = create_tween()
-					var start_position = left_hand_sprite.global_position
-					tween.tween_property(left_hand_sprite, "global_position",
-						collider.global_position, 1.0/(animation_speed*2)).set_trans(Tween.TRANS_SINE)
-					if(is_instance_valid(collider)):
-						collider.take_damage(Item.stat_modifiers[left_hand_item_type].throwable)
-					await tween.finished
-					if !Item.stat_modifiers[left_hand_item_type].ranged:
-						left_hand_sprite.texture = null
-						left_hand_occupied = false
-						left_hand_item_type = null
-					else:
-						tween = create_tween()
-						tween.tween_property(left_hand_sprite, "global_position",
-							start_position, 1.0/(animation_speed*2)).set_trans(Tween.TRANS_SINE)
-						await tween.finished
-					did_throw = true
+			if right_hand.occupied && is_instance_valid(collider):
+				did_throw = await _throw_with_hand(collider, right_hand)
+			if left_hand.occupied && is_instance_valid(collider):
+				did_throw = await _throw_with_hand(collider, left_hand) or did_throw
 	return did_throw
+
+
+func _throw_with_hand(enemy: Enemy, hand: Hand) -> bool:
+	var stats: Item.StatModifier = Item.stat_modifiers[hand.item_type]
+	if stats.throwable <= 0:
+		return false
+
+	var start_position = hand.sprite.global_position
+	var tween = create_tween()
+	tween.tween_property(hand.sprite, "global_position", enemy.global_position, 1.0/(animation_speed*2)).set_trans(Tween.TRANS_SINE)
+	var rotation_tween = create_tween().set_loops()
+	rotation_tween.tween_property(hand.sprite, "rotation", PI * 0.67, 0.05)
+	rotation_tween.tween_property(hand.sprite, "rotation", PI * 1.33, 0.05)
+	rotation_tween.tween_property(hand.sprite, "rotation", PI * 2, 0.05)
+	rotation_tween.tween_property(hand.sprite, "rotation", 0, 0)
+	if is_instance_valid(enemy):
+		enemy.take_damage(stats.throwable)
+	await tween.finished
+	if !stats.ranged:
+		hand.sprite.texture = null
+		hand.occupied = false
+		hand.item_type = null
+	else:
+		tween = create_tween()
+		tween.tween_property(hand.sprite, "global_position", start_position, 1.0/(animation_speed*2)).set_trans(Tween.TRANS_SINE)
+		await tween.finished
+	rotation_tween.kill()
+	hand.sprite.rotation = 0
+	return true
+
 
 func act():
 	var did_throw = await try_throw_item()
@@ -145,30 +158,13 @@ func act():
 	if(counter == move_frequency):
 			counter = 0
 
+
 func try_set_item(p_item: Node2D) -> bool:
 	var item_stat_modifiers = Item.stat_modifiers[p_item.type]
-	if !right_hand_occupied:
-		if !item_stat_modifiers.destroy_on_pickup:
-			right_hand_sprite.texture = p_item.get_node("Sprite2D").texture
-			right_hand_occupied = true
-			right_hand_item_type = p_item.type
-			if(item_stat_modifiers.level == 1):
-				right_hand_level_one.visible = true
-			elif(item_stat_modifiers.level == 2):
-				right_hand_level_two.visible = true
-			elif(item_stat_modifiers.level == 3):
-				right_hand_level_three.visible = true
-	elif !left_hand_occupied:
-		if !item_stat_modifiers.destroy_on_pickup:
-			left_hand_sprite.texture = p_item.get_node("Sprite2D").texture
-			left_hand_occupied = true
-			left_hand_item_type = p_item.type
-			if(item_stat_modifiers.level == 1):
-				left_hand_level_one.visible = true
-			elif(item_stat_modifiers.level == 2):
-				left_hand_level_two.visible = true
-			elif(item_stat_modifiers.level == 3):
-				left_hand_level_three.visible = true
+	if !right_hand.occupied:
+		_pickup_item(right_hand, p_item)
+	elif !left_hand.occupied:
+		_pickup_item(left_hand, p_item)
 	else:
 		return false
 
@@ -181,11 +177,29 @@ func try_set_item(p_item: Node2D) -> bool:
 	damage = max(damage + item_stat_modifiers.damage, 0)
 	return true
 
+
+func _pickup_item(hand: Hand, p_item: Node2D):
+	var item_stat_modifiers = Item.stat_modifiers[p_item.type]
+	if item_stat_modifiers.destroy_on_pickup:
+		return
+
+	hand.sprite.texture = p_item.get_node("Sprite2D").texture
+	hand.occupied = true
+	hand.item_type = p_item.type
+	if(item_stat_modifiers.level == 1):
+		hand.level_one.visible = true
+	elif(item_stat_modifiers.level == 2):
+		hand.level_two.visible = true
+	elif(item_stat_modifiers.level == 3):
+		hand.level_three.visible = true
+
+
 func increase_health(amount):
 		health += amount
 		max_health += amount
 		health_bar.value = health
 		health_bar.max_value = max_health
+
 
 func take_damage(amount):
 	if health_bar.visible == false:
@@ -205,6 +219,3 @@ func take_damage(amount):
 		else:
 			AudioController.get_player("HeroDeathSound4").play()
 		self.queue_free()
-
-func _process(_delta):
-	pass

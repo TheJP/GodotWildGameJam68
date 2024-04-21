@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cno1i50br4xql"]
 
 [ext_resource type="Script" path="res://scenes/fighting/enemySpawner.gd" id="1_apmkb"]
-[ext_resource type="Texture2D" uid="uid://jjjgcyui5wwh" path="res://assets/entrance.png" id="2_15lms"]
+[ext_resource type="Texture2D" uid="uid://dcnpo8nkllpdr" path="res://assets/entrance_enemies.png" id="2_s60vc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_glysm"]
 size = Vector2(19, 20)
@@ -17,5 +17,4 @@ shape = SubResource("RectangleShape2D_glysm")
 [node name="RayCast2D" type="RayCast2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-self_modulate = Color(1, 0.0313726, 1, 1)
-texture = ExtResource("2_15lms")
+texture = ExtResource("2_s60vc")
