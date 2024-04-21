@@ -4,6 +4,7 @@ extends Control
 enum Type {
 	MAIN,
 	TRASH_CAN,
+	ARROW,
 }
 
 
@@ -23,9 +24,15 @@ static var _tutorials := {
 	] as Array[Tutorial], # <- Without this we get an error when assigned to _tutorial.
 	Type.TRASH_CAN: [
 		Tutorial.new('{0} {1}'.format([
-				'Add [color=white]Trash Cans  ([img]res://assets/trash_can.png[/img])[/color]',
-				'for overflow\nor drop items into them by hand.',
-			]), preload("res://video/tutorial_trash_1.ogv")),
+			'Add [color=white]Trash Cans  ([img]res://assets/trash_can.png[/img])[/color]',
+			'for overflow\nor drop items into them by hand.',
+		]), preload("res://video/tutorial_trash_1.ogv")),
+	] as Array[Tutorial],
+	Type.ARROW: [
+		Tutorial.new('{0} {1}'.format([
+			'Use the [color=white]Arrow  ([img]res://assets/arrow.png[/img])[/color]',
+			'to make\nitems flow in that direction.',
+		]), preload("res://video/tutorial_arrow_1.ogv")),
 	] as Array[Tutorial],
 }
 
@@ -59,7 +66,7 @@ func _ready():
 	#_menu.start_build_crafter.connect(_start_building.bind(Tile.Type.CRAFTER))
 	#_menu.start_build_pipe.connect(_start_building.bind(Tile.Type.PIPE))
 	#_menu.start_build_intersection.connect(_start_building.bind(Tile.Type.PIPE, true))
-	#_menu.start_pipe_turn.connect(_start_pipe_turn)
+	_menu.start_pipe_turn.connect(show_tutorial.bind(Type.ARROW))
 	_menu.start_build_trash.connect(show_tutorial.bind(Type.TRASH_CAN))
 	#_menu.start_remove.connect(_start_remove)
 
