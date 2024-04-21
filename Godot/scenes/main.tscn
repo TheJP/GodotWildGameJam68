@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b6viu12773d5g"]
+[gd_scene load_steps=14 format=3 uid="uid://b6viu12773d5g"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_6ruyp"]
 [ext_resource type="PackedScene" uid="uid://dd4s3sh2lq2x1" path="res://scenes/crafting/crafting.tscn" id="1_y5ktt"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://c5if07qhh6g72" path="res://scenes/ui/menu_settings.tscn" id="4_ib2fi"]
 [ext_resource type="Texture2D" uid="uid://8w8yw14pmwrd" path="res://assets/background_bottom.png" id="5_cahtu"]
 [ext_resource type="PackedScene" uid="uid://bn21ko5wckqn7" path="res://scenes/ui/health_bar.tscn" id="5_jtxbn"]
+[ext_resource type="Script" path="res://scenes/ScreenFlash.gd" id="6_8fhbe"]
 [ext_resource type="PackedScene" uid="uid://da0mqcv14vosf" path="res://scenes/ui/discovery_pop_up.tscn" id="6_xx1ve"]
 [ext_resource type="PackedScene" uid="uid://dhkxc2d2wglyh" path="res://scenes/ui/tutorial.tscn" id="7_obfex"]
 
@@ -67,6 +68,16 @@ mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_gxada")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ScreenFlash" type="ColorRect" parent="CanvasLayer"]
+top_level = true
+offset_left = -19.0
+offset_top = -11.0
+offset_right = 1948.0
+offset_bottom = 1106.0
+mouse_filter = 2
+color = Color(1, 0, 0, 0)
+script = ExtResource("6_8fhbe")
 
 [node name="MenuInGame" parent="CanvasLayer" instance=ExtResource("3_vvqis")]
 

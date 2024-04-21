@@ -33,7 +33,7 @@ func _process(_delta):
 func _on_area_entered(area):
 	if area is Enemy:
 		GlobalStats.update_health(-10)
-		area._animation_player.play("entering_friendly_base")
-		if !area._animation_player.is_playing():
-			area.queue_free()
+		#area._animation_player.play("entering_friendly_base")
+		#if !area._animation_player.is_playing():
+		area.queue_free()
 

@@ -30,7 +30,7 @@ func on_global_ticker_timeout():
 				enemy_instance.get_node("Sprite2D").texture = strong_plant
 				enemy_instance.increase_health(enemy_instance.health*3)
 				enemy_instance.is_plant = true
-				enemy_instance.damage = 4
+				enemy_instance.damage = 1
 			else:
 				enemy_instance.get_node("Sprite2D").texture = strong_ghost
 				enemy_instance.damage = 4
