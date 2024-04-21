@@ -12,6 +12,7 @@ const MUSIC_BUS: String = 'Music'
 
 
 var _was_paused_before := false
+var _hovered = null
 
 
 func _ready():
@@ -20,6 +21,7 @@ func _ready():
 
 func _on_visibility_changed():
 	if visible:
+		%Continue.grab_focus()
 		_was_paused_before = get_tree().paused
 		get_tree().paused = true
 	else:
@@ -40,21 +42,32 @@ func _set_sliders():
 
 
 func _on_master_slider_value_changed(value):
+	AudioController.get_player("MenuPressSound").play()
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index(MASTER_BUS), linear_to_db(_master.value))
 
 
 func _on_sound_slider_value_changed(value):
+	AudioController.get_player("MenuPressSound").play()
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index(SOUND_BUS), linear_to_db(_sound.value))
 
 
 func _on_music_slider_value_changed(value):
+	AudioController.get_player("MenuPressSound").play()
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index(MUSIC_BUS), linear_to_db(_music.value))
 
 
 func _on_continue_pressed():
+	AudioController.get_player("MenuPressSound").play()
 	hide()
 
 
 func _on_back_to_menu_pressed():
+	AudioController.get_player("MenuPressSound").play()
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://scenes/ui/menu_main.tscn")
+
+
+func _button_hovered(control: String):
+	if _hovered != control:
+		_hovered = control
+		AudioController.get_player("MenuHoverSound").play()

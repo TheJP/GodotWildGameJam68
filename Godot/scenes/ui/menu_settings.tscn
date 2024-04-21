@@ -64,15 +64,20 @@ layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_s2rgh")
 
 [node name="Continue" type="Button" parent="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+focus_next = NodePath("../BackToMenu")
+focus_previous = NodePath("../GridContainer/MusicSlider")
 text = "Continue"
 
 [node name="BackToMenu" type="Button" parent="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+focus_next = NodePath("../GridContainer/MasterSlider")
+focus_previous = NodePath("../Continue")
 text = "Quit to Menu"
 
 [node name="GridContainer" type="GridContainer" parent="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
@@ -94,6 +99,8 @@ custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
+focus_next = NodePath("../SoundSlider")
+focus_previous = NodePath("../../BackToMenu")
 max_value = 1.0
 step = 0.01
 
@@ -109,6 +116,8 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
+focus_next = NodePath("../MusicSlider")
+focus_previous = NodePath("../MasterSlider")
 max_value = 1.0
 step = 0.01
 
@@ -124,12 +133,24 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
+focus_next = NodePath("../../Continue")
+focus_previous = NodePath("../SoundSlider")
 max_value = 1.0
 step = 0.01
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="focus_entered" from="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Continue" to="." method="_button_hovered" binds= ["continue"]]
+[connection signal="mouse_entered" from="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Continue" to="." method="_button_hovered" binds= ["continue"]]
 [connection signal="pressed" from="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Continue" to="." method="_on_continue_pressed"]
+[connection signal="focus_entered" from="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/BackToMenu" to="." method="_button_hovered" binds= ["quit"]]
+[connection signal="mouse_entered" from="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/BackToMenu" to="." method="_button_hovered" binds= ["quit"]]
 [connection signal="pressed" from="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/BackToMenu" to="." method="_on_back_to_menu_pressed"]
+[connection signal="focus_entered" from="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer/MasterSlider" to="." method="_button_hovered" binds= ["master"]]
+[connection signal="mouse_entered" from="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer/MasterSlider" to="." method="_button_hovered" binds= ["master"]]
 [connection signal="value_changed" from="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer/MasterSlider" to="." method="_on_master_slider_value_changed"]
+[connection signal="focus_entered" from="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer/SoundSlider" to="." method="_button_hovered" binds= ["sound"]]
+[connection signal="mouse_entered" from="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer/SoundSlider" to="." method="_button_hovered" binds= ["sound"]]
 [connection signal="value_changed" from="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer/SoundSlider" to="." method="_on_sound_slider_value_changed"]
+[connection signal="focus_entered" from="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer/MusicSlider" to="." method="_button_hovered" binds= ["music"]]
+[connection signal="mouse_entered" from="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer/MusicSlider" to="." method="_button_hovered" binds= ["music"]]
 [connection signal="value_changed" from="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer/MusicSlider" to="." method="_on_music_slider_value_changed"]
