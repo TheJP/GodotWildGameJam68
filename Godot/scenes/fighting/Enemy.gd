@@ -91,7 +91,7 @@ func take_damage(amount, is_fire: bool = false):
 		amount += 200
 	if health_bar.visible == false:
 		health_bar.visible = true
-	health -= amount	
+	health -= amount
 	health_bar.value = health
 	var sound_index = randi() % 3
 	if (is_fire && self.is_plant) && !(AudioController.get_player("BurningDamageSound").playing):
@@ -118,7 +118,7 @@ func take_damage(amount, is_fire: bool = false):
 	$Sprite2D.modulate = Color.WHITE
 	await get_tree().create_timer(0.5).timeout
 	fire_animation.visible = false
-	
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

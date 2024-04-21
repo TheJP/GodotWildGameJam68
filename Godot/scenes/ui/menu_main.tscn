@@ -122,8 +122,18 @@ layout_mode = 1
 [node name="MenuCredits" parent="." instance=ExtResource("5_fjwna")]
 layout_mode = 1
 
+[connection signal="focus_entered" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Play" to="." method="_button_hovered" binds= ["play"]]
+[connection signal="mouse_entered" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Play" to="." method="_button_hovered" binds= ["play"]]
 [connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="focus_entered" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Tutorial" to="." method="_button_hovered" binds= ["tutorial"]]
+[connection signal="mouse_entered" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Tutorial" to="." method="_button_hovered" binds= ["tutorial"]]
 [connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Tutorial" to="." method="_on_tutorial_pressed"]
+[connection signal="focus_entered" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Settings" to="." method="_button_hovered" binds= ["settings"]]
+[connection signal="mouse_entered" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Settings" to="." method="_button_hovered" binds= ["settings"]]
 [connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="focus_entered" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Credits" to="." method="_button_hovered" binds= ["credits"]]
+[connection signal="mouse_entered" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Credits" to="." method="_button_hovered" binds= ["credits"]]
 [connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
+[connection signal="focus_entered" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Quit" to="." method="_button_hovered" binds= ["quit"]]
+[connection signal="mouse_entered" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Quit" to="." method="_button_hovered" binds= ["quit"]]
 [connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
