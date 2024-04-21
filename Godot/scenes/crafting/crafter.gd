@@ -38,10 +38,11 @@ func _slots_changed():
 	_state_number += 1
 	var local_state = _state_number
 	if $LeftSlot.item != null and $RightSlot.item != null:
-		_gear_tween.play()
 		# Craft item(s).
 		await Ticker.timer.timeout
-		AudioController.get_player("ItemCombinationSound").play(0)
+		_gear_tween.play()
+		if !AudioController.get_player("ItemCraftLoop").playing:
+			AudioController.get_player("ItemCraftLoop").play()
 		await Ticker.timer.timeout
 		if _state_number != local_state:
 			return # Slots changed since wait, return to prevent issues like double crafting.
@@ -54,9 +55,10 @@ func _slots_changed():
 		$LeftSlot.is_crafting = false
 		$RightSlot.is_crafting = false
 		_gear_tween.pause()
+		AudioController.get_player("ItemCraftLoop").stop()
 	else:
 		_gear_tween.pause()
-		AudioController.get_player("ItemCombinationSound").stop()
+		AudioController.get_player("ItemCraftLoop").stop()
 
 func _craft():
 	var new_left = null
@@ -72,6 +74,8 @@ func _craft():
 		new_left = _spawn_item(Item.Type.TRASH, $LeftSlot.global_position)
 	$LeftSlot.crafted_item(new_left)
 	$RightSlot.crafted_item(new_right)
+	AudioController.get_player("ItemCraftLoop").stop()
+	AudioController.get_player("ItemDoneSound").play()
 	if(new_left != null):
 		check_progress(new_left.type)
 

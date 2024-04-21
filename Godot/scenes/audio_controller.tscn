@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://cqmp6pj8y5u4i"]
+[gd_scene load_steps=31 format=3 uid="uid://cqmp6pj8y5u4i"]
 
 [ext_resource type="AudioStream" uid="uid://hc30x30jj33" path="res://audio/Music/endgameloop.wav" id="2_4d2i6"]
 [ext_resource type="AudioStream" uid="uid://d0mpvoockqfdm" path="res://audio/Music/level1loop.wav" id="3_8y5qn"]
@@ -7,8 +7,9 @@
 [ext_resource type="AudioStream" uid="uid://c2tyuu5kolhpp" path="res://audio/Music/level4loop.wav" id="6_ci30f"]
 [ext_resource type="AudioStream" uid="uid://by31hcpmq7w3r" path="res://audio/Music/transitionlevel4toendgame.wav" id="7_mwh36"]
 [ext_resource type="AudioStream" uid="uid://cbjqteupgi3pf" path="res://audio/FX/ItemTrashSound.wav" id="8_2pnbw"]
+[ext_resource type="AudioStream" uid="uid://75dedfhh7guc" path="res://audio/FX/ItemDoneSound.wav" id="9_chyit"]
 [ext_resource type="AudioStream" uid="uid://nc13y16agi8a" path="res://audio/FX/ItemDiscoverySound.wav" id="9_fakn1"]
-[ext_resource type="AudioStream" uid="uid://mlw3gge37bji" path="res://audio/FX/ItemCombinationSound.wav" id="10_rrhqg"]
+[ext_resource type="AudioStream" uid="uid://docbtwgxaywul" path="res://audio/FX/ItemCraftLoop.wav" id="10_5sa38"]
 [ext_resource type="AudioStream" uid="uid://bxmejdr3oe7rx" path="res://audio/FX/HeroDeathSound1.wav" id="11_g66ye"]
 [ext_resource type="AudioStream" uid="uid://dw4xh4jiykjbc" path="res://audio/FX/HeroDeathSound2.wav" id="12_2j0wb"]
 [ext_resource type="AudioStream" uid="uid://ccasf14beq2pm" path="res://audio/FX/HeroDeathSound3.wav" id="13_nbygy"]
@@ -65,8 +66,13 @@ process_mode = 3
 stream = ExtResource("9_fakn1")
 bus = &"Sound"
 
-[node name="ItemCombinationSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("10_rrhqg")
+[node name="ItemDoneSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_chyit")
+max_polyphony = 3
+bus = &"Sound"
+
+[node name="ItemCraftLoop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_5sa38")
 max_polyphony = 3
 bus = &"Sound"
 
