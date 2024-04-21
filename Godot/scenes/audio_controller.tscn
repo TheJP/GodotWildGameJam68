@@ -143,7 +143,9 @@ stream = ExtResource("25_71g1g")
 bus = &"Sound"
 
 [node name="MenuHoverSound" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("26_v503l")
+volume_db = 18.0
 bus = &"Sound"
 
 [node name="MenuPressSound" type="AudioStreamPlayer" parent="."]

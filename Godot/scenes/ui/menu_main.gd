@@ -16,6 +16,9 @@ var _enemies: Array = [
 ]
 
 
+var _hovered = null
+
+
 func _ready():
 	if OS.get_name() == "Web":
 		%Quit.queue_free()
@@ -49,3 +52,9 @@ func _on_settings_pressed():
 func _on_credits_pressed():
 	$MenuCredits.show()
 	AudioController.get_player("MenuPressSound").play()
+
+
+func _button_hovered(button: String):
+	if _hovered != button:
+		_hovered = button
+		AudioController.get_player("MenuHoverSound").play()
