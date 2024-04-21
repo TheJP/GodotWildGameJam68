@@ -4,7 +4,6 @@ extends Machine
 
 func _ready():
 	global_position = Tile.snap_crafting(global_position)
-	AudioController.get_player("TrashPlacementSound").play()
 
 
 func hover():
