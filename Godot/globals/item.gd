@@ -126,7 +126,12 @@ static var recipes: Array[Recipe] = [
 
 	Recipe.new(Type.HAMMER, Type.HOT_STEEL, Type.SWORD),
 	Recipe.new(Type.HAMMER, Type.STEEL, Type.BOOMERANG),
-
+	
+	Recipe.new(Type.BATTLE_HAMMER, Type.HOT_STEEL, Type.SWORD),
+	Recipe.new(Type.BATTLE_HAMMER, Type.STEEL, Type.BOOMERANG),
+	Recipe.new(Type.WOOD, Type.BATTLE_HAMMER, Type.WOODEN_SHIELD),
+	Recipe.new(Type.IRON_ORE, Type.BATTLE_HAMMER, Type.IRON_SHIELD),
+	
 	Recipe.new(Type.TORCH, Type.HOT_FIRE, Nothing.new()),
 	Recipe.new(Type.TORCH, Type.COAL, Type.HOT_FIRE),
 
