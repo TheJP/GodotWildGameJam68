@@ -119,6 +119,8 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 8
+focus_next = NodePath("../../CenterContainer2/NextButton")
+focus_previous = NodePath("../../CenterContainer2/NextButton")
 mouse_default_cursor_shape = 2
 shortcut = SubResource("Shortcut_h38a2")
 shortcut_in_tooltip = false
@@ -140,10 +142,18 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 8
+focus_next = NodePath("../../CenterContainer/BackButton")
+focus_previous = NodePath("../../CenterContainer/BackButton")
 mouse_default_cursor_shape = 2
 shortcut = SubResource("Shortcut_egc8o")
 shortcut_in_tooltip = false
 text = "Next"
 
+[connection signal="focus_entered" from="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HFlowContainer/CenterContainer/BackButton" to="." method="_button_hovered" binds= ["back"]]
+[connection signal="mouse_entered" from="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HFlowContainer/CenterContainer/BackButton" to="." method="_button_hovered" binds= ["back"]]
+[connection signal="mouse_exited" from="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HFlowContainer/CenterContainer/BackButton" to="." method="_button_unhovered"]
 [connection signal="pressed" from="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HFlowContainer/CenterContainer/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="focus_entered" from="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HFlowContainer/CenterContainer2/NextButton" to="." method="_button_hovered" binds= ["next"]]
+[connection signal="mouse_entered" from="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HFlowContainer/CenterContainer2/NextButton" to="." method="_button_hovered" binds= ["next"]]
+[connection signal="mouse_exited" from="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HFlowContainer/CenterContainer2/NextButton" to="." method="_button_unhovered"]
 [connection signal="pressed" from="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HFlowContainer/CenterContainer2/NextButton" to="." method="_on_next_button_pressed"]

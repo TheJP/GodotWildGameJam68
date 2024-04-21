@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://b362pn641tx0u"]
+[gd_scene load_steps=4 format=3 uid="uid://djsap7r7pdeib"]
 
 [ext_resource type="Theme" uid="uid://d37xjde3q7k3t" path="res://assets/ui/theme.tres" id="1_fr8xj"]
 [ext_resource type="FontFile" uid="uid://dliopqakpw553" path="res://fonts/Jacquard24-Regular.ttf" id="2_8evy0"]
@@ -110,6 +110,8 @@ text = "Programming"
 [node name="BackButton" type="Button" parent="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+focus_next = NodePath(".")
+focus_previous = NodePath(".")
 text = "Back"
 
 [connection signal="pressed" from="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/BackButton" to="." method="hide"]

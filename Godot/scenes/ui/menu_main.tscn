@@ -5,11 +5,13 @@
 [ext_resource type="Theme" uid="uid://d37xjde3q7k3t" path="res://assets/ui/theme.tres" id="2_y4nkf"]
 [ext_resource type="Texture2D" uid="uid://ig1nba8oydqx" path="res://assets/fighters/hero_1.png" id="4_p3cbb"]
 [ext_resource type="PackedScene" uid="uid://c5if07qhh6g72" path="res://scenes/ui/menu_settings.tscn" id="4_vvcgu"]
-[ext_resource type="PackedScene" uid="uid://b362pn641tx0u" path="res://scenes/ui/menu_credits.tscn" id="5_fjwna"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s8lcl"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j1aed"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qtly4"]
+bg_color = Color(0, 0, 0, 0.686275)
 
 [node name="MenuMain" type="Control"]
 process_mode = 3
@@ -88,24 +90,32 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_j1aed")
 [node name="Play" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+focus_next = NodePath("../Tutorial")
+focus_previous = NodePath("../Quit")
 mouse_default_cursor_shape = 2
 text = "Play"
 
 [node name="Tutorial" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+focus_next = NodePath("../Settings")
+focus_previous = NodePath("../Play")
 mouse_default_cursor_shape = 2
 text = "Tutorial"
 
 [node name="Settings" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+focus_next = NodePath("../Credits")
+focus_previous = NodePath("../Tutorial")
 mouse_default_cursor_shape = 2
 text = "Settings"
 
 [node name="Credits" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+focus_next = NodePath("../Quit")
+focus_previous = NodePath("../Settings")
 mouse_default_cursor_shape = 2
 text = "Credits"
 
@@ -113,27 +123,145 @@ text = "Credits"
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
+focus_next = NodePath("../Play")
+focus_previous = NodePath("../Credits")
 mouse_default_cursor_shape = 2
 text = "Quit"
 
 [node name="MenuSettings" parent="." instance=ExtResource("4_vvcgu")]
 layout_mode = 1
 
-[node name="MenuCredits" parent="." instance=ExtResource("5_fjwna")]
+[node name="MenuCredits" type="Control" parent="."]
+visible = false
 layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_y4nkf")
+
+[node name="PanelContainer" type="PanelContainer" parent="MenuCredits"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qtly4")
+
+[node name="CenterContainer" type="CenterContainer" parent="MenuCredits/PanelContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="MenuCredits/PanelContainer/CenterContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MenuCredits/PanelContainer/CenterContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuCredits/PanelContainer/CenterContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="Label" type="Label" parent="MenuCredits/PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_usdt6")
+theme_override_font_sizes/font_size = 120
+text = "Credits"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="MenuCredits/PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 30
+theme_override_constants/v_separation = 30
+columns = 2
+
+[node name="Label" type="Label" parent="MenuCredits/PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Meret Schneider"
+
+[node name="Label2" type="Label" parent="MenuCredits/PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Art"
+
+[node name="Label3" type="Label" parent="MenuCredits/PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Robin Renggli"
+
+[node name="Label4" type="Label" parent="MenuCredits/PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Programming"
+
+[node name="Label5" type="Label" parent="MenuCredits/PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Gisi Wiederkehr"
+
+[node name="Label6" type="Label" parent="MenuCredits/PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Polish"
+
+[node name="Label7" type="Label" parent="MenuCredits/PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Alex Zurkinden"
+
+[node name="Label8" type="Label" parent="MenuCredits/PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Music & SFX"
+
+[node name="Label9" type="Label" parent="MenuCredits/PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Janis Peyer"
+
+[node name="Label10" type="Label" parent="MenuCredits/PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Programming"
+
+[node name="CreditsBackButton" type="Button" parent="MenuCredits/PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+focus_next = NodePath(".")
+focus_previous = NodePath(".")
+mouse_default_cursor_shape = 2
+text = "Back"
 
 [connection signal="focus_entered" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Play" to="." method="_button_hovered" binds= ["play"]]
 [connection signal="mouse_entered" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Play" to="." method="_button_hovered" binds= ["play"]]
+[connection signal="mouse_exited" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Play" to="." method="_button_unhovered"]
 [connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="focus_entered" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Tutorial" to="." method="_button_hovered" binds= ["tutorial"]]
 [connection signal="mouse_entered" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Tutorial" to="." method="_button_hovered" binds= ["tutorial"]]
+[connection signal="mouse_exited" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Tutorial" to="." method="_button_unhovered"]
 [connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Tutorial" to="." method="_on_tutorial_pressed"]
 [connection signal="focus_entered" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Settings" to="." method="_button_hovered" binds= ["settings"]]
 [connection signal="mouse_entered" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Settings" to="." method="_button_hovered" binds= ["settings"]]
+[connection signal="mouse_exited" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Settings" to="." method="_button_unhovered"]
 [connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
 [connection signal="focus_entered" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Credits" to="." method="_button_hovered" binds= ["credits"]]
 [connection signal="mouse_entered" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Credits" to="." method="_button_hovered" binds= ["credits"]]
+[connection signal="mouse_exited" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Credits" to="." method="_button_unhovered"]
 [connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
 [connection signal="focus_entered" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Quit" to="." method="_button_hovered" binds= ["quit"]]
 [connection signal="mouse_entered" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Quit" to="." method="_button_hovered" binds= ["quit"]]
+[connection signal="mouse_exited" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Quit" to="." method="_button_unhovered"]
 [connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="focus_entered" from="MenuCredits/PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/CreditsBackButton" to="." method="_button_hovered" binds= ["exit_credits"]]
+[connection signal="mouse_entered" from="MenuCredits/PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/CreditsBackButton" to="." method="_button_hovered" binds= ["exit_credits"]]
+[connection signal="mouse_exited" from="MenuCredits/PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/CreditsBackButton" to="." method="_button_unhovered"]
+[connection signal="pressed" from="MenuCredits/PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/CreditsBackButton" to="." method="_on_credits_back_button_pressed"]

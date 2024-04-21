@@ -54,6 +54,7 @@ var _shown_tutorials := {
 
 var _tutorial: Array[Tutorial] = _tutorials[Type.MAIN]
 var _current_index := 0
+var _hovered = null
 
 
 func _ready():
@@ -63,6 +64,7 @@ func _ready():
 		queue_free()
 		return
 	else:
+		%NextButton.grab_focus()
 		AudioController.get_player("ItemDiscoveryLoop").play()
 	_update_tutorial()
 
@@ -96,6 +98,7 @@ func show_tutorial(type: Type):
 
 	visible = true
 	get_tree().paused = true
+	%NextButton.grab_focus()
 
 	_update_tutorial()
 
@@ -124,3 +127,13 @@ func _update_tutorial():
 	%BackButton.visible = _current_index > 0
 	%NextButton.text = 'Next' if _current_index + 1 < len(_tutorial) else 'Close'
 	%PageNumber.text = '{0} / {1}'.format([_current_index + 1, len(_tutorial)])
+
+
+func _button_hovered(control: String):
+	if _hovered != control:
+		_hovered = control
+		AudioController.get_player("MenuHoverSound").play()
+
+
+func _button_unhovered():
+	_hovered = null

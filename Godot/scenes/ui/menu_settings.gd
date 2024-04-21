@@ -71,3 +71,7 @@ func _button_hovered(control: String):
 	if _hovered != control:
 		_hovered = control
 		AudioController.get_player("MenuHoverSound").play()
+
+
+func _button_unhovered():
+	_hovered = null

@@ -51,6 +51,12 @@ func _on_settings_pressed():
 
 func _on_credits_pressed():
 	$MenuCredits.show()
+	%CreditsBackButton.grab_focus()
+	AudioController.get_player("MenuPressSound").play()
+
+
+func _on_credits_back_button_pressed():
+	$MenuCredits.hide()
 	AudioController.get_player("MenuPressSound").play()
 
 
@@ -58,3 +64,7 @@ func _button_hovered(button: String):
 	if _hovered != button:
 		_hovered = button
 		AudioController.get_player("MenuHoverSound").play()
+
+
+func _button_unhovered():
+	_hovered = null
