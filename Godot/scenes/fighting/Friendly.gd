@@ -18,6 +18,7 @@ var right_hand_occupied = false
 var left_hand_occupied = false
 var right_hand_item_type = null
 var left_hand_item_type = null
+var has_fire_weapon = false
 
 var directions = [Vector2.RIGHT, Vector2.DOWN, Vector2.UP, Vector2(1, 1), Vector2(1, -1)]
 var animation_speed = 3
@@ -79,7 +80,7 @@ func try_throw_item() -> bool:
 						tween = create_tween()
 						tween.tween_property(right_hand_sprite, "global_position",
 						start_position, 1.0/(animation_speed*2)).set_trans(Tween.TRANS_SINE)
-					await tween.finished
+						await tween.finished
 					did_throw = true
 			if left_hand_occupied && is_instance_valid(collider):
 				if Item.stat_modifiers[left_hand_item_type].throwable > 0:
@@ -98,7 +99,7 @@ func try_throw_item() -> bool:
 						tween = create_tween()
 						tween.tween_property(left_hand_sprite, "global_position",
 							start_position, 1.0/(animation_speed*2)).set_trans(Tween.TRANS_SINE)
-					await tween.finished
+						await tween.finished
 					did_throw = true
 	return did_throw
 
@@ -126,6 +127,8 @@ func act():
 					await tween.finished
 					if is_instance_valid(collider):
 						collider.take_damage(damage)
+						if(self.has_fire_weapon && collider.is_plant):
+							collider.take_damage(20)
 					did_attack = true
 					break
 	if !move_ray.is_colliding() && !did_throw && !did_attack:
@@ -172,6 +175,8 @@ func try_set_item(p_item: Node2D) -> bool:
 		take_damage(-item_stat_modifiers.health)
 	else:
 		increase_health(item_stat_modifiers.health)
+	if item_stat_modifiers.is_fire:
+		has_fire_weapon = true
 	damage = max(damage + item_stat_modifiers.damage, 0)
 	return true
 

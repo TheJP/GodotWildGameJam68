@@ -80,6 +80,7 @@ class StatModifier:
 	var throwable: int #0 if not throwable, otherwise signifies throw damage amount
 	var ranged: bool
 	var level: int
+	var is_fire: bool
 
 	func _init(p_health: int,
 	 p_damage: int,
@@ -87,6 +88,7 @@ class StatModifier:
 	 p_throwable: int = 0,
 	 p_ranged: bool = false,
 	 p_level: int = 0,
+	 p_is_fire: bool = false, 
 	):
 		health = p_health
 		damage = p_damage
@@ -94,6 +96,7 @@ class StatModifier:
 		throwable = p_throwable
 		ranged = p_ranged
 		level = p_level
+		is_fire = p_is_fire
 
 static var recipes: Array[Recipe] = [
 	Recipe.new(Type.WOOD, Type.WOOD, Type.FIRE),
@@ -159,7 +162,7 @@ static var recipes: Array[Recipe] = [
 
 static var decay := {
 	Type.FIRE: Decay.new(10.0, Type.COAL),
-	Type.TORCH: Decay.new(20.0, Type.COAL),
+	Type.TORCH: Decay.new(60.0, Type.COAL),
 	Type.HOT_FIRE: Decay.new(10.0, Nothing.new()),
 	Type.HOT_STEEL: Decay.new(20.0, Type.STEEL),
 }
@@ -172,7 +175,7 @@ static var stat_modifiers := {
 	Type.IRON_ORE: StatModifier.new(0, 0, false, 1),
 	Type.FIRE: StatModifier.new(-1, 0, true),
 	Type.HAMMER: StatModifier.new(0, 1),
-	Type.TORCH: StatModifier.new(0, 1),
+	Type.TORCH: StatModifier.new(0, 1, false, 0, false, 0, true),
 	Type.COAL: StatModifier.new(0, 0, false, 1),
 	Type.HOT_FIRE: StatModifier.new(-3, 0, true),
 	Type.HOT_STEEL: StatModifier.new(-2, 0),

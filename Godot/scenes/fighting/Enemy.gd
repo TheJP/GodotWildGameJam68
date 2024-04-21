@@ -17,6 +17,8 @@ var damage = 1
 var move_frequency = 2
 var counter = 0
 
+var is_plant = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Ticker.timer.timeout.connect(on_global_ticker_timeout)
@@ -55,7 +57,7 @@ func act():
 				var tween = create_tween()
 				var starting_position = self.position
 				tween.tween_property(self, "position",
-				position + direction * tile_size / 4.0, 1.0/(4*animation_speed)).set_trans(Tween.TRANS_SINE)
+					position + direction * tile_size / 4.0, 1.0/(4*animation_speed)).set_trans(Tween.TRANS_SINE)
 				await tween.finished
 				tween = create_tween()
 				tween.tween_property(self, "position",
@@ -67,10 +69,11 @@ func act():
 				break
 	if !move_ray.is_colliding() && !did_attack:
 		if(counter == move_frequency):
-			var tween = create_tween()
-			tween.tween_property(self, "position",
-				position + Vector2.LEFT * tile_size, 1.0/animation_speed).set_trans(Tween.TRANS_SINE)
-			await tween.finished
+			if self.is_inside_tree():
+				var tween = create_tween()
+				tween.tween_property(self, "position",
+					position + Vector2.LEFT * tile_size, 1.0/animation_speed).set_trans(Tween.TRANS_SINE)
+				await tween.finished
 
 			
 	if(counter == move_frequency):
