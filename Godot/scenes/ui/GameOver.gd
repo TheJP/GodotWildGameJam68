@@ -14,4 +14,6 @@ func _ready():
 
 func _on_button_pressed():
 	GlobalStats.new_game()
+	AudioController.get_player("Level1Loop").stream.set_loop_mode(1)
+	AudioController.get_player("Level1Loop").start()
 	get_tree().change_scene_to_file("res://scenes/main.tscn")
