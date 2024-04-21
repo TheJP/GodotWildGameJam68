@@ -2,6 +2,7 @@ extends Control
 
 @onready var sprite = %ItemSprite
 @onready var label = %ItemName
+@onready var description = %Description
 
 var discovery_queue = []
 var effect
@@ -28,6 +29,7 @@ func _on_discovery(type):
 			effect.global_position = sprite.global_position + sprite.size * 0.5
 			effect.show_behind_parent = true
 		label.text = Item.names[type]
+		description.text = Item.descriptions[type]
 		self.visible = true
 		AudioController.get_player("ItemDiscoverySound").play()
 		get_tree().paused = true
