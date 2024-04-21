@@ -83,3 +83,10 @@ func _set_panel_color(panel: PanelContainer, color: Color):
 	var style: StyleBoxFlat = panel.get_theme_stylebox("panel").duplicate()
 	style.bg_color = color
 	panel.add_theme_stylebox_override("panel", style)
+
+
+func _on_settings_button_pressed():
+	var event = InputEventAction.new()
+	event.action = 'ui_menu'
+	event.pressed = true
+	Input.parse_input_event(event)
