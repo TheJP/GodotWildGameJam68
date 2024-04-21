@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://cqmp6pj8y5u4i"]
+[gd_scene load_steps=32 format=3 uid="uid://cqmp6pj8y5u4i"]
 
 [ext_resource type="AudioStream" uid="uid://hc30x30jj33" path="res://audio/Music/endgameloop.wav" id="2_4d2i6"]
 [ext_resource type="AudioStream" uid="uid://d0mpvoockqfdm" path="res://audio/Music/level1loop.wav" id="3_8y5qn"]
@@ -30,6 +30,7 @@
 [ext_resource type="AudioStream" uid="uid://berbx56wlu1yw" path="res://audio/FX/MenuPressSound.wav" id="27_4c8eh"]
 [ext_resource type="AudioStream" uid="uid://bcxkqirwlruil" path="res://audio/FX/GameStartSound.wav" id="28_ayq66"]
 [ext_resource type="AudioStream" uid="uid://d34eujtwitou2" path="res://audio/FX/FireDamageSound.wav" id="29_vjl31"]
+[ext_resource type="AudioStream" uid="uid://c23ueupmhwemp" path="res://audio/FX/FactoryDamageSound.wav" id="31_b4nhn"]
 
 [node name="AudioController" type="Node"]
 
@@ -78,18 +79,22 @@ bus = &"Sound"
 
 [node name="HeroDeathSound1" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_g66ye")
+volume_db = 9.0
 bus = &"Sound"
 
 [node name="HeroDeathSound2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_2j0wb")
+volume_db = 9.0
 bus = &"Sound"
 
 [node name="HeroDeathSound3" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_nbygy")
+volume_db = 9.0
 bus = &"Sound"
 
 [node name="HeroDeathSound4" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_mup6o")
+volume_db = 9.0
 bus = &"Sound"
 
 [node name="GameOverSound" type="AudioStreamPlayer" parent="."]
@@ -98,26 +103,32 @@ bus = &"Sound"
 
 [node name="EnemyDeathSound1" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("16_iioma")
+volume_db = 6.0
 bus = &"Sound"
 
 [node name="EnemyDeathSound2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("17_w33bt")
+volume_db = 6.0
 bus = &"Sound"
 
 [node name="EnemyDeathSound3" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("18_0hnx5")
+volume_db = 6.0
 bus = &"Sound"
 
 [node name="DamageTickSound1" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("19_uhvmd")
+volume_db = 3.0
 bus = &"Sound"
 
 [node name="DamageTickSound2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("20_bqgr6")
+volume_db = 3.0
 bus = &"Sound"
 
 [node name="DamageTickSound3" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("21_0wuus")
+volume_db = 3.0
 bus = &"Sound"
 
 [node name="PipePlacementSound" type="AudioStreamPlayer" parent="."]
@@ -150,7 +161,7 @@ bus = &"Sound"
 
 [node name="MenuPressSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("27_4c8eh")
-volume_db = 10.0
+volume_db = 16.0
 bus = &"Sound"
 
 [node name="GameStartSound" type="AudioStreamPlayer" parent="."]
@@ -159,4 +170,8 @@ bus = &"Sound"
 
 [node name="BurningDamageSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("29_vjl31")
+bus = &"Sound"
+
+[node name="FactoryDamageSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("31_b4nhn")
 bus = &"Sound"
