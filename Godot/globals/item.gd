@@ -88,7 +88,7 @@ class StatModifier:
 	 p_throwable: int = 0,
 	 p_ranged: bool = false,
 	 p_level: int = 0,
-	 p_is_fire: bool = false, 
+	 p_is_fire: bool = false,
 	):
 		health = p_health
 		damage = p_damage
