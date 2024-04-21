@@ -9,7 +9,7 @@ signal update_health_bar
 func new_game():
 	factory_health = 100
 	progress = 0
-	times_spawned = 1
+	times_spawned = 0
 
 
 func update_health(amount):

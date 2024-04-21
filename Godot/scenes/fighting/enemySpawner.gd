@@ -9,9 +9,10 @@ extends Area2D
 var spawn_rate = 36
 var counter = 35
 var increase_health_frequency = 1
-var increase_damage_frequency = 5
+var increase_damage_frequency = 4
 var health_bonus = 0
 var damage_bonus = 0
+var times_spawned = 1
 
 func _ready():
 	Ticker.timer.timeout.connect(on_global_ticker_timeout)
@@ -29,21 +30,24 @@ func on_global_ticker_timeout():
 				enemy_instance.get_node("Sprite2D").texture = strong_plant
 				enemy_instance.increase_health(enemy_instance.health*3)
 				enemy_instance.is_plant = true
+				enemy_instance.damage = 4
 			else:
 				enemy_instance.get_node("Sprite2D").texture = strong_ghost
+				enemy_instance.damage = 4
 		elif(enemy_instance.damage > 2):
 			enemy_instance.get_node("Sprite2D").texture = strong_ghost
+			enemy_instance.damage = 4
 		elif(enemy_instance.damage > 1):
 			enemy_instance.get_node("Sprite2D").texture = ghost
 		else:
 			enemy_instance.get_node("Sprite2D").texture = weak_plant
 			enemy_instance.is_plant = true
 		enemy_instance.global_position = self.global_position
-		if GlobalStats.times_spawned % increase_health_frequency == 0:
-			health_bonus += 1
-		if GlobalStats.times_spawned % increase_damage_frequency == 0:
-			increase_damage_frequency += 1
+		if times_spawned % increase_health_frequency == 0:
+			health_bonus += 2
+		if times_spawned % increase_damage_frequency == 0:
 			damage_bonus += 1
+		times_spawned += 1
 		GlobalStats.times_spawned += 1
 		counter = 0
 

@@ -87,10 +87,11 @@ func increase_health(amount):
 
 func take_damage(amount, is_fire: bool = false):
 	if(is_fire && self.is_plant):
-		amount += 40
+		amount += 100
 	if health_bar.visible == false:
 		health_bar.visible = true
-	health -= amount
+	health -= amount	
+	health_bar.value = health
 	$Sprite2D.modulate = Color.RED
 	if(is_fire && self.is_plant):
 		fire_animation.visible = true
@@ -98,7 +99,6 @@ func take_damage(amount, is_fire: bool = false):
 	$Sprite2D.modulate = Color.WHITE
 	await get_tree().create_timer(0.5).timeout
 	fire_animation.visible = false
-	health_bar.value = health
 	var sound_index = randi() % 3
 	if health <= 0:
 		if sound_index == 0:
