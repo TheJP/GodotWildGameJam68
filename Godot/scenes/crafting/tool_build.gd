@@ -115,6 +115,7 @@ func _try_build(p_position):
 				collider.is_intersection = true
 				collider.connections = Pipe.CONNECTIONS_ALL
 				collider.direction = Pipe.Direction.NONE
+				_add_all_connections(collider)
 		return
 
 	var tile = Tile.scenes[type].instantiate()
@@ -124,7 +125,26 @@ func _try_build(p_position):
 		tile.is_intersection = is_intersection
 	build_target.add_child(tile)
 
+	if is_intersection:
+		_add_all_connections(tile)
+
 	_previous_build = tile
+
+
+func _add_all_connections(pipe: Pipe):
+	var ray := RayCast2D.new()
+	ray.collision_mask = 2
+	ray.collide_with_areas = true
+	pipe.add_child(ray)
+	var direction := Pipe.Direction.DOWN
+	for _i in range(4):
+		ray.target_position = Pipe.direction_to_vector[direction] * GameParameters.craft_tilesize
+		ray.force_raycast_update()
+		var collider = ray.get_collider()
+		if collider is Pipe and GameParameters.is_buildable(collider.global_position):
+			collider.connections |= Pipe.direction_opposite[direction]
+		direction = Pipe.rotate_direction_skip_none(direction)
+	pipe.remove_child(ray)
 
 
 func _is_colliding() -> bool:
