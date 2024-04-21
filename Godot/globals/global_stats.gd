@@ -2,7 +2,8 @@ extends Node
 
 var factory_health = 100
 var progress = 0
-var times_spawned = 0
+var times_spawned = 1
+var highscore = 0
 signal update_health_bar
 
 

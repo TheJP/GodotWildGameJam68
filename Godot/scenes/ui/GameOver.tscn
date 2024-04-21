@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bok0vjgyxh2fw"]
+[gd_scene load_steps=4 format=3 uid="uid://bok0vjgyxh2fw"]
 
 [ext_resource type="Script" path="res://scenes/ui/GameOver.gd" id="1_q15nn"]
 [ext_resource type="Theme" uid="uid://d37xjde3q7k3t" path="res://assets/ui/theme.tres" id="2_4s7ag"]
 [ext_resource type="FontFile" uid="uid://dliopqakpw553" path="res://fonts/Jacquard24-Regular.ttf" id="3_3yur5"]
-[ext_resource type="FontFile" uid="uid://beh05ftgpjxmt" path="res://fonts/PixelifySans-VariableFont_wght.ttf" id="4_3o7bp"]
 
 [node name="GameOver" type="CanvasLayer"]
 script = ExtResource("1_q15nn")
@@ -48,14 +47,62 @@ theme_override_font_sizes/font_size = 120
 text = "Game Over"
 uppercase = true
 
-[node name="Score" type="Label" parent="Control/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="ScoreLabel" type="RichTextLabel" parent="Control/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[center][img]res://assets/fighters/enemy_2.png[/img] Waves Survived [img]res://assets/fighters/enemy_3.png[/img][/center]"
+fit_content = true
+scroll_active = false
+
+[node name="Score" type="Label" parent="Control/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_fonts/font = ExtResource("4_3o7bp")
-theme_override_font_sizes/font_size = 45
-text = "Waves Defeated: 3"
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 60
+text = "3"
 horizontal_alignment = 1
-vertical_alignment = 1
+
+[node name="NewHighscore" type="RichTextLabel" parent="Control/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+bbcode_enabled = true
+text = "[center][outline_size=1][outline_color=000][rainbow freq=0.3][wave amp=50 freq=15]New Highscore"
+fit_content = true
+scroll_active = false
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="PreviousHighscoreLabel" type="RichTextLabel" parent="Control/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+bbcode_enabled = true
+text = "[center][img]res://assets/fighters/hero_1.png[/img] Previous Highscore [img]res://assets/fighters/hero_2.png[/img][/center]"
+fit_content = true
+scroll_active = false
+
+[node name="HighscoreLabel" type="RichTextLabel" parent="Control/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+bbcode_enabled = true
+text = "[center][img]res://assets/fighters/hero_1.png[/img] Highscore [img]res://assets/fighters/hero_2.png[/img][/center]"
+fit_content = true
+scroll_active = false
+
+[node name="PreviousHighscore" type="Label" parent="Control/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 60
+text = "3"
+horizontal_alignment = 1
 
 [node name="Button" type="Button" parent="Control/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2

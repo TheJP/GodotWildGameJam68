@@ -1,9 +1,16 @@
 extends CanvasLayer
 
-@onready var score = %Score
-
 func _ready():
-	score.text = "Enemies Survived : {0}".format([GlobalStats.times_spawned])
+	var score = GlobalStats.times_spawned
+	var highscore = GlobalStats.highscore
+	var is_new_highscore: bool = score > highscore
+	%Score.text = str(score)
+	%PreviousHighscore.text = str(highscore)
+	%NewHighscore.visible = is_new_highscore
+	%HighscoreLabel.visible = not is_new_highscore
+	%PreviousHighscoreLabel.visible = is_new_highscore
+	GlobalStats.highscore = max(highscore, score)
+
 
 func _on_button_pressed():
 	GlobalStats.new_game()
