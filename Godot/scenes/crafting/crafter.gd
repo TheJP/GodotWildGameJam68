@@ -15,7 +15,6 @@ func _ready():
 	_gear_tween.tween_property($Gear, "rotation", PI * 2, 1)
 	_gear_tween.tween_property($Gear, "rotation", 0, 0)
 	_gear_tween.set_loops().pause()
-	AudioController.get_player("CombinerPlacementSound").play()
 
 
 func _on_hovered():

@@ -76,6 +76,8 @@ func _try_build(p_position):
 		return
 
 	var new_connections = 0
+	if not is_instance_valid(_previous_build):
+		_previous_build = null
 	if type == Tile.Type.PIPE and _previous_build is Machine:
 		var previous_connections = 0
 		var current = Tile.snap_crafting(p_position)
@@ -99,6 +101,8 @@ func _try_build(p_position):
 				previous_connections = Pipe.Direction.RIGHT
 				new_connections = Pipe.Direction.LEFT
 		if _previous_build is Pipe:
+			if _previous_build.connections != _previous_build.connections | previous_connections:
+				AudioController.get_player("PipePlacementSound").play()
 			_previous_build.connections |= previous_connections
 
 	var is_colliding = _is_colliding()
@@ -110,8 +114,12 @@ func _try_build(p_position):
 		var collider = _ray.get_collider(0)
 		if collider is Pipe:
 			if not is_intersection:
+				if collider.connections != collider.connections | new_connections:
+					AudioController.get_player("PipePlacementSound").play()
 				collider.connections |= new_connections
 			else:
+				if not collider.is_intersection:
+					AudioController.get_player("PipePlacementSound").play()
 				collider.is_intersection = true
 				collider.connections = Pipe.CONNECTIONS_ALL
 				collider.direction = Pipe.Direction.NONE
@@ -125,6 +133,13 @@ func _try_build(p_position):
 		tile.is_intersection = is_intersection
 	build_target.add_child(tile)
 
+	match type:
+		Tile.Type.TRASH_CAN:
+			AudioController.get_player("TrashPlacementSound").play()
+		Tile.Type.PIPE:
+			AudioController.get_player("PipePlacementSound").play()
+		Tile.Type.CRAFTER:
+			AudioController.get_player("CombinerPlacementSound").play()
 	if is_intersection:
 		_add_all_connections(tile)
 

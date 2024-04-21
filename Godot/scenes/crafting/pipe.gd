@@ -91,7 +91,6 @@ static func rotate_direction_skip_none(p_direction: Pipe.Direction) -> Pipe.Dire
 
 func _ready():
 	global_position = Tile.snap_crafting(global_position)
-	AudioController.get_player("PipePlacementSound").play()
 
 
 func _process(_delta):
