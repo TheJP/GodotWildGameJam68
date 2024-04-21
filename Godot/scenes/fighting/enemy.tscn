@@ -46,7 +46,6 @@ show_percentage = false
 visible = false
 position = Vector2(-6, -10)
 scale = Vector2(2.899, 3)
-autoplay = "default"
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

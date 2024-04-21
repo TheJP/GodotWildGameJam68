@@ -8,7 +8,7 @@ extends Area2D
 @onready var strong_plant = preload("res://assets/fighters/enemy_4.png")
 var spawn_rate = 36
 var counter = 35
-var increase_health_frequency = 2
+var increase_health_frequency = 1
 var increase_damage_frequency = 5
 var health_bonus = 0
 var damage_bonus = 0
@@ -29,10 +29,8 @@ func on_global_ticker_timeout():
 				enemy_instance.get_node("Sprite2D").texture = strong_plant
 				enemy_instance.increase_health(enemy_instance.health*3)
 				enemy_instance.is_plant = true
-				enemy_instance.damage = 4
 			else:
 				enemy_instance.get_node("Sprite2D").texture = strong_ghost
-				enemy_instance.damage = 3
 		elif(enemy_instance.damage > 2):
 			enemy_instance.get_node("Sprite2D").texture = strong_ghost
 		elif(enemy_instance.damage > 1):
@@ -44,6 +42,7 @@ func on_global_ticker_timeout():
 		if GlobalStats.times_spawned % increase_health_frequency == 0:
 			health_bonus += 1
 		if GlobalStats.times_spawned % increase_damage_frequency == 0:
+			increase_damage_frequency += 1
 			damage_bonus += 1
 		GlobalStats.times_spawned += 1
 		counter = 0
