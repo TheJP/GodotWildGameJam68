@@ -44,7 +44,7 @@ func on_global_ticker_timeout():
 			enemy_instance.is_plant = true
 		enemy_instance.global_position = self.global_position
 		if times_spawned % increase_health_frequency == 0:
-			health_bonus += 2
+			health_bonus += 1
 		if times_spawned % increase_damage_frequency == 0:
 			damage_bonus += 1
 		times_spawned += 1

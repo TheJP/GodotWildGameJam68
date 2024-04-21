@@ -88,7 +88,7 @@ func increase_health(amount):
 
 func take_damage(amount, is_fire: bool = false):
 	if(is_fire && self.is_plant):
-		amount += 100
+		amount += 200
 	if health_bar.visible == false:
 		health_bar.visible = true
 	health -= amount	
