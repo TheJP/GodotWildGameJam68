@@ -304,4 +304,5 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_07exv")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_i1s7r")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_yl3ge")
 
+[connection signal="mouse_entered" from="PanelContainer/MarginContainer2/CenterContainer/SettingsButton" to="." method="_on_settings_button_mouse_entered"]
 [connection signal="pressed" from="PanelContainer/MarginContainer2/CenterContainer/SettingsButton" to="." method="_on_settings_button_pressed"]

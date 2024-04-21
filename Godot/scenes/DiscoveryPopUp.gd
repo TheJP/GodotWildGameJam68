@@ -6,10 +6,13 @@ extends Control
 
 var discovery_queue = []
 var effect
+var _hovered = null
+
 
 func _ready():
 	ItemDiscovery.discovery.connect(_on_discovery)
 	self.visible = false
+
 
 func _on_button_pressed():
 	self.visible = false
@@ -21,6 +24,7 @@ func _on_button_pressed():
 		_on_discovery(discovery_queue.pop_front())
 	else:
 		AudioController.get_player("ItemDiscoveryLoop").stop()
+
 
 func _on_discovery(type):
 	if self.visible == false:
@@ -38,3 +42,13 @@ func _on_discovery(type):
 		get_tree().paused = true
 	else:
 		discovery_queue.append(type)
+
+
+func _button_hovered(control: String):
+	if _hovered != control:
+		_hovered = control
+		AudioController.get_player("MenuHoverSound").play()
+
+
+func _button_unhovered():
+	_hovered = null

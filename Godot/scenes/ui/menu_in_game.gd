@@ -63,6 +63,7 @@ func _on_button_pressed(p_option: Button, start_signal: Signal):
 
 
 func _hover(option: Button):
+	AudioController.get_player("MenuHoverSound").play()
 	option.scale = Vector2(1.2, 1.2)
 	_update_color(option, true)
 
@@ -90,3 +91,7 @@ func _on_settings_button_pressed():
 	event.action = 'ui_menu'
 	event.pressed = true
 	Input.parse_input_event(event)
+
+
+func _on_settings_button_mouse_entered():
+	AudioController.get_player("MenuHoverSound").play()

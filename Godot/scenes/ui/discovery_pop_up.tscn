@@ -214,6 +214,8 @@ autowrap_mode = 2
 [node name="Button" type="Button" parent="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+focus_next = NodePath(".")
+focus_previous = NodePath(".")
 shortcut = SubResource("Shortcut_ee7an")
 shortcut_in_tooltip = false
 text = "Continue"
@@ -422,4 +424,7 @@ color = Color(0.6, 1, 0.521569, 1)
 anim_speed_min = 0.01
 anim_speed_max = 11.93
 
+[connection signal="focus_entered" from="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Button" to="." method="_button_hovered" binds= ["close"]]
+[connection signal="mouse_entered" from="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Button" to="." method="_button_hovered" binds= ["close"]]
+[connection signal="mouse_exited" from="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Button" to="." method="_button_unhovered"]
 [connection signal="pressed" from="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
