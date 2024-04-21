@@ -26,7 +26,7 @@ func _ready():
 	global_position = Tile.snap_fighting(global_position)
 	health_bar.max_value = health
 	health_bar.visible = false
-	
+
 func _unhandled_input(event):
 	if event is InputEventMouseButton:
 		if event.button_index != MOUSE_BUTTON_LEFT:
@@ -37,10 +37,10 @@ func _unhandled_input(event):
 
 func _on_mouse_entered():
 	_hovering = true
-		
+
 func _on_mouse_exited():
 	_hovering = false
-		
+
 func on_global_ticker_timeout():
 	act()
 
@@ -76,7 +76,7 @@ func act():
 					position + Vector2.LEFT * tile_size, 1.0/animation_speed).set_trans(Tween.TRANS_SINE)
 				await tween.finished
 
-			
+
 	if(counter == move_frequency):
 			counter = 0
 
@@ -84,7 +84,7 @@ func increase_health(amount):
 		health += amount
 		health_bar.max_value = health
 		health_bar.value = health
-			
+
 func take_damage(amount, is_fire: bool = false):
 	if(is_fire && self.is_plant):
 		amount += 40
@@ -94,12 +94,10 @@ func take_damage(amount, is_fire: bool = false):
 	$Sprite2D.modulate = Color.RED
 	if(is_fire && self.is_plant):
 		fire_animation.visible = true
-		fire_animation.play
 	await get_tree().create_timer(0.1).timeout
 	$Sprite2D.modulate = Color.WHITE
 	await get_tree().create_timer(0.5).timeout
 	fire_animation.visible = false
-	fire_animation.stop
 	health_bar.value = health
 	var sound_index = randi() % 3
 	if health <= 0:
@@ -117,7 +115,7 @@ func take_damage(amount, is_fire: bool = false):
 			AudioController.get_player("DamageTickSound2").play()
 		else:
 			AudioController.get_player("DamageTickSound3").play()
-	
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):

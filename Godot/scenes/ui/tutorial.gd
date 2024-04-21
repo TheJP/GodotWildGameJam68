@@ -5,6 +5,7 @@ enum Type {
 	MAIN,
 	TRASH_CAN,
 	ARROW,
+	INTERSECTION,
 }
 
 
@@ -37,6 +38,12 @@ static var _tutorials := {
 			'Use [u]left click[/u] to turn the arrow and [u]right click[/u] to remove it.',
 			preload("res://video/tutorial_arrow_2.ogv")),
 	] as Array[Tutorial],
+	Type.INTERSECTION: [
+		Tutorial.new('{0} {1}'.format([
+			'[color=white]Intersections  ( [img]res://assets/pipes/pipe_intersection.png[/img] )[/color]',
+			'allow\nitem streams to cross.'
+		]), preload('res://video/tutorial_intersection_1.ogv')),
+	] as Array[Tutorial],
 }
 
 
@@ -68,7 +75,7 @@ func _ready():
 	#_menu.start_default_tool.connect(_before_tool_switch)
 	#_menu.start_build_crafter.connect(_start_building.bind(Tile.Type.CRAFTER))
 	#_menu.start_build_pipe.connect(_start_building.bind(Tile.Type.PIPE))
-	#_menu.start_build_intersection.connect(_start_building.bind(Tile.Type.PIPE, true))
+	_menu.start_build_intersection.connect(show_tutorial.bind(Type.INTERSECTION))
 	_menu.start_pipe_turn.connect(show_tutorial.bind(Type.ARROW))
 	_menu.start_build_trash.connect(show_tutorial.bind(Type.TRASH_CAN))
 	#_menu.start_remove.connect(_start_remove)
