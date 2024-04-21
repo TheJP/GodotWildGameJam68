@@ -130,4 +130,7 @@ Label/colors/font_color = Color(0.262745, 0.117647, 0.4, 1)
 Label/font_sizes/font_size = 40
 Label/fonts/font = ExtResource("1_i5bfn")
 PanelContainer/styles/panel = SubResource("StyleBoxTexture_gtne7")
+RichTextLabel/colors/default_color = Color(0.262745, 0.117647, 0.4, 1)
+RichTextLabel/font_sizes/normal_font_size = 40
+RichTextLabel/fonts/normal_font = ExtResource("1_i5bfn")
 TooltipPanel/styles/panel = SubResource("StyleBoxFlat_5a70v")

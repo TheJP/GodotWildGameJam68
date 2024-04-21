@@ -82,13 +82,14 @@ vertical_alignment = 1
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="Text" type="Label" parent="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="Text" type="RichTextLabel" parent="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(800, 0)
 layout_mode = 2
+bbcode_enabled = true
 text = "Build a factory to craft items."
-vertical_alignment = 1
-autowrap_mode = 3
+fit_content = true
+scroll_active = false
 
 [node name="PanelContainer" type="PanelContainer" parent="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2

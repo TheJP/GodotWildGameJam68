@@ -1,6 +1,12 @@
 extends Control
 
 
+enum Type {
+	MAIN,
+	TRASH_CAN,
+}
+
+
 class Tutorial:
 	var text: String
 	var video: Resource
@@ -10,15 +16,26 @@ class Tutorial:
 
 
 static var _tutorials := {
-	'main': [
+	Type.MAIN: [
 		Tutorial.new('Build a factory to craft items.', preload("res://video/tutorial_1.ogv")),
 		Tutorial.new('Drag pipes to make connections.', preload("res://video/tutorial_2.ogv")),
 		Tutorial.new('Equip your fighters to defend against attacking monsters.', preload("res://video/tutorial_3.ogv")),
-	] as Array[Tutorial]
+	] as Array[Tutorial], # <- Without this we get an error when assigned to _tutorial.
+	Type.TRASH_CAN: [
+		Tutorial.new('{0} {1}'.format([
+				'Add [color=white]Trash Cans  ([img]res://assets/trash_can.png[/img])[/color]',
+				'for overflow\nor drop items into them by hand.',
+			]), preload("res://video/tutorial_trash_1.ogv")),
+	] as Array[Tutorial],
 }
 
 
-var _tutorial: Array[Tutorial] = _tutorials['main']
+var _shown_tutorials := {
+	Type.MAIN: true,
+}
+
+
+var _tutorial: Array[Tutorial] = _tutorials[Type.MAIN]
 var _current_index := 0
 
 
@@ -28,6 +45,39 @@ func _ready():
 	if not GameParameters.is_tutorial:
 		queue_free()
 		return
+	_update_tutorial()
+
+	# Setup tutorial hooks.
+	await get_tree().process_frame
+
+	var _menu: MenuInGame = get_tree().get_first_node_in_group('menu_in_game')
+	if _menu == null:
+		push_error('tutorial could not connect to menu')
+		return
+
+	#_menu.start_default_tool.connect(_before_tool_switch)
+	#_menu.start_build_crafter.connect(_start_building.bind(Tile.Type.CRAFTER))
+	#_menu.start_build_pipe.connect(_start_building.bind(Tile.Type.PIPE))
+	#_menu.start_build_intersection.connect(_start_building.bind(Tile.Type.PIPE, true))
+	#_menu.start_pipe_turn.connect(_start_pipe_turn)
+	_menu.start_build_trash.connect(show_tutorial.bind(Type.TRASH_CAN))
+	#_menu.start_remove.connect(_start_remove)
+
+
+func show_tutorial(type: Type):
+	if type not in _tutorials:
+		push_error('tried to show unknown tutorial "{0}"'.format([Type.values()[type]]))
+		return
+	if visible or not GameParameters.is_tutorial or type in _shown_tutorials:
+		return
+
+	_tutorial = _tutorials[type]
+	_current_index = 0
+	_shown_tutorials[type] = true
+
+	visible = true
+	get_tree().paused = true
+
 	_update_tutorial()
 
 
