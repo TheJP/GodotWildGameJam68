@@ -50,6 +50,7 @@ layout_mode = 2
 
 [node name="CharacterLeft" type="TextureRect" parent="CenterContainer/PanelContainer/MarginContainer/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(526, 526)
 layout_mode = 2
 texture = ExtResource("4_p3cbb")
 expand_mode = 3
@@ -61,6 +62,7 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_s8lcl")
 
 [node name="CharacterRight" type="TextureRect" parent="CenterContainer/PanelContainer/MarginContainer/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(526, 526)
 layout_mode = 2
 texture = ExtResource("4_p3cbb")
 expand_mode = 3
@@ -108,6 +110,7 @@ mouse_default_cursor_shape = 2
 text = "Credits"
 
 [node name="Quit" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 mouse_default_cursor_shape = 2
