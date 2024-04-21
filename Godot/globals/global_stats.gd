@@ -21,6 +21,8 @@ func update_health(amount):
 		await get_tree().create_timer(1).timeout
 		AudioController.get_player("GameOverSound").play()
 		get_tree().change_scene_to_file("res://scenes/ui/GameOver.tscn")
+	else:
+		AudioController.get_player("FactoryDamageSound").play()
 
 func _process(_delta):
 	if progress == 1:

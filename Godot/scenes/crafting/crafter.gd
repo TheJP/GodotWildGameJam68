@@ -105,4 +105,5 @@ func _on_destroyed():
 	if $RightSlot.item != null:
 		$RightSlot.item.queue_free()
 	AudioController.get_player("FactoryPartRemoveSound").play()
+	AudioController.get_player("ItemCraftLoop").stop()
 	queue_free()

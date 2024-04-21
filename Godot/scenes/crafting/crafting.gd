@@ -58,6 +58,7 @@ func _start_remove():
 
 
 func _before_tool_switch():
+	AudioController.get_player("MenuPressSound").play()
 	if _current_tool != null:
 		_current_tool.queue_free()
 		_current_tool = null
