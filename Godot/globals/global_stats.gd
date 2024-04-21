@@ -11,7 +11,7 @@ var reachedTransition = false
 func new_game():
 	factory_health = 100
 	progress = 0
-	times_spawned = 0
+	times_spawned = 1
 
 
 func update_health(amount):
@@ -20,6 +20,12 @@ func update_health(amount):
 	update_health_bar.emit()
 	if factory_health <= 0:
 		await get_tree().create_timer(1).timeout
+		AudioController.get_player("Level1Loop").stop()
+		AudioController.get_player("Level2Loop").stop()
+		AudioController.get_player("Level3Loop").stop()
+		AudioController.get_player("Level4Loop").stop()
+		AudioController.get_player("Transition").stop()
+		AudioController.get_player("EndgameLoop").stop()
 		AudioController.get_player("GameOverSound").play()
 		get_tree().change_scene_to_file("res://scenes/ui/GameOver.tscn")
 	else:
