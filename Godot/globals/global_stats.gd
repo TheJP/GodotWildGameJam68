@@ -1,13 +1,13 @@
 extends Node
 
-var factory_health = 10
+var factory_health = 100
 var progress = 0
 var times_spawned = 0
 signal update_health_bar
 
 
 func new_game():
-	factory_health = 10
+	factory_health = 100
 	progress = 0
 	times_spawned = 0
 
