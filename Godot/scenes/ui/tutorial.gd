@@ -33,6 +33,9 @@ static var _tutorials := {
 			'Use the [color=white]Arrow  ([img]res://assets/arrow.png[/img])[/color]',
 			'to make\nitems flow in that direction.',
 		]), preload("res://video/tutorial_arrow_1.ogv")),
+		Tutorial.new(
+			'Use [u]left click[/u] to turn the arrow and [u]right click[/u] to remove it.',
+			preload("res://video/tutorial_arrow_2.ogv")),
 	] as Array[Tutorial],
 }
 
