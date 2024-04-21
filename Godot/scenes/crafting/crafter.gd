@@ -82,12 +82,15 @@ func check_progress(type):
 	if(type == Item.Type.HAMMER):
 		if(GlobalStats.progress < 1):
 			GlobalStats.set_progress_level(1)
-	elif(type == Item.Type.STEEL):
+	elif(type == Item.Type.STEEL or type == Item.Type.IRON_SHIELD):
 		if(GlobalStats.progress < 2):
 			GlobalStats.set_progress_level(2)
-	elif(type == Item.Type.SWORD):
+	elif(type == Item.Type.SWORD or type == Item.Type.BATTLE_HAMMER):
 		if(GlobalStats.progress < 3):
 			GlobalStats.set_progress_level(3)
+	elif(type == Item.Type.SUPER_SWORD or type == Item.Type.SUPER_BATTLE_HAMMER or type == Item.Type.SUPER_BOOMERANG or type == Item.Type.SUPER_SHIELD):
+		if(GlobalStats.progress < 4):
+			GlobalStats.set_progress_level(4)
 
 func _spawn_item(type: Item.Type, p_position: Vector2) -> Node2D:
 	var item = _item_scene.instantiate()
