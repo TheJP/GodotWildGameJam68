@@ -4,6 +4,7 @@ extends Machine
 
 func _ready():
 	global_position = Tile.snap_crafting(global_position)
+	AudioController.get_player("TrashPlacementSound").play()
 
 
 func hover():
@@ -20,3 +21,8 @@ func try_drop(item: Node2D) -> bool:
 	tween.finished.connect(item.queue_free)
 	AudioController.get_player("ItemTrashSound").play()
 	return true
+
+
+func destroy():
+	queue_free()
+	AudioController.get_player("FactoryPartRemoveSound").play()

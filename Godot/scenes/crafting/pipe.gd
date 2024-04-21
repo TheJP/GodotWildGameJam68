@@ -91,6 +91,7 @@ static func rotate_direction_skip_none(p_direction: Pipe.Direction) -> Pipe.Dire
 
 func _ready():
 	global_position = Tile.snap_crafting(global_position)
+	AudioController.get_player("PipePlacementSound").play()
 
 
 func _process(_delta):
@@ -124,6 +125,7 @@ func unhover():
 func destroy():
 	if item != null:
 		item.queue_free()
+	AudioController.get_player("FactoryPartRemoveSound").play()
 	queue_free()
 
 

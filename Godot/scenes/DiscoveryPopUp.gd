@@ -19,6 +19,8 @@ func _on_button_pressed():
 	get_tree().paused = false
 	if !discovery_queue.is_empty():
 		_on_discovery(discovery_queue.pop_front())
+	else:
+		AudioController.get_player("ItemDiscoveryLoop").stop()
 
 func _on_discovery(type):
 	if(self.visible == false):
@@ -31,6 +33,7 @@ func _on_discovery(type):
 		label.text = Item.names[type]
 		description.text = Item.descriptions[type]
 		self.visible = true
+		AudioController.get_player("ItemDiscoveryLoop").play()
 		AudioController.get_player("ItemDiscoverySound").play()
 		get_tree().paused = true
 	else:

@@ -62,6 +62,8 @@ func _ready():
 	if not GameParameters.is_tutorial:
 		queue_free()
 		return
+	else:
+		AudioController.get_player("ItemDiscoveryLoop").play()
 	_update_tutorial()
 
 	# Setup tutorial hooks.
@@ -100,13 +102,16 @@ func show_tutorial(type: Type):
 
 func _on_back_button_pressed():
 	_current_index = clampi(_current_index - 1, 0, len(_tutorial) - 1)
+	AudioController.get_player("MenuPressSound").play()
 	_update_tutorial()
 
 
 func _on_next_button_pressed():
+	AudioController.get_player("MenuPressSound").play()
 	if _current_index + 1 >= len(_tutorial):
 		visible = false
 		get_tree().paused = false
+		AudioController.get_player("ItemDiscoveryLoop").stop()
 	else:
 		_current_index = clampi(_current_index + 1, 0, len(_tutorial) - 1)
 		_update_tutorial()

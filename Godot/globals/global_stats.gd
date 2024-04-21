@@ -15,6 +15,7 @@ func new_game():
 
 func update_health(amount):
 	factory_health += amount
+	
 	update_health_bar.emit()
 	if factory_health <= 0:
 		await get_tree().create_timer(1).timeout

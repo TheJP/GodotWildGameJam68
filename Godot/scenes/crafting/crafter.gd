@@ -15,6 +15,7 @@ func _ready():
 	_gear_tween.tween_property($Gear, "rotation", PI * 2, 1)
 	_gear_tween.tween_property($Gear, "rotation", 0, 0)
 	_gear_tween.set_loops().pause()
+	AudioController.get_player("CombinerPlacementSound").play()
 
 
 func _on_hovered():
@@ -99,4 +100,5 @@ func _on_destroyed():
 		$LeftSlot.item.queue_free()
 	if $RightSlot.item != null:
 		$RightSlot.item.queue_free()
+	AudioController.get_player("FactoryPartRemoveSound").play()
 	queue_free()
