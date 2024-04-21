@@ -1,9 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://bn21ko5wckqn7"]
+[gd_scene load_steps=17 format=3 uid="uid://bn21ko5wckqn7"]
 
 [ext_resource type="FontFile" uid="uid://beh05ftgpjxmt" path="res://fonts/PixelifySans-VariableFont_wght.ttf" id="1_qvdvu"]
 [ext_resource type="Texture2D" uid="uid://bhwcwexep386x" path="res://assets/ui/healtbar_empty_horizontal.png" id="2_8mi4e"]
 [ext_resource type="Script" path="res://scenes/health_bar.gd" id="2_xattn"]
 [ext_resource type="Texture2D" uid="uid://1hah5ewefxnw" path="res://assets/ui/healtbar_bar_horizontal.png" id="3_q5qbb"]
+[ext_resource type="Texture2D" uid="uid://cfl77x5o5rcb0" path="res://assets/particles/tear_withend__anim_sprite.png" id="5_ksc7k"]
+[ext_resource type="Texture2D" uid="uid://bmuvkt2jneoo2" path="res://assets/particles/tear_withend_two_anim_sprite.png" id="6_qvgtk"]
+[ext_resource type="Texture2D" uid="uid://dlkduvack5ciy" path="res://assets/particles/dust_anim_sprite.png" id="7_ion3e"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cuctf"]
 texture = ExtResource("2_8mi4e")
@@ -15,8 +18,81 @@ texture = ExtResource("3_q5qbb")
 texture_margin_left = 69.0
 texture_margin_right = 18.0
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_023vd"]
+particles_animation = true
+particles_anim_h_frames = 11
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_kj1tt"]
+offsets = PackedFloat32Array(0.734807, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_tgxv3"]
+particles_animation = true
+particles_anim_h_frames = 10
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_4qr8a"]
+particles_animation = true
+particles_anim_h_frames = 6
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Animation" id="Animation_cxv7y"]
+resource_name = "RESET"
+
+[sub_resource type="Animation" id="Animation_50e6x"]
+resource_name = "taking_dmg"
+length = 0.8
+step = 0.0001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Taking Damage/tear_drop:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.05),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Taking Damage/tear_drop_two:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0002),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Taking Damage/blood_particles:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3821, 0.5609),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_10xpn"]
+_data = {
+"RESET": SubResource("Animation_cxv7y"),
+"taking_dmg": SubResource("Animation_50e6x")
+}
+
 [node name="HealthBar" type="ProgressBar"]
-offset_right = 534.0
+offset_left = -4.0
+offset_right = 530.0
 offset_bottom = 64.0
 theme_override_colors/font_color = Color(0.262745, 0.117647, 0.4, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
@@ -28,3 +104,60 @@ theme_override_styles/fill = SubResource("StyleBoxTexture_v3svg")
 value = 100.0
 show_percentage = false
 script = ExtResource("2_xattn")
+
+[node name="Taking Damage" type="Node2D" parent="."]
+
+[node name="tear_drop" type="CPUParticles2D" parent="Taking Damage"]
+material = SubResource("CanvasItemMaterial_023vd")
+position = Vector2(50, 37)
+emitting = false
+amount = 1
+one_shot = true
+texture = ExtResource("5_ksc7k")
+gravity = Vector2(0, 0)
+scale_amount_min = 2.0
+scale_amount_max = 2.0
+color_ramp = SubResource("Gradient_kj1tt")
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+
+[node name="tear_drop_two" type="CPUParticles2D" parent="Taking Damage"]
+material = SubResource("CanvasItemMaterial_tgxv3")
+position = Vector2(23, 42)
+emitting = false
+amount = 1
+one_shot = true
+texture = ExtResource("6_qvgtk")
+gravity = Vector2(0, 0)
+scale_amount_min = 2.0
+scale_amount_max = 2.0
+color_ramp = SubResource("Gradient_kj1tt")
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+
+[node name="blood_particles" type="CPUParticles2D" parent="Taking Damage"]
+z_index = -1
+material = SubResource("CanvasItemMaterial_4qr8a")
+position = Vector2(271, 31)
+emitting = false
+amount = 80
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("7_ion3e")
+emission_shape = 3
+emission_rect_extents = Vector2(280, 20)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 40.0
+initial_velocity_max = 40.0
+scale_amount_min = 4.0
+scale_amount_max = 6.0
+color = Color(0.847059, 0.137255, 0.223529, 1)
+anim_speed_min = 2.0
+anim_speed_max = 2.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_10xpn")
+}
