@@ -92,11 +92,15 @@ func _throw_with_hand(enemy: Enemy, hand: Hand) -> bool:
 	if stats.throwable <= 0:
 		return false
 
-	var tween = create_tween()
 	var start_position = hand.sprite.global_position
-	tween.tween_property(hand.sprite, "global_position",
-		enemy.global_position, 1.0/(animation_speed*2)).set_trans(Tween.TRANS_SINE)
-	if(is_instance_valid(enemy)):
+	var tween = create_tween()
+	tween.tween_property(hand.sprite, "global_position", enemy.global_position, 1.0/(animation_speed*2)).set_trans(Tween.TRANS_SINE)
+	var rotation_tween = create_tween().set_loops()
+	rotation_tween.tween_property(hand.sprite, "rotation", PI * 0.67, 0.05)
+	rotation_tween.tween_property(hand.sprite, "rotation", PI * 1.33, 0.05)
+	rotation_tween.tween_property(hand.sprite, "rotation", PI * 2, 0.05)
+	rotation_tween.tween_property(hand.sprite, "rotation", 0, 0)
+	if is_instance_valid(enemy):
 		enemy.take_damage(stats.throwable)
 	await tween.finished
 	if !stats.ranged:
@@ -105,9 +109,10 @@ func _throw_with_hand(enemy: Enemy, hand: Hand) -> bool:
 		hand.item_type = null
 	else:
 		tween = create_tween()
-		tween.tween_property(hand.sprite, "global_position",
-		start_position, 1.0/(animation_speed*2)).set_trans(Tween.TRANS_SINE)
+		tween.tween_property(hand.sprite, "global_position", start_position, 1.0/(animation_speed*2)).set_trans(Tween.TRANS_SINE)
 		await tween.finished
+	rotation_tween.kill()
+	hand.sprite.rotation = 0
 	return true
 
 
