@@ -21,14 +21,14 @@ func _on_button_pressed():
 		_on_discovery(discovery_queue.pop_front())
 
 func _on_discovery(type):
-	if(self.visible == false):
+	if self.visible == false:
 		sprite.texture = Item.sprites[type]
 		if (Item.effects[type] != null):
 			effect = Item.effects[type].instantiate()
 			sprite.add_child(effect)
 			effect.global_position = sprite.global_position + sprite.size * 0.5
 			effect.show_behind_parent = true
-		label.text = Item.names[type]
+		label.text = '[center][shake rate=20 level=15]{0}'.format([Item.names[type]])
 		description.text = Item.descriptions[type]
 		self.visible = true
 		AudioController.get_player("ItemDiscoverySound").play()
