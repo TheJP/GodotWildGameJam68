@@ -40,8 +40,9 @@ func _slots_changed():
 		# Craft item(s).
 		await Ticker.timer.timeout
 		_gear_tween.play()
-		if !AudioController.get_player("ItemCraftLoop").playing:
-			AudioController.get_player("ItemCraftLoop").play()
+		# Disabled for now, because it was constant noise.
+		# if !AudioController.get_player("ItemCraftLoop").playing:
+			# AudioController.get_player("ItemCraftLoop").play()
 		await Ticker.timer.timeout
 		if _state_number != local_state:
 			return # Slots changed since wait, return to prevent issues like double crafting.
@@ -82,10 +83,10 @@ func check_progress(type):
 	if(type == Item.Type.HAMMER):
 		if(GlobalStats.progress < 1):
 			GlobalStats.set_progress_level(1)
-	elif(type == Item.Type.STEEL or type == Item.Type.IRON_SHIELD):
+	elif(type == Item.Type.HOT_STEEL or type == Item.Type.IRON_SHIELD):
 		if(GlobalStats.progress < 2):
 			GlobalStats.set_progress_level(2)
-	elif(type == Item.Type.SWORD or type == Item.Type.BATTLE_HAMMER):
+	elif(type == Item.Type.SWORD or type == Item.Type.BATTLE_HAMMER or type == Item.Type.BOOMERANG):
 		if(GlobalStats.progress < 3):
 			GlobalStats.set_progress_level(3)
 	elif(type == Item.Type.SUPER_SWORD or type == Item.Type.SUPER_BATTLE_HAMMER or type == Item.Type.SUPER_BOOMERANG or type == Item.Type.SUPER_SHIELD):

@@ -98,6 +98,7 @@ volume_db = 9.0
 bus = &"Sound"
 
 [node name="GameOverSound" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("15_scpgu")
 bus = &"Sound"
 

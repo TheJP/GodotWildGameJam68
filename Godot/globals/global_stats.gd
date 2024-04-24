@@ -8,6 +8,20 @@ signal update_health_bar
 
 var reachedTransition = false
 
+
+static var _loops: Array[String] = [
+	'Level1Loop',
+	'Level2Loop',
+	'Level3Loop',
+	'Level4Loop',
+	'Transition',
+	'EndgameLoop',
+]
+static var _loop_transition := {
+	4: true,
+}
+
+
 func new_game():
 	factory_health = 100
 	progress = 0
@@ -16,62 +30,42 @@ func new_game():
 
 func update_health(amount):
 	factory_health += amount
-	
+
 	update_health_bar.emit()
 	if factory_health <= 0:
 		await get_tree().create_timer(1).timeout
-		AudioController.get_player("Level1Loop").stop()
-		AudioController.get_player("Level2Loop").stop()
-		AudioController.get_player("Level3Loop").stop()
-		AudioController.get_player("Level4Loop").stop()
-		AudioController.get_player("Transition").stop()
-		AudioController.get_player("EndgameLoop").stop()
+		for loop in _loops:
+			AudioController.get_player(loop).stop()
 		AudioController.get_player("GameOverSound").play()
 		get_tree().change_scene_to_file("res://scenes/ui/GameOver.tscn")
 	else:
 		AudioController.get_player("FactoryDamageSound").play()
 
+
 func _process(_delta):
-	if reachedTransition:
-		if AudioController.get_player("Transition").playing == false:
-			if AudioController.get_player("EndgameLoop").playing == false:
-				AudioController.get_player("EndgameLoop").play()
-	else:
-		if progress == 1:
-			AudioController.get_player("Level1Loop").stream.set_loop_mode(0)
-			if AudioController.get_player("Level1Loop").playing == false:
-				if AudioController.get_player("Level2Loop").playing == false:
-					AudioController.get_player("Level2Loop").play()
-		elif progress == 2:
-			AudioController.get_player("Level1Loop").stream.set_loop_mode(0)
-			AudioController.get_player("Level2Loop").stream.set_loop_mode(0)
-			if AudioController.get_player("Level1Loop").playing == false:
-				if AudioController.get_player("Level2Loop").playing == false:
-					if AudioController.get_player("Level3Loop").playing == false:
-						AudioController.get_player("Level3Loop").play()
-		elif progress == 3:
-			AudioController.get_player("Level1Loop").stream.set_loop_mode(0)
-			AudioController.get_player("Level2Loop").stream.set_loop_mode(0)
-			AudioController.get_player("Level3Loop").stream.set_loop_mode(0)
-			if AudioController.get_player("Level1Loop").playing == false:
-				if AudioController.get_player("Level2Loop").playing == false:
-					if AudioController.get_player("Level3Loop").playing == false:
-						if AudioController.get_player("Level4Loop").playing == false:
-							AudioController.get_player("Level4Loop").play()
-		elif progress == 4:
-			AudioController.get_player("Level1Loop").stream.set_loop_mode(0)
-			AudioController.get_player("Level2Loop").stream.set_loop_mode(0)
-			AudioController.get_player("Level3Loop").stream.set_loop_mode(0)
-			AudioController.get_player("Level4Loop").stream.set_loop_mode(0)
-			if AudioController.get_player("Level1Loop").playing == false:
-				if AudioController.get_player("Level2Loop").playing == false:
-					if AudioController.get_player("Level3Loop").playing == false:
-						if AudioController.get_player("Level4Loop").playing == false:
-							reachedTransition = true
-							AudioController.get_player("Transition").stream.set_loop_mode(0)
-							AudioController.get_player("Transition").play()
-						
-						
+	if factory_health <= 0:
+		return
+	var target_player := AudioController.get_player(_loops[progress])
+	if target_player.playing:
+		return
+
+	var all_done = true
+	for i in _loops.size():
+		if i == progress:
+			continue
+		var player := AudioController.get_player(_loops[i])
+		player.stream.loop_mode = AudioStreamWAV.LOOP_DISABLED
+		all_done = all_done and not player.playing
+
+	if all_done:
+		if progress not in _loop_transition:
+			target_player.stream.loop_mode = AudioStreamWAV.LOOP_FORWARD
+			target_player.play()
+		else:
+			target_player.stream.loop_mode = AudioStreamWAV.LOOP_DISABLED
+			target_player.play()
+			progress += 1
+
+
 func set_progress_level(level):
 	progress = level
-

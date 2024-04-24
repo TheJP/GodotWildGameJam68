@@ -12,4 +12,3 @@ func get_player(path: NodePath) -> AudioStreamPlayer:
 func _ready():
 	_controller = _scene.instantiate()
 	add_child(_controller)
-	get_player("Level1Loop").play()
