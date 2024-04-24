@@ -216,6 +216,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 focus_next = NodePath(".")
 focus_previous = NodePath(".")
+mouse_default_cursor_shape = 2
 shortcut = SubResource("Shortcut_ee7an")
 shortcut_in_tooltip = false
 text = "Continue"
