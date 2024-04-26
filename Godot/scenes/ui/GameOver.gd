@@ -5,7 +5,7 @@ var _hovered = null
 
 
 func _ready():
-	AudioController.get_player('ItemDiscoveryLoop').play()
+	AudioController.get_player('CalmMenuLoop').play()
 	var score = GlobalStats.times_spawned
 	var highscore = GlobalStats.highscore
 	var is_new_highscore: bool = score > highscore
@@ -18,7 +18,7 @@ func _ready():
 
 
 func _on_button_pressed():
-	AudioController.get_player('ItemDiscoveryLoop').stop()
+	AudioController.get_player('CalmMenuLoop').stop()
 	GlobalStats.new_game()
 	get_tree().change_scene_to_file("res://scenes/main.tscn")
 

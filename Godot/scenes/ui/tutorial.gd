@@ -65,7 +65,7 @@ func _ready():
 		return
 	else:
 		%NextButton.grab_focus()
-		AudioController.get_player("ItemDiscoveryLoop").play()
+		AudioController.get_player('CalmMenuLoop').play()
 	_update_tutorial()
 
 	# Setup tutorial hooks.
@@ -99,6 +99,7 @@ func show_tutorial(type: Type):
 	visible = true
 	get_tree().paused = true
 	%NextButton.grab_focus()
+	AudioController.get_player('CalmMenuLoop').play()
 
 	_update_tutorial()
 
@@ -114,7 +115,7 @@ func _on_next_button_pressed():
 	if _current_index + 1 >= len(_tutorial):
 		visible = false
 		get_tree().paused = false
-		AudioController.get_player("ItemDiscoveryLoop").stop()
+		AudioController.get_player('CalmMenuLoop').stop()
 	else:
 		_current_index = clampi(_current_index + 1, 0, len(_tutorial) - 1)
 		_update_tutorial()

@@ -152,7 +152,12 @@ bus = &"Sound"
 [node name="ItemDiscoveryLoop" type="AudioStreamPlayer" parent="."]
 process_mode = 2
 stream = ExtResource("25_71g1g")
-bus = &"Sound"
+bus = &"Music"
+
+[node name="CalmMenuLoop" type="AudioStreamPlayer" parent="."]
+process_mode = 2
+stream = ExtResource("25_71g1g")
+bus = &"Music"
 
 [node name="MenuHoverSound" type="AudioStreamPlayer" parent="."]
 process_mode = 3

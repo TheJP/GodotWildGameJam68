@@ -24,8 +24,12 @@ func _on_visibility_changed():
 		%Continue.grab_focus()
 		_was_paused_before = get_tree().paused
 		get_tree().paused = true
+		if not _was_paused_before:
+			AudioController.get_player('CalmMenuLoop').play()
 	else:
 		get_tree().paused = _was_paused_before
+		if not _was_paused_before:
+			AudioController.get_player('CalmMenuLoop').stop()
 		_was_paused_before = false
 
 
