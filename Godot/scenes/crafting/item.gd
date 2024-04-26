@@ -80,6 +80,8 @@ func _input(event):
 
 func _on_mouse_entered():
 	_hovering = true
+	if container is CrafterSlot and container.is_crafting:
+		return
 	if dragging == null and Tool.current_type == Tool.Type.DEFAULT:
 		scale = Vector2(1.1, 1.1)
 		Input.set_default_cursor_shape(Input.CURSOR_CAN_DROP)
@@ -87,7 +89,8 @@ func _on_mouse_entered():
 
 func _on_mouse_exited():
 	_hovering = false
-	scale = Vector2(1, 1)
+	if not (container is CrafterSlot) or not container.is_crafting:
+		scale = Vector2(1, 1)
 	if dragging == null and Tool.current_type == Tool.Type.DEFAULT:
 		Input.set_default_cursor_shape(Input.CURSOR_ARROW)
 
