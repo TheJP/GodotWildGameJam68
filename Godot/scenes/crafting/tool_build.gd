@@ -36,12 +36,19 @@ func _input(event):
 func _mouse_move(p_position: Vector2):
 	var size = Vector2i(1, 1) if type != Tile.Type.CRAFTER else Vector2i(2, 1)
 	global_position = Tile.snap_crafting(p_position, size)
+	var valid := true
 	if not _is_inside_bounds(global_position):
-		_sprite.modulate = modulate_invalid
-	elif not _is_colliding() or (type == Tile.Type.PIPE and _ray.get_collider(0) is Pipe):
-		_sprite.modulate = modulate_valid
+		valid = false
+	elif not _is_colliding():
+		valid = true
+	elif type != Tile.Type.PIPE and type != Tile.Type.CRAFTER:
+		valid = false
 	else:
-		_sprite.modulate = modulate_invalid
+		for i in _ray.get_collision_count():
+			if not (_ray.get_collider(i) is Pipe):
+				valid = false
+				break
+	_sprite.modulate = modulate_valid if valid else modulate_invalid
 	if _dragging:
 		if _mode == MOUSE_BUTTON_LEFT:
 			_try_build(p_position)
@@ -105,12 +112,11 @@ func _try_build(p_position):
 				AudioController.get_player("PipePlacementSound").play()
 			_previous_build.connections |= previous_connections
 
+	if not _is_inside_bounds(p_position):
+		return
 	var is_colliding = _is_colliding()
 	if is_colliding:
 		_previous_build = _ray.get_collider(0)
-	if not _is_inside_bounds(p_position):
-		return
-	if _is_colliding():
 		var collider = _ray.get_collider(0)
 		if collider is Pipe:
 			if not is_intersection:
@@ -124,7 +130,16 @@ func _try_build(p_position):
 				collider.connections = Pipe.CONNECTIONS_ALL
 				collider.direction = Pipe.Direction.NONE
 				_add_all_connections(collider)
-		return
+
+		if type != Tile.Type.CRAFTER:
+			return
+
+		# Make crafter replace pipes (while preserving connections).
+		for i in _ray.get_collision_count():
+			if not (_ray.get_collider(i) is Pipe):
+				return
+		for i in _ray.get_collision_count():
+			_ray.get_collider(i).destroy()
 
 	var tile = Tile.scenes[type].instantiate()
 	tile.global_position = p_position

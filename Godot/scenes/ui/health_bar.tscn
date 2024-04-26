@@ -94,6 +94,7 @@ _data = {
 offset_left = -4.0
 offset_right = 530.0
 offset_bottom = 64.0
+mouse_filter = 2
 theme_override_colors/font_color = Color(0.262745, 0.117647, 0.4, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 5
