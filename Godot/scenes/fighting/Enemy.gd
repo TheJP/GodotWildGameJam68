@@ -5,7 +5,6 @@ extends Area2D
 @onready var melee_ray = $MeleeRay
 @onready var health_bar = $HealthBar
 @onready var fire_animation = $FlameDamage
-@onready var _animation_player = $AnimationPlayer
 
 var animation_speed = 3
 var tile_size = GameParameters.tilesize

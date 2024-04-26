@@ -34,12 +34,16 @@ func _ready():
 		var decay = Item.decay[type]
 		get_tree().create_timer(decay.age, false).timeout.connect(_item_decayed.bind(decay))
 
+
 func set_effect(_effect):
 	if effect != null:
 		effect.queue_free()
-	if(_effect != null):
+	if _effect != null:
 		effect = _effect.instantiate()
 		self.add_child(effect)
+	else:
+		effect = null
+
 
 func _unhandled_input(event):
 	if event is InputEventMouseButton:
@@ -135,7 +139,8 @@ func _flow():
 		return
 
 	var start_position = position
-	for target in _find_flow_targets():
+	var targets := _find_flow_targets()
+	for target in targets:
 		if not target.machine.try_drop(self):
 			continue
 		if not container.try_remove():
@@ -156,7 +161,16 @@ func _flow():
 		_tween = create_tween()
 		_tween.tween_property(self, "position", start_position, 0)
 		_tween.tween_property(self, "position", position, 1.0 / animation_speed).set_trans(Tween.TRANS_SINE)
-		break
+		return
+
+	# No target: Play "stuck" animation for item.
+	if targets.size() > 0:
+		var target: FlowTarget = targets.pick_random()
+		if _tween != null:
+			_tween.kill()
+		_tween = create_tween()
+		_tween.tween_property(self, "global_position", (global_position + target.machine.global_position) * 0.5, 1.0 / (2.0 * animation_speed)).set_trans(Tween.TRANS_SINE)
+		_tween.tween_property(self, "global_position", global_position, 1.0 / (2.0 * animation_speed)).set_trans(Tween.TRANS_SINE)
 
 
 class FlowTarget:
