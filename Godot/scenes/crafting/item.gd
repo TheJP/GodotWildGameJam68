@@ -8,7 +8,7 @@ static var dragging = null
 @export var type: Item.Type
 @export var animation_speed := 3.0
 var container = null
-var _previous_container = null
+var _previous_direction := Pipe.Direction.NONE
 var _intersection_direction := Pipe.Direction.NONE
 
 
@@ -62,7 +62,7 @@ func _unhandled_input(event):
 			if container != null and not container.try_remove():
 				return
 			container = null
-			_previous_container = null
+			_previous_direction = Pipe.Direction.NONE
 			dragging = self
 			if _tween != null:
 				_tween.stop()
@@ -148,13 +148,9 @@ func _flow():
 
 		if container is Pipe:
 			container.next_output = Pipe.rotate_direction_skip_none(target.direction)
-		_previous_container = container
+		_previous_direction = Pipe.direction_opposite[target.direction]
 		container = target.machine
-
-		if target.machine is Pipe and target.machine.is_intersection:
-			_intersection_direction = target.direction
-		else:
-			_intersection_direction = Pipe.Direction.NONE
+		_intersection_direction = target.direction # Remember direction in case target is (or becomes) an intersection.
 
 		if _tween != null:
 			_tween.kill()
@@ -199,6 +195,8 @@ func _find_flow_targets() -> Array[FlowTarget]:
 			directions = [_intersection_direction]
 
 	for direction in directions:
+		if direction == _previous_direction:
+			continue # Do not flow back where you came from.
 		var trajectory: Vector2 = Pipe.direction_to_vector[direction]
 		_ray.position = trajectory * GameParameters.craft_tilesize
 		_ray.force_shapecast_update()
@@ -212,11 +210,8 @@ func _find_flow_targets() -> Array[FlowTarget]:
 			_ray.position = trajectory * ((1.0 + crossing_count) * GameParameters.craft_tilesize)
 			_ray.force_shapecast_update()
 			collider = _ray.get_collider(0) if _ray.is_colliding() else null
-
 		if collider == null or not (collider is Machine):
 			continue
-		if collider == _previous_container:
-			continue # Do not flow back where you came from.
 
 		if collider is Pipe:
 			if collider.direction != Pipe.Direction.NONE:
