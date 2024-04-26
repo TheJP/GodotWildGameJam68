@@ -4,6 +4,7 @@ extends Node2D
 @onready var _item_scene = preload('res://scenes/crafting/item.tscn')
 var _gear_tween: Tween
 var _state_number := 0
+var _disable_crafting := false
 
 
 func _ready():
@@ -25,11 +26,11 @@ func _on_unhovered():
 	scale = Vector2(1, 1)
 
 
-func _on_received_item():
+func _on_left_slot_changed():
+	_disable_crafting = false
 	_slots_changed()
 
-
-func _on_lost_item():
+func _on_right_slot_changed():
 	_slots_changed()
 
 
@@ -37,8 +38,12 @@ func _slots_changed():
 	_state_number += 1
 	var local_state = _state_number
 	if $LeftSlot.item != null and $RightSlot.item != null:
+		if _disable_crafting:
+			return
 		# Craft item(s).
 		await Ticker.timer.timeout
+		if _state_number != local_state:
+			return
 		_gear_tween.play()
 		# Disabled for now, because it was constant noise.
 		# if !AudioController.get_player("ItemCraftLoop").playing:
@@ -52,6 +57,7 @@ func _slots_changed():
 		$RightSlot.is_crafting = true
 		await Ticker.timer.timeout
 		_craft()
+		_disable_crafting = true
 		$LeftSlot.is_crafting = false
 		$RightSlot.is_crafting = false
 		_gear_tween.pause()
