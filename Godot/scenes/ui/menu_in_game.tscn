@@ -137,6 +137,7 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_3g0ge")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_3g0ge")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_3g0ge")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_lgo64")
+action_mode = 0
 shortcut = SubResource("Shortcut_l01ml")
 icon = ExtResource("3_gnbmo")
 
@@ -161,6 +162,7 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_3g0ge")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_3g0ge")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_3g0ge")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_3g0ge")
+action_mode = 0
 shortcut = SubResource("Shortcut_6rsve")
 icon = ExtResource("4_3skqq")
 
@@ -185,6 +187,7 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_3g0ge")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_3g0ge")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_3g0ge")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_3g0ge")
+action_mode = 0
 shortcut = SubResource("Shortcut_mtoj3")
 icon = ExtResource("3_2st0p")
 
@@ -209,6 +212,7 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_3g0ge")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_3g0ge")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_3g0ge")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_3g0ge")
+action_mode = 0
 shortcut = SubResource("Shortcut_4i6r4")
 icon = ExtResource("5_cqm51")
 
@@ -233,6 +237,7 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_3g0ge")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_3g0ge")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_3g0ge")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_3g0ge")
+action_mode = 0
 shortcut = SubResource("Shortcut_ob883")
 icon = ExtResource("4_xswmk")
 
@@ -257,6 +262,7 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_3g0ge")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_3g0ge")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_3g0ge")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_3g0ge")
+action_mode = 0
 shortcut = SubResource("Shortcut_xmha4")
 icon = ExtResource("4_n8jwb")
 
@@ -281,6 +287,7 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_3g0ge")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_3g0ge")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_3g0ge")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_3g0ge")
+action_mode = 0
 shortcut = SubResource("Shortcut_js5ef")
 icon = ExtResource("9_0fuh8")
 
