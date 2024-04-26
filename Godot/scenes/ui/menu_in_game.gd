@@ -19,6 +19,7 @@ signal start_remove()
 
 
 var _options: Array[Button] = []
+@onready var _ray: ShapeCast2D = $ShapeCast2D
 
 
 func _ready():
@@ -48,6 +49,42 @@ func _ready():
 	_selected_option = %DefaultButton
 	_selected_option.set_process_shortcut_input(false)
 	_update_color(%DefaultButton)
+
+
+
+func _unhandled_input(event):
+	if event is InputEventMouseButton:
+		if not event.pressed or event.button_index != MOUSE_BUTTON_MIDDLE:
+			return
+		get_viewport().set_input_as_handled()
+
+		_ray.global_position = event.position
+		_ray.force_shapecast_update()
+		if not _ray.is_colliding():
+			return
+
+		var closest = null
+		var closest_distance := INF
+		for i in _ray.get_collision_count():
+			var collider = _ray.get_collider(i)
+			var distance = event.position.distance_squared_to(collider.global_position)
+			if distance >= closest_distance:
+				continue
+			if collider is TrashCan:
+				closest = %TrashButton
+			elif collider is CrafterSlot:
+				closest = %CrafterButton
+			elif collider is Pipe:
+				if collider.is_intersection:
+					closest = %IntersectionButton
+				else:
+					closest = %PipeButton
+			else:
+				continue
+			closest_distance = distance
+
+		if closest != null:
+			closest.pressed.emit()
 
 
 func _on_button_pressed(p_option: Button, start_signal: Signal):

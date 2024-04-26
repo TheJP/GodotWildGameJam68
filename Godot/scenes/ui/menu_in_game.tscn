@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://cqaifcks6tp3x"]
+[gd_scene load_steps=36 format=3 uid="uid://cqaifcks6tp3x"]
 
 [ext_resource type="Theme" uid="uid://d37xjde3q7k3t" path="res://assets/ui/theme.tres" id="1_l20by"]
 [ext_resource type="Script" path="res://scenes/ui/menu_in_game.gd" id="1_lb6yv"]
@@ -11,6 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://d0844foetdry5" path="res://assets/arrow.png" id="4_xswmk"]
 [ext_resource type="Texture2D" uid="uid://sxh1ixdjip5s" path="res://assets/pipes/pipe_intersection.png" id="5_cqm51"]
 [ext_resource type="Texture2D" uid="uid://bkjc1bksdqb1" path="res://assets/destroy_unclicked.png" id="9_0fuh8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wobof"]
+radius = 5.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x8l3m"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -103,6 +106,15 @@ theme_override_constants/margin_bottom = 15
 script = ExtResource("1_lb6yv")
 hover_color = Color(0.54902, 1, 0.607843, 1)
 selected_color = Color(0.0784314, 0.4, 0.356863, 1)
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="."]
+enabled = false
+shape = SubResource("CircleShape2D_wobof")
+target_position = Vector2(0, 0)
+max_results = 4
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 2

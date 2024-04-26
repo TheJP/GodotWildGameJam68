@@ -22,6 +22,7 @@ func _ready():
 		$Sprite2D.texture = Tile.sprite_intersection
 	else:
 		$Sprite2D.texture = Tile.sprites[type]
+		is_intersection = false
 	_mouse_move(get_viewport().get_mouse_position())
 
 
