@@ -1,8 +1,12 @@
 extends Node
 
-var factory_health = 100
-var progress = 0
-var times_spawned = 1
+
+const HIGHSCORE_PATH := 'user://highscore.txt'
+
+
+var factory_health
+var progress
+var times_spawned
 var highscore = 0
 signal update_health_bar
 
@@ -22,10 +26,32 @@ static var _loop_transition := {
 }
 
 
+func _ready():
+	new_game()
+	_load_highscore()
+
+
 func new_game():
 	factory_health = 100
 	progress = 0
 	times_spawned = 1
+
+
+func set_highscore(score):
+	highscore = score
+	var file := FileAccess.open(HIGHSCORE_PATH, FileAccess.WRITE)
+	if file != null:
+		file.store_line(str(highscore))
+
+
+func _load_highscore():
+	highscore = 0
+	var file := FileAccess.open(HIGHSCORE_PATH, FileAccess.READ)
+	if file == null:
+		return
+	var highscore_text = file.get_as_text().strip_edges()
+	if highscore_text.is_valid_int():
+		highscore = highscore_text.to_int()
 
 
 func update_health(amount):

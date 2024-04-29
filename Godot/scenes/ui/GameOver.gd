@@ -14,7 +14,8 @@ func _ready():
 	%NewHighscore.visible = is_new_highscore
 	%HighscoreLabel.visible = not is_new_highscore
 	%PreviousHighscoreLabel.visible = is_new_highscore
-	GlobalStats.highscore = max(highscore, score)
+	if is_new_highscore:
+		GlobalStats.set_highscore(score)
 
 
 func _on_button_pressed():
