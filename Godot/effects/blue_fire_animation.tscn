@@ -1,0 +1,76 @@
+[gd_scene load_steps=11 format=3 uid="uid://453jk04vwsxg"]
+
+[ext_resource type="Texture2D" uid="uid://bvvjig21m5vlm" path="res://assets/items/bluefire_anim.png" id="1_5lbcg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gvilh"]
+atlas = ExtResource("1_5lbcg")
+region = Rect2(0, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ic0iu"]
+atlas = ExtResource("1_5lbcg")
+region = Rect2(20, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wlx7n"]
+atlas = ExtResource("1_5lbcg")
+region = Rect2(40, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w8crt"]
+atlas = ExtResource("1_5lbcg")
+region = Rect2(60, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4iv14"]
+atlas = ExtResource("1_5lbcg")
+region = Rect2(80, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jshji"]
+atlas = ExtResource("1_5lbcg")
+region = Rect2(100, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7gygj"]
+atlas = ExtResource("1_5lbcg")
+region = Rect2(120, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_km7yj"]
+atlas = ExtResource("1_5lbcg")
+region = Rect2(140, 0, 20, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2n148"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gvilh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ic0iu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wlx7n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w8crt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4iv14")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jshji")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7gygj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_km7yj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="BlueFireAnimation" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_2n148")
+autoplay = "default"
+frame_progress = 0.869379

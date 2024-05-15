@@ -19,6 +19,7 @@ shape = SubResource("CircleShape2D_lnsgk")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 1
+scale = Vector2(3, 3)
 texture = ExtResource("2_bw2v3")
 
 [node name="ShapeCast2D" type="ShapeCast2D" parent="."]
