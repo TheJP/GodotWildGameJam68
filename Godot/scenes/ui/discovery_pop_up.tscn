@@ -1,10 +1,11 @@
-[gd_scene load_steps=18 format=3 uid="uid://da0mqcv14vosf"]
+[gd_scene load_steps=19 format=3 uid="uid://da0mqcv14vosf"]
 
 [ext_resource type="Theme" uid="uid://d37xjde3q7k3t" path="res://assets/ui/theme.tres" id="1_ce8q6"]
 [ext_resource type="Script" path="res://scenes/DiscoveryPopUp.gd" id="2_urpub"]
 [ext_resource type="FontFile" uid="uid://beh05ftgpjxmt" path="res://fonts/PixelifySans-VariableFont_wght.ttf" id="3_yccm6"]
 [ext_resource type="Texture2D" uid="uid://c8rlkymrr4wl7" path="res://assets/items/fire.png" id="4_vy06l"]
 [ext_resource type="Texture2D" uid="uid://bs5v3i6cgu71i" path="res://assets/particles/lil_star_anim_sprite.png" id="5_i78hk"]
+[ext_resource type="Texture2D" uid="uid://tujchh643ll6" path="res://assets/items/coal.png" id="5_mbqt0"]
 [ext_resource type="Texture2D" uid="uid://7tv3s04tjy5k" path="res://assets/particles/confetti_faster_anim_sprite.png" id="6_igexc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v0ta5"]
@@ -180,15 +181,19 @@ uppercase = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 20
 
-[node name="ItemSprite" type="TextureRect" parent="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ItemSprite" type="TextureRect" parent="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 texture = ExtResource("4_vy06l")
 stretch_mode = 3
 
-[node name="ItemName" type="RichTextLabel" parent="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="ItemName" type="RichTextLabel" parent="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/default_color = Color(1, 1, 1, 1)
@@ -198,11 +203,7 @@ text = "[center][shake rate=15 level=3]Fire"
 fit_content = true
 scroll_active = false
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/margin_top = 15
-
-[node name="Description" type="Label" parent="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer"]
+[node name="Description" type="Label" parent="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(600, 0)
 layout_mode = 2
@@ -210,6 +211,38 @@ text = "Used for crafting.
 Can be thrown for 1 damage."
 horizontal_alignment = 1
 autowrap_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 15
+
+[node name="RecipeLabel" type="Label" parent="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Recipe:"
+
+[node name="RecipeLeftItem" type="TextureRect" parent="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("5_mbqt0")
+expand_mode = 3
+
+[node name="Plus" type="Label" parent="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "+"
+
+[node name="RecipeRightItem" type="TextureRect" parent="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("4_vy06l")
+expand_mode = 3
+
+[node name="RecipeTime" type="Label" parent="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "7.0s"
 
 [node name="Button" type="Button" parent="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2

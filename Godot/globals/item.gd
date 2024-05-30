@@ -73,6 +73,7 @@ class Id:
 class Nothing:
 	pass
 
+
 class StatModifier:
 	var health: int
 	var damage: int
@@ -97,6 +98,7 @@ class StatModifier:
 		ranged = p_ranged
 		level = p_level
 		is_fire = p_is_fire
+
 
 static var recipes: Array[Recipe] = [
 	Recipe.new(Type.WOOD, Type.WOOD, Type.FIRE),
@@ -205,6 +207,7 @@ static var stat_modifiers := {
 	Type.SUPER_ULTRA_BATTLE_HAMMER: StatModifier.new(40, 40, false, 0, false, 3),
 }
 
+
 static var names := {
 	Type.TRASH: "Trash",
 	Type.WOOD: "Wood",
@@ -236,6 +239,7 @@ static var names := {
 	Type.ULTRA_BATTLE_HAMMER: "Ultra Battle Hammer",
 	Type.SUPER_ULTRA_BATTLE_HAMMER: "Super Ultra Battle Hammer of Ultimate Smashing",
 }
+
 
 static var descriptions := {
 	Type.TRASH: "It's just garbage.",
@@ -269,6 +273,7 @@ static var descriptions := {
 	Type.SUPER_ULTRA_BATTLE_HAMMER: "+40 Health\n+40 Damage",
 }
 
+
 static var sprites := {
 	Type.TRASH: preload('res://assets/items/trash.png'),
 	Type.WOOD: preload('res://assets/items/wood.png'),
@@ -301,6 +306,7 @@ static var sprites := {
 	Type.SUPER_ULTRA_BATTLE_HAMMER: preload("res://assets/items/hammer_battle.png"),
 	}
 
+
 static var effects := {
 	Type.TRASH: null,
 	Type.WOOD: null,
@@ -332,6 +338,7 @@ static var effects := {
 	Type.ULTRA_BATTLE_HAMMER: preload("res://effects/hammer_battle_particles_purple.tscn"),
 	Type.SUPER_ULTRA_BATTLE_HAMMER: preload("res://effects/hammer_battle_particles_orange.tscn"),
 }
+
 
 static var crafting: Dictionary = _init_crafting(recipes)
 
