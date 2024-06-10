@@ -14,7 +14,7 @@ var _dragging := false
 
 
 func _ready():
-	ItemDiscovery.discovery.connect(func(_type): _dragging = false)
+	ItemDiscovery.discovery.connect(func(_data): _dragging = false)
 	_mouse_move(get_viewport().get_mouse_position())
 
 

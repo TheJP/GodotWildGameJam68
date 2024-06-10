@@ -29,7 +29,6 @@ func _ready():
 	$Sprite2D.texture = Item.sprites[type]
 	set_effect(Item.effects[type])
 	Ticker.timer.timeout.connect(_on_global_ticker_timeout)
-	ItemDiscovery.set_discovered.call_deferred(type)
 	if type in Item.decay:
 		var decay = Item.decay[type]
 		get_tree().create_timer(decay.age, false).timeout.connect(_item_decayed.bind(decay))
@@ -239,7 +238,9 @@ func _item_decayed(decay):
 			await Ticker.timer.timeout # Retry next tick.
 		queue_free()
 	else:
+		var old_type: Item.Type = type
 		type = decay.output.type
 		$Sprite2D.texture = Item.sprites[type]
 		set_effect(Item.effects[type])
-		ItemDiscovery.set_discovered.call_deferred(type)
+		if not decay.output.is_nothing and not decay.output.is_id:
+			ItemDiscovery.set_decay_discovered.call_deferred(old_type, decay.age, decay.output.type)

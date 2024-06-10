@@ -105,8 +105,10 @@ func _craft():
 			new_right = $RightSlot.item
 		if not recipe.is_nothing:
 			new_left = _spawn_item(recipe.type)
+			ItemDiscovery.set_recipe_discovered.call_deferred($LeftSlot.item.type, $RightSlot.item.type, recipe.type)
 	else:
 		new_left = _spawn_item(Item.Type.TRASH)
+		ItemDiscovery.set_recipe_discovered.call_deferred($LeftSlot.item.type, $RightSlot.item.type, Item.Type.TRASH)
 	$LeftSlot.crafted_item(new_left)
 	$RightSlot.crafted_item(new_right)
 	# AudioController.get_player("ItemCraftLoop").stop()
