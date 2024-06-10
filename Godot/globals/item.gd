@@ -39,10 +39,15 @@ class Recipe:
 	var input2: Type
 	var output: Output
 
-	func _init(p_input1: Type, p_input2: Type, p_output):
+	# Determines if this edge is drawn in the recipe book.
+	# This has to be used to ignore all but one path in case of a cycle.
+	var ignore_in_book: bool
+
+	func _init(p_input1: Type, p_input2: Type, p_output, p_ignore_in_book := false):
 		input1 = p_input1
 		input2 = p_input2
 		output = Output.new(p_output)
+		ignore_in_book = p_ignore_in_book
 
 
 class Decay:
@@ -107,7 +112,7 @@ static var recipes: Array[Recipe] = [
 	Recipe.new(Type.WOOD, Type.FIRE, Type.TORCH),
 	Recipe.new(Type.WOOD, Type.TORCH, Type.TORCH),
 	Recipe.new(Type.WOOD, Type.HOT_FIRE, Type.HOT_FIRE),
-	Recipe.new(Type.WOOD, Type.HOT_STEEL, Type.FIRE),
+	Recipe.new(Type.WOOD, Type.HOT_STEEL, Type.FIRE, true),
 	Recipe.new(Type.WOOD, Type.HAMMER, Type.WOODEN_SHIELD),
 	Recipe.new(Type.WOOD, Type.STEEL, Type.BATTLE_HAMMER),
 
@@ -142,7 +147,7 @@ static var recipes: Array[Recipe] = [
 
 	Recipe.new(Type.HOT_FIRE, Type.HOT_FIRE, Nothing.new()),
 	Recipe.new(Type.HOT_FIRE, Type.HOT_STEEL, Type.HOT_STEEL),
-	Recipe.new(Type.HOT_FIRE, Type.HOT_STEEL, Type.HOT_STEEL),
+	Recipe.new(Type.HOT_FIRE, Type.STEEL, Type.HOT_STEEL, true),
 
 	Recipe.new(Type.HOT_STEEL, Type.HOT_STEEL, Type.HOT_STEEL),
 	Recipe.new(Type.HOT_STEEL, Type.STEEL, Type.STEEL),

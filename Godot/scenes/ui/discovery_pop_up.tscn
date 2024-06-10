@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://d37xjde3q7k3t" path="res://assets/ui/theme.tres" id="1_ce8q6"]
 [ext_resource type="Script" path="res://scenes/DiscoveryPopUp.gd" id="2_urpub"]
-[ext_resource type="FontFile" uid="uid://beh05ftgpjxmt" path="res://fonts/PixelifySans-VariableFont_wght.ttf" id="3_yccm6"]
+[ext_resource type="Theme" uid="uid://ddlkmvo1rbwyw" path="res://assets/ui/label_title.tres" id="3_qpjwb"]
 [ext_resource type="Texture2D" uid="uid://c8rlkymrr4wl7" path="res://assets/items/fire.png" id="4_vy06l"]
 [ext_resource type="Texture2D" uid="uid://bs5v3i6cgu71i" path="res://assets/particles/lil_star_anim_sprite.png" id="5_i78hk"]
 [ext_resource type="Texture2D" uid="uid://tujchh643ll6" path="res://assets/items/coal.png" id="5_mbqt0"]
@@ -170,12 +170,7 @@ theme_override_constants/separation = 45
 [node name="Label" type="Label" parent="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_colors/font_color = Color(0.364706, 0.184314, 0.54902, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 2
-theme_override_constants/shadow_offset_y = 2
-theme_override_fonts/font = ExtResource("3_yccm6")
-theme_override_font_sizes/font_size = 60
+theme = ExtResource("3_qpjwb")
 text = "New Recipe Discovered!"
 uppercase = true
 
