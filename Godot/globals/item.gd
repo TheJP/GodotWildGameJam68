@@ -134,10 +134,10 @@ static var recipes: Array[Recipe] = [
 	Recipe.new(Type.HAMMER, Type.HOT_STEEL, Type.SWORD),
 	Recipe.new(Type.HAMMER, Type.STEEL, Type.BOOMERANG),
 
-	Recipe.new(Type.BATTLE_HAMMER, Type.HOT_STEEL, Type.SWORD),
-	Recipe.new(Type.BATTLE_HAMMER, Type.STEEL, Type.BOOMERANG),
-	Recipe.new(Type.BATTLE_HAMMER, Type.WOOD, Type.WOODEN_SHIELD),
-	Recipe.new(Type.BATTLE_HAMMER, Type.IRON_ORE, Type.IRON_SHIELD),
+	Recipe.new(Type.BATTLE_HAMMER, Type.HOT_STEEL, Type.SWORD, true),
+	Recipe.new(Type.BATTLE_HAMMER, Type.STEEL, Type.BOOMERANG, true),
+	Recipe.new(Type.BATTLE_HAMMER, Type.WOOD, Type.WOODEN_SHIELD, true),
+	Recipe.new(Type.BATTLE_HAMMER, Type.IRON_ORE, Type.IRON_SHIELD, true),
 
 	Recipe.new(Type.TORCH, Type.HOT_FIRE, Nothing.new()),
 	Recipe.new(Type.TORCH, Type.COAL, Type.HOT_FIRE),
@@ -309,7 +309,7 @@ static var sprites := {
 	Type.SUPER_BATTLE_HAMMER: preload("res://assets/items/hammer_battle.png"),
 	Type.ULTRA_BATTLE_HAMMER: preload("res://assets/items/hammer_battle.png"),
 	Type.SUPER_ULTRA_BATTLE_HAMMER: preload("res://assets/items/hammer_battle.png"),
-	}
+}
 
 
 static var effects := {

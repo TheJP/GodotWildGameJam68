@@ -74,6 +74,7 @@ size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_3ryyy")
 
 [node name="Recipes" type="Control" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 script = ExtResource("4_a2oxo")
 
