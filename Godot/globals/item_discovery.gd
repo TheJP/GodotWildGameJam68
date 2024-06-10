@@ -31,9 +31,9 @@ var decay_discovered := {}
 
 
 func set_recipe_discovered(input1: Item.Type, input2: Item.Type, output: Item.Type):
-	if input1 in recipe_discovered:
-		return
-	recipe_discovered[input1] = {}
+	print('set_disc {0}'.format([Item.names[output]]))
+	if input1 not in recipe_discovered:
+		recipe_discovered[input1] = {}
 	if input2 not in recipe_discovered:
 		recipe_discovered[input2] = {}
 	if input2 in recipe_discovered[input1]:
