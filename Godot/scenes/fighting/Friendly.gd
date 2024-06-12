@@ -183,7 +183,7 @@ func _pickup_item(hand: Hand, p_item: Node2D):
 	if item_stat_modifiers.destroy_on_pickup:
 		return
 
-	hand.sprite.texture = p_item.get_node("Sprite2D").texture
+	hand.sprite.texture = Item.small_sprites[p_item.type]
 	hand.occupied = true
 	hand.item_type = p_item.type
 	if(item_stat_modifiers.level == 1):

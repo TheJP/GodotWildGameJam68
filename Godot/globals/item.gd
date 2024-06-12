@@ -311,6 +311,38 @@ static var sprites := {
 	Type.SUPER_ULTRA_BATTLE_HAMMER: preload("res://assets/items/hammer_battle.png"),
 }
 
+static var small_sprites := {
+	Type.TRASH: preload('res://assets/items/small_items/small_trash.png'),
+	Type.WOOD: preload('res://assets/items/small_items/small_wood.png'),
+	Type.STONE: preload('res://assets/items/small_items/small_stone.png'),
+	Type.IRON_ORE: preload('res://assets/items/small_items/small_iron_ore.png'),
+	Type.FIRE: preload('res://assets/items/empty.png'),
+	Type.HAMMER: preload('res://assets/items/small_items/small_hammer.png'),
+	Type.TORCH: preload('res://assets/items/small_items/small_torch.png'),
+	Type.COAL: preload('res://assets/items/small_items/small_coal.png'),
+	Type.HOT_FIRE: preload('res://assets/items/empty.png'),
+	Type.HOT_STEEL: preload('res://assets/items/small_items/small_hot_steel.png'),
+	Type.SPEAR: preload('res://assets/items/small_items/small_Spear.png'),
+	Type.STEEL: preload('res://assets/items/small_items/small_steel.png'),
+	Type.SWORD: preload('res://assets/items/small_items/small_sword.png'),
+	Type.WOODEN_SHIELD: preload("res://assets/items/small_items/small_shield_wood.png"),
+	Type.IRON_SHIELD: preload("res://assets/items/small_items/small_shield_iron.png"),
+	Type.BATTLE_HAMMER: preload("res://assets/items/small_items/small_hammer_battle.png"),
+	Type.BOOMERANG: preload("res://assets/items/small_items/small_boomerang.png"),
+	Type.SUPER_SWORD: preload('res://assets/items/small_items/small_sword.png'),
+	Type.ULTRA_SWORD: preload('res://assets/items/small_items/small_sword.png'),
+	Type.SUPER_ULTRA_SWORD: preload('res://assets/items/small_items/small_sword.png'),
+	Type.SUPER_BOOMERANG: preload("res://assets/items/small_items/small_boomerang.png"),
+	Type.ULTRA_BOOMERANG: preload("res://assets/items/small_items/small_boomerang.png"),
+	Type.SUPER_ULTRA_BOOMERANG: preload("res://assets/items/small_items/small_boomerang.png"),
+	Type.SUPER_SHIELD: preload("res://assets/items/small_items/small_shield_iron.png"),
+	Type.ULTRA_SHIELD: preload("res://assets/items/small_items/small_shield_iron.png"),
+	Type.SUPER_ULTRA_SHIELD: preload("res://assets/items/small_items/small_shield_iron.png"),
+	Type.SUPER_BATTLE_HAMMER: preload("res://assets/items/small_items/small_hammer_battle.png"),
+	Type.ULTRA_BATTLE_HAMMER: preload("res://assets/items/small_items/small_hammer_battle.png"),
+	Type.SUPER_ULTRA_BATTLE_HAMMER: preload("res://assets/items/small_items/small_hammer_battle.png"),
+}
+
 
 static var effects := {
 	Type.TRASH: null,

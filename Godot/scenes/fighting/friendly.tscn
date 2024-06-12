@@ -152,6 +152,7 @@ collide_with_areas = true
 
 [node name="RightHand" type="Sprite2D" parent="."]
 position = Vector2(16, 8)
+scale = Vector2(3, 3)
 
 [node name="mode_one" type="CPUParticles2D" parent="RightHand"]
 visible = false
@@ -209,6 +210,7 @@ anim_speed_max = 4.0
 
 [node name="LeftHand" type="Sprite2D" parent="."]
 position = Vector2(-16, 8)
+scale = Vector2(3, 3)
 flip_h = true
 
 [node name="mode_one" type="CPUParticles2D" parent="LeftHand"]
