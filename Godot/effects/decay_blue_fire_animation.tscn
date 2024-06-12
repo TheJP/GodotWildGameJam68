@@ -1,0 +1,68 @@
+[gd_scene load_steps=10 format=3 uid="uid://yst4d8gnt22l"]
+
+[ext_resource type="Texture2D" uid="uid://bxx0rfbbv3wrh" path="res://assets/items/decayed_fire_blue_anim.png" id="1_okqmu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fphqa"]
+atlas = ExtResource("1_okqmu")
+region = Rect2(0, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_derq6"]
+atlas = ExtResource("1_okqmu")
+region = Rect2(20, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_udd4v"]
+atlas = ExtResource("1_okqmu")
+region = Rect2(40, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7hgf2"]
+atlas = ExtResource("1_okqmu")
+region = Rect2(60, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bsugp"]
+atlas = ExtResource("1_okqmu")
+region = Rect2(80, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0lemh"]
+atlas = ExtResource("1_okqmu")
+region = Rect2(100, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_klcv4"]
+atlas = ExtResource("1_okqmu")
+region = Rect2(120, 0, 20, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qu011"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fphqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_derq6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_udd4v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7hgf2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bsugp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0lemh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_klcv4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="DecayBlueFireAnimation" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_qu011")
+autoplay = "default"

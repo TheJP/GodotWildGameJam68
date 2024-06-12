@@ -179,6 +179,10 @@ static var decay := {
 	Type.HOT_STEEL: Decay.new(20.0, Type.STEEL),
 }
 
+static var decay_sprites := {
+	Type.FIRE: preload("res://effects/decay_fire_animation.tscn"),
+	Type.HOT_STEEL: preload("res://effects/warm_steel_animation.tscn")
+}
 
 static var stat_modifiers := {
 	Type.TRASH: StatModifier.new(0, -1),
@@ -289,7 +293,7 @@ static var sprites := {
 	Type.TORCH: preload('res://assets/items/empty.png'),
 	Type.COAL: preload('res://assets/items/coal.png'),
 	Type.HOT_FIRE: preload('res://assets/items/empty.png'),
-	Type.HOT_STEEL: preload('res://assets/items/hot_steel.png'),
+	Type.HOT_STEEL: preload('res://assets/items/empty.png'),
 	Type.SPEAR: preload('res://assets/items/Spear.png'),
 	Type.STEEL: preload('res://assets/items/steel.png'),
 	Type.SWORD: preload('res://assets/items/sword.png'),
@@ -354,7 +358,7 @@ static var effects := {
 	Type.TORCH: preload("res://effects/torch_animation.tscn"),
 	Type.COAL: null,
 	Type.HOT_FIRE: preload("res://effects/blue_fire_animation.tscn"),
-	Type.HOT_STEEL: null,
+	Type.HOT_STEEL: preload("res://effects/hot_steel_animation.tscn"),
 	Type.SPEAR: null,
 	Type.STEEL: null,
 	Type.SWORD: null,

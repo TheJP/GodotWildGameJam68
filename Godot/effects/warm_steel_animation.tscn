@@ -1,0 +1,75 @@
+[gd_scene load_steps=11 format=3 uid="uid://pqtpy4atotvo"]
+
+[ext_resource type="Texture2D" uid="uid://c5ga7ffvlj44w" path="res://assets/items/warm_steel.png" id="1_vht4f"]
+[ext_resource type="Texture2D" uid="uid://eaqrkl1wq7i5" path="res://assets/items/hot_steel_only_animation.png" id="2_ko2h6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tp2nv"]
+atlas = ExtResource("2_ko2h6")
+region = Rect2(0, 0, 26, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dcswp"]
+atlas = ExtResource("2_ko2h6")
+region = Rect2(26, 0, 26, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ustge"]
+atlas = ExtResource("2_ko2h6")
+region = Rect2(52, 0, 26, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ogrv2"]
+atlas = ExtResource("2_ko2h6")
+region = Rect2(78, 0, 26, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ugt1x"]
+atlas = ExtResource("2_ko2h6")
+region = Rect2(104, 0, 26, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xgs78"]
+atlas = ExtResource("2_ko2h6")
+region = Rect2(130, 0, 26, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l8wjw"]
+atlas = ExtResource("2_ko2h6")
+region = Rect2(156, 0, 26, 26)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jdomv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tp2nv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dcswp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ustge")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ogrv2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ugt1x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xgs78")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l8wjw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="WarmSteelAnimation" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("1_vht4f")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(0.980392, 0.776471, 1, 0.466667)
+z_index = 1
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_jdomv")
+autoplay = "default"
+frame_progress = 0.588864

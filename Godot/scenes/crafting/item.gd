@@ -31,6 +31,8 @@ func _ready():
 	Ticker.timer.timeout.connect(_on_global_ticker_timeout)
 	if type in Item.decay:
 		var decay = Item.decay[type]
+		if type in Item.decay_sprites:
+			get_tree().create_timer(decay.age/1.5, false).timeout.connect(_item_decay_progress.bind(decay))
 		get_tree().create_timer(decay.age, false).timeout.connect(_item_decayed.bind(decay))
 
 
@@ -244,3 +246,11 @@ func _item_decayed(decay):
 		set_effect(Item.effects[type])
 		if not decay.output.is_nothing and not decay.output.is_id:
 			ItemDiscovery.set_decay_discovered.call_deferred(old_type, decay.age, decay.output.type)
+
+func _item_decay_progress(decay):
+	if decay.output.is_nothing:
+		while container != null and not container.try_remove():
+			await Ticker.timer.timeout # Retry next tick.
+		queue_free()
+	else:
+		set_effect(Item.decay_sprites[type])

@@ -1,0 +1,74 @@
+[gd_scene load_steps=11 format=3 uid="uid://ee10baqxfm2v"]
+
+[ext_resource type="Texture2D" uid="uid://dmb80cw4m7hov" path="res://assets/items/hot_steel_v2.png" id="1_8l4lr"]
+[ext_resource type="Texture2D" uid="uid://eaqrkl1wq7i5" path="res://assets/items/hot_steel_only_animation.png" id="2_4pkkx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cv6rx"]
+atlas = ExtResource("2_4pkkx")
+region = Rect2(0, 0, 26, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t8not"]
+atlas = ExtResource("2_4pkkx")
+region = Rect2(26, 0, 26, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vrbkm"]
+atlas = ExtResource("2_4pkkx")
+region = Rect2(52, 0, 26, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qbdh4"]
+atlas = ExtResource("2_4pkkx")
+region = Rect2(78, 0, 26, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2me0x"]
+atlas = ExtResource("2_4pkkx")
+region = Rect2(104, 0, 26, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6hnb7"]
+atlas = ExtResource("2_4pkkx")
+region = Rect2(130, 0, 26, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2qoyx"]
+atlas = ExtResource("2_4pkkx")
+region = Rect2(156, 0, 26, 26)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_igaq7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cv6rx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t8not")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vrbkm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qbdh4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2me0x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6hnb7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2qoyx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="HotSteelAnimation" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("1_8l4lr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.552941)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_igaq7")
+autoplay = "default"
+frame_progress = 0.408116
