@@ -13,6 +13,11 @@ var grid = []
 var item_coordinates := {}
 
 
+var _recipe_translation := Vector2.ZERO
+var _dragging := false
+var _drag_start: Vector2
+
+
 func _ready():
 	_build_graph()
 	_sort_topological()
@@ -97,11 +102,23 @@ func _add_edge(from: Item.Type, to: Item.Type):
 		recipe_parents[to].append(from)
 
 
-var t := 0.0
-
-func _process(delta):
-	t += delta
-	queue_redraw()
+func _gui_input(event):
+	if event is InputEventMouseButton:
+		if _dragging and not event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+			accept_event()
+			_dragging = false
+		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+			accept_event()
+			_dragging = true
+			_drag_start = event.position - _recipe_translation
+		if not _dragging and event.pressed and event.button_index == MOUSE_BUTTON_MIDDLE:
+			accept_event()
+			_recipe_translation = Vector2.ZERO
+			queue_redraw()
+	elif event is InputEventMouseMotion:
+		if _dragging:
+			_recipe_translation = event.position - _drag_start
+			queue_redraw()
 
 
 func _draw():
@@ -110,12 +127,12 @@ func _draw():
 	var vertical_spacing := 20.0
 
 	var y := 0
-	var y_position := t * -50.0 # TODO: Add translation here
-	var next_y_position := y_position
+	var root_position := _recipe_translation
+	var next_root_position := root_position
 	for row in grid:
 		var x := 0
 		for item in row:
-			var slot_position := Vector2(x * slot_width, y_position)
+			var slot_position := root_position + Vector2(x * slot_width, 0)
 			var item_position := slot_position + \
 				Vector2.DOWN * vertical_spacing + \
 				Vector2.RIGHT * (0.5 * slot_width - 0.5 * item_size.x)
@@ -154,7 +171,7 @@ func _draw():
 
 				recipe_position.y += recipe_size.y + vertical_spacing
 
-			next_y_position = max(next_y_position, recipe_position.y + vertical_spacing)
+			next_root_position = Vector2(root_position.x, max(next_root_position.y, recipe_position.y + vertical_spacing))
 			x += 1
-		y_position = next_y_position
+		root_position = next_root_position
 		y += 1
