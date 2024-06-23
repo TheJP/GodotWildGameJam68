@@ -35,6 +35,7 @@ func _on_visibility_changed():
 
 func _unhandled_input(event):
 	if event.is_action_pressed('ui_menu'):
+		get_viewport().set_input_as_handled()
 		visible = not visible
 		_set_sliders()
 

@@ -132,3 +132,14 @@ func _on_settings_button_pressed():
 
 func _on_settings_button_mouse_entered():
 	AudioController.get_player("MenuHoverSound").play()
+
+
+func _on_recipe_book_button_pressed():
+	var event = InputEventAction.new()
+	event.action = 'ui_recipe_book'
+	event.pressed = true
+	Input.parse_input_event(event)
+
+
+func _on_recipe_book_button_mouse_entered():
+	AudioController.get_player("MenuHoverSound").play()

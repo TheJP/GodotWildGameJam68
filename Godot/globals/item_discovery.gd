@@ -28,6 +28,10 @@ class Decay:
 
 var recipe_discovered := {}
 var decay_discovered := {}
+var item_discovered := {
+	Item.Type.WOOD: true,
+	Item.Type.STONE: true,
+}
 
 
 func set_recipe_discovered(input1: Item.Type, input2: Item.Type, output: Item.Type):
@@ -40,6 +44,7 @@ func set_recipe_discovered(input1: Item.Type, input2: Item.Type, output: Item.Ty
 
 	recipe_discovered[input1][input2] = true
 	recipe_discovered[input2][input1] = true
+	item_discovered[output] = true
 	await get_tree().process_frame
 	discovery.emit(Recipe.new(input1, input2, output))
 
@@ -47,5 +52,6 @@ func set_recipe_discovered(input1: Item.Type, input2: Item.Type, output: Item.Ty
 func set_decay_discovered(input: Item.Type, age: float, output: Item.Type):
 	if input not in decay_discovered:
 		decay_discovered[input] = true
+		item_discovered[output] = true
 		await get_tree().process_frame
 		discovery.emit(Decay.new(input, age, output))

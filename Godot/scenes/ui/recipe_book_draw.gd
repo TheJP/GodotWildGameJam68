@@ -16,30 +16,27 @@ var item_coordinates := {}
 var _recipe_translation := Vector2.ZERO
 var _dragging := false
 var _drag_start: Vector2
+@onready var _is_debug: bool = get_tree().current_scene.name == 'RecipeBook'
 
 
 func _ready():
 	_build_graph()
 	_sort_topological()
-	open() # FIXME: Remove line
+	if _is_debug:
+		open()
 
 
 func open():
-	# TODO: Remove recipes/items that were not yet discovered
 	grid = []
 	item_coordinates = {}
-	var level := 0
-	while true:
+	for level in range(item_levels.values().max() + 1):
 		var row: Array[Item.Type] = []
-		for item in item_levels.keys():
+		var items = item_levels.keys() if _is_debug else ItemDiscovery.item_discovered.keys()
+		for item in items:
 			if item_levels[item] == level:
 				item_coordinates[item] = Vector2i(row.size(), grid.size())
 				row.append(item)
-		if row.is_empty():
-			break
 		grid.append(row)
-		level += 1
-
 
 
 func _build_graph():
@@ -151,6 +148,8 @@ func _draw():
 				var decay: Item.Decay = Item.decay[input]
 				if decay.output.is_id or decay.output.is_nothing or decay.output.type != item:
 					continue
+				if not _is_debug and input not in ItemDiscovery.decay_discovered:
+					continue
 
 				var ingredient_rect := Rect2(recipe_position, Vector2(0.5 * recipe_size.x, recipe_size.y))
 				draw_texture_rect(Item.sprites[input], ingredient_rect, false)
@@ -161,6 +160,10 @@ func _draw():
 				recipe_position.y += recipe_size.y + vertical_spacing
 			for recipe in Item.recipes: # TODO: Improve performance by precomputing this on open.
 				if recipe.output.is_id or recipe.output.is_nothing or recipe.output.type != item:
+					continue
+				if not _is_debug and \
+						(recipe.input1 not in ItemDiscovery.recipe_discovered or \
+						recipe.input2 not in ItemDiscovery.recipe_discovered[recipe.input1]):
 					continue
 
 				draw_texture_rect(crafter_texture, Rect2(recipe_position, recipe_size), false)

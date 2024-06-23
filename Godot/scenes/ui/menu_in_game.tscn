@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://cqaifcks6tp3x"]
+[gd_scene load_steps=40 format=3 uid="uid://cqaifcks6tp3x"]
 
 [ext_resource type="Theme" uid="uid://d37xjde3q7k3t" path="res://assets/ui/theme.tres" id="1_l20by"]
 [ext_resource type="Script" path="res://scenes/ui/menu_in_game.gd" id="1_lb6yv"]
@@ -11,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://d0844foetdry5" path="res://assets/arrow.png" id="4_xswmk"]
 [ext_resource type="Texture2D" uid="uid://sxh1ixdjip5s" path="res://assets/pipes/pipe_intersection.png" id="5_cqm51"]
 [ext_resource type="Texture2D" uid="uid://bkjc1bksdqb1" path="res://assets/destroy_unclicked.png" id="9_0fuh8"]
+[ext_resource type="Texture2D" uid="uid://5usftq7tdebt" path="res://assets/items/steel.png" id="10_gydjm"]
+[ext_resource type="Texture2D" uid="uid://dmioqakmki3tn" path="res://assets/items/hot_steel.png" id="10_wnalw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wobof"]
 radius = 5.0
@@ -70,6 +72,14 @@ action = &"tool_remove"
 [sub_resource type="Shortcut" id="Shortcut_js5ef"]
 events = [SubResource("InputEventAction_cosp0")]
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_51vkf"]
+texture = ExtResource("10_gydjm")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sapfc"]
+texture = ExtResource("10_wnalw")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yl3ge"]
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2nml5"]
 texture = ExtResource("3_hy3qg")
 
@@ -86,8 +96,6 @@ expand_margin_bottom = 3.0
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i1s7r"]
 texture = ExtResource("3_hy3qg")
 modulate_color = Color(0.360784, 0.360784, 0.360784, 1)
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yl3ge"]
 
 [node name="MenuInGame" type="MarginContainer" groups=["menu_in_game"]]
 anchors_preset = 11
@@ -303,6 +311,28 @@ action_mode = 0
 shortcut = SubResource("Shortcut_js5ef")
 icon = ExtResource("9_0fuh8")
 
+[node name="MarginContainer3" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/margin_left = -20
+theme_override_constants/margin_top = -20
+
+[node name="CenterContainer" type="CenterContainer" parent="PanelContainer/MarginContainer3"]
+layout_mode = 2
+
+[node name="RecipeBookButton" type="Button" parent="PanelContainer/MarginContainer3/CenterContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+tooltip_text = "Recipe Book (F1)"
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_51vkf")
+theme_override_styles/hover = SubResource("StyleBoxTexture_sapfc")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_sapfc")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_51vkf")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_yl3ge")
+
 [node name="MarginContainer2" type="MarginContainer" parent="PanelContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
@@ -316,6 +346,7 @@ layout_mode = 2
 [node name="SettingsButton" type="Button" parent="PanelContainer/MarginContainer2/CenterContainer"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
+tooltip_text = "Settings (Esc)"
 mouse_default_cursor_shape = 2
 theme_override_styles/normal = SubResource("StyleBoxTexture_2nml5")
 theme_override_styles/hover = SubResource("StyleBoxTexture_ljvsq")
@@ -323,5 +354,7 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_07exv")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_i1s7r")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_yl3ge")
 
+[connection signal="mouse_entered" from="PanelContainer/MarginContainer3/CenterContainer/RecipeBookButton" to="." method="_on_recipe_book_button_mouse_entered"]
+[connection signal="pressed" from="PanelContainer/MarginContainer3/CenterContainer/RecipeBookButton" to="." method="_on_recipe_book_button_pressed"]
 [connection signal="mouse_entered" from="PanelContainer/MarginContainer2/CenterContainer/SettingsButton" to="." method="_on_settings_button_mouse_entered"]
 [connection signal="pressed" from="PanelContainer/MarginContainer2/CenterContainer/SettingsButton" to="." method="_on_settings_button_pressed"]

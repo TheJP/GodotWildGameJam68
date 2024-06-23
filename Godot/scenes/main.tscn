@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b6viu12773d5g"]
+[gd_scene load_steps=14 format=3 uid="uid://b6viu12773d5g"]
 
 [ext_resource type="PackedScene" uid="uid://dd4s3sh2lq2x1" path="res://scenes/crafting/crafting.tscn" id="1_y5ktt"]
 [ext_resource type="PackedScene" uid="uid://ce2lm7rg0o844" path="res://scenes/fighting/fighting.tscn" id="2_2b1rs"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://scenes/ScreenFlash.gd" id="6_8fhbe"]
 [ext_resource type="PackedScene" uid="uid://da0mqcv14vosf" path="res://scenes/ui/discovery_pop_up.tscn" id="6_xx1ve"]
 [ext_resource type="PackedScene" uid="uid://dhkxc2d2wglyh" path="res://scenes/ui/tutorial.tscn" id="7_obfex"]
+[ext_resource type="PackedScene" uid="uid://qan8t81i162r" path="res://scenes/ui/recipe_book.tscn" id="10_u5w1k"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ln20k"]
 texture = ExtResource("3_0ktp3")
@@ -96,6 +97,9 @@ grow_vertical = 2
 visible = false
 
 [node name="Tutorial" parent="CanvasLayer" instance=ExtResource("7_obfex")]
+
+[node name="RecipeBook" parent="CanvasLayer" instance=ExtResource("10_u5w1k")]
+visible = false
 
 [node name="SettingsLayer" type="CanvasLayer" parent="."]
 layer = 2
