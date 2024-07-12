@@ -18,7 +18,8 @@ var _dragging := false
 var _drag_start: Vector2
 @onready var _is_debug: bool = get_tree().current_scene.name == 'RecipeBook'
 var _effects_item := {}
-var _effects_input := {}
+var _effects_recipe_left := {}
+var _effects_recipe_right := {}
 
 
 func _ready():
@@ -34,7 +35,7 @@ func _add_effect(type: Item.Type) -> Node2D:
 	var effect = Item.effects[type].instantiate()
 	add_child(effect)
 	effect.show_behind_parent = true
-	effect.scale = 1.5 * Vector2.ONE # TODO: Compute this instead of a hardcoded value.
+	effect.scale = 1.4 * Vector2.ONE # TODO: Compute this instead of a hardcoded value.
 	return effect
 
 
@@ -55,6 +56,15 @@ func open():
 			continue
 		var effect := _add_effect(item)
 		_effects_item[item] = effect
+
+
+
+
+func close():
+	for effects in [_effects_item, _effects_recipe_left, _effects_recipe_right]:
+		for effect in effects.values():
+			effect.queue_free()
+		effects.clear()
 
 
 func _build_graph():
@@ -173,6 +183,12 @@ func _draw():
 
 				var ingredient_rect := Rect2(recipe_position, Vector2(0.5 * recipe_size.x, recipe_size.y))
 				draw_texture_rect(Item.sprites[input], ingredient_rect, false)
+				if Item.effects[input] != null:
+					if decay not in _effects_recipe_left:
+						var effect := _add_effect(input)
+						_effects_recipe_left[decay] = effect
+					_effects_recipe_left[decay].global_position = global_position + ingredient_rect.position + 0.5 * item_size
+
 				var label_size := 40
 				ingredient_rect.position += 0.5 * recipe_size + Vector2.DOWN * label_size * 0.5
 				draw_string(font, ingredient_rect.position, '+ {0}s'.format([decay.age]), HORIZONTAL_ALIGNMENT_LEFT, -1, label_size)
@@ -189,8 +205,19 @@ func _draw():
 				draw_texture_rect(crafter_texture, Rect2(recipe_position, recipe_size), false)
 				var ingredient_rect := Rect2(recipe_position, Vector2(0.5 * recipe_size.x, recipe_size.y))
 				draw_texture_rect(Item.sprites[recipe.input1], ingredient_rect, false)
+				if Item.effects[recipe.input1] != null:
+					if recipe not in _effects_recipe_left:
+						var effect := _add_effect(recipe.input1)
+						_effects_recipe_left[recipe] = effect
+					_effects_recipe_left[recipe].global_position = global_position + ingredient_rect.position + 0.5 * item_size
+
 				ingredient_rect.position.x += 0.5 * recipe_size.x
 				draw_texture_rect(Item.sprites[recipe.input2], ingredient_rect, false)
+				if Item.effects[recipe.input2] != null:
+					if recipe not in _effects_recipe_right:
+						var effect := _add_effect(recipe.input2)
+						_effects_recipe_right[recipe] = effect
+					_effects_recipe_right[recipe].global_position = global_position + ingredient_rect.position + 0.5 * item_size
 
 				recipe_position.y += recipe_size.y + vertical_spacing
 

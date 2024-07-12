@@ -63,11 +63,13 @@ animations = [{
 [node name="HotSteelAnimation" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
 scale = Vector2(3, 3)
 texture = ExtResource("1_8l4lr")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.552941)
+z_index = 1
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_igaq7")
 autoplay = "default"

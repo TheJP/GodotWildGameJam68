@@ -15,7 +15,7 @@ func _on_close_pressed():
 	get_tree().paused = _was_paused_before
 	if not _was_paused_before:
 		AudioController.get_player('CalmMenuLoop').stop()
-	_was_paused_before = false
+	%Recipes.close()
 
 
 func open():
