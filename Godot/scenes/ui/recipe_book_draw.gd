@@ -17,6 +17,8 @@ var _recipe_translation := Vector2.ZERO
 var _dragging := false
 var _drag_start: Vector2
 @onready var _is_debug: bool = get_tree().current_scene.name == 'RecipeBook'
+var _effects_item := {}
+var _effects_input := {}
 
 
 func _ready():
@@ -26,17 +28,33 @@ func _ready():
 		open()
 
 
+func _add_effect(type: Item.Type) -> Node2D:
+	if Item.effects[type] == null:
+		push_error('_add_effect(type) calles with invalid type')
+	var effect = Item.effects[type].instantiate()
+	add_child(effect)
+	effect.show_behind_parent = true
+	effect.scale = 1.5 * Vector2.ONE # TODO: Compute this instead of a hardcoded value.
+	return effect
+
+
 func open():
 	grid = []
 	item_coordinates = {}
+	var items = item_levels.keys() if _is_debug else ItemDiscovery.item_discovered.keys()
 	for level in range(item_levels.values().max() + 1):
 		var row: Array[Item.Type] = []
-		var items = item_levels.keys() if _is_debug else ItemDiscovery.item_discovered.keys()
 		for item in items:
 			if item_levels[item] == level:
 				item_coordinates[item] = Vector2i(row.size(), grid.size())
 				row.append(item)
 		grid.append(row)
+
+	for item in items:
+		if Item.effects[item] == null:
+			continue
+		var effect := _add_effect(item)
+		_effects_item[item] = effect
 
 
 func _build_graph():
@@ -134,6 +152,8 @@ func _draw():
 				Vector2.DOWN * vertical_spacing + \
 				Vector2.RIGHT * (0.5 * slot_width - 0.5 * item_size.x)
 			draw_texture_rect(Item.sprites[item], Rect2(item_position, item_size), false)
+			if item in _effects_item:
+				_effects_item[item].global_position = global_position + item_position + 0.5 * item_size
 
 			var name_position := Vector2(slot_position.x, item_position.y + item_size.y + 2.0 * vertical_spacing)
 			var name_size := 35
