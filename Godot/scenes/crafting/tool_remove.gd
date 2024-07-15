@@ -27,6 +27,7 @@ func _input(event):
 
 
 func _mouse_move(p_position: Vector2):
+	p_position = Utility.viewport_to_world(p_position)
 	global_position = Tile.snap_crafting(p_position)
 	if _dragging:
 		_try_remove()

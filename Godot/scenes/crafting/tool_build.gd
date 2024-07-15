@@ -35,6 +35,7 @@ func _input(event):
 
 
 func _mouse_move(p_position: Vector2):
+	p_position = Utility.viewport_to_world(p_position)
 	var size = Vector2i(1, 1) if type != Tile.Type.CRAFTER else Vector2i(2, 1)
 	global_position = Tile.snap_crafting(p_position, size)
 	var valid := true
@@ -67,7 +68,8 @@ func _unhandled_input(event):
 			_dragging = true
 			_mode = event.button_index
 		if event.button_index == MOUSE_BUTTON_LEFT:
-			_try_build(event.position)
+			var p_position := Utility.viewport_to_world(event.position)
+			_try_build(p_position)
 		if event.button_index == MOUSE_BUTTON_RIGHT:
 			_try_remove()
 

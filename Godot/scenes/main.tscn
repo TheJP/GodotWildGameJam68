@@ -32,6 +32,7 @@ script = ExtResource("1_g5wpf")
 
 [node name="BackgroundLayer" type="CanvasLayer" parent="."]
 layer = -1
+visible = false
 
 [node name="Background" type="Control" parent="BackgroundLayer"]
 layout_mode = 3
