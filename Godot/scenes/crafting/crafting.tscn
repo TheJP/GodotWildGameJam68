@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dd4s3sh2lq2x1"]
+[gd_scene load_steps=8 format=3 uid="uid://dd4s3sh2lq2x1"]
 
 [ext_resource type="Script" path="res://scenes/crafting/crafting.gd" id="1_e733u"]
 [ext_resource type="PackedScene" uid="uid://dwjhdo8uhvr78" path="res://scenes/crafting/crafter.tscn" id="3_x6fdh"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bmfffa64tyw3x" path="res://scenes/crafting/village.tscn" id="5_ht203"]
 [ext_resource type="PackedScene" uid="uid://n56xli2x8yts" path="res://scenes/crafting/spawner.tscn" id="5_nwm83"]
 [ext_resource type="PackedScene" uid="uid://c6th4ako8tkf1" path="res://scenes/fighting/road.tscn" id="6_8gpv3"]
+[ext_resource type="PackedScene" uid="uid://bjxf1xrny7f2h" path="res://scenes/fighting/dungeon.tscn" id="7_g6d7u"]
 
 [node name="Crafting" type="Node2D"]
 script = ExtResource("1_e733u")
@@ -210,16 +211,46 @@ position = Vector2(480, 800)
 [node name="Road6" parent="MachinesAndItems" instance=ExtResource("6_8gpv3")]
 position = Vector2(480, 864)
 
+[node name="Road8" parent="MachinesAndItems" instance=ExtResource("6_8gpv3")]
+position = Vector2(480, 864)
+
 [node name="Road2" parent="MachinesAndItems" instance=ExtResource("6_8gpv3")]
 position = Vector2(480, 672)
 
 [node name="Road3" parent="MachinesAndItems" instance=ExtResource("6_8gpv3")]
-position = Vector2(544, 672)
+position = Vector2(480, 544)
+
+[node name="Road9" parent="MachinesAndItems" instance=ExtResource("6_8gpv3")]
+position = Vector2(672, 608)
+
+[node name="Road10" parent="MachinesAndItems" instance=ExtResource("6_8gpv3")]
+position = Vector2(672, 672)
+
+[node name="Road11" parent="MachinesAndItems" instance=ExtResource("6_8gpv3")]
+position = Vector2(672, 736)
+
+[node name="Road12" parent="MachinesAndItems" instance=ExtResource("6_8gpv3")]
+position = Vector2(608, 736)
+
+[node name="Road13" parent="MachinesAndItems" instance=ExtResource("6_8gpv3")]
+position = Vector2(608, 800)
+
+[node name="Road14" parent="MachinesAndItems" instance=ExtResource("6_8gpv3")]
+position = Vector2(608, 864)
+
+[node name="Road15" parent="MachinesAndItems" instance=ExtResource("6_8gpv3")]
+position = Vector2(608, 928)
+
+[node name="Road16" parent="MachinesAndItems" instance=ExtResource("6_8gpv3")]
+position = Vector2(544, 928)
 
 [node name="Road4" parent="MachinesAndItems" instance=ExtResource("6_8gpv3")]
-position = Vector2(608, 608)
+position = Vector2(544, 544)
 
 [node name="Road7" parent="MachinesAndItems" instance=ExtResource("6_8gpv3")]
-position = Vector2(608, 672)
+position = Vector2(480, 608)
+
+[node name="Dungeon" parent="MachinesAndItems" instance=ExtResource("7_g6d7u")]
+position = Vector2(480, 928)
 
 [node name="BuildTools" type="Node2D" parent="."]

@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://ce2lm7rg0o844"]
 
-[ext_resource type="Script" path="res://scenes/fighting/fighting.gd" id="1_dyhqo"]
+[ext_resource type="Script" path="res://scenes/fighting/old_stuff/fighting.gd" id="1_dyhqo"]
 [ext_resource type="PackedScene" uid="uid://d4h0nf1kb0lg4" path="res://scenes/fighting/dispenser.tscn" id="2_agu05"]
-[ext_resource type="PackedScene" uid="uid://buapxpe8hor6a" path="res://scenes/fighting/friendly_spawner.tscn" id="3_0loev"]
-[ext_resource type="PackedScene" uid="uid://cno1i50br4xql" path="res://scenes/fighting/enemy_spawner.tscn" id="4_qf26r"]
+[ext_resource type="PackedScene" uid="uid://buapxpe8hor6a" path="res://scenes/fighting/old_stuff/friendly_spawner.tscn" id="3_0loev"]
+[ext_resource type="PackedScene" uid="uid://cno1i50br4xql" path="res://scenes/fighting/old_stuff/enemy_spawner.tscn" id="4_qf26r"]
 
 [node name="Fighting" type="Node2D"]
 script = ExtResource("1_dyhqo")

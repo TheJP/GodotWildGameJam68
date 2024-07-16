@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://gafx6706hb7l"]
 
 [ext_resource type="Texture2D" uid="uid://bkc67010odi58" path="res://icon.svg" id="1_6ek3i"]
-[ext_resource type="Script" path="res://scenes/fighting/wall.gd" id="1_k8wyt"]
+[ext_resource type="Script" path="res://scenes/fighting/old_stuff/wall.gd" id="1_k8wyt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_48t4u"]
 size = Vector2(64, 5)

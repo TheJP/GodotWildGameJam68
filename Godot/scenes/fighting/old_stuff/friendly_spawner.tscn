@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://buapxpe8hor6a"]
 
-[ext_resource type="Script" path="res://scenes/fighting/friendlySpawner.gd" id="1_qb0si"]
+[ext_resource type="Script" path="res://scenes/fighting/old_stuff/friendlySpawner.gd" id="1_qb0si"]
 [ext_resource type="Texture2D" uid="uid://jjjgcyui5wwh" path="res://assets/entrance.png" id="2_8e1v6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_glysm"]

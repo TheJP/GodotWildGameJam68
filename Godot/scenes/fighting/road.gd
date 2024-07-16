@@ -1,4 +1,8 @@
+class_name Road
 extends Area2D
+
+
+var fighter = null
 
 
 func _ready():

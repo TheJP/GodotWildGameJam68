@@ -8,10 +8,11 @@ size = Vector2(60, 60)
 
 [node name="Road" type="Area2D"]
 collision_layer = 2
-collision_mask = 6
+collision_mask = 14
 script = ExtResource("1_8xfqw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 1
 shape = SubResource("RectangleShape2D_wsigb")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

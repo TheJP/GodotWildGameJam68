@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://chipoq6s3ro70"]
 
-[ext_resource type="Script" path="res://scenes/fighting/Enemy.gd" id="1_pcg65"]
+[ext_resource type="Script" path="res://scenes/fighting/old_stuff/Enemy.gd" id="1_pcg65"]
 [ext_resource type="Texture2D" uid="uid://bh3lblitpd717" path="res://assets/fighters/enemy_4.png" id="2_16jsj"]
 [ext_resource type="PackedScene" uid="uid://b1dgls6g37b4f" path="res://effects/flame_damage.tscn" id="3_wv3yh"]
 [ext_resource type="Texture2D" uid="uid://bxrkge3nlpyqk" path="res://assets/particles/glowing_particle_anim_sprite.png" id="4_01wt0"]

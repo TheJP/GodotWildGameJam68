@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=3 uid="uid://c0n43aeimp0ns"]
 
-[ext_resource type="Script" path="res://scenes/fighting/Friendly.gd" id="1_c7eoa"]
+[ext_resource type="Script" path="res://scenes/fighting/old_stuff/Friendly.gd" id="1_c7eoa"]
 [ext_resource type="Texture2D" uid="uid://ig1nba8oydqx" path="res://assets/fighters/hero_1.png" id="2_hrmhx"]
 [ext_resource type="Texture2D" uid="uid://cwr0i2mr1rpna" path="res://assets/particles/Blood_pink_anim_sprite.png" id="3_enii4"]
 [ext_resource type="Texture2D" uid="uid://dlkduvack5ciy" path="res://assets/particles/dust_anim_sprite.png" id="4_1mr5q"]
