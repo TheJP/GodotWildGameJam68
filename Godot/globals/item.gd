@@ -135,26 +135,26 @@ class StatModifier:
 
 static var recipes: Array[Recipe] = [
 	Recipe.new(Type.STICKS, Type.STICKS, Type.BASKET),
-	
+
 	# Wood Recipes
 	Recipe.new(Type.WOOD, Type.STICKS, Type.FIRE),
 	Recipe.new(Type.WOOD, Type.WOOD, Type.BUCKET),
-	
+
 	# Stone Recipes
 	Recipe.new(Type.STICKS, Type.STONE, Type.STONE_AXE),
 	Recipe.new(Type.WOOD, Type.STONE, Type.STONE_PICKAXE),
 	Recipe.new(Type.STONE, Type.STONE, Type.STONE),
-	
+
 	# Basket Recipes
 	#Recipe.new(Type.STICKS, Type.BASKET, Type.BASKET_OF_STICKS),
 	#Recipe.new(Type.WOOD, Type.BASKET, Type.BASKET_OF_WOOD),
 	#Recipe.new(Type.STONE, Type.BASKET, Type.BASKET_OF_STONES),
-	
+
 	# Bucket Recipes
 	#Recipe.new(Type.STICKS, Type.BUCKET, Type.BUCKET_OF_STICKS),
 	#Recipe.new(Type.WOOD, Type.BUCKET, Type.BUCKET_OF_WOOD),
 	#Recipe.new(Type.STONE, Type.BUCKET, Type.BUCKET_OF_STONES),
-	
+
 	# Fire Recipes
 	Recipe.new(Type.STICKS, Type.FIRE, Type.TORCH),
 	Recipe.new(Type.WOOD, Type.FIRE, Type.FIRE),
@@ -163,7 +163,7 @@ static var recipes: Array[Recipe] = [
 	Recipe.new(Type.BUCKET, Type.FIRE, Type.FIRE),
 	Recipe.new(Type.WATER_BUCKET, Type.FIRE, Type.BUCKET),
 	Recipe.new(Type.FIRE, Type.FIRE, Type.FIRE),
-	
+
 	# Coal Recipes
 	Recipe.new(Type.STICKS, Type.COAL, Type.FIRE),
 	Recipe.new(Type.WOOD, Type.COAL, Type.FIRE),
@@ -173,7 +173,7 @@ static var recipes: Array[Recipe] = [
 	Recipe.new(Type.WATER_BUCKET, Type.COAL, Nothing.new()),
 	Recipe.new(Type.FIRE, Type.COAL, Type.HOT_FIRE),
 	Recipe.new(Type.COAL, Type.COAL, Type.COAL),
-	
+
 	# Hot Fire
 	Recipe.new(Type.STICKS, Type.HOT_FIRE, Type.HOT_FIRE),
 	Recipe.new(Type.WOOD, Type.HOT_FIRE, Type.HOT_FIRE),
@@ -184,7 +184,7 @@ static var recipes: Array[Recipe] = [
 	Recipe.new(Type.FIRE, Type.HOT_FIRE, Type.HOT_FIRE),
 	Recipe.new(Type.COAL, Type.HOT_FIRE, Type.HOT_FIRE),
 	Recipe.new(Type.HOT_FIRE, Type.HOT_FIRE, Type.HOT_FIRE),
-	
+
 	# Sand
 	Recipe.new(Type.STICKS, Type.SAND, Nothing.new()),
 	Recipe.new(Type.WOOD, Type.SAND, Type.MARACA),
@@ -196,7 +196,7 @@ static var recipes: Array[Recipe] = [
 	Recipe.new(Type.COAL, Type.SAND, Nothing.new()),
 	Recipe.new(Type.HOT_FIRE, Type.SAND, Type.GLASS),
 	Recipe.new(Type.SAND, Type.SAND, Type.SAND),
-	
+
 	# Glass
 	Recipe.new(Type.STICKS, Type.GLASS, Nothing.new()),
 	Recipe.new(Type.WOOD, Type.GLASS, Nothing.new()),
@@ -209,7 +209,7 @@ static var recipes: Array[Recipe] = [
 	Recipe.new(Type.HOT_FIRE, Type.GLASS, Type.GLASS),
 	Recipe.new(Type.SAND, Type.GLASS, Type.HOURGLASS),
 	Recipe.new(Type.GLASS, Type.GLASS, Type.GLASS),
-	
+
 	# Iron Ore
 	Recipe.new(Type.STICKS, Type.IRON_ORE, Type.HAMMER),
 	Recipe.new(Type.WOOD, Type.IRON_ORE, Type.SHOVEL),
@@ -223,7 +223,7 @@ static var recipes: Array[Recipe] = [
 	Recipe.new(Type.SAND, Type.IRON_ORE, Nothing.new()),
 	Recipe.new(Type.GLASS, Type.IRON_ORE, Nothing.new()),
 	Recipe.new(Type.IRON_ORE, Type.IRON_ORE, Type.IRON_ORE),
-	
+
 	# Hot Steel
 	Recipe.new(Type.STICKS, Type.HOT_STEEL, Type.HOT_STEEL),
 	Recipe.new(Type.WOOD, Type.HOT_STEEL, Type.HOT_STEEL),
@@ -238,7 +238,7 @@ static var recipes: Array[Recipe] = [
 	Recipe.new(Type.GLASS, Type.HOT_STEEL, Nothing.new()),
 	Recipe.new(Type.IRON_ORE, Type.HOT_STEEL, Type.HOT_STEEL),
 	Recipe.new(Type.HOT_STEEL, Type.HOT_STEEL, Type.HOT_STEEL),
-	
+
 	# Steel
 	Recipe.new(Type.STICKS, Type.STEEL, Type.STEEL_AXE),
 	Recipe.new(Type.WOOD, Type.STEEL, Type.STEEL_PICKAXE),
@@ -252,9 +252,9 @@ static var recipes: Array[Recipe] = [
 	Recipe.new(Type.SAND, Type.STEEL, Type.BLADE),
 	Recipe.new(Type.GLASS, Type.STEEL, Nothing.new()),
 	Recipe.new(Type.IRON_ORE, Type.STEEL, Nothing.new()),
-	Recipe.new(Type.HOT_STEEL, Type.STEEL, Type.HOT_STEEL,
+	Recipe.new(Type.HOT_STEEL, Type.STEEL, Type.HOT_STEEL),
 	Recipe.new(Type.STEEL, Type.STEEL, Type.STEEL),
-	
+
 	# Blade
 	Recipe.new(Type.STICKS, Type.BLADE, Type.ARROW),
 	Recipe.new(Type.WOOD, Type.BLADE, Type.SPEAR),
@@ -262,7 +262,7 @@ static var recipes: Array[Recipe] = [
 	Recipe.new(Type.BASKET, Type.BLADE, Nothing.new()),
 	Recipe.new(Type.BUCKET, Type.BLADE, Nothing.new()),
 	Recipe.new(Type.WATER_BUCKET, Type.BLADE, Nothing.new()),
-	Recipe.new(Type.FIRE, Type.BLADE, Type.Blade),
+	Recipe.new(Type.FIRE, Type.BLADE, Type.BLADE),
 	Recipe.new(Type.COAL, Type.BLADE, Nothing.new()),
 	Recipe.new(Type.HOT_FIRE, Type.BLADE, Type.HOT_STEEL),
 	Recipe.new(Type.SAND, Type.BLADE, Type.BLADE),
@@ -271,7 +271,7 @@ static var recipes: Array[Recipe] = [
 	Recipe.new(Type.HOT_STEEL, Type.BLADE, Type.HOT_STEEL),
 	Recipe.new(Type.STEEL, Type.BLADE, Type.STEEL_BOOMERANG),
 	Recipe.new(Type.BLADE, Type.BLADE, Type.SHURRIKEN),
-	
+
 	# Hammer
 	Recipe.new(Type.STICKS, Type.HAMMER, Nothing.new()),
 	Recipe.new(Type.WOOD, Type.HAMMER, Type.WOODEN_SHIELD),
@@ -289,7 +289,7 @@ static var recipes: Array[Recipe] = [
 	Recipe.new(Type.STEEL, Type.HAMMER, Type.CHAIN),
 	Recipe.new(Type.BLADE, Type.HAMMER, Type.SICKLE),
 	Recipe.new(Type.HAMMER, Type.HAMMER, Type.HAMMER),
-	
+
 	# Fiber
 	Recipe.new(Type.STICKS, Type.FIBER, Type.FISHING_ROD),
 	Recipe.new(Type.WOOD, Type.FIBER, Type.BOW),
@@ -308,7 +308,7 @@ static var recipes: Array[Recipe] = [
 	Recipe.new(Type.BLADE, Type.FIBER, Nothing.new()),
 	Recipe.new(Type.HAMMER, Type.FIBER, Nothing.new()),
 	Recipe.new(Type.FIBER, Type.FIBER, Type.NET),
-	
+
 	# Chain
 	Recipe.new(Type.STICKS, Type.CHAIN, Nothing.new()),
 	Recipe.new(Type.WOOD, Type.CHAIN, Type.MORNING_STAR),
@@ -328,7 +328,7 @@ static var recipes: Array[Recipe] = [
 	Recipe.new(Type.HAMMER, Type.CHAIN, Type.STEEL),
 	Recipe.new(Type.FIBER, Type.CHAIN, Nothing.new()),
 	Recipe.new(Type.CHAIN, Type.CHAIN, Type.CHAINMAIL),
-	
+
 	# Sandstone
 	Recipe.new(Type.STICKS, Type.SANDSTONE, Nothing.new()),
 	Recipe.new(Type.WOOD, Type.SANDSTONE, Nothing.new()),
@@ -349,7 +349,7 @@ static var recipes: Array[Recipe] = [
 	Recipe.new(Type.FIBER, Type.SANDSTONE, Nothing.new()),
 	Recipe.new(Type.CHAIN, Type.SANDSTONE, Nothing.new()),
 	Recipe.new(Type.SANDSTONE, Type.SANDSTONE, Type.SANDSTONE),
-	
+
 	# Leather
 	Recipe.new(Type.STICKS, Type.LEATHER, Type.BATTLE_BANNER),
 	Recipe.new(Type.WOOD, Type.LEATHER, Type.LEATHER_SHIELD),
@@ -371,11 +371,11 @@ static var recipes: Array[Recipe] = [
 	Recipe.new(Type.CHAIN, Type.LEATHER, Type.WHIP),
 	Recipe.new(Type.SANDSTONE, Type.LEATHER, Nothing.new()),
 	Recipe.new(Type.LEATHER, Type.LEATHER, Type.EMPTY_QUIVER),
-	
+
 	# Diamond
 	Recipe.new(Type.STICKS, Type.DIAMOND, Nothing.new()),
 	Recipe.new(Type.WOOD, Type.DIAMOND, Nothing.new()),
-	Recipe.new(Type.STONE, Type.DIAMOND, Type.RUNESTONE,
+	Recipe.new(Type.STONE, Type.DIAMOND, Type.RUNESTONE),
 	#Recipe.new(Type.BASKET, Type.DIAMOND, Type.BASKET_OF),
 	#Recipe.new(Type.BUCKET, Type.DIAMOND, Type.BUCKET_OF),
 	Recipe.new(Type.WATER_BUCKET, Type.DIAMOND, Nothing.new()),
@@ -394,7 +394,7 @@ static var recipes: Array[Recipe] = [
 	Recipe.new(Type.SANDSTONE, Type.DIAMOND, Nothing.new()),
 	Recipe.new(Type.LEATHER, Type.DIAMOND, Nothing.new()),
 	Recipe.new(Type.DIAMOND, Type.DIAMOND, Type.DIAMOND),
-	
+
 	# Runestone
 	Recipe.new(Type.STICKS, Type.RUNESTONE, Type.WAND),
 	Recipe.new(Type.WOOD, Type.RUNESTONE, Type.STAFF),
@@ -418,7 +418,7 @@ static var recipes: Array[Recipe] = [
 	Recipe.new(Type.LEATHER, Type.RUNESTONE, Nothing.new()),
 	Recipe.new(Type.DIAMOND, Type.RUNESTONE, Nothing.new()),
 	Recipe.new(Type.RUNESTONE, Type.RUNESTONE, Type.RUNESTONE),
-	
+
 	# Empty Quiver
 	Recipe.new(Type.STICKS, Type.EMPTY_QUIVER, Nothing.new()),
 	Recipe.new(Type.WOOD, Type.EMPTY_QUIVER, Nothing.new()),
@@ -443,7 +443,7 @@ static var recipes: Array[Recipe] = [
 	Recipe.new(Type.DIAMOND, Type.EMPTY_QUIVER, Nothing.new()),
 	Recipe.new(Type.RUNESTONE, Type.EMPTY_QUIVER, Nothing.new()),
 	Recipe.new(Type.EMPTY_QUIVER, Type.EMPTY_QUIVER, Type.EMPTY_QUIVER),
-	
+
 	# Arrow
 	Recipe.new(Type.STICKS, Type.ARROW, Nothing.new()),
 	Recipe.new(Type.WOOD, Type.ARROW, Nothing.new()),
@@ -469,7 +469,7 @@ static var recipes: Array[Recipe] = [
 	Recipe.new(Type.RUNESTONE, Type.ARROW, Nothing.new()),
 	Recipe.new(Type.EMPTY_QUIVER, Type.ARROW, Type.QUIVER),
 	Recipe.new(Type.ARROW, Type.ARROW, Type.ARROW),
-	
+
 	# Potion Base
 	Recipe.new(Type.STICKS, Type.POTION_BASE, Nothing.new()),
 	Recipe.new(Type.WOOD, Type.POTION_BASE, Nothing.new()),
@@ -496,7 +496,7 @@ static var recipes: Array[Recipe] = [
 	Recipe.new(Type.EMPTY_QUIVER, Type.POTION_BASE, Nothing.new()),
 	Recipe.new(Type.ARROW, Type.POTION_BASE, Nothing.new()),
 	Recipe.new(Type.POTION_BASE, Type.POTION_BASE, Nothing.new()),
-	
+
 	# Berries
 	Recipe.new(Type.STICKS, Type.BERRIES, Nothing.new()),
 	Recipe.new(Type.WOOD, Type.BERRIES, Nothing.new()),
