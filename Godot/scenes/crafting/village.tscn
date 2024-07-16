@@ -1,0 +1,107 @@
+[gd_scene load_steps=15 format=3 uid="uid://bmfffa64tyw3x"]
+
+[ext_resource type="Script" path="res://scenes/crafting/village.gd" id="1_ifmcm"]
+[ext_resource type="Texture2D" uid="uid://bkovw5vwxg6ib" path="res://assets/biomes/village_anim.png" id="2_b4m60"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4v47f"]
+size = Vector2(180, 180)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8g1ab"]
+atlas = ExtResource("2_b4m60")
+region = Rect2(0, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_41bsn"]
+atlas = ExtResource("2_b4m60")
+region = Rect2(80, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_exo2c"]
+atlas = ExtResource("2_b4m60")
+region = Rect2(160, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6oemf"]
+atlas = ExtResource("2_b4m60")
+region = Rect2(240, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2kky"]
+atlas = ExtResource("2_b4m60")
+region = Rect2(320, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xp6pc"]
+atlas = ExtResource("2_b4m60")
+region = Rect2(400, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8exbt"]
+atlas = ExtResource("2_b4m60")
+region = Rect2(480, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o4uan"]
+atlas = ExtResource("2_b4m60")
+region = Rect2(560, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_54us0"]
+atlas = ExtResource("2_b4m60")
+region = Rect2(640, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_idsj4"]
+atlas = ExtResource("2_b4m60")
+region = Rect2(720, 0, 80, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_31ybp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8g1ab")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_41bsn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_exo2c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6oemf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2kky")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xp6pc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8exbt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o4uan")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_54us0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_idsj4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Village" type="Area2D"]
+collision_layer = 2
+collision_mask = 6
+script = ExtResource("1_ifmcm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 1
+position = Vector2(0.5, -0.5)
+shape = SubResource("RectangleShape2D_4v47f")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(3, 3)
+texture = ExtResource("2_b4m60")
+hframes = 10
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_31ybp")
+autoplay = "default"
+frame_progress = 0.772848

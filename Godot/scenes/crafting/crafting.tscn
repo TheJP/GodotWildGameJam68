@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dd4s3sh2lq2x1"]
+[gd_scene load_steps=6 format=3 uid="uid://dd4s3sh2lq2x1"]
 
 [ext_resource type="Script" path="res://scenes/crafting/crafting.gd" id="1_e733u"]
 [ext_resource type="PackedScene" uid="uid://dwjhdo8uhvr78" path="res://scenes/crafting/crafter.tscn" id="3_x6fdh"]
 [ext_resource type="PackedScene" uid="uid://de61aubqlopqx" path="res://scenes/crafting/pipe.tscn" id="4_1jm7c"]
+[ext_resource type="PackedScene" uid="uid://bmfffa64tyw3x" path="res://scenes/crafting/village.tscn" id="5_ht203"]
 [ext_resource type="PackedScene" uid="uid://n56xli2x8yts" path="res://scenes/crafting/spawner.tscn" id="5_nwm83"]
 
 [node name="Crafting" type="Node2D"]
@@ -138,81 +139,65 @@ position = Vector2(1632, 32)
 
 [node name="Spawner2" parent="MachinesAndItems" instance=ExtResource("5_nwm83")]
 position = Vector2(288, 32)
-spawn_type = 2
 
 [node name="Spawner12" parent="MachinesAndItems" instance=ExtResource("5_nwm83")]
 position = Vector2(352, 32)
-spawn_type = 2
 
 [node name="Spawner13" parent="MachinesAndItems" instance=ExtResource("5_nwm83")]
 position = Vector2(416, 32)
-spawn_type = 2
 
 [node name="Spawner14" parent="MachinesAndItems" instance=ExtResource("5_nwm83")]
 position = Vector2(544, 32)
-spawn_type = 2
 
 [node name="Spawner15" parent="MachinesAndItems" instance=ExtResource("5_nwm83")]
 position = Vector2(608, 32)
-spawn_type = 2
 
 [node name="Spawner16" parent="MachinesAndItems" instance=ExtResource("5_nwm83")]
 position = Vector2(736, 32)
-spawn_type = 2
 
 [node name="Spawner17" parent="MachinesAndItems" instance=ExtResource("5_nwm83")]
 position = Vector2(800, 32)
-spawn_type = 2
 
 [node name="Spawner18" parent="MachinesAndItems" instance=ExtResource("5_nwm83")]
 position = Vector2(928, 32)
-spawn_type = 2
 
 [node name="Spawner19" parent="MachinesAndItems" instance=ExtResource("5_nwm83")]
 position = Vector2(992, 32)
-spawn_type = 2
 
 [node name="Spawner20" parent="MachinesAndItems" instance=ExtResource("5_nwm83")]
 position = Vector2(1120, 32)
-spawn_type = 2
 
 [node name="Spawner21" parent="MachinesAndItems" instance=ExtResource("5_nwm83")]
 position = Vector2(1184, 32)
-spawn_type = 2
 
 [node name="Spawner22" parent="MachinesAndItems" instance=ExtResource("5_nwm83")]
 position = Vector2(1312, 32)
-spawn_type = 2
 
 [node name="Spawner23" parent="MachinesAndItems" instance=ExtResource("5_nwm83")]
 position = Vector2(1376, 32)
-spawn_type = 2
 
 [node name="Spawner5" parent="MachinesAndItems" instance=ExtResource("5_nwm83")]
 position = Vector2(864, 32)
-spawn_type = 2
 
 [node name="Spawner7" parent="MachinesAndItems" instance=ExtResource("5_nwm83")]
 position = Vector2(1248, 32)
-spawn_type = 2
 
 [node name="Spawner3" parent="MachinesAndItems" instance=ExtResource("5_nwm83")]
 position = Vector2(96, 32)
-spawn_type = 2
 
 [node name="Spawner10" parent="MachinesAndItems" instance=ExtResource("5_nwm83")]
 position = Vector2(160, 32)
-spawn_type = 2
 
 [node name="Spawner11" parent="MachinesAndItems" instance=ExtResource("5_nwm83")]
 position = Vector2(224, 32)
-spawn_type = 2
 
 [node name="Spawner9" parent="MachinesAndItems" instance=ExtResource("5_nwm83")]
 position = Vector2(32, 32)
-spawn_type = 2
 
 [node name="Crafter2" parent="MachinesAndItems" instance=ExtResource("3_x6fdh")]
 position = Vector2(384, 224)
 
 [node name="BuildTools" type="Node2D" parent="."]
+
+[node name="Village" parent="." instance=ExtResource("5_ht203")]
+position = Vector2(778, 641)
