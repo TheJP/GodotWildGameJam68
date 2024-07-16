@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://c6th4ako8tkf1"]
+
+[ext_resource type="Script" path="res://scenes/fighting/road.gd" id="1_8xfqw"]
+[ext_resource type="Texture2D" uid="uid://caxosndx6vvgh" path="res://assets/trash_can.png" id="2_0xnng"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wsigb"]
+size = Vector2(60, 60)
+
+[node name="Road" type="Area2D"]
+collision_layer = 2
+collision_mask = 6
+script = ExtResource("1_8xfqw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_wsigb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_0xnng")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(0.913725, 0.666667, 0.462745, 1)
+polygon = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)

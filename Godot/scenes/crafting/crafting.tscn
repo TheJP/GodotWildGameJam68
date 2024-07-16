@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dd4s3sh2lq2x1"]
+[gd_scene load_steps=7 format=3 uid="uid://dd4s3sh2lq2x1"]
 
 [ext_resource type="Script" path="res://scenes/crafting/crafting.gd" id="1_e733u"]
 [ext_resource type="PackedScene" uid="uid://dwjhdo8uhvr78" path="res://scenes/crafting/crafter.tscn" id="3_x6fdh"]
 [ext_resource type="PackedScene" uid="uid://de61aubqlopqx" path="res://scenes/crafting/pipe.tscn" id="4_1jm7c"]
 [ext_resource type="PackedScene" uid="uid://bmfffa64tyw3x" path="res://scenes/crafting/village.tscn" id="5_ht203"]
 [ext_resource type="PackedScene" uid="uid://n56xli2x8yts" path="res://scenes/crafting/spawner.tscn" id="5_nwm83"]
+[ext_resource type="PackedScene" uid="uid://c6th4ako8tkf1" path="res://scenes/fighting/road.tscn" id="6_8gpv3"]
 
 [node name="Crafting" type="Node2D"]
 script = ExtResource("1_e733u")
@@ -197,7 +198,28 @@ position = Vector2(32, 32)
 [node name="Crafter2" parent="MachinesAndItems" instance=ExtResource("3_x6fdh")]
 position = Vector2(384, 224)
 
-[node name="BuildTools" type="Node2D" parent="."]
+[node name="Village" parent="MachinesAndItems" instance=ExtResource("5_ht203")]
+position = Vector2(672, 480)
 
-[node name="Village" parent="." instance=ExtResource("5_ht203")]
-position = Vector2(778, 641)
+[node name="Road" parent="MachinesAndItems" instance=ExtResource("6_8gpv3")]
+position = Vector2(480, 736)
+
+[node name="Road5" parent="MachinesAndItems" instance=ExtResource("6_8gpv3")]
+position = Vector2(480, 800)
+
+[node name="Road6" parent="MachinesAndItems" instance=ExtResource("6_8gpv3")]
+position = Vector2(480, 864)
+
+[node name="Road2" parent="MachinesAndItems" instance=ExtResource("6_8gpv3")]
+position = Vector2(480, 672)
+
+[node name="Road3" parent="MachinesAndItems" instance=ExtResource("6_8gpv3")]
+position = Vector2(544, 672)
+
+[node name="Road4" parent="MachinesAndItems" instance=ExtResource("6_8gpv3")]
+position = Vector2(608, 608)
+
+[node name="Road7" parent="MachinesAndItems" instance=ExtResource("6_8gpv3")]
+position = Vector2(608, 672)
+
+[node name="BuildTools" type="Node2D" parent="."]
