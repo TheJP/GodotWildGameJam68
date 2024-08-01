@@ -20,7 +20,7 @@ func _ready():
 
 func _on_button_pressed():
 	AudioController.get_player('CalmMenuLoop').stop()
-	GlobalStats.new_game()
+	Game.trigger_new_game()
 	get_tree().change_scene_to_file("res://scenes/main.tscn")
 
 

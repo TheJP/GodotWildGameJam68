@@ -9,7 +9,7 @@ var spawn_rate = 4
 var counter = 3
 
 func _ready():
-	Ticker.timer.timeout.connect(_on_global_ticker_timeout)
+	Game.timer.timeout.connect(_on_global_ticker_timeout)
 	global_position = Tile.snap_crafting(global_position)
 	if randi() % 2:
 		spawn_type = Item.Type.WOOD

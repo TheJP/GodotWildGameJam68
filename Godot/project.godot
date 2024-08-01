@@ -21,7 +21,6 @@ aseprite_executable_path="E:/Program Files (x86)/Aseprite-v1.3.6-x64/Aseprite.ex
 
 [autoload]
 
-Ticker="*res://globals/ticker.gd"
 ClickCooldown="*res://globals/click_cooldown.gd"
 GlobalStats="*res://globals/global_stats.gd"
 Setup="*res://globals/setup.gd"
@@ -29,6 +28,8 @@ Tool="*res://globals/tool.gd"
 AudioController="*res://globals/audio_controller.gd"
 ItemDiscovery="*res://globals/item_discovery.gd"
 Utility="*res://globals/utility.gd"
+PathFinding="*res://globals/path_finding.gd"
+Game="*res://globals/game.gd"
 
 [display]
 

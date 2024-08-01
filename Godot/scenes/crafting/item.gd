@@ -28,7 +28,7 @@ var effect = null
 func _ready():
 	$Sprite2D.texture = Item.sprites[type]
 	set_effect(Item.effects[type])
-	Ticker.timer.timeout.connect(_on_global_ticker_timeout)
+	Game.timer.timeout.connect(_on_global_ticker_timeout)
 	if type in Item.decay:
 		var decay = Item.decay[type]
 		if type in Item.decay_sprites:
@@ -237,7 +237,7 @@ func _find_flow_targets() -> Array[FlowTarget]:
 func _item_decayed(decay):
 	if decay.output.is_nothing:
 		while container != null and not container.try_remove():
-			await Ticker.timer.timeout # Retry next tick.
+			await Game.timer.timeout # Retry next tick.
 		queue_free()
 	else:
 		var old_type: Item.Type = type
@@ -250,7 +250,7 @@ func _item_decayed(decay):
 func _item_decay_progress(decay):
 	if decay.output.is_nothing:
 		while container != null and not container.try_remove():
-			await Ticker.timer.timeout # Retry next tick.
+			await Game.timer.timeout # Retry next tick.
 		queue_free()
 	else:
 		set_effect(Item.decay_sprites[type])

@@ -6,7 +6,7 @@ var item = null
 
 
 func _ready():
-	Ticker.timer.timeout.connect(on_global_ticker_timeout)
+	Game.timer.timeout.connect(on_global_ticker_timeout)
 	global_position = Tile.snap_crafting(global_position)
 
 

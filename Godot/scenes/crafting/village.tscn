@@ -84,7 +84,7 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="Village" type="Area2D"]
+[node name="Village" type="Area2D" groups=["village"]]
 collision_layer = 2
 collision_mask = 6
 script = ExtResource("1_ifmcm")

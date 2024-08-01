@@ -9,8 +9,7 @@ var progress
 var times_spawned
 var highscore = 0
 signal update_health_bar
-
-var reachedTransition = false
+var _game_over_triggered := false
 
 
 static var _loops: Array[String] = [
@@ -27,14 +26,16 @@ static var _loop_transition := {
 
 
 func _ready():
-	new_game()
+	on_new_game()
 	_load_highscore()
+	Game.new_game.connect(on_new_game)
 
 
-func new_game():
+func on_new_game():
 	factory_health = 100
 	progress = 0
 	times_spawned = 1
+	_game_over_triggered = false
 
 
 func set_highscore(score):
@@ -58,12 +59,14 @@ func update_health(amount):
 	factory_health += amount
 
 	update_health_bar.emit()
-	if factory_health <= 0:
+	if factory_health <= 0 and not _game_over_triggered:
+		_game_over_triggered = true # Prevent game over from triggering multiple times.
 		await get_tree().create_timer(1).timeout
 		for loop in _loops:
 			AudioController.get_player(loop).stop()
 		AudioController.get_player("GameOverSound").play()
 		get_tree().change_scene_to_file("res://scenes/ui/GameOver.tscn")
+		Game.trigger_game_over()
 	else:
 		AudioController.get_player("FactoryDamageSound").play()
 

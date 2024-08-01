@@ -46,3 +46,12 @@ static func _snap(tilesize: float, position: Vector2, size: Vector2i = Vector2i(
 	position -= translation
 	position = position.snapped(Vector2.ONE * tilesize)
 	return position + translation
+
+
+static func index(position: Vector2) -> Vector2i:
+	position /= GameParameters.craft_tilesize
+	return Vector2i(position.floor())
+
+
+static func position(p_index: Vector2i) -> Vector2:
+	return (Vector2(p_index) + Vector2(0.5, 0.5)) * GameParameters.craft_tilesize

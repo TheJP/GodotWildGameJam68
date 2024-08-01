@@ -43,7 +43,7 @@ func _ready():
 	right_hand.level_two = $RightHand/mode_two
 	right_hand.level_three = $RightHand/mode_three
 
-	Ticker.timer.timeout.connect(on_global_ticker_timeout)
+	Game.timer.timeout.connect(on_global_ticker_timeout)
 	global_position = Tile.snap_fighting(global_position)
 	health_bar.max_value = health
 	health_bar.visible = false

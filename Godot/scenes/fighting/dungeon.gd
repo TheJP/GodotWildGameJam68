@@ -2,9 +2,7 @@ extends Area2D
 
 
 @onready var ray: RayCast2D = $RayCast2D
-@onready var enemies = [
-	preload("res://scenes/fighting/old_stuff/enemy.tscn"),
-]
+@onready var enemy_scene = preload("res://scenes/fighting/enemy.tscn")
 
 
 @export var spawn_rate = 36
@@ -13,7 +11,7 @@ extends Area2D
 
 func _ready():
 	global_position = Tile.snap_crafting(global_position)
-	Ticker.timer.timeout.connect(on_global_ticker_timeout)
+	Game.timer.timeout.connect(on_global_ticker_timeout)
 
 
 func on_global_ticker_timeout():
@@ -32,9 +30,8 @@ func _spawn_enemy():
 		if collider is Road:
 			if collider.fighter != null:
 				continue
-			var scene = enemies.pick_random()
-			var enemy = scene.instantiate()
-			get_parent().add_child(enemy)
+			var enemy = enemy_scene.instantiate()
 			enemy.global_position = collider.global_position
+			get_parent().add_child(enemy)
 			collider.fighter = enemy
 			return

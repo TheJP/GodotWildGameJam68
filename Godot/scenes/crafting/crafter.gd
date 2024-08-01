@@ -41,7 +41,7 @@ func _slots_changed():
 		if _disable_crafting:
 			return
 		# Craft item(s).
-		await Ticker.timer.timeout
+		await Game.timer.timeout
 		if _state_number != local_state:
 			return
 		_animate_craft_items()
@@ -49,7 +49,7 @@ func _slots_changed():
 		# Disabled for now, because it was constant noise.
 		# if !AudioController.get_player("ItemCraftLoop").playing:
 			# AudioController.get_player("ItemCraftLoop").play()
-		await Ticker.timer.timeout
+		await Game.timer.timeout
 		if _state_number != local_state:
 			return # Slots changed since wait, return to prevent issues like double crafting.
 		if not is_instance_valid($LeftSlot.item) or not is_instance_valid($RightSlot.item):
@@ -57,7 +57,7 @@ func _slots_changed():
 		_animate_craft_items()
 		$LeftSlot.is_crafting = true
 		$RightSlot.is_crafting = true
-		await Ticker.timer.timeout
+		await Game.timer.timeout
 		_craft()
 		_animate_crafted()
 		_disable_crafting = true

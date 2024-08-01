@@ -22,7 +22,7 @@ var is_plant = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	Ticker.timer.timeout.connect(on_global_ticker_timeout)
+	Game.timer.timeout.connect(on_global_ticker_timeout)
 	global_position = Tile.snap_fighting(global_position)
 	health_bar.max_value = health
 	health_bar.visible = false
