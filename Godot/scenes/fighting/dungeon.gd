@@ -31,7 +31,7 @@ func _spawn_enemy():
 			if collider.fighter != null:
 				continue
 			var enemy = enemy_scene.instantiate()
+			collider.fighter = enemy
 			enemy.global_position = collider.global_position
 			get_parent().add_child(enemy)
-			collider.fighter = enemy
 			return

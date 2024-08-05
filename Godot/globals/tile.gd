@@ -26,15 +26,15 @@ static var scenes := {
 }
 
 
-static func snap_fighting(position: Vector2, size: Vector2i = Vector2i(1, 1)) -> Vector2:
-	return _snap(GameParameters.craft_tilesize, position, size)
+static func snap_fighting(p_position: Vector2, size: Vector2i = Vector2i(1, 1)) -> Vector2:
+	return _snap(GameParameters.craft_tilesize, p_position, size)
 
 
-static func snap_crafting(position: Vector2, size: Vector2i = Vector2i(1, 1)) -> Vector2:
-	return _snap(GameParameters.tilesize, position, size)
+static func snap_crafting(p_position: Vector2, size: Vector2i = Vector2i(1, 1)) -> Vector2:
+	return _snap(GameParameters.tilesize, p_position, size)
 
 
-static func _snap(tilesize: float, position: Vector2, size: Vector2i = Vector2i(1, 1)) -> Vector2:
+static func _snap(tilesize: float, p_position: Vector2, size: Vector2i = Vector2i(1, 1)) -> Vector2:
 	if size.x == size.y && size.x > 2:
 		size = Vector2i(1, 1) if size.x % 2 == 1 else Vector2i(2, 2)
 	assert(size.x <= 2 and size.y <= 2, "not implemented")
@@ -43,14 +43,14 @@ static func _snap(tilesize: float, position: Vector2, size: Vector2i = Vector2i(
 		1 if size.y == 1 else 0,
 	)
 
-	position -= translation
-	position = position.snapped(Vector2.ONE * tilesize)
-	return position + translation
+	p_position -= translation
+	p_position = p_position.snapped(Vector2.ONE * tilesize)
+	return p_position + translation
 
 
-static func index(position: Vector2) -> Vector2i:
-	position /= GameParameters.craft_tilesize
-	return Vector2i(position.floor())
+static func index(p_position: Vector2) -> Vector2i:
+	p_position /= GameParameters.craft_tilesize
+	return Vector2i(p_position.floor())
 
 
 static func position(p_index: Vector2i) -> Vector2:

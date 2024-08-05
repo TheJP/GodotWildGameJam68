@@ -2,7 +2,7 @@ extends Node
 
 
 var _roads := {}
-var layout_id := 0
+signal layout_changed()
 
 
 func _ready():
@@ -19,8 +19,16 @@ func register_road(road: Road):
 		road.queue_free()
 		push_warning('duplicate road, keeping already existing road and deleting newly added at {0}'.format([index]))
 		return
-	layout_id += 1
 	_roads[index] = road
+	layout_changed.emit()
+
+
+func remove_road(road: Road):
+	var index := Tile.index(road.global_position)
+	if index not in _roads:
+		return
+	_roads.erase(index)
+	layout_changed.emit()
 
 
 func has_road(index: Vector2i) -> bool:
